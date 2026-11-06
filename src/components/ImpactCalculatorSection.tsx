@@ -39,7 +39,7 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
   return (
     <section
       id="impact"
-      className="relative py-20 lg:py-28 text-slate-900 overflow-hidden"
+      className="relative py-20 lg:py-28 text-white overflow-hidden"
     >
       {/* Decorative Glows */}
       <div className="pointer-events-none absolute -top-24 right-1/4 w-96 h-96 rounded-full bg-emerald-100/50 blur-3xl" />
@@ -47,20 +47,20 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-10 border-b border-slate-200">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-10 border-b border-white/[0.14]">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-mono-tech uppercase tracking-wider mb-4 font-semibold">
               <BarChart3 className="w-3.5 h-3.5 text-emerald-600" />
               <span>05 • VERIFIED IMPACT & CARBON LEDGER</span>
             </div>
-            <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-slate-900">
+            <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-white">
               Every rescued kilogram heals both{' '}
               <span className="italic font-normal text-emerald-600">
                 communities and the climate.
               </span>
             </h2>
           </div>
-          <p className="text-base text-slate-600 max-w-md leading-relaxed">
+          <p className="text-base text-white/70 max-w-md leading-relaxed">
             Audited quarterly with partner NGOs and environmental certifiers. Every meal bridged is
             timestamped, weighed, and verified via QR chain-of-custody.
           </p>
@@ -97,22 +97,22 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
               label: 'AVG RESCUE VELOCITY',
               value: '38 Mins',
               sub: '99.4% Thermal Safe',
-              accent: 'text-slate-900',
-              bg: 'bg-slate-50',
-              border: 'border-slate-200',
+              accent: 'text-white',
+              bg: 'bg-white/[0.05]',
+              border: 'border-white/[0.14]',
             },
           ].map((stat, idx) => (
             <div
               key={idx}
               className={`rounded-3xl ${stat.bg} border ${stat.border} p-6 space-y-2 shadow-sm hover:shadow-md hover:scale-102 transition-all`}
             >
-              <div className="text-xs font-mono-tech text-slate-600 uppercase tracking-wider font-semibold">
+              <div className="text-xs font-mono-tech text-white/70 uppercase tracking-wider font-semibold">
                 {stat.label}
               </div>
               <div className={`font-serif-display text-3xl sm:text-4xl font-bold ${stat.accent}`}>
                 {stat.value}
               </div>
-              <div className="text-xs text-slate-600 flex items-center gap-1.5 pt-1 font-medium">
+              <div className="text-xs text-white/70 flex items-center gap-1.5 pt-1 font-medium">
                 <TrendingUp className="w-3.5 h-3.5 text-emerald-600" />
                 <span>{stat.sub}</span>
               </div>
@@ -121,7 +121,7 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
         </div>
 
         {/* Dynamic Interactive Impact Calculator Studio */}
-        <div className="mt-12 rounded-3xl bg-white/95 backdrop-blur-xl border border-slate-200/90 p-6 sm:p-12 shadow-lg grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div className="mt-12 rounded-3xl bg-white/[0.08] backdrop-blur-xl border border-white/[0.14]/90 p-6 sm:p-12 shadow-lg grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           {/* Left 6 Columns: Interactive Controls */}
           <div className="lg:col-span-6 space-y-7">
             <div className="space-y-2">
@@ -129,10 +129,10 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
                 <Calculator className="w-4 h-4 text-emerald-600" />
                 <span>INTERACTIVE ESG IMPACT CALCULATOR</span>
               </div>
-              <h3 className="font-serif-display text-2xl sm:text-3xl font-bold text-slate-900">
+              <h3 className="font-serif-display text-2xl sm:text-3xl font-bold text-white">
                 Calculate Your Organization’s Rescue Potential
               </h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              <p className="text-xs sm:text-sm text-white/70 leading-relaxed">
                 See the real-time social meals, water conservation, and carbon offset generated from your surplus.
               </p>
             </div>
@@ -140,7 +140,7 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
             {/* Slider: Surplus Kg per occasion */}
             <div className="space-y-3">
               <div className="flex items-center justify-between text-xs font-mono-tech">
-                <span className="text-slate-600 font-semibold uppercase">TYPICAL SURPLUS BATCH MASS</span>
+                <span className="text-white/70 font-semibold uppercase">TYPICAL SURPLUS BATCH MASS</span>
                 <span className="text-emerald-700 font-bold text-base px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200">
                   {surplusKg} KG / BATCH
                 </span>
@@ -156,10 +156,10 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
                   setSurplusKg(val);
                   sound.sliderTick(val);
                 }}
-                className="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
+                className="w-full h-2.5 bg-white/[0.12] rounded-lg appearance-none cursor-pointer accent-emerald-600"
                 aria-label="Surplus batch kg slider"
               />
-              <div className="flex justify-between text-[11px] font-mono-tech text-slate-500">
+              <div className="flex justify-between text-[11px] font-mono-tech text-white/60">
                 <span>10 kg (Cafe)</span>
                 <span>65 kg (Banquet)</span>
                 <span>300 kg (Mega Convention)</span>
@@ -168,7 +168,7 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
 
             {/* Frequency Selector */}
             <div className="space-y-2">
-              <div className="text-xs font-mono-tech uppercase text-slate-600 font-semibold">
+              <div className="text-xs font-mono-tech uppercase text-white/70 font-semibold">
                 Rescue Frequency
               </div>
               <div className="grid grid-cols-3 gap-2">
@@ -186,8 +186,8 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
                     }}
                     className={`py-2.5 rounded-xl border text-xs font-semibold transition-all cursor-pointer ${
                       frequency === fr.id
-                        ? 'bg-slate-900 text-white border-slate-900 shadow-sm'
-                        : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
+                        ? 'bg-black/60 text-white border-slate-900 shadow-sm'
+                        : 'bg-white/[0.05] text-white/80 border-white/[0.14] hover:bg-white/[0.08]'
                     }`}
                   >
                     {fr.label}
@@ -198,7 +198,7 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
 
             {/* Food Category Selector */}
             <div className="space-y-2">
-              <div className="text-xs font-mono-tech uppercase text-slate-600 font-semibold">
+              <div className="text-xs font-mono-tech uppercase text-white/70 font-semibold">
                 Food Category
               </div>
               <div className="grid grid-cols-3 gap-2">
@@ -217,7 +217,7 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
                     className={`py-2.5 rounded-xl border text-xs font-semibold transition-all cursor-pointer ${
                       foodCategory === cat.id
                         ? 'bg-orange-500 text-white border-orange-500 shadow-sm'
-                        : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
+                        : 'bg-white/[0.05] text-white/80 border-white/[0.14] hover:bg-white/[0.08]'
                     }`}
                   >
                     {cat.label}
@@ -229,35 +229,35 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
 
           {/* Right 6 Columns: Realistic Computed Impact Ledger */}
           <div className="lg:col-span-6 space-y-6">
-            <div className="rounded-3xl bg-slate-50 border border-slate-200/90 p-6 sm:p-8 space-y-6 shadow-sm">
-              <div className="flex items-center justify-between border-b border-slate-200 pb-4">
+            <div className="rounded-3xl bg-white/[0.05] border border-white/[0.14]/90 p-6 sm:p-8 space-y-6 shadow-sm">
+              <div className="flex items-center justify-between border-b border-white/[0.14] pb-4">
                 <div>
                   <div className="text-xs font-mono-tech text-emerald-700 uppercase font-bold">
                     ESTIMATED LIFETIME IMPACT
                   </div>
-                  <div className="font-serif-display text-2xl font-bold text-slate-900 mt-0.5">
+                  <div className="font-serif-display text-2xl font-bold text-white mt-0.5">
                     {totalKg.toLocaleString()} kg Total Rescued
                   </div>
                 </div>
-                <div className="px-3 py-1 rounded-full bg-white border border-slate-200 text-xs font-mono-tech text-slate-600 font-semibold">
+                <div className="px-3 py-1 rounded-full bg-white/[0.07] border border-white/[0.14] text-xs font-mono-tech text-white/70 font-semibold">
                   {frequency.toUpperCase()} CADENCE
                 </div>
               </div>
 
               {/* 4 Computed Result Cards */}
               <div className="grid grid-cols-2 gap-3.5">
-                <div className="rounded-2xl bg-white border border-slate-200 p-4 space-y-1">
+                <div className="rounded-2xl bg-white/[0.07] border border-white/[0.14] p-4 space-y-1">
                   <div className="flex items-center gap-1.5 text-xs font-mono-tech text-emerald-700 uppercase font-semibold">
                     <Utensils className="w-3.5 h-3.5" />
                     Hot Meals Fed
                   </div>
-                  <div className="text-2xl font-mono-tech font-bold text-slate-900">
+                  <div className="text-2xl font-mono-tech font-bold text-white">
                     {mealsFed.toLocaleString()}
                   </div>
-                  <div className="text-[10px] text-slate-500">400g nutritious servings</div>
+                  <div className="text-[10px] text-white/60">400g nutritious servings</div>
                 </div>
 
-                <div className="rounded-2xl bg-white border border-slate-200 p-4 space-y-1">
+                <div className="rounded-2xl bg-white/[0.07] border border-white/[0.14] p-4 space-y-1">
                   <div className="flex items-center gap-1.5 text-xs font-mono-tech text-orange-600 uppercase font-semibold">
                     <Flame className="w-3.5 h-3.5" />
                     CO₂e Methane Saved
@@ -265,10 +265,10 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
                   <div className="text-2xl font-mono-tech font-bold text-orange-600">
                     {co2SavedKg.toLocaleString()} kg
                   </div>
-                  <div className="text-[10px] text-slate-500">Landfill diversion</div>
+                  <div className="text-[10px] text-white/60">Landfill diversion</div>
                 </div>
 
-                <div className="rounded-2xl bg-white border border-slate-200 p-4 space-y-1">
+                <div className="rounded-2xl bg-white/[0.07] border border-white/[0.14] p-4 space-y-1">
                   <div className="flex items-center gap-1.5 text-xs font-mono-tech text-sky-700 uppercase font-semibold">
                     <Droplets className="w-3.5 h-3.5" />
                     Water Saved
@@ -276,10 +276,10 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
                   <div className="text-2xl font-mono-tech font-bold text-sky-700">
                     {waterSavedLiters.toLocaleString()} L
                   </div>
-                  <div className="text-[10px] text-slate-500">Agricultural footprint</div>
+                  <div className="text-[10px] text-white/60">Agricultural footprint</div>
                 </div>
 
-                <div className="rounded-2xl bg-white border border-slate-200 p-4 space-y-1">
+                <div className="rounded-2xl bg-white/[0.07] border border-white/[0.14] p-4 space-y-1">
                   <div className="flex items-center gap-1.5 text-xs font-mono-tech text-emerald-700 uppercase font-semibold">
                     <Leaf className="w-3.5 h-3.5" />
                     Trees Equivalent
@@ -287,7 +287,7 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
                   <div className="text-2xl font-mono-tech font-bold text-emerald-700">
                     {treesEquivalent} Trees
                   </div>
-                  <div className="text-[10px] text-slate-500">Annual carbon sequestration</div>
+                  <div className="text-[10px] text-white/60">Annual carbon sequestration</div>
                 </div>
               </div>
 
@@ -312,7 +312,7 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
                       sound.click();
                       onOpenEsgCertificate(surplusKg);
                     }}
-                    className="py-3.5 px-5 rounded-full bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 font-semibold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm"
+                    className="py-3.5 px-5 rounded-full bg-white hover:bg-white/[0.08] text-white/90 border border-white/[0.20] font-semibold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm"
                   >
                     <Award className="w-4 h-4 text-emerald-600" />
                     <span>View ESG Certificate</span>

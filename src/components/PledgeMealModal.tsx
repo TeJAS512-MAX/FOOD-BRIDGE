@@ -40,8 +40,8 @@ export const PledgeMealModal: React.FC<PledgeMealModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md animate-fadeIn">
-      <div className="relative w-full max-w-lg bg-white text-slate-900 border border-slate-200 rounded-3xl shadow-2xl overflow-hidden max-h-[92vh] overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60/60 backdrop-blur-md animate-fadeIn">
+      <div className="relative w-full max-w-lg bg-white text-white border border-white/[0.14] rounded-3xl shadow-2xl overflow-hidden max-h-[92vh] overflow-y-auto">
         {/* Top Header */}
         <div className="bg-gradient-to-r from-emerald-600 to-teal-700 text-white px-6 sm:px-8 py-5 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
@@ -67,17 +67,17 @@ export const PledgeMealModal: React.FC<PledgeMealModalProps> = ({
           {!isCompleted ? (
             <form onSubmit={handlePledgeSubmit} className="space-y-5">
               <div className="text-center space-y-2">
-                <h3 className="font-serif-display text-2xl sm:text-3xl font-bold text-slate-900">
-                  Every Single Meal <span className="text-emerald-700">Restores Hope.</span>
+                <h3 className="font-serif-display text-2xl sm:text-3xl font-bold text-white">
+                  Every Single Meal <span className="text-emerald-400">Restores Hope.</span>
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-md mx-auto">
+                <p className="text-xs sm:text-sm text-white/70 leading-relaxed max-w-md mx-auto">
                   You don’t have to run a commercial hotel to end hunger. Pledge meals or sponsor an EV thermal rescue ride to your nearest neighborhood shelter today.
                 </p>
               </div>
 
               {/* Number of meals selector */}
               <div className="space-y-2">
-                <label className="text-xs font-mono-tech uppercase text-slate-600 font-semibold block">
+                <label className="text-xs font-mono-tech uppercase text-white/70 font-semibold block">
                   Select Meals to Bridge
                 </label>
                 <div className="grid grid-cols-4 gap-2">
@@ -91,8 +91,8 @@ export const PledgeMealModal: React.FC<PledgeMealModalProps> = ({
                       }}
                       className={`py-3 rounded-2xl border text-sm font-bold transition-all cursor-pointer ${
                         pledgeCount === count
-                          ? 'bg-slate-900 text-white border-slate-900 shadow-sm scale-102'
-                          : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
+                          ? 'bg-black/60 text-white border-slate-900 shadow-sm scale-102'
+                          : 'bg-white/[0.05] text-white/80 border-white/[0.14] hover:bg-white/[0.08]'
                       }`}
                     >
                       {count} {count === 1 ? 'Meal' : 'Meals'}
@@ -104,7 +104,7 @@ export const PledgeMealModal: React.FC<PledgeMealModalProps> = ({
               {/* Name & City */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div className="space-y-1">
-                  <label className="text-xs font-mono-tech uppercase text-slate-600 font-semibold block">
+                  <label className="text-xs font-mono-tech uppercase text-white/70 font-semibold block">
                     Your Name
                   </label>
                   <input
@@ -113,12 +113,12 @@ export const PledgeMealModal: React.FC<PledgeMealModalProps> = ({
                     placeholder="e.g. Priya Sharma"
                     value={supporterName}
                     onChange={(e) => setSupporterName(e.target.value)}
-                    className="w-full px-4 py-2.5 rounded-xl border border-slate-300 bg-slate-50 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white"
+                    className="w-full px-4 py-2.5 rounded-xl border border-white/[0.20] bg-white/[0.05] text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white"
                   />
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-xs font-mono-tech uppercase text-slate-600 font-semibold block">
+                  <label className="text-xs font-mono-tech uppercase text-white/70 font-semibold block">
                     Your City / Ward
                   </label>
                   <input
@@ -127,18 +127,18 @@ export const PledgeMealModal: React.FC<PledgeMealModalProps> = ({
                     placeholder="e.g. Indiranagar, Bengaluru"
                     value={supporterCity}
                     onChange={(e) => setSupporterCity(e.target.value)}
-                    className="w-full px-4 py-2.5 rounded-xl border border-slate-300 bg-slate-50 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white"
+                    className="w-full px-4 py-2.5 rounded-xl border border-white/[0.20] bg-white/[0.05] text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white"
                   />
                 </div>
               </div>
 
               {/* Impact Preview Card */}
-              <div className="rounded-2xl bg-emerald-50 border border-emerald-200 p-4 space-y-2 text-xs">
-                <div className="flex items-center justify-between font-mono-tech text-emerald-800 font-bold">
+              <div className="rounded-2xl bg-emerald-900/20 border border-emerald-500/30 p-4 space-y-2 text-xs">
+                <div className="flex items-center justify-between font-mono-tech text-emerald-300 font-bold">
                   <span>PLEDGED IMPACT SUMMARY</span>
                   <span>{pledgeCount * 400}g FOOD EQUIV</span>
                 </div>
-                <div className="grid grid-cols-2 gap-2 text-slate-700">
+                <div className="grid grid-cols-2 gap-2 text-white/80">
                   <div>• {pledgeCount} hot dinners guaranteed</div>
                   <div>• {(pledgeCount * 0.625).toFixed(1)} kg Methane CO₂e saved</div>
                   <div>• Directed to: Annapurna Seva Hub</div>
@@ -157,21 +157,21 @@ export const PledgeMealModal: React.FC<PledgeMealModalProps> = ({
           ) : (
             /* Completed / Hero Pass Generated */
             <div className="text-center space-y-5">
-              <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto shadow-sm">
+              <div className="w-16 h-16 rounded-full bg-emerald-900/30 text-emerald-400 flex items-center justify-center mx-auto shadow-sm">
                 <CheckCircle2 className="w-8 h-8" />
               </div>
 
               <div>
-                <h3 className="font-serif-display text-2xl font-bold text-slate-900">
+                <h3 className="font-serif-display text-2xl font-bold text-white">
                   You Just Bridged {pledgeCount} Dignified Meals!
                 </h3>
-                <p className="text-xs text-slate-600 mt-1">
-                  Thank you, <strong className="text-slate-900">{supporterName || 'Hero'}</strong>. Your pledge has been registered onto the FoodBridge civic dispatch ledger.
+                <p className="text-xs text-white/70 mt-1">
+                  Thank you, <strong className="text-white">{supporterName || 'Hero'}</strong>. Your pledge has been registered onto the FoodBridge civic dispatch ledger.
                 </p>
               </div>
 
               {/* Verified Digital Supporter Pass Card */}
-              <div className="rounded-2xl bg-slate-900 text-white p-5 border border-slate-800 text-left space-y-3 shadow-xl relative overflow-hidden">
+              <div className="rounded-2xl bg-black/60 text-white p-5 border border-slate-800 text-left space-y-3 shadow-xl relative overflow-hidden">
                 <div className="flex items-center justify-between border-b border-slate-800 pb-3">
                   <div className="flex items-center gap-2">
                     <Award className="w-4 h-4 text-amber-400" />
@@ -179,21 +179,21 @@ export const PledgeMealModal: React.FC<PledgeMealModalProps> = ({
                       FOODBRIDGE CIVIC HERO PASS
                     </span>
                   </div>
-                  <span className="font-mono-tech text-[10px] text-slate-400">{generatedPassId}</span>
+                  <span className="font-mono-tech text-[10px] text-white/50">{generatedPassId}</span>
                 </div>
 
                 <div className="space-y-1">
                   <div className="text-base font-bold text-white">{supporterName || 'Civic Supporter'}</div>
-                  <div className="text-xs text-slate-400">{supporterCity} • Verified Supporter</div>
+                  <div className="text-xs text-white/50">{supporterCity} • Verified Supporter</div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-2 text-xs font-mono-tech border-t border-slate-800 pt-3 text-slate-300">
+                <div className="grid grid-cols-2 gap-2 text-xs font-mono-tech border-t border-slate-800 pt-3 text-white/40">
                   <div>
-                    <span className="text-[10px] text-slate-400 block">MEALS BRIDGED</span>
+                    <span className="text-[10px] text-white/50 block">MEALS BRIDGED</span>
                     <span className="text-emerald-400 font-bold">{pledgeCount} Hot Dinners</span>
                   </div>
                   <div>
-                    <span className="text-[10px] text-slate-400 block">DESTINATION SHELTER</span>
+                    <span className="text-[10px] text-white/50 block">DESTINATION SHELTER</span>
                     <span className="text-amber-400 font-bold">Annapurna Seva Hub</span>
                   </div>
                 </div>
@@ -206,7 +206,7 @@ export const PledgeMealModal: React.FC<PledgeMealModalProps> = ({
                     sound.click();
                     alert('Digital Hero Pass copied to clipboard! You can share it on LinkedIn or Twitter/X with #FoodBridge #OSCode');
                   }}
-                  className="flex-1 py-3 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold flex items-center justify-center gap-2 cursor-pointer transition-all"
+                  className="flex-1 py-3 rounded-full bg-white/[0.08] hover:bg-white/[0.12] text-white/90 text-xs font-semibold flex items-center justify-center gap-2 cursor-pointer transition-all"
                 >
                   <Share2 className="w-3.5 h-3.5" />
                   <span>Share Hero Card</span>

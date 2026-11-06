@@ -78,17 +78,17 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
       ===================================================================== */}
       <section
         id="stories"
-        className="relative py-20 lg:py-28 text-slate-900 overflow-hidden"
+        className="relative py-20 lg:py-28 text-white overflow-hidden"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-10 border-b border-slate-200">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-10 border-b border-white/[0.14]">
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-mono-tech uppercase tracking-wider mb-4 font-semibold">
                 <Quote className="w-3.5 h-3.5 text-emerald-600" />
                 <span>06 • COMMUNITY VOICES: HUMAN DIGNITY AT EVERY TABLE</span>
               </div>
-              <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-slate-900">
+              <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-white">
                 Stories from the chefs, shelters, and riders{' '}
                 <span className="italic font-normal text-emerald-600">bridging the gap.</span>
               </h2>
@@ -107,8 +107,8 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                   }}
                   className={`px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer border ${
                     selectedStory.id === story.id
-                      ? 'bg-slate-900 text-white border-slate-900 shadow-sm'
-                      : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
+                      ? 'bg-black/60 text-white border-slate-900 shadow-sm'
+                      : 'bg-white text-white/80 border-white/[0.14] hover:bg-white/[0.08]'
                   }`}
                 >
                   {story.role}
@@ -118,10 +118,10 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
           </div>
 
           {/* Active Story Spotlight Card with Real Persona Image */}
-          <div className="mt-12 rounded-3xl bg-white/95 backdrop-blur-xl border border-slate-200/90 p-8 sm:p-12 shadow-lg grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div className="mt-12 rounded-3xl bg-white/[0.08] backdrop-blur-xl border border-white/[0.14]/90 p-8 sm:p-12 shadow-lg grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             {/* Left 5 Cols: Persona Visual & Audio Card */}
             <div className="lg:col-span-5 space-y-4">
-              <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-md relative group">
+              <div className="rounded-3xl overflow-hidden border border-white/[0.14] shadow-md relative group">
                 <img
                   src={selectedStory.imageUrl}
                   alt={selectedStory.name}
@@ -136,12 +136,12 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                   <h4 className="font-serif-display text-2xl font-bold text-white mt-1">
                     {selectedStory.name}
                   </h4>
-                  <p className="text-xs text-slate-200">{selectedStory.title}, {selectedStory.organization}</p>
+                  <p className="text-xs text-white/30">{selectedStory.title}, {selectedStory.organization}</p>
                 </div>
               </div>
 
               {/* Simulated Audio Note Player */}
-              <div className="rounded-2xl bg-slate-50 border border-slate-200 p-4 flex items-center justify-between">
+              <div className="rounded-2xl bg-white/[0.05] border border-white/[0.14] p-4 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <button
                     type="button"
@@ -151,11 +151,11 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                     <Play className="w-4 h-4 fill-current ml-0.5" />
                   </button>
                   <div>
-                    <div className="text-xs font-semibold text-slate-900 flex items-center gap-1.5">
+                    <div className="text-xs font-semibold text-white flex items-center gap-1.5">
                       <Volume2 className="w-3.5 h-3.5 text-emerald-600" />
                       <span>{selectedStory.name.split(' ')[0]}’s Audio Memo</span>
                     </div>
-                    <div className="text-[10px] font-mono-tech text-slate-500">
+                    <div className="text-[10px] font-mono-tech text-white/60">
                       {isPlayingAudio ? 'Playing 0:18 / ' : 'Recorded Audio Note • '}
                       {selectedStory.audioDuration || '0:45'}
                     </div>
@@ -181,21 +181,21 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
             <div className="lg:col-span-7 space-y-6">
               <Quote className="w-10 h-10 text-emerald-600/30" />
 
-              <blockquote className="font-serif-display text-xl sm:text-2xl text-slate-900 italic leading-relaxed">
+              <blockquote className="font-serif-display text-xl sm:text-2xl text-white italic leading-relaxed">
                 “{selectedStory.quote}”
               </blockquote>
 
-              <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+              <p className="text-sm sm:text-base text-white/70 leading-relaxed">
                 {selectedStory.storyDetail}
               </p>
 
               {/* Story Metrics Banner */}
               <div className="grid grid-cols-2 gap-4 pt-2">
-                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-1">
-                  <div className="font-mono-tech text-xs text-slate-500 uppercase font-semibold">
+                <div className="p-4 rounded-2xl bg-white/[0.05] border border-white/[0.14] space-y-1">
+                  <div className="font-mono-tech text-xs text-white/60 uppercase font-semibold">
                     {selectedStory.metricLabel}
                   </div>
-                  <div className="font-serif-display text-2xl sm:text-3xl font-bold text-slate-900">
+                  <div className="font-serif-display text-2xl sm:text-3xl font-bold text-white">
                     {selectedStory.metricValue}
                   </div>
                 </div>
@@ -215,7 +215,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                 {selectedStory.tags.map((tg, i) => (
                   <span
                     key={i}
-                    className="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-mono-tech border border-slate-200 font-medium"
+                    className="px-3 py-1 rounded-full bg-white/[0.08] text-white/80 text-xs font-mono-tech border border-white/[0.14] font-medium"
                   >
                     #{tg}
                   </span>
@@ -234,7 +234,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
       ===================================================================== */}
       <section
         id="cta"
-        className="relative py-20 lg:py-28 text-slate-900 overflow-hidden"
+        className="relative py-20 lg:py-28 text-white overflow-hidden"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
@@ -245,12 +245,12 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                 <span>07 • TAKE ACTION TODAY • BE THE BRIDGE</span>
               </div>
 
-              <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-slate-900">
+              <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-white">
                 Every minute counts when{' '}
                 <span className="italic font-normal text-emerald-600">fresh food</span> is on the line.
               </h2>
 
-              <p className="text-base text-slate-600 leading-relaxed max-w-xl">
+              <p className="text-base text-white/70 leading-relaxed max-w-xl">
                 Whether you run a 5-star hotel banquet, direct a community shelter, or ride an electric scooter in your free time — there is a role for you on the FoodBridge grid.
               </p>
 
@@ -270,12 +270,12 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                     desc: 'Thermal crates keep dinner piping hot from your kitchen door to shelter plates.',
                   },
                 ].map((pil, idx) => (
-                  <div key={idx} className="flex items-start gap-3 text-sm text-slate-600">
+                  <div key={idx} className="flex items-start gap-3 text-sm text-white/70">
                     <div className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
                       <CheckCircle2 className="w-3.5 h-3.5" />
                     </div>
                     <div>
-                      <strong className="text-slate-900">{pil.title}:</strong> {pil.desc}
+                      <strong className="text-white">{pil.title}:</strong> {pil.desc}
                     </div>
                   </div>
                 ))}
@@ -303,7 +303,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                       sound.click();
                       onOpenPledgeModal();
                     }}
-                    className="px-6 py-4 rounded-full bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 font-semibold text-sm sm:text-base flex items-center gap-2 cursor-pointer transition-all shadow-sm"
+                    className="px-6 py-4 rounded-full bg-white hover:bg-white/[0.05] border border-white/[0.20] text-white/90 font-semibold text-sm sm:text-base flex items-center gap-2 cursor-pointer transition-all shadow-sm"
                   >
                     <Sparkles className="w-4 h-4 text-emerald-600" />
                     <span>Pledge 1 Meal (₹35)</span>
@@ -314,9 +314,9 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
 
             {/* Right 6 Columns: Interactive 1-Minute Action Console */}
             <div className="lg:col-span-6">
-              <div className="rounded-3xl bg-white/95 backdrop-blur-xl border border-slate-200/90 p-6 sm:p-8 shadow-lg space-y-6">
+              <div className="rounded-3xl bg-white/[0.08] backdrop-blur-xl border border-white/[0.14]/90 p-6 sm:p-8 shadow-lg space-y-6">
                 {/* 3 Role Selection Tabs */}
-                <div className="flex rounded-2xl bg-slate-100 p-1.5 border border-slate-200">
+                <div className="flex rounded-2xl bg-white/[0.08] p-1.5 border border-white/[0.14]">
                   {[
                     { id: 'donate', label: 'Food Donor', icon: Building2 },
                     { id: 'ngo', label: 'NGO Shelter', icon: HeartHandshake },
@@ -335,8 +335,8 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                         }}
                         className={`flex-1 py-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
                           isActive
-                            ? 'bg-slate-900 text-white shadow-sm'
-                            : 'text-slate-600 hover:text-slate-900'
+                            ? 'bg-black/60 text-white shadow-sm'
+                            : 'text-white/70 hover:text-white'
                         }`}
                       >
                         <Icon className="w-3.5 h-3.5" />
@@ -349,7 +349,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                 {!submittedReceipt ? (
                   <form onSubmit={handleQuickSubmit} className="space-y-4 text-sm">
                     <div className="space-y-1">
-                      <label className="text-xs font-mono-tech uppercase text-slate-600 font-semibold block">
+                      <label className="text-xs font-mono-tech uppercase text-white/70 font-semibold block">
                         {activeCtaTab === 'donate'
                           ? 'Restaurant / Hotel / Host Name'
                           : activeCtaTab === 'ngo'
@@ -368,12 +368,12 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                         }
                         value={orgName}
                         onChange={(e) => setOrgName(e.target.value)}
-                        className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white"
+                        className="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/[0.20] text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white"
                       />
                     </div>
 
                     <div className="space-y-1">
-                      <label className="text-xs font-mono-tech uppercase text-slate-600 font-semibold block">
+                      <label className="text-xs font-mono-tech uppercase text-white/70 font-semibold block">
                         Location / Neighborhood
                       </label>
                       <input
@@ -381,12 +381,12 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                         required
                         value={locationInput}
                         onChange={(e) => setLocationInput(e.target.value)}
-                        className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white"
+                        className="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/[0.20] text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white"
                       />
                     </div>
 
                     <div className="space-y-1">
-                      <label className="text-xs font-mono-tech uppercase text-slate-600 font-semibold block">
+                      <label className="text-xs font-mono-tech uppercase text-white/70 font-semibold block">
                         {activeCtaTab === 'donate'
                           ? 'Estimated Surplus Food Quantity'
                           : activeCtaTab === 'ngo'
@@ -398,7 +398,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                         required
                         value={quantityOrCapacity}
                         onChange={(e) => setQuantityOrCapacity(e.target.value)}
-                        className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white"
+                        className="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/[0.20] text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white"
                       />
                     </div>
 
@@ -425,15 +425,15 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                       <div className="font-mono-tech text-xs text-emerald-800 uppercase font-bold">
                         REGISTRATION CONFIRMED • {submittedReceipt.id}
                       </div>
-                      <h4 className="font-serif-display text-xl font-bold text-slate-900 mt-1">
+                      <h4 className="font-serif-display text-xl font-bold text-white mt-1">
                         {submittedReceipt.name}
                       </h4>
-                      <p className="text-xs text-slate-600 mt-1">
+                      <p className="text-xs text-white/70 mt-1">
                         {submittedReceipt.role} • {submittedReceipt.detail}
                       </p>
                     </div>
 
-                    <div className="p-3 rounded-xl bg-white border border-emerald-200 text-xs font-mono-tech text-slate-700">
+                    <div className="p-3 rounded-xl bg-white/[0.07] border border-emerald-200 text-xs font-mono-tech text-white/80">
                       Dispatched to FoodBridge Central Dispatch Desk. SMS & WhatsApp confirmation sent.
                     </div>
 

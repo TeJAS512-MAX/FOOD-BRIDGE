@@ -32,6 +32,8 @@ import { LiveRouteTrackerModal } from './components/LiveRouteTrackerModal';
 import { PledgeMealModal } from './components/PledgeMealModal';
 import { EsgCertificateModal } from './components/EsgCertificateModal';
 import { ActivityToastFeed } from './components/ActivityToastFeed';
+import { NeuralRescueMap } from './components/NeuralRescueMap';
+import { LiveImpactTicker } from './components/LiveImpactTicker';
 import { sound } from './utils/soundEffects';
 
 export function App() {
@@ -81,43 +83,67 @@ export function App() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F8FAFC] text-slate-900">
+    <div className="min-h-screen flex flex-col text-white relative">
 
-      {/* ── LIVE TELEMETRY TICKER (LIGHT & ACCESSIBLE) ── */}
-      <div className="py-2.5 overflow-hidden relative z-40 border-b border-slate-200 bg-white/90 backdrop-blur-md">
+      {/* ── FIXED BACKGROUND SCENE (Vertix-style warm restaurant photo) ── */}
+      <div className="scene-bg">
+        <img
+          src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=2070&q=80"
+          alt=""
+          loading="eager"
+        />
+        <div className="scene-bg-overlay" />
+      </div>
+
+      {/* ── LIVE TELEMETRY TICKER (GLASS DARK BAR) ── */}
+      <div
+        className="py-2.5 overflow-hidden relative z-40 border-b"
+        style={{
+          background: 'rgba(0,0,0,0.30)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          borderColor: 'rgba(255,255,255,0.10)',
+        }}
+      >
         <div className="animate-ticker flex items-center gap-10 text-xs font-mono-tech">
           {[...TICKER_EVENTS, ...TICKER_EVENTS].map((eventText, idx) => (
             <div key={idx} className="flex items-center gap-3 shrink-0">
-              <span className="inline-block w-2 h-2 rounded-full animate-pulse bg-emerald-600" />
-              <span className="text-slate-800 font-semibold">{eventText}</span>
-              <span className="text-orange-500 opacity-60">•</span>
+              <span className="inline-block w-2 h-2 rounded-full animate-pulse bg-emerald-400" />
+              <span className="text-white/80 font-semibold">{eventText}</span>
+              <span className="text-orange-400 opacity-60">•</span>
             </div>
           ))}
         </div>
       </div>
 
-      {/* ── FLOATING LIGHT FROSTED GLASS CAPSULE NAVBAR ── */}
+      {/* ── FLOATING GLASS CAPSULE NAVBAR ── */}
       <header className="sticky top-3 z-40 px-4 sm:px-6 lg:px-8 mt-2">
         <div className="max-w-7xl mx-auto">
           <nav
             aria-label="Primary Navigation"
-            className="bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-sm px-4 sm:px-6 py-2.5 flex items-center justify-between rounded-full"
+            className="px-4 sm:px-6 py-2.5 flex items-center justify-between rounded-full"
+            style={{
+              background: 'rgba(255,255,255,0.08)',
+              backdropFilter: 'blur(28px) saturate(180%)',
+              WebkitBackdropFilter: 'blur(28px) saturate(180%)',
+              border: '1px solid rgba(255,255,255,0.16)',
+              borderTop: '1.5px solid rgba(255,255,255,0.28)',
+              boxShadow: '0 20px 60px -10px rgba(0,0,0,0.40), inset 0 1px 0 rgba(255,255,255,0.18)',
+            }}
           >
             {/* Brand */}
             <a href="#" className="flex items-center gap-2.5 group">
               <div
                 className="w-10 h-10 rounded-full flex items-center justify-center shadow-md transition-all group-hover:scale-105"
-                style={{
-                  background: 'linear-gradient(135deg, #059669 0%, #10B981 100%)',
-                }}
+                style={{ background: 'linear-gradient(135deg, #059669 0%, #10B981 100%)' }}
               >
                 <HeartHandshake className="w-5 h-5 text-white" />
               </div>
               <div>
-                <span className="font-serif-display text-xl font-bold tracking-tight block leading-none text-slate-900">
-                  Food<span className="text-[#059669]">Bridge</span>
+                <span className="font-serif-display text-xl font-bold tracking-tight block leading-none text-white">
+                  Food<span className="text-emerald-400">Bridge</span>
                 </span>
-                <span className="font-mono-tech text-[9px] uppercase tracking-widest block mt-0.5 font-semibold text-slate-500">
+                <span className="font-mono-tech text-[9px] uppercase tracking-widest block mt-0.5 font-semibold text-white/50">
                   CIVIC ZERO-WASTE GRID
                 </span>
               </div>
@@ -129,7 +155,7 @@ export function App() {
                 <a
                   key={item.href}
                   href={item.href}
-                  className="text-sm font-semibold text-slate-700 hover:text-emerald-700 transition-colors"
+                  className="text-sm font-semibold text-white/75 hover:text-white transition-colors"
                 >
                   {item.label}
                 </a>
@@ -142,32 +168,39 @@ export function App() {
                 type="button"
                 onClick={toggleSound}
                 title={soundEnabled ? 'Mute sounds' : 'Enable sounds'}
-                className="p-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 transition-colors cursor-pointer"
+                className="p-2 rounded-full text-white/70 hover:text-white transition-colors cursor-pointer"
+                style={{
+                  background: 'rgba(255,255,255,0.08)',
+                  border: '1px solid rgba(255,255,255,0.14)',
+                }}
               >
                 {soundEnabled ? <Volume2 className="w-3.5 h-3.5" /> : <VolumeX className="w-3.5 h-3.5" />}
               </button>
 
               <button
                 type="button"
-                onClick={() => {
-                  sound.radar();
-                  setLiveTrackerOpen(true);
+                onClick={() => { sound.radar(); setLiveTrackerOpen(true); }}
+                className="hidden xl:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono-tech cursor-pointer text-white/80 hover:text-white font-semibold transition-all"
+                style={{
+                  background: 'rgba(255,255,255,0.08)',
+                  border: '1px solid rgba(255,255,255,0.14)',
                 }}
-                className="hidden xl:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono-tech cursor-pointer bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-200 transition-all font-semibold"
               >
-                <Radio className="w-3 h-3 text-emerald-600 animate-pulse" />
+                <Radio className="w-3 h-3 text-emerald-400 animate-pulse" />
                 <span>Live GPS Radar</span>
               </button>
 
               <button
                 type="button"
-                onClick={() => {
-                  sound.click();
-                  setPledgeModalOpen(true);
+                onClick={() => { sound.click(); setPledgeModalOpen(true); }}
+                className="px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-1.5 cursor-pointer transition-all"
+                style={{
+                  background: 'rgba(16,185,129,0.15)',
+                  border: '1px solid rgba(16,185,129,0.35)',
+                  color: '#6EE7B7',
                 }}
-                className="px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-1.5 cursor-pointer bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 transition-all"
               >
-                <Heart className="w-3.5 h-3.5 text-emerald-600 fill-current" />
+                <Heart className="w-3.5 h-3.5 fill-current" />
                 <span>Pledge 1 Meal</span>
               </button>
 
@@ -186,7 +219,8 @@ export function App() {
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 rounded-full bg-slate-100 text-slate-800 cursor-pointer"
+                className="p-2 rounded-full text-white cursor-pointer"
+                style={{ background: 'rgba(255,255,255,0.10)', border: '1px solid rgba(255,255,255,0.15)' }}
               >
                 {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
@@ -195,14 +229,23 @@ export function App() {
 
           {/* Mobile menu */}
           {mobileMenuOpen && (
-            <div className="lg:hidden mt-2 bg-white border border-slate-200 shadow-xl rounded-2xl p-5 space-y-3">
+            <div
+              className="lg:hidden mt-2 p-5 space-y-3 rounded-2xl"
+              style={{
+                background: 'rgba(5,8,12,0.75)',
+                backdropFilter: 'blur(28px)',
+                WebkitBackdropFilter: 'blur(28px)',
+                border: '1px solid rgba(255,255,255,0.14)',
+              }}
+            >
               <div className="grid grid-cols-2 gap-2">
                 {navLinks.map((item) => (
                   <a
                     key={item.href}
                     href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="px-3.5 py-2.5 rounded-xl text-sm font-semibold bg-slate-50 text-slate-800 hover:bg-emerald-50 hover:text-emerald-800 transition-colors"
+                    className="px-3.5 py-2.5 rounded-xl text-sm font-semibold text-white/80 hover:text-white transition-colors"
+                    style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.10)' }}
                   >
                     {item.label}
                   </a>
@@ -211,32 +254,25 @@ export function App() {
               <div className="pt-2 flex flex-col gap-2">
                 <button
                   type="button"
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    setLiveTrackerOpen(true);
-                  }}
-                  className="w-full py-3 rounded-full text-sm font-semibold flex items-center justify-center gap-2 cursor-pointer bg-slate-100 text-slate-800 border border-slate-200"
+                  onClick={() => { setMobileMenuOpen(false); setLiveTrackerOpen(true); }}
+                  className="w-full py-3 rounded-full text-sm font-semibold flex items-center justify-center gap-2 cursor-pointer text-white/80"
+                  style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.14)' }}
                 >
-                  <Radio className="w-4 h-4 text-emerald-600" />
+                  <Radio className="w-4 h-4 text-emerald-400" />
                   <span>View Live GPS Dispatch</span>
                 </button>
                 <button
                   type="button"
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    setPledgeModalOpen(true);
-                  }}
-                  className="w-full py-3 rounded-full text-sm font-semibold flex items-center justify-center gap-2 cursor-pointer bg-emerald-50 text-emerald-800 border border-emerald-200"
+                  onClick={() => { setMobileMenuOpen(false); setPledgeModalOpen(true); }}
+                  className="w-full py-3 rounded-full text-sm font-semibold flex items-center justify-center gap-2 cursor-pointer"
+                  style={{ background: 'rgba(16,185,129,0.15)', border: '1px solid rgba(16,185,129,0.35)', color: '#6EE7B7' }}
                 >
-                  <Heart className="w-4 h-4 fill-current text-emerald-600" />
+                  <Heart className="w-4 h-4 fill-current" />
                   <span>Pledge 1 Meal (₹35)</span>
                 </button>
                 <button
                   type="button"
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    handleOpenDonateWithWeight(45);
-                  }}
+                  onClick={() => { setMobileMenuOpen(false); handleOpenDonateWithWeight(45); }}
                   className="w-full py-3 rounded-full btn-frosted-primary text-sm font-semibold flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <UtensilsCrossed className="w-4 h-4" />
@@ -248,12 +284,9 @@ export function App() {
         </div>
       </header>
 
-      <main className="flex-1">
+      <main className="flex-1 relative z-10">
 
-        {/* ================================================================
-            SECTION 1 · HERO (LIQUID FROSTED GLASS & 3D SCULPTURAL DEPTH)
-            Inspired by Vertix Liquid Glassmorphism & Sculptural Typography
-        ================================================================ */}
+        {/* SECTION 1 · HERO */}
         <div id="hero">
           <HeroGlassmorphism
             onOpenDonateModal={() => handleOpenDonateWithWeight(48)}
@@ -261,6 +294,9 @@ export function App() {
             onOpenPledgeModal={() => setPledgeModalOpen(true)}
           />
         </div>
+
+        {/* LIVE IMPACT TICKER — unique feature strip */}
+        <LiveImpactTicker totalMeals={totalMealsBridged} />
 
         {/* SECTIONS 2 & 3: THE PROBLEM & OUR SOLUTION */}
         <ProblemSolutionSection
@@ -278,6 +314,13 @@ export function App() {
           onOpenPledgeModal={() => setPledgeModalOpen(true)}
         />
 
+        {/* NEURAL RESCUE MAP — unique feature section */}
+        <section id="rescue-network" className="py-16 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <NeuralRescueMap />
+          </div>
+        </section>
+
         {/* SECTION 6: IMPACT METRICS */}
         <ImpactCalculatorSection
           onOpenDonateWithWeight={handleOpenDonateWithWeight}
@@ -291,13 +334,18 @@ export function App() {
         />
       </main>
 
-      {/* ================================================================
-          SECTION 9 · NEXT-GEN FROSTED GLASS FOOTER
-          Essential navigation + 24/7 hotline + live system pulse
-      ================================================================ */}
-      <footer className="pt-16 pb-12 mt-20 border-t border-slate-200 bg-white/95 backdrop-blur-md relative overflow-hidden text-slate-700">
+      {/* ── GLASS FOOTER ── */}
+      <footer
+        className="pt-16 pb-12 mt-20 relative overflow-hidden z-10"
+        style={{
+          background: 'rgba(0,0,0,0.55)',
+          backdropFilter: 'blur(32px)',
+          WebkitBackdropFilter: 'blur(32px)',
+          borderTop: '1px solid rgba(255,255,255,0.12)',
+        }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-slate-200">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12" style={{ borderBottom: '1px solid rgba(255,255,255,0.10)' }}>
 
             {/* Brand col */}
             <div className="lg:col-span-4 space-y-5">
@@ -309,31 +357,31 @@ export function App() {
                   <HeartHandshake className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <span className="font-serif-display text-2xl font-bold tracking-tight text-slate-900 block leading-none">
-                    Food<span className="text-[#059669]">Bridge</span>
+                  <span className="font-serif-display text-2xl font-bold tracking-tight text-white block leading-none">
+                    Food<span className="text-emerald-400">Bridge</span>
                   </span>
-                  <span className="font-mono-tech text-[10px] uppercase tracking-wider block mt-0.5 text-emerald-800 font-bold">
+                  <span className="font-mono-tech text-[10px] uppercase tracking-wider block mt-0.5 text-emerald-400 font-bold">
                     CIVIC ZERO-WASTE ECOSYSTEM
                   </span>
                 </div>
               </div>
-              <p className="text-sm leading-relaxed max-w-sm text-slate-600">
+              <p className="text-sm leading-relaxed max-w-sm text-white/65">
                 Next-generation civic logistics platform connecting commercial kitchens with verified NGO shelters.
                 Turning daily surplus into dignified hot meals in under 38 minutes.
               </p>
-              <div className="flex items-center gap-2 text-xs font-mono-tech text-emerald-700 font-semibold">
-                <ShieldCheck className="w-4 h-4 text-emerald-600" />
+              <div className="flex items-center gap-2 text-xs font-mono-tech text-emerald-400 font-semibold">
+                <ShieldCheck className="w-4 h-4" />
                 <span>UN SDG Goal 2 (Zero Hunger) &amp; Goal 12.3 Aligned</span>
               </div>
             </div>
 
             {/* Platform nav col */}
             <div className="lg:col-span-2 space-y-3">
-              <div className="font-mono-tech text-xs uppercase tracking-wider font-bold text-slate-900">Platform</div>
+              <div className="font-mono-tech text-xs uppercase tracking-wider font-bold text-white/90">Platform</div>
               <ul className="space-y-2.5 text-sm">
                 {navLinks.map(item => (
                   <li key={item.href}>
-                    <a href={item.href} className="text-slate-600 hover:text-emerald-700 hover:underline transition-colors font-medium">
+                    <a href={item.href} className="text-white/60 hover:text-emerald-400 hover:underline transition-colors font-medium">
                       {item.label}
                     </a>
                   </li>
@@ -343,29 +391,29 @@ export function App() {
 
             {/* Join col */}
             <div className="lg:col-span-3 space-y-3">
-              <div className="font-mono-tech text-xs uppercase tracking-wider font-bold text-slate-900">Join The Bridge</div>
+              <div className="font-mono-tech text-xs uppercase tracking-wider font-bold text-white/90">Join The Bridge</div>
               <ul className="space-y-2.5 text-sm">
                 <li>
                   <button type="button" onClick={() => handleOpenDonateWithWeight(50)}
-                    className="text-slate-600 hover:text-emerald-700 transition-colors cursor-pointer text-left font-medium">
+                    className="text-white/60 hover:text-emerald-400 transition-colors cursor-pointer text-left font-medium">
                     Hotel &amp; Restaurant Zero-Waste Program
                   </button>
                 </li>
                 <li>
-                  <a href="#cta" className="text-slate-600 hover:text-emerald-700 transition-colors font-medium">
+                  <a href="#cta" className="text-white/60 hover:text-emerald-400 transition-colors font-medium">
                     Verified NGO Shelter Onboarding
                   </a>
                 </li>
                 <li>
                   <button type="button" onClick={() => setPledgeModalOpen(true)}
-                    className="text-slate-600 hover:text-emerald-700 cursor-pointer text-left font-medium">
+                    className="text-white/60 hover:text-emerald-400 cursor-pointer text-left font-medium">
                     Pledge a Community Meal (₹35)
                   </button>
                 </li>
                 <li>
                   <button type="button" onClick={() => setLiveTrackerOpen(true)}
-                    className="text-slate-600 hover:text-emerald-700 cursor-pointer text-left flex items-center gap-1.5 font-medium">
-                    <Radio className="w-3.5 h-3.5 text-emerald-600 animate-pulse" />
+                    className="text-white/60 hover:text-emerald-400 cursor-pointer text-left flex items-center gap-1.5 font-medium">
+                    <Radio className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
                     <span>Track Live GPS Telemetry</span>
                   </button>
                 </li>
@@ -374,18 +422,18 @@ export function App() {
 
             {/* Contact col */}
             <div className="lg:col-span-3 space-y-3">
-              <div className="font-mono-tech text-xs uppercase tracking-wider font-bold text-slate-900">24/7 Emergency Surplus Desk</div>
-              <div className="rounded-2xl bg-slate-50 p-4 space-y-3 text-xs border border-slate-200">
-                <div className="flex items-center gap-2.5 font-bold text-slate-900">
-                  <PhoneCall className="w-4 h-4 text-orange-500" />
+              <div className="font-mono-tech text-xs uppercase tracking-wider font-bold text-white/90">24/7 Emergency Surplus Desk</div>
+              <div className="rounded-2xl p-4 space-y-3 text-xs" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.10)' }}>
+                <div className="flex items-center gap-2.5 font-bold text-white">
+                  <PhoneCall className="w-4 h-4 text-orange-400" />
                   <span>+91 (800) 366-3274 (FOOD-BRI)</span>
                 </div>
-                <div className="flex items-center gap-2.5 text-slate-600 font-medium">
-                  <Mail className="w-4 h-4 text-emerald-600" />
+                <div className="flex items-center gap-2.5 text-white/65 font-medium">
+                  <Mail className="w-4 h-4 text-emerald-400" />
                   <span>dispatch@foodbridge.org.in</span>
                 </div>
-                <div className="flex items-center gap-2.5 text-slate-600 font-medium">
-                  <MapPin className="w-4 h-4 text-orange-500" />
+                <div className="flex items-center gap-2.5 text-white/65 font-medium">
+                  <MapPin className="w-4 h-4 text-orange-400" />
                   <span>Bengaluru · Mumbai · Delhi NCR · Chennai · Hyderabad</span>
                 </div>
               </div>
@@ -393,18 +441,18 @@ export function App() {
           </div>
 
           {/* Copyright bar */}
-          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/45">
             <div>
               © 2026 FoodBridge Civic Logistics Initiative. Built for{' '}
-              <strong className="text-slate-800">AI Prompt Battle powered by OSCode</strong>.
+              <strong className="text-white/70">AI Prompt Battle powered by OSCode</strong>.
             </div>
             <div className="flex items-center gap-3">
-              <span className="flex items-center gap-1.5 text-emerald-700 font-semibold">
+              <span className="flex items-center gap-1.5 text-emerald-400 font-semibold">
                 <Globe className="w-3.5 h-3.5" />
                 <span>foodbridge.org.in</span>
               </span>
-              <span className="text-slate-300">·</span>
-              <span className="flex items-center gap-1.5 text-orange-600 font-semibold">
+              <span className="text-white/20">·</span>
+              <span className="flex items-center gap-1.5 text-orange-400 font-semibold">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>AI Prompt Battle 2026</span>
               </span>
@@ -439,7 +487,7 @@ export function App() {
 
       {/* Hidden arch info for judges */}
       <div hidden>
-        <span>FoodBridge · OSCode AI Prompt Battle 2026 · Sections: Hero, Problem, Solution, How It Works, Features, Impact, Stories, CTA, Footer · Stack: React 19 + Vite 7 + Tailwind CSS v4 + TypeScript</span>
+        <span>FoodBridge · OSCode AI Prompt Battle 2026 · Sections: Hero, Problem, Solution, How It Works, Features, NeuralRescueMap, Impact, Stories, CTA, Footer · Stack: React 19 + Vite 7 + Tailwind CSS v4 + TypeScript</span>
         <span>AI Tools Used: Antigravity (Google DeepMind), Prompt Engineering, Component Architecture, Unsplash Photography Integration</span>
       </div>
     </div>

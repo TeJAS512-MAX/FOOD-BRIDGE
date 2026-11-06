@@ -22,25 +22,25 @@ export const WasteToFeastVisualizer: React.FC = () => {
   };
 
   return (
-    <div className="rounded-3xl bg-white/95 backdrop-blur-xl border border-slate-200/90 text-slate-900 p-6 sm:p-8 relative shadow-lg">
+    <div className="rounded-3xl bg-white/[0.08] backdrop-blur-xl border border-white/[0.14]/90 text-white p-6 sm:p-8 relative shadow-lg">
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/[0.14]">
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 border border-orange-200 text-orange-700 text-xs font-mono-tech uppercase tracking-wider mb-2 font-semibold">
             <ArrowLeftRight className="w-3.5 h-3.5" />
             <span>INTERACTIVE REALITY SCRUBBER</span>
           </div>
-          <h3 className="font-serif-display text-2xl sm:text-3xl font-bold text-slate-900">
+          <h3 className="font-serif-display text-2xl sm:text-3xl font-bold text-white">
             The 45-Minute Window: <span className="text-emerald-700">Landfill vs. Dignified Banquet</span>
           </h3>
         </div>
-        <div className="text-xs text-slate-600 max-w-xs sm:text-right font-medium">
+        <div className="text-xs text-white/70 max-w-xs sm:text-right font-medium">
           Drag slider horizontally to reveal the moral and ecological difference of a single kitchen decision.
         </div>
       </div>
 
       {/* Before / After Interactive Visual Container */}
-      <div className="relative mt-6 h-80 sm:h-96 rounded-2xl overflow-hidden border border-slate-300 select-none shadow-md">
+      <div className="relative mt-6 h-80 sm:h-96 rounded-2xl overflow-hidden border border-white/[0.20] select-none shadow-md">
         {/* Right (After / FoodBridge Reality) Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center"
@@ -58,11 +58,11 @@ export const WasteToFeastVisualizer: React.FC = () => {
           </div>
 
           {/* Impact Stats Overlay Bottom Right */}
-          <div className="absolute bottom-5 right-5 text-right bg-white/95 backdrop-blur-md border border-emerald-300 rounded-2xl p-4 max-w-[270px] shadow-xl text-slate-900">
+          <div className="absolute bottom-5 right-5 text-right bg-white/[0.08] backdrop-blur-md border border-emerald-300 rounded-2xl p-4 max-w-[270px] shadow-xl text-white">
             <div className="text-emerald-700 font-mono-tech text-xl font-bold">
               180 Warm Meals
             </div>
-            <p className="text-xs text-slate-600 mt-0.5 leading-snug">
+            <p className="text-xs text-white/70 mt-0.5 leading-snug">
               Served fresh to children & elders at Annapurna Shelter in under 38 minutes.
             </p>
             <div className="mt-2 text-[11px] font-mono-tech text-emerald-700 font-semibold flex items-center justify-end gap-1">
@@ -96,11 +96,11 @@ export const WasteToFeastVisualizer: React.FC = () => {
             </div>
 
             {/* Stats Overlay Bottom Left */}
-            <div className="absolute bottom-5 left-5 bg-white/95 backdrop-blur-md border border-rose-300 rounded-2xl p-4 max-w-[270px] shadow-xl text-left text-slate-900">
+            <div className="absolute bottom-5 left-5 bg-white/[0.08] backdrop-blur-md border border-rose-300 rounded-2xl p-4 max-w-[270px] shadow-xl text-left text-white">
               <div className="text-rose-600 font-mono-tech text-xl font-bold">
                 45 kg Wasted
               </div>
-              <p className="text-xs text-slate-600 mt-0.5 leading-snug">
+              <p className="text-xs text-white/70 mt-0.5 leading-snug">
                 Untouched gourmet catering discarded in garbage skips behind the banquet hall.
               </p>
               <div className="mt-2 text-[11px] font-mono-tech text-rose-700 font-semibold flex items-center gap-1">
@@ -116,7 +116,7 @@ export const WasteToFeastVisualizer: React.FC = () => {
           className="absolute inset-y-0 w-1 bg-white shadow-[0_0_12px_rgba(0,0,0,0.3)] pointer-events-none z-20"
           style={{ left: `${sliderPos}%` }}
         >
-          <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-slate-900 text-white flex items-center justify-center shadow-2xl ring-4 ring-white">
+          <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-black/60 text-white flex items-center justify-center shadow-2xl ring-4 ring-white">
             <ArrowLeftRight className="w-4 h-4 text-emerald-400" />
           </div>
         </div>
@@ -135,10 +135,10 @@ export const WasteToFeastVisualizer: React.FC = () => {
 
       {/* Bottom Comparison Summary Row */}
       <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 text-left">
-        <div className="rounded-2xl bg-slate-50 border border-slate-200 p-4">
-          <div className="text-xs font-mono-tech text-slate-500 uppercase font-semibold">THE PARADOX</div>
-          <div className="text-lg font-bold text-slate-900 mt-1">1.3 Billion Tonnes</div>
-          <p className="text-xs text-slate-600 mt-0.5">Of food wasted globally every year while 800M people go to sleep hungry.</p>
+        <div className="rounded-2xl bg-white/[0.05] border border-white/[0.14] p-4">
+          <div className="text-xs font-mono-tech text-white/60 uppercase font-semibold">THE PARADOX</div>
+          <div className="text-lg font-bold text-white mt-1">1.3 Billion Tonnes</div>
+          <p className="text-xs text-white/70 mt-0.5">Of food wasted globally every year while 800M people go to sleep hungry.</p>
         </div>
 
         <div className="rounded-2xl bg-emerald-50/80 border border-emerald-200/80 p-4">

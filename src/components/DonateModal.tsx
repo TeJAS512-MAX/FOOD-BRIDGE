@@ -82,13 +82,13 @@ export const DonateModal: React.FC<DonateModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md animate-fadeIn">
-      <div className="relative w-full max-w-2xl bg-white text-slate-900 border border-slate-200 rounded-3xl shadow-2xl overflow-hidden max-h-[92vh] overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60/60 backdrop-blur-md animate-fadeIn">
+      <div className="relative w-full max-w-2xl bg-white text-white border border-white/[0.14] rounded-3xl shadow-2xl overflow-hidden max-h-[92vh] overflow-y-auto">
         {/* Top Modal Header */}
-        <div className="bg-slate-50 text-slate-900 px-6 sm:px-8 py-5 flex items-center justify-between border-b border-slate-200">
+        <div className="bg-white/[0.05] text-white px-6 sm:px-8 py-5 flex items-center justify-between border-b border-white/[0.14]">
           <div className="flex items-center gap-2.5">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="font-mono-tech text-xs uppercase tracking-wider text-emerald-700 font-bold">
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-900/200 animate-pulse" />
+            <span className="font-mono-tech text-xs uppercase tracking-wider text-emerald-400 font-bold">
               FOODBRIDGE LIVE DISPATCH TERMINAL
             </span>
           </div>
@@ -99,7 +99,7 @@ export const DonateModal: React.FC<DonateModalProps> = ({
               setDispatchedTicket(null);
               onClose();
             }}
-            className="w-8 h-8 rounded-full bg-slate-200 hover:bg-slate-300 flex items-center justify-center text-slate-700 hover:text-slate-900 transition-all cursor-pointer"
+            className="w-8 h-8 rounded-full bg-white/[0.12] hover:bg-slate-300 flex items-center justify-center text-white/80 hover:text-white transition-all cursor-pointer"
           >
             <X className="w-4 h-4" />
           </button>
@@ -109,7 +109,7 @@ export const DonateModal: React.FC<DonateModalProps> = ({
           {!dispatchedTicket ? (
             <form onSubmit={handleDispatchSubmit} className="space-y-5">
               {/* AI Auto-Fill helper bar */}
-              <div className="rounded-2xl bg-emerald-50 border border-emerald-200 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="rounded-2xl bg-emerald-900/20 border border-emerald-500/30 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div className="flex items-center gap-2.5 text-xs text-emerald-900 font-medium">
                   <Sparkles className="w-4 h-4 text-emerald-600 shrink-0" />
                   <span>Have surplus kitchen trays ready? Try instant camera scan:</span>
@@ -128,13 +128,13 @@ export const DonateModal: React.FC<DonateModalProps> = ({
               {/* Donor Category & Name */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <label className="text-xs font-mono-tech uppercase text-slate-600 font-semibold block">
+                  <label className="text-xs font-mono-tech uppercase text-white/70 font-semibold block">
                     Donor Category
                   </label>
                   <select
                     value={donorCategory}
                     onChange={(e) => setDonorCategory(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm bg-slate-50 text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white"
+                    className="w-full px-4 py-3 rounded-xl border border-white/[0.20] text-sm bg-white/[0.05] text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white"
                   >
                     <option value="Hotel / Restaurant">Hotel / Restaurant Banquet</option>
                     <option value="Bakery / Cafe">Bakery / Artisan Cafe</option>
@@ -145,7 +145,7 @@ export const DonateModal: React.FC<DonateModalProps> = ({
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-xs font-mono-tech uppercase text-slate-600 font-semibold block">
+                  <label className="text-xs font-mono-tech uppercase text-white/70 font-semibold block">
                     Organization / Host Name
                   </label>
                   <input
@@ -153,14 +153,14 @@ export const DonateModal: React.FC<DonateModalProps> = ({
                     required
                     value={donorName}
                     onChange={(e) => setDonorName(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm bg-slate-50 text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white"
+                    className="w-full px-4 py-3 rounded-xl border border-white/[0.20] text-sm bg-white/[0.05] text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white"
                   />
                 </div>
               </div>
 
               {/* Food Description */}
               <div className="space-y-1">
-                <label className="text-xs font-mono-tech uppercase text-slate-600 font-semibold block">
+                <label className="text-xs font-mono-tech uppercase text-white/70 font-semibold block">
                   Surplus Food Description & Trays
                 </label>
                 <input
@@ -168,7 +168,7 @@ export const DonateModal: React.FC<DonateModalProps> = ({
                   required
                   value={foodDescription}
                   onChange={(e) => setFoodDescription(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm bg-slate-50 text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white"
+                  className="w-full px-4 py-3 rounded-xl border border-white/[0.20] text-sm bg-white/[0.05] text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white"
                 />
               </div>
 
@@ -176,8 +176,8 @@ export const DonateModal: React.FC<DonateModalProps> = ({
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <div className="flex items-center justify-between text-xs font-mono-tech">
-                    <span className="text-slate-600 uppercase font-semibold">ESTIMATED WEIGHT</span>
-                    <span className="text-emerald-700 font-bold text-sm px-2 py-0.5 rounded bg-emerald-50 border border-emerald-200">
+                    <span className="text-white/70 uppercase font-semibold">ESTIMATED WEIGHT</span>
+                    <span className="text-emerald-400 font-bold text-sm px-2 py-0.5 rounded bg-emerald-900/20 border border-emerald-500/30">
                       {weightKg} KG
                     </span>
                   </div>
@@ -192,21 +192,21 @@ export const DonateModal: React.FC<DonateModalProps> = ({
                       setWeightKg(val);
                       sound.sliderTick(val);
                     }}
-                    className="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
+                    className="w-full h-2.5 bg-white/[0.12] rounded-lg appearance-none cursor-pointer accent-emerald-600"
                   />
-                  <div className="text-[11px] font-mono-tech text-slate-500">
+                  <div className="text-[11px] font-mono-tech text-white/60">
                     ≈ {weightKg * 4} dignified meal portions
                   </div>
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-xs font-mono-tech uppercase text-slate-600 font-semibold block">
+                  <label className="text-xs font-mono-tech uppercase text-white/70 font-semibold block">
                     Thermal State Chain
                   </label>
                   <select
                     value={thermalState}
                     onChange={(e) => setThermalState(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm bg-slate-50 text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white"
+                    className="w-full px-4 py-3 rounded-xl border border-white/[0.20] text-sm bg-white/[0.05] text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white"
                   >
                     <option value="Hot Holding (64°C)">Hot Holding (60°C–70°C Safe)</option>
                     <option value="Chilled (4°C)">Chilled Storage (2°C–5°C)</option>
@@ -217,7 +217,7 @@ export const DonateModal: React.FC<DonateModalProps> = ({
 
               {/* Pickup Address */}
               <div className="space-y-1">
-                <label className="text-xs font-mono-tech uppercase text-slate-600 font-semibold block">
+                <label className="text-xs font-mono-tech uppercase text-white/70 font-semibold block">
                   Pickup Loading Bay Address
                 </label>
                 <div className="relative">
@@ -227,13 +227,13 @@ export const DonateModal: React.FC<DonateModalProps> = ({
                     required
                     value={pickupAddress}
                     onChange={(e) => setPickupAddress(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-300 text-sm bg-slate-50 text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white"
+                    className="w-full pl-10 pr-4 py-3 rounded-xl border border-white/[0.20] text-sm bg-white/[0.05] text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white"
                   />
                 </div>
               </div>
 
               {/* Safety & Legal Note */}
-              <div className="flex items-center gap-2 text-xs text-slate-600 bg-slate-50 p-3 rounded-xl border border-slate-200">
+              <div className="flex items-center gap-2 text-xs text-white/70 bg-white/[0.05] p-3 rounded-xl border border-white/[0.14]">
                 <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
                 <span>
                   Protected under the Indian Food Safety and Standards (Recovery & Distribution of Surplus Food) Regulations, 2019.
@@ -252,24 +252,24 @@ export const DonateModal: React.FC<DonateModalProps> = ({
           ) : (
             /* Dispatched Confirmation Ticket */
             <div className="text-center space-y-6">
-              <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto shadow-sm">
+              <div className="w-16 h-16 rounded-full bg-emerald-900/30 text-emerald-400 flex items-center justify-center mx-auto shadow-sm">
                 <CheckCircle2 className="w-8 h-8" />
               </div>
 
               <div>
-                <span className="text-xs font-mono-tech uppercase text-emerald-700 font-bold tracking-wider block">
+                <span className="text-xs font-mono-tech uppercase text-emerald-400 font-bold tracking-wider block">
                   PICKUP DISPATCHED • EN ROUTE
                 </span>
-                <h3 className="font-serif-display text-2xl sm:text-3xl font-bold text-slate-900 mt-1">
+                <h3 className="font-serif-display text-2xl sm:text-3xl font-bold text-white mt-1">
                   Surplus Batch Successfully Matched!
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-600 mt-1">
+                <p className="text-xs sm:text-sm text-white/70 mt-1">
                   A Hunger Hero EV rider has been routed to your loading bay. Please keep containers sealed.
                 </p>
               </div>
 
               {/* Ticket Card */}
-              <div className="rounded-2xl bg-slate-900 text-white p-6 border border-slate-800 text-left space-y-4 shadow-xl">
+              <div className="rounded-2xl bg-black/60 text-white p-6 border border-slate-800 text-left space-y-4 shadow-xl">
                 <div className="flex items-center justify-between border-b border-slate-800 pb-3">
                   <div className="font-mono-tech text-xs text-emerald-400 font-semibold">
                     DISPATCH PASS: {dispatchedTicket.ticketId}
@@ -281,28 +281,28 @@ export const DonateModal: React.FC<DonateModalProps> = ({
 
                 <div className="grid grid-cols-2 gap-4 text-xs font-mono-tech">
                   <div>
-                    <span className="text-[10px] text-slate-400 block">DONOR</span>
+                    <span className="text-[10px] text-white/50 block">DONOR</span>
                     <span className="text-white font-bold">{donorName}</span>
                   </div>
                   <div>
-                    <span className="text-[10px] text-slate-400 block">MATCHED SHELTER</span>
+                    <span className="text-[10px] text-white/50 block">MATCHED SHELTER</span>
                     <span className="text-amber-300 font-bold">{dispatchedTicket.ngo}</span>
                   </div>
                   <div>
-                    <span className="text-[10px] text-slate-400 block">MEALS EQUIVALENT</span>
+                    <span className="text-[10px] text-white/50 block">MEALS EQUIVALENT</span>
                     <span className="text-emerald-400 font-bold text-base">
                       {dispatchedTicket.meals} Hot Meals
                     </span>
                   </div>
                   <div>
-                    <span className="text-[10px] text-slate-400 block">METHANE CO₂e SAVED</span>
+                    <span className="text-[10px] text-white/50 block">METHANE CO₂e SAVED</span>
                     <span className="text-orange-400 font-bold text-base">
                       -{dispatchedTicket.co2Kg} kg CO₂e
                     </span>
                   </div>
                 </div>
 
-                <div className="pt-2 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+                <div className="pt-2 border-t border-slate-800 flex items-center justify-between text-xs text-white/50">
                   <div className="flex items-center gap-1.5">
                     <QrCode className="w-4 h-4 text-emerald-400" />
                     <span>Contactless Driver QR Ready</span>
@@ -333,7 +333,7 @@ export const DonateModal: React.FC<DonateModalProps> = ({
                     setDispatchedTicket(null);
                     onClose();
                   }}
-                  className="w-full sm:flex-1 py-3.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-xs sm:text-sm cursor-pointer transition-all"
+                  className="w-full sm:flex-1 py-3.5 rounded-full bg-white/[0.08] hover:bg-white/[0.12] text-white/90 font-semibold text-xs sm:text-sm cursor-pointer transition-all"
                 >
                   Close & Return to Dashboard
                 </button>

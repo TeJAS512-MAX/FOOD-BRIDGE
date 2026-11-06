@@ -101,7 +101,7 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
       ===================================================================== */}
       <section
         id="problem"
-        className="relative py-20 lg:py-28 text-slate-900 overflow-hidden"
+        className="relative py-20 lg:py-28 text-white overflow-hidden"
       >
         {/* Soft Ambient Radiance */}
         <div className="pointer-events-none absolute top-12 left-1/4 w-96 h-96 rounded-full bg-emerald-100/50 blur-3xl" />
@@ -109,20 +109,20 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-10 border-b border-slate-200">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-10 border-b border-white/[0.14]">
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-rose-50 border border-rose-200 text-rose-700 text-xs font-mono-tech uppercase tracking-wider mb-4 font-semibold">
                 <AlertTriangle className="w-3.5 h-3.5" />
                 <span>01 • THE PROBLEM: THE SCANDAL OF FOOD INSECURITY</span>
               </div>
-              <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-slate-900">
+              <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-white">
                 Food waste isn’t a scarcity problem.{' '}
                 <span className="italic font-normal text-orange-600">
                   It’s a broken distribution problem.
                 </span>
               </h2>
             </div>
-            <p className="text-base text-slate-600 max-w-md leading-relaxed">
+            <p className="text-base text-white/70 max-w-md leading-relaxed">
               Every evening, while wedding banquets and commercial kitchens throw away pristine,
               delicious feasts, thousands of children and families go to sleep on empty stomachs just 3 kilometers away.
             </p>
@@ -135,81 +135,81 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
 
           {/* 3 Hard Truth Reality Cards */}
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="rounded-3xl bg-white/90 backdrop-blur-xl border border-slate-200/90 p-6 sm:p-8 space-y-4 shadow-sm hover:shadow-md hover:border-emerald-300 transition-all">
+            <div className="rounded-3xl bg-white/[0.07] backdrop-blur-xl border border-white/[0.14]/90 p-6 sm:p-8 space-y-4 shadow-sm hover:shadow-md hover:border-emerald-300 transition-all">
               <div className="w-12 h-12 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center">
                 <Flame className="w-6 h-6" />
               </div>
               <div className="space-y-1">
-                <div className="font-serif-display text-4xl sm:text-5xl font-bold text-slate-900 tracking-tight">
+                <div className="font-serif-display text-4xl sm:text-5xl font-bold text-white tracking-tight">
                   68.7 M
                 </div>
                 <div className="font-mono-tech text-xs uppercase tracking-wider text-rose-600 font-semibold">
                   Tonnes Wasted in India Yearly
                 </div>
               </div>
-              <p className="text-sm text-slate-600 leading-relaxed">
+              <p className="text-sm text-white/70 leading-relaxed">
                 Enough food to feed the entire hungry population of several nations, ending up in
                 anaerobic city landfills emitting potent methane gas.
               </p>
-              <div className="pt-3 border-t border-slate-100 text-xs font-mono-tech text-slate-500">
+              <div className="pt-3 border-t border-white/[0.08] text-xs font-mono-tech text-white/60">
                 UNEP Food Waste Index 2024 Audit
               </div>
             </div>
 
-            <div className="rounded-3xl bg-white/90 backdrop-blur-xl border border-slate-200/90 p-6 sm:p-8 space-y-4 shadow-sm hover:shadow-md hover:border-orange-300 transition-all">
+            <div className="rounded-3xl bg-white/[0.07] backdrop-blur-xl border border-white/[0.14]/90 p-6 sm:p-8 space-y-4 shadow-sm hover:shadow-md hover:border-orange-300 transition-all">
               <div className="w-12 h-12 rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center">
                 <Clock className="w-6 h-6" />
               </div>
               <div className="space-y-1">
-                <div className="font-serif-display text-4xl sm:text-5xl font-bold text-slate-900 tracking-tight">
+                <div className="font-serif-display text-4xl sm:text-5xl font-bold text-white tracking-tight">
                   45 Mins
                 </div>
                 <div className="font-mono-tech text-xs uppercase tracking-wider text-orange-600 font-semibold">
                   The Critical Thermal Window
                 </div>
               </div>
-              <p className="text-sm text-slate-600 leading-relaxed">
+              <p className="text-sm text-white/70 leading-relaxed">
                 Hot prepared banquet food must be collected and dispatched within 45 minutes to maintain
                 FSSAI food hygiene compliance before bacteria multiply.
               </p>
-              <div className="pt-3 border-t border-slate-100 text-xs font-mono-tech text-slate-500">
+              <div className="pt-3 border-t border-white/[0.08] text-xs font-mono-tech text-white/60">
                 FSSAI Safe Food Hygiene Protocol
               </div>
             </div>
 
-            <div className="rounded-3xl bg-white/90 backdrop-blur-xl border border-slate-200/90 p-6 sm:p-8 space-y-4 shadow-sm hover:shadow-md hover:border-emerald-300 transition-all">
+            <div className="rounded-3xl bg-white/[0.07] backdrop-blur-xl border border-white/[0.14]/90 p-6 sm:p-8 space-y-4 shadow-sm hover:shadow-md hover:border-emerald-300 transition-all">
               <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
                 <Scale className="w-6 h-6" />
               </div>
               <div className="space-y-1">
-                <div className="font-serif-display text-4xl sm:text-5xl font-bold text-slate-900 tracking-tight">
+                <div className="font-serif-display text-4xl sm:text-5xl font-bold text-white tracking-tight">
                   800 M+
                 </div>
                 <div className="font-mono-tech text-xs uppercase tracking-wider text-emerald-600 font-semibold">
                   People Face Food Insecurity
                 </div>
               </div>
-              <p className="text-sm text-slate-600 leading-relaxed">
+              <p className="text-sm text-white/70 leading-relaxed">
                 A problem of civic logistics. When food surplus is mapped to real-time NGO demand,
                 hunger can be solved city by city, neighborhood by neighborhood.
               </p>
-              <div className="pt-3 border-t border-slate-100 text-xs font-mono-tech text-slate-500">
+              <div className="pt-3 border-t border-white/[0.08] text-xs font-mono-tech text-white/60">
                 UN SDG Goal 2 (Zero Hunger) Indicator
               </div>
             </div>
           </div>
 
           {/* Interactive Simulation Console */}
-          <div className="mt-12 rounded-3xl bg-white/95 backdrop-blur-xl border border-slate-200/90 p-6 sm:p-10 shadow-lg relative overflow-hidden">
+          <div className="mt-12 rounded-3xl bg-white/[0.08] backdrop-blur-xl border border-white/[0.14]/90 p-6 sm:p-10 shadow-lg relative overflow-hidden">
             <div className="max-w-2xl space-y-3">
               <div className="inline-flex items-center gap-2 text-xs font-mono-tech uppercase tracking-wider text-emerald-700 font-bold">
                 <Sparkles className="w-4 h-4 text-emerald-600" />
                 <span>INTERACTIVE METRO SIMULATOR: SURPLUS REDIRECTION LEVER</span>
               </div>
-              <h3 className="font-serif-display text-2xl sm:text-3xl font-bold text-slate-900">
+              <h3 className="font-serif-display text-2xl sm:text-3xl font-bold text-white">
                 What happens when a city stops discarding hospitality surplus?
               </h3>
-              <p className="text-sm text-slate-600">
+              <p className="text-sm text-white/70">
                 Use the slider to simulate diverting Bengaluru/Mumbai metro’s daily 120 tonnes of hospitality surplus:
               </p>
             </div>
@@ -217,7 +217,7 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
             {/* Slider Control */}
             <div className="mt-8 space-y-3">
               <div className="flex items-center justify-between text-xs font-mono-tech">
-                <span className="text-slate-600 font-semibold">SURPLUS REDIRECTION TARGET</span>
+                <span className="text-white/70 font-semibold">SURPLUS REDIRECTION TARGET</span>
                 <span className="text-emerald-700 font-bold text-base px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200">
                   {redirectionRate}% DIVERTED
                 </span>
@@ -233,10 +233,10 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
                   setRedirectionRate(val);
                   sound.sliderTick(val);
                 }}
-                className="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
+                className="w-full h-2.5 bg-white/[0.12] rounded-lg appearance-none cursor-pointer accent-emerald-600"
                 aria-label="Redirection percentage slider"
               />
-              <div className="flex justify-between text-[11px] font-mono-tech text-slate-500">
+              <div className="flex justify-between text-[11px] font-mono-tech text-white/60">
                 <span>10% (Status Quo)</span>
                 <span>50% (Civic Goal)</span>
                 <span>95% (Zero Waste Horizon)</span>
@@ -253,12 +253,12 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
                 <div className="text-[11px] text-emerald-600 font-medium">Hot nutritious servings</div>
               </div>
 
-              <div className="rounded-2xl bg-slate-50 border border-slate-200 p-4 space-y-1">
-                <div className="text-xs font-mono-tech text-slate-600 uppercase font-semibold">Food Rescued / Day</div>
-                <div className="text-xl sm:text-2xl font-mono-tech font-bold text-slate-900">
+              <div className="rounded-2xl bg-white/[0.05] border border-white/[0.14] p-4 space-y-1">
+                <div className="text-xs font-mono-tech text-white/70 uppercase font-semibold">Food Rescued / Day</div>
+                <div className="text-xl sm:text-2xl font-mono-tech font-bold text-white">
                   {rescuedTonnes} Tonnes
                 </div>
-                <div className="text-[11px] text-slate-500">Out of 120T metro surplus</div>
+                <div className="text-[11px] text-white/60">Out of 120T metro surplus</div>
               </div>
 
               <div className="rounded-2xl bg-orange-50/80 border border-orange-200/80 p-4 space-y-1">
@@ -286,22 +286,22 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
       ===================================================================== */}
       <section
         id="solution"
-        className="relative py-20 lg:py-28 text-slate-900 overflow-hidden"
+        className="relative py-20 lg:py-28 text-white overflow-hidden"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Header */}
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-10 border-b border-slate-200">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-10 border-b border-white/[0.14]">
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-mono-tech uppercase tracking-wider mb-4 font-semibold">
                 <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
                 <span>02 • OUR SOLUTION: REAL-TIME CIVIC LOGISTICS MESH</span>
               </div>
-              <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-slate-900">
+              <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-white">
                 Bridging surplus to sustenance in{' '}
                 <span className="italic font-normal text-emerald-600">3 simple connected layers.</span>
               </h2>
             </div>
-            <p className="text-base text-slate-600 max-w-md leading-relaxed">
+            <p className="text-base text-white/70 max-w-md leading-relaxed">
               FoodBridge coordinates every step — from the hotel kitchen tray to thermal van delivery and shelter plate — in under 38 minutes with complete transparency.
             </p>
           </div>
@@ -325,11 +325,11 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
                   }}
                   className={`flex items-center gap-2.5 px-6 py-3.5 rounded-full text-xs sm:text-sm font-semibold transition-all cursor-pointer border ${
                     isActive
-                      ? 'bg-slate-900 text-white border-slate-900 shadow-md'
-                      : 'bg-white/80 text-slate-700 border-slate-200 hover:bg-white hover:text-slate-900'
+                      ? 'bg-black/60 text-white border-slate-900 shadow-md'
+                      : 'bg-white/[0.07] text-white/80 border-white/[0.14] hover:bg-white hover:text-white'
                   }`}
                 >
-                  <Icon className={`w-4 h-4 ${isActive ? 'text-emerald-400' : 'text-slate-500'}`} />
+                  <Icon className={`w-4 h-4 ${isActive ? 'text-emerald-400' : 'text-white/60'}`} />
                   <span>{tab.label}</span>
                 </button>
               );
@@ -337,29 +337,29 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
           </div>
 
           {/* Solution Layer Active Card */}
-          <div className="mt-8 rounded-3xl bg-white/95 backdrop-blur-xl border border-slate-200/90 p-8 sm:p-12 shadow-lg grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="mt-8 rounded-3xl bg-white/[0.08] backdrop-blur-xl border border-white/[0.14]/90 p-8 sm:p-12 shadow-lg grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             {/* Left 7 Columns */}
             <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-700 font-mono-tech text-xs uppercase font-semibold">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.08] border border-white/[0.14] text-white/80 font-mono-tech text-xs uppercase font-semibold">
                 {activeLayerData.badge}
               </div>
 
-              <h3 className="font-serif-display text-2xl sm:text-4xl font-bold text-slate-900 leading-tight">
+              <h3 className="font-serif-display text-2xl sm:text-4xl font-bold text-white leading-tight">
                 {activeLayerData.title}
               </h3>
 
-              <p className="text-base text-slate-600 leading-relaxed">
+              <p className="text-base text-white/70 leading-relaxed">
                 {activeLayerData.subtitle}
               </p>
 
               {/* 3 Metric Pills */}
               <div className="grid grid-cols-3 gap-3 pt-2">
                 {activeLayerData.stats.map((st, i) => (
-                  <div key={i} className="rounded-2xl bg-slate-50 border border-slate-200/90 p-3.5 space-y-1">
-                    <div className="font-mono-tech text-base sm:text-lg font-bold text-slate-900">
+                  <div key={i} className="rounded-2xl bg-white/[0.05] border border-white/[0.14]/90 p-3.5 space-y-1">
+                    <div className="font-mono-tech text-base sm:text-lg font-bold text-white">
                       {st.value}
                     </div>
-                    <div className="text-[10px] sm:text-xs font-mono-tech text-slate-500 uppercase font-medium">
+                    <div className="text-[10px] sm:text-xs font-mono-tech text-white/60 uppercase font-medium">
                       {st.label}
                     </div>
                   </div>
@@ -369,7 +369,7 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
               {/* Feature Checklist */}
               <div className="space-y-3 pt-2">
                 {activeLayerData.features.map((feat, i) => (
-                  <div key={i} className="flex items-start gap-3 text-sm text-slate-700">
+                  <div key={i} className="flex items-start gap-3 text-sm text-white/80">
                     <div className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
                       <CheckCircle2 className="w-3.5 h-3.5" />
                     </div>
@@ -399,7 +399,7 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
                       sound.radar();
                       onOpenLiveTracker();
                     }}
-                    className="px-6 py-3.5 rounded-full bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 font-semibold text-xs sm:text-sm flex items-center gap-2 shadow-sm cursor-pointer transition-all"
+                    className="px-6 py-3.5 rounded-full bg-white hover:bg-white/[0.05] text-white/90 border border-white/[0.20] font-semibold text-xs sm:text-sm flex items-center gap-2 shadow-sm cursor-pointer transition-all"
                   >
                     <Truck className="w-4 h-4 text-emerald-600" />
                     <span>View Live Dispatch Radar</span>
@@ -410,7 +410,7 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
 
             {/* Right 5 Columns: Realistic Photo Preview Card */}
             <div className="lg:col-span-5">
-              <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-md relative group">
+              <div className="rounded-3xl overflow-hidden border border-white/[0.14] shadow-md relative group">
                 <img
                   src={activeLayerData.image}
                   alt={activeLayerData.title}
