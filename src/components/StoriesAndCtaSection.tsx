@@ -85,12 +85,12 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-12 border-b border-white/10">
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E6F7EC] border border-[rgba(26,92,56,0.2)] text-emerald-800 text-xs font-mono-tech uppercase tracking-widest mb-4 font-semibold">
-                <Quote className="w-3.5 h-3.5 text-[#206B42]" />
+                <Quote className="w-3.5 h-3.5 text-[#00F5A0]" />
                 <span>06 • COMMUNITY VOICES: HUMAN DIGNITY AT EVERY TABLE</span>
               </div>
               <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.06] text-white">
                 Stories from the chefs, shelters, and riders{' '}
-                <span className="italic font-normal text-[#206B42]">bridging the gap.</span>
+                <span className="italic font-normal text-[#00F5A0]">bridging the gap.</span>
               </h2>
             </div>
 
@@ -130,13 +130,13 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0F1E14]/80 via-[#0F1E14]/20 to-transparent" />
 
                 <div className="absolute bottom-5 inset-x-5 text-white">
-                  <div className="text-xs font-mono-tech text-[#7DC99A] font-semibold">
+                  <div className="text-xs font-mono-tech text-cyan-300 font-semibold">
                     {selectedStory.role.toUpperCase()} • {selectedStory.location}
                   </div>
                   <h4 className="font-serif-display text-2xl font-bold text-white mt-1">
                     {selectedStory.name}
                   </h4>
-                  <p className="text-xs text-[#C4B9AC]">{selectedStory.title}, {selectedStory.organization}</p>
+                  <p className="text-xs text-slate-300">{selectedStory.title}, {selectedStory.organization}</p>
                 </div>
               </div>
 
@@ -146,16 +146,16 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                   <button
                     type="button"
                     onClick={toggleAudioSim}
-                    className="w-10 h-10 rounded-full frosted-card hover:bg-[#1A5C38] text-white flex items-center justify-center cursor-pointer transition-all shadow-md"
+                    className="w-10 h-10 rounded-full frosted-card hover:bg-cyan-500/20 text-cyan-300 border border-cyan-400/40 text-white flex items-center justify-center cursor-pointer transition-all shadow-md"
                   >
                     <Play className="w-4 h-4 fill-current ml-0.5" />
                   </button>
                   <div>
                     <div className="text-xs font-semibold text-white flex items-center gap-1.5">
-                      <Volume2 className="w-3.5 h-3.5 text-[#206B42]" />
+                      <Volume2 className="w-3.5 h-3.5 text-[#00F5A0]" />
                       <span>{selectedStory.name.split(' ')[0]}’s Audio Memo</span>
                     </div>
-                    <div className="text-[10px] font-mono-tech text-[#7A6855]">
+                    <div className="text-[10px] font-mono-tech text-slate-400">
                       {isPlayingAudio ? 'Playing 0:18 / ' : 'Recorded Audio Note • '}
                       {selectedStory.audioDuration || '0:45'}
                     </div>
@@ -167,7 +167,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                   {[12, 24, 16, 28, 14, 20].map((h, i) => (
                     <span
                       key={i}
-                      className={`w-1 rounded-full bg-[#2A8A56] ${
+                      className={`w-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 ${
                         isPlayingAudio ? 'animate-pulse' : 'opacity-40'
                       }`}
                       style={{ height: `${h}px` }}
@@ -179,7 +179,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
 
             {/* Right 7 Cols: Narrative & Impact Metrics */}
             <div className="lg:col-span-7 space-y-6">
-              <Quote className="w-10 h-10 text-[#206B42]/40" />
+              <Quote className="w-10 h-10 text-[#00F5A0]/40" />
 
               <blockquote className="font-serif-display text-xl sm:text-2xl text-white italic leading-relaxed">
                 “{selectedStory.quote}”
@@ -192,7 +192,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
               {/* Story Metrics Banner */}
               <div className="grid grid-cols-2 gap-4 pt-2">
                 <div className="p-4 rounded-2xl bg-[#FAF6F1] border border-white/10 space-y-1">
-                  <div className="font-mono-tech text-xs text-[#7A6855] uppercase">
+                  <div className="font-mono-tech text-xs text-slate-400 uppercase">
                     {selectedStory.metricLabel}
                   </div>
                   <div className="font-serif-display text-2xl sm:text-3xl font-bold text-white">
@@ -201,10 +201,10 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                 </div>
 
                 <div className="p-4 rounded-2xl bg-[#FAF6F1] border border-white/10 space-y-1">
-                  <div className="font-mono-tech text-xs text-[#7A6855] uppercase">
+                  <div className="font-mono-tech text-xs text-slate-400 uppercase">
                     ECOLOGICAL DIVERT
                   </div>
-                  <div className="font-serif-display text-2xl sm:text-3xl font-bold text-[#206B42]">
+                  <div className="font-serif-display text-2xl sm:text-3xl font-bold text-[#00F5A0]">
                     {selectedStory.secondaryMetric}
                   </div>
                 </div>
@@ -220,7 +220,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                     #{tg}
                   </span>
                 ))}
-                <span className="px-3 py-1 rounded-full bg-[#F3FCF6] text-[#1A5C38] font-mono-tech text-xs border border-[rgba(26,92,56,0.2)]">
+                <span className="px-3 py-1 rounded-full bg-[#F3FCF6] text-[#00F2FE] font-mono-tech text-xs border border-[rgba(26,92,56,0.2)]">
                   ID: {selectedStory.verifiedBatchId}
                 </span>
               </div>
@@ -237,24 +237,24 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
         className="relative py-24 lg:py-32 text-[#F2EBE1] relative overflow-hidden"
       >
         {/* Glows */}
-        <div className="pointer-events-none absolute top-10 left-10 w-96 h-96 rounded-full bg-[#2A8A56]/15 blur-3xl" />
-        <div className="pointer-events-none absolute bottom-10 right-10 w-96 h-96 rounded-full bg-[#E8661F]/15 blur-3xl" />
+        <div className="pointer-events-none absolute top-10 left-10 w-96 h-96 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/40/15 blur-3xl" />
+        <div className="pointer-events-none absolute bottom-10 right-10 w-96 h-96 rounded-full bg-pink-500/20 text-pink-300 border border-pink-400/30/15 blur-3xl" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             {/* Left 6 Columns */}
             <div className="lg:col-span-6 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E8661F]/15 border border-orange-500/30 text-[#F28240] text-xs font-mono-tech uppercase tracking-widest font-semibold">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-pink-500/20 text-pink-300 border border-pink-400/30/15 border border-orange-500/30 text-[#FF6B4A] text-xs font-mono-tech uppercase tracking-widest font-semibold">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>07 • TAKE ACTION TODAY • BE THE BRIDGE</span>
               </div>
 
               <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.06] text-white">
                 Every minute counts when{' '}
-                <span className="italic font-normal text-[#4AAD74]">fresh food</span> is on the line.
+                <span className="italic font-normal text-[#00F5A0]">fresh food</span> is on the line.
               </h2>
 
-              <p className="text-base text-[#9E8E7A] leading-relaxed max-w-xl">
+              <p className="text-base text-slate-300 leading-relaxed max-w-xl">
                 Whether you run a 5-star hotel banquet, direct a community shelter, or ride an electric scooter in your free time — there is a role for you on the FoodBridge grid.
               </p>
 
@@ -274,8 +274,8 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                     desc: 'Thermal crates keep dinner piping hot from your kitchen door to shelter plates.',
                   },
                 ].map((pil, idx) => (
-                  <div key={idx} className="flex items-start gap-3 text-sm text-[#C4B9AC]">
-                    <div className="w-5 h-5 rounded-full bg-[#2A8A56]/20 text-[#4AAD74] flex items-center justify-center shrink-0 mt-0.5">
+                  <div key={idx} className="flex items-start gap-3 text-sm text-slate-300">
+                    <div className="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/40/20 text-[#00F5A0] flex items-center justify-center shrink-0 mt-0.5">
                       <CheckCircle2 className="w-3.5 h-3.5" />
                     </div>
                     <div>
@@ -293,7 +293,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                     sound.click();
                     onOpenDonateModal();
                   }}
-                  className="px-8 py-4 rounded-full bg-[#D4521A] hover:bg-[#A83415] text-white font-semibold text-sm sm:text-base flex items-center gap-2.5 shadow-xl shadow-orange-600/30 cursor-pointer transition-all"
+                  className="px-8 py-4 rounded-full btn-frosted-primary hover:bg-[#A83415] text-white font-semibold text-sm sm:text-base flex items-center gap-2.5 shadow-xl shadow-orange-600/30 cursor-pointer transition-all"
                 >
                   <UtensilsCrossed className="w-4 h-4" />
                   <span>Donate Food Now</span>
@@ -307,7 +307,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                       sound.click();
                       onOpenPledgeModal();
                     }}
-                    className="px-6 py-4 rounded-full bg-[#1A5C38] hover:bg-[#2A8A56] text-white font-semibold text-sm sm:text-base flex items-center gap-2 cursor-pointer transition-all shadow-lg"
+                    className="px-6 py-4 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-400/40 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 text-white font-semibold text-sm sm:text-base flex items-center gap-2 cursor-pointer transition-all shadow-lg"
                   >
                     <Sparkles className="w-4 h-4 text-emerald-200" />
                     <span>Pledge 1 Meal (₹35)</span>
@@ -339,8 +339,8 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                         }}
                         className={`flex-1 py-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
                           isActive
-                            ? 'bg-[#1A5C38] text-white shadow-md'
-                            : 'text-[#9E8E7A] hover:text-white'
+                            ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-400/40 text-white shadow-md'
+                            : 'text-slate-300 hover:text-white'
                         }`}
                       >
                         <Icon className="w-3.5 h-3.5" />
@@ -353,7 +353,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                 {!submittedReceipt ? (
                   <form onSubmit={handleQuickSubmit} className="space-y-4 text-sm">
                     <div className="space-y-1">
-                      <label className="text-xs font-mono-tech uppercase text-[#9E8E7A] font-semibold block">
+                      <label className="text-xs font-mono-tech uppercase text-slate-300 font-semibold block">
                         {activeCtaTab === 'donate'
                           ? 'Restaurant / Hotel / Host Name'
                           : activeCtaTab === 'ngo'
@@ -377,7 +377,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                     </div>
 
                     <div className="space-y-1">
-                      <label className="text-xs font-mono-tech uppercase text-[#9E8E7A] font-semibold block">
+                      <label className="text-xs font-mono-tech uppercase text-slate-300 font-semibold block">
                         Location / Neighborhood
                       </label>
                       <input
@@ -390,7 +390,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                     </div>
 
                     <div className="space-y-1">
-                      <label className="text-xs font-mono-tech uppercase text-[#9E8E7A] font-semibold block">
+                      <label className="text-xs font-mono-tech uppercase text-slate-300 font-semibold block">
                         {activeCtaTab === 'donate'
                           ? 'Estimated Surplus Food Quantity'
                           : activeCtaTab === 'ngo'
@@ -408,7 +408,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
 
                     <button
                       type="submit"
-                      className="w-full py-4 rounded-full bg-[#1A5C38] hover:bg-[#2A8A56] text-white font-semibold text-sm transition-all shadow-lg shadow-emerald-600/30 flex items-center justify-center gap-2 cursor-pointer"
+                      className="w-full py-4 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-400/40 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 text-white font-semibold text-sm transition-all shadow-lg shadow-emerald-600/30 flex items-center justify-center gap-2 cursor-pointer"
                     >
                       <span>
                         {activeCtaTab === 'donate'
@@ -422,29 +422,29 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                   </form>
                 ) : (
                   <div className="rounded-2xl frosted-subcard border border-emerald-500/40 p-5 space-y-4 text-center">
-                    <div className="w-12 h-12 rounded-full bg-[#2A8A56]/20 text-[#4AAD74] flex items-center justify-center mx-auto">
+                    <div className="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/40/20 text-[#00F5A0] flex items-center justify-center mx-auto">
                       <CheckCircle2 className="w-6 h-6" />
                     </div>
                     <div>
-                      <div className="font-mono-tech text-xs text-[#4AAD74] uppercase font-semibold">
+                      <div className="font-mono-tech text-xs text-[#00F5A0] uppercase font-semibold">
                         REGISTRATION CONFIRMED • {submittedReceipt.id}
                       </div>
                       <h4 className="font-serif-display text-xl font-bold text-white mt-1">
                         {submittedReceipt.name}
                       </h4>
-                      <p className="text-xs text-[#9E8E7A] mt-1">
+                      <p className="text-xs text-slate-300 mt-1">
                         {submittedReceipt.role} • {submittedReceipt.detail}
                       </p>
                     </div>
 
-                    <div className="p-3 rounded-xl frosted-card border border-white/10 text-xs font-mono-tech text-[#C4B9AC]">
+                    <div className="p-3 rounded-xl frosted-card border border-white/10 text-xs font-mono-tech text-slate-300">
                       Dispatched to FoodBridge Central Dispatch Desk. SMS & WhatsApp confirmation sent.
                     </div>
 
                     <button
                       type="button"
                       onClick={() => setSubmittedReceipt(null)}
-                      className="text-xs text-[#4AAD74] hover:underline cursor-pointer"
+                      className="text-xs text-[#00F5A0] hover:underline cursor-pointer"
                     >
                       Submit Another Registration
                     </button>

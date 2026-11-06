@@ -50,32 +50,29 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
       <div
         className={`absolute inset-0 transition-all duration-700 ${
           isEvening
-            ? 'bg-gradient-to-b from-[#0a140d] via-[#0f2115] to-[#070d09]'
-            : 'bg-gradient-to-b from-[#ebe3d5] via-[#dfd3c0] to-[#cbbaa2]'
+            ? 'bg-gradient-to-b from-[#0b0716] via-[#120a24] to-[#06040e]'
+            : 'bg-gradient-to-b from-[#050811] via-[#091122] to-[#04070F]'
         }`}
       >
-        {/* Architectural interior room illusion */}
+        {/* Ambient Chromatic Grid & Caustic Nebulas */}
         <div
-          className="absolute inset-0 opacity-40 mix-blend-multiply"
+          className="absolute inset-0 opacity-30"
           style={{
-            backgroundImage: `radial-gradient(ellipse at 50% 20%, rgba(255,255,255,0.7) 0%, transparent 60%),
-                              linear-gradient(180deg, rgba(140,115,85,0.2) 0%, rgba(50,35,20,0.4) 100%)`,
+            backgroundImage: `radial-gradient(ellipse at 50% 10%, rgba(0, 242, 254, 0.25) 0%, transparent 65%),
+                              radial-gradient(ellipse at 80% 60%, rgba(221, 36, 118, 0.2) 0%, transparent 55%),
+                              radial-gradient(ellipse at 15% 40%, rgba(0, 245, 160, 0.2) 0%, transparent 60%)`,
           }}
         />
 
-        {/* Studio warm shelf elements */}
-        <div className="absolute top-0 left-0 right-0 h-40 border-b border-white/20 opacity-30" />
-        <div className="absolute bottom-20 left-0 right-0 h-16 border-t border-b border-black/10 opacity-40" />
-
-        {/* Ambient lighting glows */}
+        {/* Floating Neon Aurora Lights */}
         <div
-          className={`absolute -top-32 left-1/4 w-[600px] h-[600px] rounded-full blur-3xl transition-opacity duration-700 pointer-events-none ${
-            isEvening ? 'bg-emerald-600/15' : 'bg-amber-100/50'
+          className={`absolute -top-40 left-1/4 w-[700px] h-[700px] rounded-full blur-[140px] transition-all duration-700 pointer-events-none ${
+            isEvening ? 'bg-[#7928CA]/25' : 'bg-[#00F2FE]/22'
           }`}
         />
         <div
-          className={`absolute bottom-0 right-1/4 w-[500px] h-[500px] rounded-full blur-3xl transition-opacity duration-700 pointer-events-none ${
-            isEvening ? 'bg-orange-600/10' : 'bg-orange-200/40'
+          className={`absolute -bottom-20 right-1/4 w-[600px] h-[600px] rounded-full blur-[140px] transition-all duration-700 pointer-events-none ${
+            isEvening ? 'bg-[#DD2476]/22' : 'bg-[#00F5A0]/20'
           }`}
         />
       </div>
@@ -123,16 +120,16 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
               <div
                 className="w-10 h-10 rounded-full flex items-center justify-center shadow-md transition-transform hover:scale-105"
                 style={{
-                  background: 'linear-gradient(135deg, #1A5C38 0%, #2A8A56 100%)',
+                  background: 'linear-gradient(135deg, #00F2FE 0%, #00F5A0 100%)', boxShadow: '0 0 25px rgba(0, 242, 254, 0.5)',
                 }}
               >
                 <HeartHandshake className="w-5 h-5 text-white" />
               </div>
               <div className="flex items-center gap-2">
                 <span className="font-serif-display text-2xl font-bold tracking-tight">
-                  Food<span className="text-[#2A8A56] dark:text-[#4AAD74]">Bridge</span>
+                  Food<span className="text-grad-cyan-emerald">Bridge</span>
                 </span>
-                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono-tech uppercase font-bold tracking-widest bg-emerald-500/15 text-emerald-800 dark:text-emerald-300 border border-emerald-500/25">
+                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono-tech uppercase font-bold tracking-widest bg-cyan-500/15 text-cyan-300 border border-cyan-400/30">
                   CIVIC ZERO-WASTE
                 </span>
               </div>
@@ -158,8 +155,7 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
             {/* Left Column (7 cols): Editorial Headline & Integrated Pill Input */}
             <div className="lg:col-span-7 space-y-6">
               <h1 className="font-serif-display text-4xl sm:text-5xl lg:text-[58px] font-semibold tracking-tight leading-[1.08]">
-                One good meal rescued,{' '}
-                <span className="italic font-normal text-[#D4521A]">every second.</span>
+                One good meal rescued, <span className="text-grad-coral-pink">every second.</span>
               </h1>
 
               <p className="text-base sm:text-lg leading-relaxed max-w-xl opacity-80">
@@ -170,7 +166,7 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
 
               {/* Integrated Search & Rescue Pill Input */}
               <form onSubmit={handleQuickRescue} className="pt-2">
-                <div className="relative max-w-xl flex items-center rounded-full p-1.5 shadow-xl transition-all focus-within:ring-2 focus-within:ring-emerald-500/40 bg-black/85 text-white backdrop-blur-xl border border-white/20">
+                <div className="relative max-w-xl flex items-center rounded-full p-1.5 shadow-xl transition-all focus-within:ring-2 focus-within:ring-emerald-500/40 bg-[#060B18]/80 text-white backdrop-blur-2xl border border-cyan-400/35 shadow-[0_0_35px_rgba(0,242,254,0.18)]">
                   <div className="pl-4 pr-2 flex items-center pointer-events-none text-emerald-400">
                     <MapPin className="w-4 h-4" />
                   </div>
@@ -185,7 +181,7 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
                     type="submit"
                     className="shrink-0 px-6 py-3 rounded-full font-bold text-xs sm:text-sm flex items-center gap-2 text-white cursor-pointer transition-all hover:opacity-95 shadow-lg"
                     style={{
-                      background: 'linear-gradient(135deg, #D4521A 0%, #A83415 100%)',
+                      background: 'linear-gradient(135deg, #FF512F 0%, #DD2476 100%)', boxShadow: '0 0 24px rgba(255, 81, 47, 0.5)',
                     }}
                   >
                     <UtensilsCrossed className="w-4 h-4" />
@@ -209,7 +205,7 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
                 <button
                   type="button"
                   onClick={onOpenPledgeModal}
-                  className="text-emerald-700 dark:text-emerald-400 hover:underline font-semibold cursor-pointer"
+                  className="text-cyan-300 hover:underline font-semibold cursor-pointer"
                 >
                   Pledge 1 Meal (₹35) →
                 </button>
@@ -220,7 +216,7 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
             <div className="lg:col-span-5">
               <div className="glass-inset-card p-6 sm:p-7 space-y-6">
                 <div className="flex items-center justify-between pb-3 border-b border-black/5 dark:border-white/10">
-                  <span className="font-mono-tech text-xs uppercase font-bold tracking-wider text-emerald-800 dark:text-emerald-400">
+                  <span className="font-mono-tech text-xs uppercase font-bold tracking-wider text-cyan-400">
                     Network Directory
                   </span>
                   <span className="text-[11px] font-mono-tech opacity-60">Verified & Active</span>
@@ -237,7 +233,7 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
                         <button
                           type="button"
                           onClick={onOpenDonateModal}
-                          className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors text-left"
+                          className="hover:text-cyan-300 transition-colors text-left"
                         >
                           Hotel Banquets
                         </button>
@@ -246,7 +242,7 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
                         <button
                           type="button"
                           onClick={onOpenDonateModal}
-                          className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors text-left"
+                          className="hover:text-cyan-300 transition-colors text-left"
                         >
                           Restaurants & Cafes
                         </button>
@@ -255,7 +251,7 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
                         <button
                           type="button"
                           onClick={onOpenDonateModal}
-                          className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors text-left"
+                          className="hover:text-cyan-300 transition-colors text-left"
                         >
                           Weddings & Events
                         </button>
@@ -264,7 +260,7 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
                         <button
                           type="button"
                           onClick={onOpenDonateModal}
-                          className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors text-left"
+                          className="hover:text-cyan-300 transition-colors text-left"
                         >
                           Society Potlucks
                         </button>
@@ -279,22 +275,22 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
                     </div>
                     <ul className="space-y-2 text-xs opacity-85">
                       <li>
-                        <a href="#solution" className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+                        <a href="#solution" className="hover:text-cyan-300 transition-colors">
                           Asha Orphanage
                         </a>
                       </li>
                       <li>
-                        <a href="#solution" className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+                        <a href="#solution" className="hover:text-cyan-300 transition-colors">
                           Annapoorna Kitchen
                         </a>
                       </li>
                       <li>
-                        <a href="#solution" className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+                        <a href="#solution" className="hover:text-cyan-300 transition-colors">
                           Mission City Shelter
                         </a>
                       </li>
                       <li>
-                        <a href="#cta" className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+                        <a href="#cta" className="hover:text-cyan-300 transition-colors">
                           Register NGO Shelter
                         </a>
                       </li>
@@ -311,19 +307,19 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
                         <button
                           type="button"
                           onClick={onOpenLiveTracker}
-                          className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors text-left flex items-center gap-1"
+                          className="hover:text-cyan-300 transition-colors text-left flex items-center gap-1"
                         >
                           <Radio className="w-3 h-3 text-emerald-500 animate-pulse" />
                           <span>GPS Van Radar</span>
                         </button>
                       </li>
                       <li>
-                        <a href="#features" className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+                        <a href="#features" className="hover:text-cyan-300 transition-colors">
                           AI Tray Scanner
                         </a>
                       </li>
                       <li>
-                        <a href="#how-it-works" className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+                        <a href="#how-it-works" className="hover:text-cyan-300 transition-colors">
                           Cold Chain Sensors
                         </a>
                       </li>
@@ -337,12 +333,12 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
                     </div>
                     <ul className="space-y-2 text-xs opacity-85">
                       <li>
-                        <a href="#impact" className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+                        <a href="#impact" className="hover:text-cyan-300 transition-colors">
                           Tax 80G Certificate
                         </a>
                       </li>
                       <li>
-                        <a href="#impact" className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+                        <a href="#impact" className="hover:text-cyan-300 transition-colors">
                           ESG Impact Ledger
                         </a>
                       </li>
@@ -363,7 +359,7 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
             <div className="flex items-center gap-3">
               <span className="opacity-75">© 2026 FoodBridge</span>
               <span className="opacity-40">•</span>
-              <div className="flex items-center gap-1.5 text-emerald-700 dark:text-emerald-400 font-semibold font-mono-tech">
+              <div className="flex items-center gap-1.5 text-cyan-300 font-semibold font-mono-tech">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                 <span>All systems dispatching live</span>
               </div>

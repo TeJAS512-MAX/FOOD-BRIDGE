@@ -84,13 +84,13 @@ export function App() {
     <div className="min-h-screen flex flex-col frosted-canvas" style={{ color: '#F2EBE1' }}>
 
       {/* ── LIVE FROSTED TELEMETRY TICKER ── */}
-      <div className="py-2.5 overflow-hidden relative z-40 border-b border-white/10" style={{ background: 'rgba(10, 22, 15, 0.75)', backdropFilter: 'blur(20px)' }}>
+      <div className="py-2.5 overflow-hidden relative z-40 border-b border-cyan-500/15" style={{ background: 'rgba(6, 11, 24, 0.75)', backdropFilter: 'blur(24px)' }}>
         <div className="animate-ticker flex items-center gap-10 text-xs font-mono-tech">
           {[...TICKER_EVENTS, ...TICKER_EVENTS].map((eventText, idx) => (
             <div key={idx} className="flex items-center gap-3 shrink-0">
-              <span className="inline-block w-2 h-2 rounded-full animate-pulse bg-emerald-400" />
-              <span className="text-emerald-200 font-medium">{eventText}</span>
-              <span className="text-[#C8973A] opacity-70">•</span>
+              <span className="inline-block w-2 h-2 rounded-full animate-pulse bg-cyan-400 shadow-[0_0_10px_#00F2FE]" />
+              <span className="text-cyan-200 font-medium">{eventText}</span>
+              <span className="text-pink-400 opacity-80">•</span>
             </div>
           ))}
         </div>
@@ -107,16 +107,20 @@ export function App() {
             {/* Brand */}
             <a href="#" className="flex items-center gap-2.5 group">
               <div
-                className="w-10 h-10 rounded-full flex items-center justify-center shadow-md transition-all group-hover:scale-105"
-                style={{ background: 'linear-gradient(135deg, #1A5C38, #2A8A56)', border: '1px solid rgba(255,255,255,0.3)' }}
+                className="w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-all group-hover:scale-105"
+                style={{
+                  background: 'linear-gradient(135deg, #00F2FE 0%, #00F5A0 100%)',
+                  boxShadow: '0 0 20px rgba(0, 242, 254, 0.45)',
+                  border: '1px solid rgba(255,255,255,0.4)',
+                }}
               >
-                <HeartHandshake className="w-5 h-5 text-white" />
+                <HeartHandshake className="w-5 h-5 text-[#060913]" />
               </div>
               <div>
                 <span className="font-serif-display text-xl font-bold tracking-tight block leading-none text-white">
-                  Food<span className="text-[#4AAD74]">Bridge</span>
+                  Food<span className="text-grad-cyan-emerald">Bridge</span>
                 </span>
-                <span className="font-mono-tech text-[9px] uppercase tracking-widest block mt-0.5 font-semibold text-[#F28240]">
+                <span className="font-mono-tech text-[9px] uppercase tracking-widest block mt-0.5 font-semibold text-cyan-400">
                   CIVIC ZERO-WASTE GRID
                 </span>
               </div>
@@ -128,7 +132,7 @@ export function App() {
                 <a
                   key={item.href}
                   href={item.href}
-                  className="text-sm font-semibold text-slate-300 hover:text-white transition-colors"
+                  className="text-sm font-semibold text-slate-300 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(0,242,254,0.5)] transition-all"
                 >
                   {item.label}
                 </a>
@@ -152,9 +156,9 @@ export function App() {
                   sound.radar();
                   setLiveTrackerOpen(true);
                 }}
-                className="hidden xl:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono-tech cursor-pointer frosted-pill text-emerald-300 hover:border-emerald-400"
+                className="hidden xl:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono-tech cursor-pointer frosted-pill text-cyan-300 hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(0,242,254,0.3)] transition-all"
               >
-                <Radio className="w-3 h-3 text-emerald-400 animate-pulse" />
+                <Radio className="w-3 h-3 text-cyan-400 animate-pulse" />
                 <span>Live GPS Radar</span>
               </button>
 
@@ -164,7 +168,7 @@ export function App() {
                   sound.click();
                   setPledgeModalOpen(true);
                 }}
-                className="px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-1.5 cursor-pointer frosted-pill text-white hover:border-emerald-400"
+                className="px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-1.5 cursor-pointer frosted-pill text-white hover:border-emerald-400 hover:shadow-[0_0_15px_rgba(0,245,160,0.3)] transition-all"
               >
                 <Heart className="w-3.5 h-3.5 text-emerald-400 fill-current" />
                 <span>Pledge 1 Meal</span>
