@@ -22,48 +22,51 @@ export const WasteToFeastVisualizer: React.FC = () => {
   };
 
   return (
-    <div className="frosted-card text-[#F2EBE1] p-6 sm:p-8 relative">
+    <div className="rounded-3xl bg-white/95 backdrop-blur-xl border border-slate-200/90 text-slate-900 p-6 sm:p-8 relative shadow-lg">
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pink-500/20 text-pink-300 border border-pink-400/30/20 border border-orange-500/30 text-[#FF6B4A] text-xs font-mono-tech uppercase tracking-wider mb-2">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 border border-orange-200 text-orange-700 text-xs font-mono-tech uppercase tracking-wider mb-2 font-semibold">
             <ArrowLeftRight className="w-3.5 h-3.5" />
             <span>INTERACTIVE REALITY SCRUBBER</span>
           </div>
-          <h3 className="font-serif-display text-2xl sm:text-3xl font-semibold text-white">
-            The 45-Minute Window: <span className="text-[#00F5A0]">Landfill vs. Banquet</span>
+          <h3 className="font-serif-display text-2xl sm:text-3xl font-bold text-slate-900">
+            The 45-Minute Window: <span className="text-emerald-700">Landfill vs. Dignified Banquet</span>
           </h3>
         </div>
-        <div className="text-xs text-slate-300 max-w-xs sm:text-right">
+        <div className="text-xs text-slate-600 max-w-xs sm:text-right font-medium">
           Drag slider horizontally to reveal the moral and ecological difference of a single kitchen decision.
         </div>
       </div>
 
       {/* Before / After Interactive Visual Container */}
-      <div className="relative mt-6 h-80 sm:h-96 rounded-2xl overflow-hidden border border-[rgba(74,173,116,0.18)]/80 select-none shadow-inner">
+      <div className="relative mt-6 h-80 sm:h-96 rounded-2xl overflow-hidden border border-slate-300 select-none shadow-md">
         {/* Right (After / FoodBridge Reality) Background Image */}
-        <div className="absolute inset-0 bg-cover bg-center" style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80')`
-        }}>
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80')`,
+          }}
+        >
           {/* Subtle warm emerald vignette overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0F1E14] via-[#0F1E14]/40 to-transparent" />
-          
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/30 to-transparent" />
+
           {/* Label Badge Top Right */}
-          <div className="absolute top-4 right-4 bg-cyan-500/20 text-cyan-300 border border-cyan-400/40/90 backdrop-blur-md border border-emerald-400/40 text-white rounded-full px-4 py-1.5 text-xs font-mono-tech font-bold flex items-center gap-2 shadow-lg">
+          <div className="absolute top-4 right-4 bg-emerald-600 text-white rounded-full px-4 py-1.5 text-xs font-mono-tech font-bold flex items-center gap-2 shadow-md">
             <CheckCircle2 className="w-4 h-4 text-emerald-200" />
-            <span>12:15 AM • DIGIFIED NOURISHMENT</span>
+            <span>12:15 AM • DIGNIFIED NOURISHMENT</span>
           </div>
 
           {/* Impact Stats Overlay Bottom Right */}
-          <div className="absolute bottom-5 right-5 text-right bg-[#0F1E14]/85 backdrop-blur-md border border-emerald-500/30 rounded-2xl p-4 max-w-[260px] shadow-xl">
-            <div className="text-[#00F5A0] font-mono-tech text-xl font-bold">
+          <div className="absolute bottom-5 right-5 text-right bg-white/95 backdrop-blur-md border border-emerald-300 rounded-2xl p-4 max-w-[270px] shadow-xl text-slate-900">
+            <div className="text-emerald-700 font-mono-tech text-xl font-bold">
               180 Warm Meals
             </div>
-            <p className="text-xs text-slate-300 mt-0.5 leading-snug">
+            <p className="text-xs text-slate-600 mt-0.5 leading-snug">
               Served fresh to children & elders at Annapurna Shelter in under 38 minutes.
             </p>
-            <div className="mt-2 text-[11px] font-mono-tech text-cyan-300 flex items-center justify-end gap-1">
-              <Sparkles className="w-3 h-3" />
+            <div className="mt-2 text-[11px] font-mono-tech text-emerald-700 font-semibold flex items-center justify-end gap-1">
+              <Sparkles className="w-3.5 h-3.5" />
               <span>Zero Methane • 100% Dignity</span>
             </div>
           </div>
@@ -80,28 +83,28 @@ export const WasteToFeastVisualizer: React.FC = () => {
               className="absolute inset-0 bg-cover bg-center w-[1200px]"
               style={{
                 backgroundImage: `url('https://images.unsplash.com/photo-1605600659873-d808a13e4d2a?auto=format&fit=crop&w=1200&q=80')`,
-                filter: 'grayscale(60%) contrast(115%) brightness(0.85)'
+                filter: 'grayscale(60%) contrast(115%) brightness(0.85)',
               }}
             >
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0F1E14] via-[#0F1E14]/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/40 to-transparent" />
             </div>
 
             {/* Label Badge Top Left */}
-            <div className="absolute top-4 left-4 bg-red-600/90 backdrop-blur-md border border-red-400/40 text-white rounded-full px-4 py-1.5 text-xs font-mono-tech font-bold flex items-center gap-2 shadow-lg">
-              <AlertTriangle className="w-4 h-4 text-red-200" />
+            <div className="absolute top-4 left-4 bg-rose-600 text-white rounded-full px-4 py-1.5 text-xs font-mono-tech font-bold flex items-center gap-2 shadow-md">
+              <AlertTriangle className="w-4 h-4 text-rose-200" />
               <span>11:45 PM • LANDFILL DUMPSTER</span>
             </div>
 
             {/* Stats Overlay Bottom Left */}
-            <div className="absolute bottom-5 left-5 bg-[#0F1E14]/90 backdrop-blur-md border border-red-500/30 rounded-2xl p-4 max-w-[260px] shadow-xl text-left">
-              <div className="text-red-400 font-mono-tech text-xl font-bold">
+            <div className="absolute bottom-5 left-5 bg-white/95 backdrop-blur-md border border-rose-300 rounded-2xl p-4 max-w-[270px] shadow-xl text-left text-slate-900">
+              <div className="text-rose-600 font-mono-tech text-xl font-bold">
                 45 kg Wasted
               </div>
-              <p className="text-xs text-slate-300 mt-0.5 leading-snug">
+              <p className="text-xs text-slate-600 mt-0.5 leading-snug">
                 Untouched gourmet catering discarded in garbage skips behind the banquet hall.
               </p>
-              <div className="mt-2 text-[11px] font-mono-tech text-red-300 flex items-center gap-1">
-                <Flame className="w-3 h-3" />
+              <div className="mt-2 text-[11px] font-mono-tech text-rose-700 font-semibold flex items-center gap-1">
+                <Flame className="w-3.5 h-3.5" />
                 <span>+112.5 kg Methane CO₂e Emitted</span>
               </div>
             </div>
@@ -110,11 +113,11 @@ export const WasteToFeastVisualizer: React.FC = () => {
 
         {/* Vertical Divider Line with Scrub Handle */}
         <div
-          className="absolute inset-y-0 w-1 bg-[#FFFFFF] shadow-[0_0_15px_rgba(255,255,255,0.8)] pointer-events-none z-20"
+          className="absolute inset-y-0 w-1 bg-white shadow-[0_0_12px_rgba(0,0,0,0.3)] pointer-events-none z-20"
           style={{ left: `${sliderPos}%` }}
         >
-          <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-[#FFFFFF] text-white flex items-center justify-center shadow-2xl ring-4 ring-emerald-500/50">
-            <ArrowLeftRight className="w-4 h-4" />
+          <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-slate-900 text-white flex items-center justify-center shadow-2xl ring-4 ring-white">
+            <ArrowLeftRight className="w-4 h-4 text-emerald-400" />
           </div>
         </div>
 
@@ -131,26 +134,25 @@ export const WasteToFeastVisualizer: React.FC = () => {
       </div>
 
       {/* Bottom Comparison Summary Row */}
-      <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center sm:text-left">
-        <div className="rounded-2xl bg-[#1E3828]/50 border border-[rgba(74,173,116,0.18)]/60 p-4">
-          <div className="text-xs font-mono-tech text-slate-300 uppercase">THE PARADOX</div>
-          <div className="text-lg font-bold text-white mt-1">1.3 Billion Tonnes</div>
-          <p className="text-xs text-slate-300 mt-0.5">Of food wasted globally every year while 800M people go to sleep hungry.</p>
+      <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 text-left">
+        <div className="rounded-2xl bg-slate-50 border border-slate-200 p-4">
+          <div className="text-xs font-mono-tech text-slate-500 uppercase font-semibold">THE PARADOX</div>
+          <div className="text-lg font-bold text-slate-900 mt-1">1.3 Billion Tonnes</div>
+          <p className="text-xs text-slate-600 mt-0.5">Of food wasted globally every year while 800M people go to sleep hungry.</p>
         </div>
 
-        <div className="rounded-2xl bg-[#1E3828]/50 border border-[rgba(74,173,116,0.18)]/60 p-4">
-          <div className="text-xs font-mono-tech text-[#00F5A0] uppercase">THE FOODBRIDGE SOLUTION</div>
-          <div className="text-lg font-bold text-[#00F5A0] mt-1">38-Min Real-Time Match</div>
-          <p className="text-xs text-slate-300 mt-0.5">AI dispatch pairs hot food with verified shelters within 5 km before cooling.</p>
+        <div className="rounded-2xl bg-emerald-50/80 border border-emerald-200/80 p-4">
+          <div className="text-xs font-mono-tech text-emerald-800 uppercase font-semibold">THE FOODBRIDGE SOLUTION</div>
+          <div className="text-lg font-bold text-emerald-700 mt-1">38-Min Real-Time Match</div>
+          <p className="text-xs text-emerald-700 mt-0.5">AI dispatch pairs hot food with verified shelters within 5 km before cooling.</p>
         </div>
 
-        <div className="rounded-2xl bg-[#1E3828]/50 border border-[rgba(74,173,116,0.18)]/60 p-4">
-          <div className="text-xs font-mono-tech text-[#FF6B4A] uppercase">CLIMATE IMPACT</div>
-          <div className="text-lg font-bold text-[#FF6B4A] mt-1">2.5 kg CO₂e Saved</div>
-          <p className="text-xs text-slate-300 mt-0.5">Every 1 kg of food rescued prevents 2.5 kg of greenhouse emissions from rotting landfills.</p>
+        <div className="rounded-2xl bg-orange-50/80 border border-orange-200/80 p-4">
+          <div className="text-xs font-mono-tech text-orange-800 uppercase font-semibold">CLIMATE IMPACT</div>
+          <div className="text-lg font-bold text-orange-700 mt-1">2.5 kg CO₂e Saved</div>
+          <p className="text-xs text-orange-700 mt-0.5">Every 1 kg of food rescued prevents 2.5 kg of greenhouse emissions from rotting landfills.</p>
         </div>
       </div>
     </div>
   );
 };
-

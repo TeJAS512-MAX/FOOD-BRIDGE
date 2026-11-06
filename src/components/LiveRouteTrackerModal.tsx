@@ -46,20 +46,20 @@ export const LiveRouteTrackerModal: React.FC<LiveRouteTrackerModalProps> = ({ is
   const formattedTime = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-xl animate-fadeIn">
-      <div className="relative w-full max-w-3xl rounded-[32px] bg-[#172B1E] text-[#F2EBE1] border border-[rgba(74,173,116,0.18)]/60 shadow-2xl overflow-hidden max-h-[92vh] flex flex-col">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md animate-fadeIn">
+      <div className="relative w-full max-w-3xl rounded-3xl bg-white text-slate-900 border border-slate-200 shadow-2xl overflow-hidden max-h-[92vh] flex flex-col">
         {/* Top Header */}
-        <div className="bg-[#0F1E14] px-6 sm:px-8 py-5 border-b border-white/10 flex items-center justify-between">
+        <div className="bg-slate-50 px-6 sm:px-8 py-5 border-b border-slate-200 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <span className="relative flex h-3 w-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4AAD74] opacity-75" />
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-[#2A8A56]" />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75" />
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-600" />
             </span>
             <div>
-              <span className="font-mono-tech text-xs uppercase tracking-widest text-[#4AAD74] block font-semibold">
+              <span className="font-mono-tech text-xs uppercase tracking-wider text-emerald-700 block font-bold">
                 FOODBRIDGE AI LIVE TELEMETRY RADAR
               </span>
-              <span className="text-[11px] text-[#9E8E7A]">
+              <span className="text-[11px] text-slate-500">
                 ACTIVE DISPATCH: {telemetry.dispatchId} • 100% ENCRYPTED GPS
               </span>
             </div>
@@ -70,7 +70,7 @@ export const LiveRouteTrackerModal: React.FC<LiveRouteTrackerModalProps> = ({ is
               sound.click();
               onClose();
             }}
-            className="w-8 h-8 rounded-full bg-[#1E3828] hover:bg-[#2A4A36] flex items-center justify-center text-[#C4B9AC] hover:text-white transition-all cursor-pointer"
+            className="w-8 h-8 rounded-full bg-slate-200 hover:bg-slate-300 flex items-center justify-center text-slate-700 hover:text-slate-900 transition-all cursor-pointer"
           >
             <X className="w-4 h-4" />
           </button>
@@ -78,10 +78,10 @@ export const LiveRouteTrackerModal: React.FC<LiveRouteTrackerModalProps> = ({ is
 
         {/* Modal Body */}
         <div className="p-6 sm:p-8 overflow-y-auto space-y-6">
-          {/* Simulated Radar Map Viewport */}
-          <div className="relative h-64 sm:h-72 rounded-2xl bg-[#0F1E14] border border-white/10 overflow-hidden flex items-center justify-center">
+          {/* High-Tech Map Viewport */}
+          <div className="relative h-64 sm:h-72 rounded-2xl bg-slate-900 border border-slate-800 overflow-hidden flex items-center justify-center">
             {/* Grid background lines */}
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:32px_32px] opacity-35" />
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#334155_1px,transparent_1px),linear-gradient(to_bottom,#334155_1px,transparent_1px)] bg-[size:32px_32px] opacity-30" />
 
             {/* Radar sweep animation */}
             <div className="absolute w-96 h-96 rounded-full border border-emerald-500/20 flex items-center justify-center">
@@ -92,23 +92,23 @@ export const LiveRouteTrackerModal: React.FC<LiveRouteTrackerModalProps> = ({ is
 
             {/* Donor Node */}
             <div className="absolute left-8 sm:left-14 top-1/2 -translate-y-1/2 flex flex-col items-center z-10">
-              <div className="w-10 h-10 rounded-2xl bg-[#D4521A]/90 text-white flex items-center justify-center shadow-lg border border-orange-400/50">
+              <div className="w-10 h-10 rounded-2xl bg-orange-600 text-white flex items-center justify-center shadow-lg border border-orange-400">
                 <MapPin className="w-5 h-5" />
               </div>
-              <span className="text-[11px] font-mono-tech mt-1.5 text-orange-300 font-semibold text-center max-w-[110px]">
+              <span className="text-[11px] font-mono-tech mt-1.5 text-orange-300 font-bold text-center max-w-[110px]">
                 Grand Horizon
               </span>
-              <span className="text-[9px] text-[#9E8E7A]">PICKUP: 21:14</span>
+              <span className="text-[9px] text-slate-400 font-mono-tech">PICKUP: 21:14</span>
             </div>
 
             {/* Dynamic Connecting Route Line with Glowing Moving Vehicle */}
-            <div className="absolute left-24 sm:left-32 right-24 sm:right-32 top-1/2 -translate-y-1/2 h-1 bg-[#1E3828] rounded-full">
+            <div className="absolute left-24 sm:left-32 right-24 sm:right-32 top-1/2 -translate-y-1/2 h-1.5 bg-slate-800 rounded-full">
               <div
-                className="h-full bg-gradient-to-r from-orange-500 via-amber-400 to-emerald-500 rounded-full relative transition-all duration-1000"
+                className="h-full bg-gradient-to-r from-orange-500 via-amber-400 to-emerald-400 rounded-full relative transition-all duration-1000"
                 style={{ width: `${progressPct}%` }}
               >
                 {/* Vehicle Pulse Icon */}
-                <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-8 h-8 rounded-full bg-[#2A8A56] text-white flex items-center justify-center shadow-[0_0_20px_#10B981] ring-4 ring-emerald-500/30">
+                <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center shadow-[0_0_15px_#10B981] ring-4 ring-emerald-500/30">
                   <Navigation2 className="w-4 h-4 fill-current rotate-90" />
                 </div>
               </div>
@@ -116,88 +116,88 @@ export const LiveRouteTrackerModal: React.FC<LiveRouteTrackerModalProps> = ({ is
 
             {/* Destination NGO Node */}
             <div className="absolute right-8 sm:right-14 top-1/2 -translate-y-1/2 flex flex-col items-center z-10">
-              <div className="w-10 h-10 rounded-2xl bg-[#1A5C38]/90 text-white flex items-center justify-center shadow-lg border border-emerald-400/50">
+              <div className="w-10 h-10 rounded-2xl bg-emerald-600 text-white flex items-center justify-center shadow-lg border border-emerald-400">
                 <CheckCircle2 className="w-5 h-5" />
               </div>
-              <span className="text-[11px] font-mono-tech mt-1.5 text-[#7DC99A] font-semibold text-center max-w-[110px]">
+              <span className="text-[11px] font-mono-tech mt-1.5 text-emerald-300 font-bold text-center max-w-[110px]">
                 Annapurna Seva
               </span>
-              <span className="text-[9px] text-[#9E8E7A]">DESTINATION</span>
+              <span className="text-[9px] text-slate-400 font-mono-tech">DESTINATION</span>
             </div>
 
             {/* Floating Live Telemetry HUD */}
-            <div className="absolute top-3 left-3 bg-[#172B1E]/90 backdrop-blur-md border border-[rgba(74,173,116,0.18)]/80 rounded-xl px-3 py-1.5 text-[11px] font-mono-tech flex items-center gap-2 text-[#4AAD74]">
-              <Radio className="w-3.5 h-3.5 animate-pulse text-[#4AAD74]" />
+            <div className="absolute top-3 left-3 bg-slate-900/90 backdrop-blur-md border border-slate-700 rounded-xl px-3 py-1.5 text-[11px] font-mono-tech flex items-center gap-2 text-emerald-400 font-semibold">
+              <Radio className="w-3.5 h-3.5 animate-pulse text-emerald-400" />
               <span>LIVE MESH: SATELLITE LOCK 14/14</span>
             </div>
 
-            <div className="absolute bottom-3 right-3 bg-[#172B1E]/90 backdrop-blur-md border border-[rgba(74,173,116,0.18)]/80 rounded-xl px-3 py-1.5 text-[11px] font-mono-tech text-[#C4B9AC]">
+            <div className="absolute bottom-3 right-3 bg-slate-900/90 backdrop-blur-md border border-slate-700 rounded-xl px-3 py-1.5 text-[11px] font-mono-tech text-slate-300">
               <span>SPEED: 26 km/h • ECO EV</span>
             </div>
           </div>
 
           {/* 4 Sensor Telemetry Cards */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
-            <div className="rounded-2xl bg-[#1E3828]/60 border border-[rgba(74,173,116,0.18)]/60 p-4 space-y-1">
-              <div className="text-[11px] font-mono-tech text-[#9E8E7A] uppercase flex items-center gap-1.5">
-                <Clock className="w-3.5 h-3.5 text-[#DDB259]" />
+            <div className="rounded-2xl bg-slate-50 border border-slate-200 p-4 space-y-1">
+              <div className="text-[11px] font-mono-tech text-slate-500 uppercase flex items-center gap-1.5 font-semibold">
+                <Clock className="w-3.5 h-3.5 text-amber-500" />
                 ETA Remaining
               </div>
-              <div className="text-xl sm:text-2xl font-mono-tech font-bold text-[#DDB259]">
+              <div className="text-xl sm:text-2xl font-mono-tech font-bold text-amber-600">
                 {formattedTime}
               </div>
-              <div className="text-[10px] text-[#9E8E7A]">Sub-38m Guarantee</div>
+              <div className="text-[10px] text-slate-500">Sub-38m Guarantee</div>
             </div>
 
-            <div className="rounded-2xl bg-[#1E3828]/60 border border-[rgba(74,173,116,0.18)]/60 p-4 space-y-1">
-              <div className="text-[11px] font-mono-tech text-[#9E8E7A] uppercase flex items-center gap-1.5">
-                <Thermometer className="w-3.5 h-3.5 text-[#4AAD74]" />
+            <div className="rounded-2xl bg-slate-50 border border-slate-200 p-4 space-y-1">
+              <div className="text-[11px] font-mono-tech text-slate-500 uppercase flex items-center gap-1.5 font-semibold">
+                <Thermometer className="w-3.5 h-3.5 text-emerald-600" />
                 Thermal Sensor
               </div>
-              <div className="text-xl sm:text-2xl font-mono-tech font-bold text-[#4AAD74]">
+              <div className="text-xl sm:text-2xl font-mono-tech font-bold text-emerald-700">
                 {currentTemp}°C
               </div>
-              <div className="text-[10px] text-[#7DC99A]/80">Hot Holding (63°C+ Safe)</div>
+              <div className="text-[10px] text-emerald-600 font-medium">Hot Holding (63°C+ Safe)</div>
             </div>
 
-            <div className="rounded-2xl bg-[#1E3828]/60 border border-[rgba(74,173,116,0.18)]/60 p-4 space-y-1">
-              <div className="text-[11px] font-mono-tech text-[#9E8E7A] uppercase flex items-center gap-1.5">
-                <BatteryCharging className="w-3.5 h-3.5 text-sky-400" />
+            <div className="rounded-2xl bg-slate-50 border border-slate-200 p-4 space-y-1">
+              <div className="text-[11px] font-mono-tech text-slate-500 uppercase flex items-center gap-1.5 font-semibold">
+                <BatteryCharging className="w-3.5 h-3.5 text-sky-600" />
                 EV Battery
               </div>
-              <div className="text-xl sm:text-2xl font-mono-tech font-bold text-sky-400">
+              <div className="text-xl sm:text-2xl font-mono-tech font-bold text-sky-700">
                 {telemetry.batteryPct}%
               </div>
-              <div className="text-[10px] text-[#9E8E7A]">Zero-Emission Trip</div>
+              <div className="text-[10px] text-slate-500">Zero-Emission Trip</div>
             </div>
 
-            <div className="rounded-2xl bg-[#1E3828]/60 border border-[rgba(74,173,116,0.18)]/60 p-4 space-y-1">
-              <div className="text-[11px] font-mono-tech text-[#9E8E7A] uppercase flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#4AAD74]" />
+            <div className="rounded-2xl bg-slate-50 border border-slate-200 p-4 space-y-1">
+              <div className="text-[11px] font-mono-tech text-slate-500 uppercase flex items-center gap-1.5 font-semibold">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
                 Food Safety
               </div>
-              <div className="text-xl sm:text-2xl font-mono-tech font-bold text-white">
+              <div className="text-xl sm:text-2xl font-mono-tech font-bold text-slate-900">
                 FSSAI Pass
               </div>
-              <div className="text-[10px] text-[#9E8E7A]">Tamper-Evident Seal</div>
+              <div className="text-[10px] text-slate-500">Tamper-Evident Seal</div>
             </div>
           </div>
 
           {/* Trip Details & Rider Card */}
-          <div className="rounded-2xl bg-[#1E3828]/40 border border-[rgba(74,173,116,0.18)]/50 p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="rounded-2xl bg-slate-50 border border-slate-200 p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="flex items-center gap-3.5">
-              <div className="w-12 h-12 rounded-full bg-[#2A8A56]/20 border border-emerald-500/30 flex items-center justify-center text-[#4AAD74] font-bold">
+              <div className="w-12 h-12 rounded-full bg-emerald-100 border border-emerald-300 flex items-center justify-center text-emerald-800 font-bold font-mono-tech">
                 VS
               </div>
               <div>
-                <h4 className="text-white font-semibold text-sm sm:text-base">
+                <h4 className="text-slate-900 font-bold text-sm sm:text-base">
                   {telemetry.riderName}
                 </h4>
-                <p className="text-xs text-[#9E8E7A]">
+                <p className="text-xs text-slate-500">
                   {telemetry.riderVehicle} • 1,120+ Safe Dispatches
                 </p>
-                <div className="flex items-center gap-2 mt-1 text-[11px] text-[#4AAD74]">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#4AAD74]" />
+                <div className="flex items-center gap-2 mt-1 text-[11px] text-emerald-700 font-medium">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
                   <span>Payload: {telemetry.mealsCount} Hot Banquet Meals ({telemetry.batchType})</span>
                 </div>
               </div>
@@ -209,9 +209,9 @@ export const LiveRouteTrackerModal: React.FC<LiveRouteTrackerModalProps> = ({ is
                 sound.success();
                 alert(`Direct Dispatch Radio Link Connected to ${telemetry.riderName}. Voice channel ready.`);
               }}
-              className="px-4 py-2.5 rounded-full bg-[#1A5C38] hover:bg-[#2A8A56] text-white font-semibold text-xs transition-all flex items-center justify-center gap-2 shadow-lg cursor-pointer"
+              className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs transition-all flex items-center justify-center gap-2 shadow-sm cursor-pointer"
             >
-              <Radio className="w-3.5 h-3.5" />
+              <Radio className="w-3.5 h-3.5 text-emerald-400" />
               <span>Contact Dispatcher</span>
             </button>
           </div>
@@ -220,4 +220,3 @@ export const LiveRouteTrackerModal: React.FC<LiveRouteTrackerModalProps> = ({ is
     </div>
   );
 };
-

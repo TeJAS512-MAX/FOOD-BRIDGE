@@ -81,46 +81,43 @@ export function App() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col frosted-canvas" style={{ color: '#F2EBE1' }}>
+    <div className="min-h-screen flex flex-col bg-[#F8FAFC] text-slate-900">
 
-      {/* ── LIVE FROSTED TELEMETRY TICKER ── */}
-      <div className="py-2.5 overflow-hidden relative z-40 border-b border-cyan-500/15" style={{ background: 'rgba(6, 11, 24, 0.75)', backdropFilter: 'blur(24px)' }}>
+      {/* ── LIVE TELEMETRY TICKER (LIGHT & ACCESSIBLE) ── */}
+      <div className="py-2.5 overflow-hidden relative z-40 border-b border-slate-200 bg-white/90 backdrop-blur-md">
         <div className="animate-ticker flex items-center gap-10 text-xs font-mono-tech">
           {[...TICKER_EVENTS, ...TICKER_EVENTS].map((eventText, idx) => (
             <div key={idx} className="flex items-center gap-3 shrink-0">
-              <span className="inline-block w-2 h-2 rounded-full animate-pulse bg-cyan-400 shadow-[0_0_10px_#00F2FE]" />
-              <span className="text-cyan-200 font-medium">{eventText}</span>
-              <span className="text-pink-400 opacity-80">•</span>
+              <span className="inline-block w-2 h-2 rounded-full animate-pulse bg-emerald-600" />
+              <span className="text-slate-800 font-semibold">{eventText}</span>
+              <span className="text-orange-500 opacity-60">•</span>
             </div>
           ))}
         </div>
       </div>
 
-      {/* ── FLOATING FROSTED GLASS CAPSULE NAVBAR ── */}
+      {/* ── FLOATING LIGHT FROSTED GLASS CAPSULE NAVBAR ── */}
       <header className="sticky top-3 z-40 px-4 sm:px-6 lg:px-8 mt-2">
         <div className="max-w-7xl mx-auto">
           <nav
             aria-label="Primary Navigation"
-            className="frosted-card px-4 sm:px-6 py-2.5 flex items-center justify-between rounded-full"
-            style={{ borderRadius: '9999px' }}
+            className="bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-sm px-4 sm:px-6 py-2.5 flex items-center justify-between rounded-full"
           >
             {/* Brand */}
             <a href="#" className="flex items-center gap-2.5 group">
               <div
-                className="w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-all group-hover:scale-105"
+                className="w-10 h-10 rounded-full flex items-center justify-center shadow-md transition-all group-hover:scale-105"
                 style={{
-                  background: 'linear-gradient(135deg, #00F2FE 0%, #00F5A0 100%)',
-                  boxShadow: '0 0 20px rgba(0, 242, 254, 0.45)',
-                  border: '1px solid rgba(255,255,255,0.4)',
+                  background: 'linear-gradient(135deg, #059669 0%, #10B981 100%)',
                 }}
               >
-                <HeartHandshake className="w-5 h-5 text-[#060913]" />
+                <HeartHandshake className="w-5 h-5 text-white" />
               </div>
               <div>
-                <span className="font-serif-display text-xl font-bold tracking-tight block leading-none text-white">
-                  Food<span className="text-grad-cyan-emerald">Bridge</span>
+                <span className="font-serif-display text-xl font-bold tracking-tight block leading-none text-slate-900">
+                  Food<span className="text-[#059669]">Bridge</span>
                 </span>
-                <span className="font-mono-tech text-[9px] uppercase tracking-widest block mt-0.5 font-semibold text-cyan-400">
+                <span className="font-mono-tech text-[9px] uppercase tracking-widest block mt-0.5 font-semibold text-slate-500">
                   CIVIC ZERO-WASTE GRID
                 </span>
               </div>
@@ -132,7 +129,7 @@ export function App() {
                 <a
                   key={item.href}
                   href={item.href}
-                  className="text-sm font-semibold text-slate-300 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(0,242,254,0.5)] transition-all"
+                  className="text-sm font-semibold text-slate-700 hover:text-emerald-700 transition-colors"
                 >
                   {item.label}
                 </a>
@@ -145,7 +142,7 @@ export function App() {
                 type="button"
                 onClick={toggleSound}
                 title={soundEnabled ? 'Mute sounds' : 'Enable sounds'}
-                className="p-2 rounded-full frosted-pill cursor-pointer text-slate-300 hover:text-white"
+                className="p-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 transition-colors cursor-pointer"
               >
                 {soundEnabled ? <Volume2 className="w-3.5 h-3.5" /> : <VolumeX className="w-3.5 h-3.5" />}
               </button>
@@ -156,9 +153,9 @@ export function App() {
                   sound.radar();
                   setLiveTrackerOpen(true);
                 }}
-                className="hidden xl:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono-tech cursor-pointer frosted-pill text-cyan-300 hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(0,242,254,0.3)] transition-all"
+                className="hidden xl:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono-tech cursor-pointer bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-200 transition-all font-semibold"
               >
-                <Radio className="w-3 h-3 text-cyan-400 animate-pulse" />
+                <Radio className="w-3 h-3 text-emerald-600 animate-pulse" />
                 <span>Live GPS Radar</span>
               </button>
 
@@ -168,9 +165,9 @@ export function App() {
                   sound.click();
                   setPledgeModalOpen(true);
                 }}
-                className="px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-1.5 cursor-pointer frosted-pill text-white hover:border-emerald-400 hover:shadow-[0_0_15px_rgba(0,245,160,0.3)] transition-all"
+                className="px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-1.5 cursor-pointer bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 transition-all"
               >
-                <Heart className="w-3.5 h-3.5 text-emerald-400 fill-current" />
+                <Heart className="w-3.5 h-3.5 text-emerald-600 fill-current" />
                 <span>Pledge 1 Meal</span>
               </button>
 
@@ -189,7 +186,7 @@ export function App() {
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 rounded-full frosted-pill text-white cursor-pointer"
+                className="p-2 rounded-full bg-slate-100 text-slate-800 cursor-pointer"
               >
                 {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
@@ -198,14 +195,14 @@ export function App() {
 
           {/* Mobile menu */}
           {mobileMenuOpen && (
-            <div className="lg:hidden mt-2 frosted-card p-5 space-y-3">
+            <div className="lg:hidden mt-2 bg-white border border-slate-200 shadow-xl rounded-2xl p-5 space-y-3">
               <div className="grid grid-cols-2 gap-2">
                 {navLinks.map((item) => (
                   <a
                     key={item.href}
                     href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="px-3.5 py-2.5 rounded-xl text-sm font-semibold frosted-subcard text-white hover:text-emerald-400 transition-colors"
+                    className="px-3.5 py-2.5 rounded-xl text-sm font-semibold bg-slate-50 text-slate-800 hover:bg-emerald-50 hover:text-emerald-800 transition-colors"
                   >
                     {item.label}
                   </a>
@@ -218,9 +215,9 @@ export function App() {
                     setMobileMenuOpen(false);
                     setLiveTrackerOpen(true);
                   }}
-                  className="w-full py-3 rounded-full text-sm font-semibold flex items-center justify-center gap-2 cursor-pointer frosted-pill text-emerald-300"
+                  className="w-full py-3 rounded-full text-sm font-semibold flex items-center justify-center gap-2 cursor-pointer bg-slate-100 text-slate-800 border border-slate-200"
                 >
-                  <Radio className="w-4 h-4" />
+                  <Radio className="w-4 h-4 text-emerald-600" />
                   <span>View Live GPS Dispatch</span>
                 </button>
                 <button
@@ -229,9 +226,9 @@ export function App() {
                     setMobileMenuOpen(false);
                     setPledgeModalOpen(true);
                   }}
-                  className="w-full py-3 rounded-full text-sm font-semibold flex items-center justify-center gap-2 cursor-pointer frosted-pill text-white"
+                  className="w-full py-3 rounded-full text-sm font-semibold flex items-center justify-center gap-2 cursor-pointer bg-emerald-50 text-emerald-800 border border-emerald-200"
                 >
-                  <Heart className="w-4 h-4 fill-current text-emerald-400" />
+                  <Heart className="w-4 h-4 fill-current text-emerald-600" />
                   <span>Pledge 1 Meal (₹35)</span>
                 </button>
                 <button
@@ -298,43 +295,45 @@ export function App() {
           SECTION 9 · NEXT-GEN FROSTED GLASS FOOTER
           Essential navigation + 24/7 hotline + live system pulse
       ================================================================ */}
-      <footer className="pt-16 pb-12 mt-20 border-t border-white/10 relative overflow-hidden text-slate-300" style={{ background: 'rgba(7, 16, 10, 0.82)', backdropFilter: 'blur(36px)' }}>
+      <footer className="pt-16 pb-12 mt-20 border-t border-slate-200 bg-white/95 backdrop-blur-md relative overflow-hidden text-slate-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-slate-200">
 
             {/* Brand col */}
             <div className="lg:col-span-4 space-y-5">
               <div className="flex items-center gap-3">
-                <div className="w-11 h-11 rounded-full flex items-center justify-center shadow-lg"
-                  style={{ background: 'linear-gradient(135deg, #1A5C38, #2A8A56)', border: '1px solid rgba(255,255,255,0.25)' }}>
+                <div
+                  className="w-11 h-11 rounded-full flex items-center justify-center shadow-md"
+                  style={{ background: 'linear-gradient(135deg, #059669, #10B981)' }}
+                >
                   <HeartHandshake className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <span className="font-serif-display text-2xl font-bold tracking-tight text-white block leading-none">
-                    Food<span className="text-[#4AAD74]">Bridge</span>
+                  <span className="font-serif-display text-2xl font-bold tracking-tight text-slate-900 block leading-none">
+                    Food<span className="text-[#059669]">Bridge</span>
                   </span>
-                  <span className="font-mono-tech text-[10px] uppercase tracking-widest block mt-0.5 text-[#C8973A]">
+                  <span className="font-mono-tech text-[10px] uppercase tracking-wider block mt-0.5 text-emerald-800 font-bold">
                     CIVIC ZERO-WASTE ECOSYSTEM
                   </span>
                 </div>
               </div>
-              <p className="text-sm leading-relaxed max-w-sm text-slate-300">
+              <p className="text-sm leading-relaxed max-w-sm text-slate-600">
                 Next-generation civic logistics platform connecting commercial kitchens with verified NGO shelters.
                 Turning daily surplus into dignified hot meals in under 38 minutes.
               </p>
-              <div className="flex items-center gap-2 text-xs font-mono-tech text-emerald-400">
-                <ShieldCheck className="w-4 h-4" />
+              <div className="flex items-center gap-2 text-xs font-mono-tech text-emerald-700 font-semibold">
+                <ShieldCheck className="w-4 h-4 text-emerald-600" />
                 <span>UN SDG Goal 2 (Zero Hunger) &amp; Goal 12.3 Aligned</span>
               </div>
             </div>
 
             {/* Platform nav col */}
             <div className="lg:col-span-2 space-y-3">
-              <div className="font-mono-tech text-xs uppercase tracking-wider font-bold text-[#C8973A]">Platform</div>
+              <div className="font-mono-tech text-xs uppercase tracking-wider font-bold text-slate-900">Platform</div>
               <ul className="space-y-2.5 text-sm">
                 {navLinks.map(item => (
                   <li key={item.href}>
-                    <a href={item.href} className="text-slate-300 hover:text-white hover:underline transition-colors">
+                    <a href={item.href} className="text-slate-600 hover:text-emerald-700 hover:underline transition-colors font-medium">
                       {item.label}
                     </a>
                   </li>
@@ -344,29 +343,29 @@ export function App() {
 
             {/* Join col */}
             <div className="lg:col-span-3 space-y-3">
-              <div className="font-mono-tech text-xs uppercase tracking-wider font-bold text-[#C8973A]">Join The Bridge</div>
+              <div className="font-mono-tech text-xs uppercase tracking-wider font-bold text-slate-900">Join The Bridge</div>
               <ul className="space-y-2.5 text-sm">
                 <li>
                   <button type="button" onClick={() => handleOpenDonateWithWeight(50)}
-                    className="text-slate-300 hover:text-emerald-400 transition-colors cursor-pointer text-left">
+                    className="text-slate-600 hover:text-emerald-700 transition-colors cursor-pointer text-left font-medium">
                     Hotel &amp; Restaurant Zero-Waste Program
                   </button>
                 </li>
                 <li>
-                  <a href="#cta" className="text-slate-300 hover:text-white transition-colors">
+                  <a href="#cta" className="text-slate-600 hover:text-emerald-700 transition-colors font-medium">
                     Verified NGO Shelter Onboarding
                   </a>
                 </li>
                 <li>
                   <button type="button" onClick={() => setPledgeModalOpen(true)}
-                    className="text-slate-300 hover:text-emerald-400 cursor-pointer text-left">
+                    className="text-slate-600 hover:text-emerald-700 cursor-pointer text-left font-medium">
                     Pledge a Community Meal (₹35)
                   </button>
                 </li>
                 <li>
                   <button type="button" onClick={() => setLiveTrackerOpen(true)}
-                    className="text-slate-300 hover:text-emerald-400 cursor-pointer text-left flex items-center gap-1.5">
-                    <Radio className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
+                    className="text-slate-600 hover:text-emerald-700 cursor-pointer text-left flex items-center gap-1.5 font-medium">
+                    <Radio className="w-3.5 h-3.5 text-emerald-600 animate-pulse" />
                     <span>Track Live GPS Telemetry</span>
                   </button>
                 </li>
@@ -375,18 +374,18 @@ export function App() {
 
             {/* Contact col */}
             <div className="lg:col-span-3 space-y-3">
-              <div className="font-mono-tech text-xs uppercase tracking-wider font-bold text-[#C8973A]">24/7 Emergency Surplus Desk</div>
-              <div className="frosted-subcard p-4 space-y-3 text-xs border border-white/10">
-                <div className="flex items-center gap-2.5 font-semibold text-white">
-                  <PhoneCall className="w-4 h-4 text-[#F28240]" />
+              <div className="font-mono-tech text-xs uppercase tracking-wider font-bold text-slate-900">24/7 Emergency Surplus Desk</div>
+              <div className="rounded-2xl bg-slate-50 p-4 space-y-3 text-xs border border-slate-200">
+                <div className="flex items-center gap-2.5 font-bold text-slate-900">
+                  <PhoneCall className="w-4 h-4 text-orange-500" />
                   <span>+91 (800) 366-3274 (FOOD-BRI)</span>
                 </div>
-                <div className="flex items-center gap-2.5 text-slate-300">
-                  <Mail className="w-4 h-4 text-emerald-400" />
+                <div className="flex items-center gap-2.5 text-slate-600 font-medium">
+                  <Mail className="w-4 h-4 text-emerald-600" />
                   <span>dispatch@foodbridge.org.in</span>
                 </div>
-                <div className="flex items-center gap-2.5 text-slate-300">
-                  <MapPin className="w-4 h-4 text-[#C8973A]" />
+                <div className="flex items-center gap-2.5 text-slate-600 font-medium">
+                  <MapPin className="w-4 h-4 text-orange-500" />
                   <span>Bengaluru · Mumbai · Delhi NCR · Chennai · Hyderabad</span>
                 </div>
               </div>
@@ -394,18 +393,18 @@ export function App() {
           </div>
 
           {/* Copyright bar */}
-          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
             <div>
               © 2026 FoodBridge Civic Logistics Initiative. Built for{' '}
-              <strong className="text-white">AI Prompt Battle powered by OSCode</strong>.
+              <strong className="text-slate-800">AI Prompt Battle powered by OSCode</strong>.
             </div>
             <div className="flex items-center gap-3">
-              <span className="flex items-center gap-1.5 text-emerald-400">
+              <span className="flex items-center gap-1.5 text-emerald-700 font-semibold">
                 <Globe className="w-3.5 h-3.5" />
                 <span>foodbridge.org.in</span>
               </span>
-              <span className="text-white/40">·</span>
-              <span className="flex items-center gap-1.5 text-[#C8973A]">
+              <span className="text-slate-300">·</span>
+              <span className="flex items-center gap-1.5 text-orange-600 font-semibold">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>AI Prompt Battle 2026</span>
               </span>

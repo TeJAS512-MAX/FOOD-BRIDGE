@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
 import {
-  ArrowRight,
   HeartHandshake,
   MapPin,
   Radio,
-  Share2,
   ShieldCheck,
-  Sparkles,
   UtensilsCrossed,
-  Sun,
-  Moon,
   Clock,
   Globe,
 } from 'lucide-react';
@@ -27,13 +22,6 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
   onOpenPledgeModal,
 }) => {
   const [donorInput, setDonorInput] = useState('');
-  const [isEvening, setIsEvening] = useState(false);
-  const [activeTab, setActiveTab] = useState<'hotel' | 'restaurant' | 'event'>('hotel');
-
-  const toggleEvening = () => {
-    sound.click();
-    setIsEvening(!isEvening);
-  };
 
   const handleQuickRescue = (e: React.FormEvent) => {
     e.preventDefault();
@@ -44,49 +32,39 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
   return (
     <section className="relative min-h-[92vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-10 overflow-hidden">
       {/* ==============================================================
-          LAYER 1: PHOTOREALISTIC WARM ARCHITECTURAL INTERIOR BACKGROUND
-          (Warm oak shelving, modern ceramics, soft studio lighting)
+          LAYER 1: LUMINOUS LIGHT ARCHITECTURAL STUDIO BACKGROUND
+          (Crisp natural light, warm architectural wood & modern ceramics)
       ============================================================== */}
-      <div
-        className={`absolute inset-0 transition-all duration-700 ${
-          isEvening
-            ? 'bg-gradient-to-b from-[#0b0716] via-[#120a24] to-[#06040e]'
-            : 'bg-gradient-to-b from-[#050811] via-[#091122] to-[#04070F]'
-        }`}
-      >
-        {/* Ambient Chromatic Grid & Caustic Nebulas */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#F1F5F9] via-[#F8FAFC] to-[#EEF2F6]">
+        {/* Soft natural sunlight beams */}
         <div
-          className="absolute inset-0 opacity-30"
+          className="absolute inset-0 opacity-40"
           style={{
-            backgroundImage: `radial-gradient(ellipse at 50% 10%, rgba(0, 242, 254, 0.25) 0%, transparent 65%),
-                              radial-gradient(ellipse at 80% 60%, rgba(221, 36, 118, 0.2) 0%, transparent 55%),
-                              radial-gradient(ellipse at 15% 40%, rgba(0, 245, 160, 0.2) 0%, transparent 60%)`,
+            backgroundImage: `radial-gradient(ellipse at 50% 0%, rgba(5, 150, 105, 0.08) 0%, transparent 60%),
+                              radial-gradient(ellipse at 85% 20%, rgba(234, 88, 12, 0.07) 0%, transparent 50%),
+                              linear-gradient(180deg, rgba(255,255,255,0.8) 0%, transparent 100%)`,
           }}
         />
 
-        {/* Floating Neon Aurora Lights */}
-        <div
-          className={`absolute -top-40 left-1/4 w-[700px] h-[700px] rounded-full blur-[140px] transition-all duration-700 pointer-events-none ${
-            isEvening ? 'bg-[#7928CA]/25' : 'bg-[#00F2FE]/22'
-          }`}
-        />
-        <div
-          className={`absolute -bottom-20 right-1/4 w-[600px] h-[600px] rounded-full blur-[140px] transition-all duration-700 pointer-events-none ${
-            isEvening ? 'bg-[#DD2476]/22' : 'bg-[#00F5A0]/20'
-          }`}
-        />
+        {/* Studio architectural shelving lines */}
+        <div className="absolute top-0 left-0 right-0 h-44 border-b border-slate-200/60 opacity-60" />
+        <div className="absolute bottom-24 left-0 right-0 h-20 border-t border-b border-slate-200/50 opacity-40" />
+
+        {/* Soft warm ambient glows */}
+        <div className="absolute -top-32 left-1/4 w-[600px] h-[600px] rounded-full blur-3xl bg-emerald-100/60 pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] rounded-full blur-3xl bg-orange-100/60 pointer-events-none" />
       </div>
 
       {/* ==============================================================
-          LAYER 2: 3D METALLIC SCULPTURAL LETTERS ("FOODBRIDGE")
-          (Resting behind the glass sheet, refracting with depth)
+          LAYER 2: 3D POLISHED PLATINUM SCULPTURAL LETTERS ("FOODBRIDGE")
+          (Resting behind the glass sheet with crisp reflection)
       ============================================================== */}
-      <div className="absolute inset-x-0 bottom-4 sm:bottom-8 lg:bottom-12 flex items-baseline justify-center select-none pointer-events-none z-0 px-2 overflow-hidden">
-        <div className="flex items-baseline gap-1 sm:gap-2.5 md:gap-4 lg:gap-6 opacity-85 transition-transform duration-700 transform hover:scale-[1.01]">
+      <div className="absolute inset-x-0 bottom-6 sm:bottom-10 lg:bottom-14 flex items-baseline justify-center select-none pointer-events-none z-0 px-2 overflow-hidden">
+        <div className="flex items-baseline gap-1 sm:gap-2.5 md:gap-4 lg:gap-6 opacity-30 sm:opacity-40 transition-transform duration-700">
           {['F', 'O', 'O', 'D'].map((char, i) => (
             <span
               key={`f-${i}`}
-              className="letter-3d-metallic text-5xl sm:text-7xl md:text-9xl lg:text-[148px] leading-none"
+              className="letter-3d-metallic text-5xl sm:text-7xl md:text-9xl lg:text-[144px] leading-none"
             >
               {char}
             </span>
@@ -96,7 +74,7 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
           {['B', 'R', 'I', 'D', 'G', 'E'].map((char, i) => (
             <span
               key={`b-${i}`}
-              className="letter-3d-metallic text-5xl sm:text-7xl md:text-9xl lg:text-[148px] leading-none"
+              className="letter-3d-metallic text-5xl sm:text-7xl md:text-9xl lg:text-[144px] leading-none"
             >
               {char}
             </span>
@@ -105,31 +83,27 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
       </div>
 
       {/* ==============================================================
-          LAYER 3: THE LIQUID FROSTED GLASS SHEET (VERTIX STYLE)
-          (Massive floating glass panel with curved liquid rim & insets)
+          LAYER 3: THE CRYSTALLINE FROSTED GLASS SHEET
+          (Floating glass panel with 100% visible, high-contrast text)
       ============================================================== */}
       <div className="relative z-10 w-full max-w-6xl mx-auto my-auto">
-        <div
-          className={`liquid-glass-sheet p-6 sm:p-10 lg:p-12 transition-all duration-500 ${
-            isEvening ? 'dark-mode text-white' : 'text-slate-900'
-          }`}
-        >
+        <div className="liquid-glass-sheet p-6 sm:p-10 lg:p-12 text-slate-900 shadow-2xl">
           {/* Top Row: Brand & Quick Tags */}
-          <div className="flex flex-wrap items-center justify-between gap-4 pb-8 border-b border-black/5 dark:border-white/10">
+          <div className="flex flex-wrap items-center justify-between gap-4 pb-8 border-b border-slate-200/80">
             <div className="flex items-center gap-3">
               <div
                 className="w-10 h-10 rounded-full flex items-center justify-center shadow-md transition-transform hover:scale-105"
                 style={{
-                  background: 'linear-gradient(135deg, #00F2FE 0%, #00F5A0 100%)', boxShadow: '0 0 25px rgba(0, 242, 254, 0.5)',
+                  background: 'linear-gradient(135deg, #059669 0%, #10B981 100%)',
                 }}
               >
                 <HeartHandshake className="w-5 h-5 text-white" />
               </div>
               <div className="flex items-center gap-2">
-                <span className="font-serif-display text-2xl font-bold tracking-tight">
-                  Food<span className="text-grad-cyan-emerald">Bridge</span>
+                <span className="font-serif-display text-2xl font-bold tracking-tight text-slate-900">
+                  Food<span className="text-[#059669]">Bridge</span>
                 </span>
-                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono-tech uppercase font-bold tracking-widest bg-cyan-500/15 text-cyan-300 border border-cyan-400/30">
+                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono-tech uppercase font-bold tracking-widest bg-emerald-50 text-emerald-800 border border-emerald-200">
                   CIVIC ZERO-WASTE
                 </span>
               </div>
@@ -140,12 +114,12 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
               <button
                 type="button"
                 onClick={onOpenLiveTracker}
-                className="flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono-tech cursor-pointer transition-all hover:opacity-90 bg-black/5 dark:bg-white/10 border border-black/10 dark:border-white/15 backdrop-blur-md"
+                className="flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono-tech cursor-pointer transition-all bg-white border border-slate-200 text-slate-700 hover:border-emerald-500 hover:text-emerald-700 shadow-xs"
               >
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="font-semibold">24 Vans Active</span>
-                <span className="opacity-50">·</span>
-                <span className="text-emerald-700 dark:text-emerald-300 font-bold">ETA 38m</span>
+                <span className="font-semibold text-slate-800">24 Vans Active</span>
+                <span className="opacity-40">·</span>
+                <span className="text-emerald-700 font-bold">Avg 38m</span>
               </button>
             </div>
           </div>
@@ -154,20 +128,22 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 py-8 lg:py-10 items-center">
             {/* Left Column (7 cols): Editorial Headline & Integrated Pill Input */}
             <div className="lg:col-span-7 space-y-6">
-              <h1 className="font-serif-display text-4xl sm:text-5xl lg:text-[58px] font-semibold tracking-tight leading-[1.08]">
-                One good meal rescued, <span className="text-grad-coral-pink">every second.</span>
+              <h1 className="font-serif-display text-4xl sm:text-5xl lg:text-[56px] font-bold tracking-tight leading-[1.08] text-slate-900">
+                One good meal rescued,{' '}
+                <span className="text-grad-orange font-normal italic">every second.</span>
               </h1>
 
-              <p className="text-base sm:text-lg leading-relaxed max-w-xl opacity-80">
-                Every evening, commercial kitchens produce surplus while millions sleep hungry.
-                FoodBridge connects hotel banquets, restaurants, and events directly to verified
-                NGO shelters with AI cold-chain logistics.
+              <p className="text-base sm:text-lg leading-relaxed max-w-xl text-slate-700 font-normal">
+                Every evening, commercial kitchens produce wholesome surplus while millions struggle
+                for regular food. FoodBridge coordinates hotel banquets, restaurants, and caterers
+                directly to verified shelters with temperature-monitored fleet routing in{' '}
+                <strong className="text-emerald-700 font-semibold">under 38 minutes</strong>.
               </p>
 
               {/* Integrated Search & Rescue Pill Input */}
               <form onSubmit={handleQuickRescue} className="pt-2">
-                <div className="relative max-w-xl flex items-center rounded-full p-1.5 shadow-xl transition-all focus-within:ring-2 focus-within:ring-emerald-500/40 bg-[#060B18]/80 text-white backdrop-blur-2xl border border-cyan-400/35 shadow-[0_0_35px_rgba(0,242,254,0.18)]">
-                  <div className="pl-4 pr-2 flex items-center pointer-events-none text-emerald-400">
+                <div className="relative max-w-xl flex items-center rounded-full p-1.5 shadow-md bg-white border border-slate-300 focus-within:border-emerald-600 focus-within:ring-2 focus-within:ring-emerald-500/20 transition-all">
+                  <div className="pl-4 pr-2 flex items-center pointer-events-none text-emerald-600">
                     <MapPin className="w-4 h-4" />
                   </div>
                   <input
@@ -175,14 +151,11 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
                     value={donorInput}
                     onChange={(e) => setDonorInput(e.target.value)}
                     placeholder="Enter hotel, restaurant or city address..."
-                    className="w-full bg-transparent text-sm sm:text-base text-white placeholder-slate-400 focus:outline-none pr-3"
+                    className="w-full bg-transparent text-sm sm:text-base text-slate-800 placeholder-slate-400 focus:outline-none pr-3"
                   />
                   <button
                     type="submit"
-                    className="shrink-0 px-6 py-3 rounded-full font-bold text-xs sm:text-sm flex items-center gap-2 text-white cursor-pointer transition-all hover:opacity-95 shadow-lg"
-                    style={{
-                      background: 'linear-gradient(135deg, #FF512F 0%, #DD2476 100%)', boxShadow: '0 0 24px rgba(255, 81, 47, 0.5)',
-                    }}
+                    className="shrink-0 btn-frosted-primary text-xs sm:text-sm font-bold flex items-center gap-2 cursor-pointer shadow-sm"
                   >
                     <UtensilsCrossed className="w-4 h-4" />
                     <span>Rescue Food</span>
@@ -191,49 +164,49 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
               </form>
 
               {/* Microcopy & Fast Action Links */}
-              <div className="flex flex-wrap items-center gap-4 text-xs font-mono-tech opacity-75 pt-1">
-                <div className="flex items-center gap-1.5">
-                  <Clock className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+              <div className="flex flex-wrap items-center gap-4 text-xs font-mono-tech text-slate-600 pt-1">
+                <div className="flex items-center gap-1.5 text-slate-700">
+                  <Clock className="w-3.5 h-3.5 text-emerald-600" />
                   <span>38 min avg pickup-to-plate</span>
                 </div>
                 <span>•</span>
-                <div className="flex items-center gap-1.5">
-                  <ShieldCheck className="w-3.5 h-3.5 text-amber-500" />
+                <div className="flex items-center gap-1.5 text-slate-700">
+                  <ShieldCheck className="w-3.5 h-3.5 text-amber-600" />
                   <span>100% FSSAI food-safe audited</span>
                 </div>
                 <span>•</span>
                 <button
                   type="button"
                   onClick={onOpenPledgeModal}
-                  className="text-cyan-300 hover:underline font-semibold cursor-pointer"
+                  className="text-emerald-700 hover:text-emerald-800 hover:underline font-semibold cursor-pointer"
                 >
                   Pledge 1 Meal (₹35) →
                 </button>
               </div>
             </div>
 
-            {/* Right Column (5 cols): Frosted Inset Navigation Card (Vertix Menu Style) */}
+            {/* Right Column (5 cols): Inset Navigation Card */}
             <div className="lg:col-span-5">
               <div className="glass-inset-card p-6 sm:p-7 space-y-6">
-                <div className="flex items-center justify-between pb-3 border-b border-black/5 dark:border-white/10">
-                  <span className="font-mono-tech text-xs uppercase font-bold tracking-wider text-cyan-400">
+                <div className="flex items-center justify-between pb-3 border-b border-slate-200">
+                  <span className="font-mono-tech text-xs uppercase font-bold tracking-wider text-emerald-800">
                     Network Directory
                   </span>
-                  <span className="text-[11px] font-mono-tech opacity-60">Verified & Active</span>
+                  <span className="text-[11px] font-mono-tech text-slate-500 font-medium">Verified &amp; Active</span>
                 </div>
 
                 <div className="grid grid-cols-2 gap-6 text-sm">
                   {/* Column 1: Donors */}
                   <div className="space-y-3">
-                    <div className="font-semibold text-xs uppercase tracking-wider opacity-60">
+                    <div className="font-bold text-xs uppercase tracking-wider text-slate-500">
                       Food Donors
                     </div>
-                    <ul className="space-y-2 text-xs opacity-85">
+                    <ul className="space-y-2 text-xs text-slate-700 font-medium">
                       <li>
                         <button
                           type="button"
                           onClick={onOpenDonateModal}
-                          className="hover:text-cyan-300 transition-colors text-left"
+                          className="hover:text-emerald-700 transition-colors text-left"
                         >
                           Hotel Banquets
                         </button>
@@ -242,25 +215,25 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
                         <button
                           type="button"
                           onClick={onOpenDonateModal}
-                          className="hover:text-cyan-300 transition-colors text-left"
+                          className="hover:text-emerald-700 transition-colors text-left"
                         >
-                          Restaurants & Cafes
+                          Restaurants &amp; Cafes
                         </button>
                       </li>
                       <li>
                         <button
                           type="button"
                           onClick={onOpenDonateModal}
-                          className="hover:text-cyan-300 transition-colors text-left"
+                          className="hover:text-emerald-700 transition-colors text-left"
                         >
-                          Weddings & Events
+                          Weddings &amp; Events
                         </button>
                       </li>
                       <li>
                         <button
                           type="button"
                           onClick={onOpenDonateModal}
-                          className="hover:text-cyan-300 transition-colors text-left"
+                          className="hover:text-emerald-700 transition-colors text-left"
                         >
                           Society Potlucks
                         </button>
@@ -270,27 +243,27 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
 
                   {/* Column 2: NGO Shelters */}
                   <div className="space-y-3">
-                    <div className="font-semibold text-xs uppercase tracking-wider opacity-60">
+                    <div className="font-bold text-xs uppercase tracking-wider text-slate-500">
                       Shelters
                     </div>
-                    <ul className="space-y-2 text-xs opacity-85">
+                    <ul className="space-y-2 text-xs text-slate-700 font-medium">
                       <li>
-                        <a href="#solution" className="hover:text-cyan-300 transition-colors">
+                        <a href="#solution" className="hover:text-emerald-700 transition-colors">
                           Asha Orphanage
                         </a>
                       </li>
                       <li>
-                        <a href="#solution" className="hover:text-cyan-300 transition-colors">
+                        <a href="#solution" className="hover:text-emerald-700 transition-colors">
                           Annapoorna Kitchen
                         </a>
                       </li>
                       <li>
-                        <a href="#solution" className="hover:text-cyan-300 transition-colors">
+                        <a href="#solution" className="hover:text-emerald-700 transition-colors">
                           Mission City Shelter
                         </a>
                       </li>
                       <li>
-                        <a href="#cta" className="hover:text-cyan-300 transition-colors">
+                        <a href="#cta" className="hover:text-emerald-700 transition-colors">
                           Register NGO Shelter
                         </a>
                       </li>
@@ -299,27 +272,27 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
 
                   {/* Column 3: Platform Tech */}
                   <div className="space-y-3">
-                    <div className="font-semibold text-xs uppercase tracking-wider opacity-60">
+                    <div className="font-bold text-xs uppercase tracking-wider text-slate-500">
                       Logistics
                     </div>
-                    <ul className="space-y-2 text-xs opacity-85">
+                    <ul className="space-y-2 text-xs text-slate-700 font-medium">
                       <li>
                         <button
                           type="button"
                           onClick={onOpenLiveTracker}
-                          className="hover:text-cyan-300 transition-colors text-left flex items-center gap-1"
+                          className="hover:text-emerald-700 transition-colors text-left flex items-center gap-1"
                         >
-                          <Radio className="w-3 h-3 text-emerald-500 animate-pulse" />
+                          <Radio className="w-3 h-3 text-emerald-600 animate-pulse" />
                           <span>GPS Van Radar</span>
                         </button>
                       </li>
                       <li>
-                        <a href="#features" className="hover:text-cyan-300 transition-colors">
+                        <a href="#features" className="hover:text-emerald-700 transition-colors">
                           AI Tray Scanner
                         </a>
                       </li>
                       <li>
-                        <a href="#how-it-works" className="hover:text-cyan-300 transition-colors">
+                        <a href="#how-it-works" className="hover:text-emerald-700 transition-colors">
                           Cold Chain Sensors
                         </a>
                       </li>
@@ -328,22 +301,22 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
 
                   {/* Column 4: Impact & Legal */}
                   <div className="space-y-3">
-                    <div className="font-semibold text-xs uppercase tracking-wider opacity-60">
+                    <div className="font-bold text-xs uppercase tracking-wider text-slate-500">
                       Verification
                     </div>
-                    <ul className="space-y-2 text-xs opacity-85">
+                    <ul className="space-y-2 text-xs text-slate-700 font-medium">
                       <li>
-                        <a href="#impact" className="hover:text-cyan-300 transition-colors">
+                        <a href="#impact" className="hover:text-emerald-700 transition-colors">
                           Tax 80G Certificate
                         </a>
                       </li>
                       <li>
-                        <a href="#impact" className="hover:text-cyan-300 transition-colors">
+                        <a href="#impact" className="hover:text-emerald-700 transition-colors">
                           ESG Impact Ledger
                         </a>
                       </li>
                       <li>
-                        <span className="inline-block px-1.5 py-0.5 rounded text-[10px] font-bold bg-emerald-600/10 text-emerald-700 dark:text-emerald-300">
+                        <span className="inline-block px-1.5 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800">
                           FSSAI Aligned
                         </span>
                       </li>
@@ -354,25 +327,25 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
             </div>
           </div>
 
-          {/* Bottom Bar: System Status on Left, Socials + Evening Toggle on Right */}
-          <div className="pt-6 border-t border-black/5 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+          {/* Bottom Bar: System Status on Left, Socials on Right */}
+          <div className="pt-6 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-600">
             <div className="flex items-center gap-3">
-              <span className="opacity-75">© 2026 FoodBridge</span>
+              <span className="font-medium text-slate-700">© 2026 FoodBridge</span>
               <span className="opacity-40">•</span>
-              <div className="flex items-center gap-1.5 text-cyan-300 font-semibold font-mono-tech">
+              <div className="flex items-center gap-1.5 text-emerald-700 font-semibold font-mono-tech">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span>All systems dispatching live</span>
+                <span>All 24 vans dispatching live</span>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
               {/* Social Pills */}
-              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/5 dark:bg-white/10 border border-black/10 dark:border-white/15">
+              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-slate-200 text-slate-600 shadow-xs">
                 <a
                   href="https://twitter.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="w-5 h-5 flex items-center justify-center rounded-full hover:opacity-100 opacity-60 transition-opacity font-bold text-[11px]"
+                  className="w-5 h-5 flex items-center justify-center rounded-full hover:text-slate-900 transition-colors font-bold text-[11px]"
                   aria-label="X"
                 >
                   𝕏
@@ -381,16 +354,16 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
                   href="https://linkedin.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="w-5 h-5 flex items-center justify-center rounded-full hover:opacity-100 opacity-60 transition-opacity font-bold text-[10px]"
+                  className="w-5 h-5 flex items-center justify-center rounded-full hover:text-slate-900 transition-colors font-bold text-[10px]"
                   aria-label="LinkedIn"
                 >
                   in
                 </a>
                 <a
-                  href="https://github.com/TeJAS512-MAX/exersise-8"
+                  href="https://github.com/TeJAS512-MAX/FOOD-BRIDGE"
                   target="_blank"
                   rel="noreferrer"
-                  className="w-5 h-5 flex items-center justify-center rounded-full hover:opacity-100 opacity-60 transition-opacity text-[11px]"
+                  className="w-5 h-5 flex items-center justify-center rounded-full hover:text-slate-900 transition-colors text-[11px]"
                   aria-label="GitHub Repository"
                 >
                   <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
@@ -398,39 +371,13 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
                   </svg>
                 </a>
                 <a
-                  href="https://youtube.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="w-5 h-5 flex items-center justify-center rounded-full hover:opacity-100 opacity-60 transition-opacity font-bold text-[10px]"
-                  aria-label="YouTube"
-                >
-                  ▶
-                </a>
-                <a
                   href="#hero"
-                  className="w-5 h-5 flex items-center justify-center rounded-full hover:opacity-100 opacity-60 transition-opacity text-[10px]"
+                  className="w-5 h-5 flex items-center justify-center rounded-full hover:text-slate-900 transition-colors text-[10px]"
                   aria-label="FoodBridge Global"
                 >
                   <Globe className="w-3.5 h-3.5" />
                 </a>
               </div>
-
-              {/* Day / Evening Toggle Switch (Vertix Signature) */}
-              <button
-                type="button"
-                onClick={toggleEvening}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/5 dark:bg-white/10 border border-black/10 dark:border-white/15 cursor-pointer font-mono-tech text-xs transition-all hover:scale-105"
-                title="Toggle Daytime / Evening Ambient Lighting"
-              >
-                <span>{isEvening ? 'Evening' : 'Daylight'}</span>
-                <div
-                  className={`w-7 h-4 rounded-full p-0.5 flex items-center transition-colors ${
-                    isEvening ? 'bg-emerald-600 justify-end' : 'bg-slate-300 justify-start'
-                  }`}
-                >
-                  <div className="w-3 h-3 rounded-full bg-white shadow-sm" />
-                </div>
-              </button>
             </div>
           </div>
         </div>
