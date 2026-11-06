@@ -281,3 +281,135 @@ input[type="range"].scrubber::-webkit-slider-thumb {
   box-shadow: 0 30px 80px -15px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.05);
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
 }
+
+/* ============================================================
+   GLOBAL NEXT-GEN FROSTED GLASS ECOSYSTEM (ALL SECTIONS)
+   ============================================================ */
+
+.frosted-canvas {
+  background-color: #070F0A;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(42, 138, 86, 0.25) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 10% 30%, rgba(212, 82, 26, 0.15) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 50% at 90% 70%, rgba(200, 151, 58, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 60% at 50% 120%, rgba(26, 92, 56, 0.2) 0%, transparent 65%);
+  color: #F2EBE1;
+  position: relative;
+}
+
+/* Master frosted glass card */
+.frosted-card {
+  background: rgba(18, 35, 24, 0.48);
+  backdrop-filter: blur(40px) saturate(190%);
+  -webkit-backdrop-filter: blur(40px) saturate(190%);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  border-top-color: rgba(255, 255, 255, 0.28);
+  border-left-color: rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 25px 60px -15px rgba(0, 0, 0, 0.6),
+    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -1px 2px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 28px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.frosted-card:hover {
+  border-color: rgba(74, 173, 116, 0.4);
+  border-top-color: rgba(255, 255, 255, 0.45);
+  box-shadow:
+    0 35px 80px -15px rgba(0, 0, 0, 0.75),
+    0 0 30px rgba(42, 138, 86, 0.15),
+    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Subtle glass sheen */
+.frosted-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  pointer-events: none;
+}
+
+/* Inset frosted sub-card */
+.frosted-subcard {
+  background: rgba(10, 22, 15, 0.55);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+}
+
+/* Frosted pill badge / button */
+.frosted-pill {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+}
+
+.frosted-pill:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(74, 173, 116, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Frosted primary button */
+.btn-frosted-primary {
+  background: linear-gradient(135deg, rgba(212, 82, 26, 0.95), rgba(168, 52, 21, 0.95));
+  backdrop-filter: blur(16px);
+  color: #FFFFFF;
+  border-radius: 9999px;
+  padding: 13px 28px;
+  font-weight: 700;
+  font-size: 14px;
+  box-shadow:
+    0 12px 30px rgba(212, 82, 26, 0.45),
+    inset 0 1px 1px rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-frosted-primary:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 16px 40px rgba(212, 82, 26, 0.6),
+    inset 0 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+/* Frosted secondary button */
+.btn-frosted-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(24px);
+  color: #FFFFFF;
+  border-radius: 9999px;
+  padding: 13px 28px;
+  font-weight: 600;
+  font-size: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-frosted-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(74, 173, 116, 0.5);
+  transform: translateY(-1px);
+}

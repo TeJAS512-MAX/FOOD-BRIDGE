@@ -135,11 +135,11 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
       ===================================================================== */}
       <section
         id="how-it-works"
-        className="relative py-24 lg:py-32 bg-[#172B1E] text-[#F2EBE1] bg-grain-dark overflow-hidden"
+        className="relative py-24 lg:py-32 frosted-card text-[#F2EBE1] bg-grain-dark overflow-hidden"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-12 border-b border-[rgba(74,173,116,0.2)]">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-12 border-b border-white/10">
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#2A8A56]/15 border border-emerald-500/30 text-[#4AAD74] text-xs font-mono-tech uppercase tracking-widest mb-4">
                 <Clock className="w-3.5 h-3.5" />
@@ -170,14 +170,14 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                   className={`rounded-3xl p-6 sm:p-8 cursor-pointer transition-all border ${
                     isActive
                       ? 'bg-[#1E3828]/90 border-emerald-500 shadow-2xl scale-102 ring-2 ring-emerald-500/20'
-                      : 'bg-[#172B1E]/60 border-[rgba(74,173,116,0.2)] hover:border-[rgba(74,173,116,0.18)] hover:bg-[#1E3828]/40'
+                      : 'frosted-card/60 border-white/10 hover:border-[rgba(74,173,116,0.18)] hover:bg-[#1E3828]/40'
                   }`}
                 >
-                  <div className="flex items-center justify-between pb-6 border-b border-[rgba(74,173,116,0.2)]">
+                  <div className="flex items-center justify-between pb-6 border-b border-white/10">
                     <span className="font-mono-tech text-3xl font-bold text-white">
                       {st.stepNumber}
                     </span>
-                    <span className="px-3 py-1 rounded-full bg-[#0F1E14] text-[#4AAD74] font-mono-tech text-xs uppercase font-semibold border border-[rgba(74,173,116,0.2)]">
+                    <span className="px-3 py-1 rounded-full bg-[#0F1E14] text-[#4AAD74] font-mono-tech text-xs uppercase font-semibold border border-white/10">
                       {st.duration}
                     </span>
                   </div>
@@ -195,7 +195,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                   </div>
 
                   {/* Checklist */}
-                  <div className="mt-6 pt-6 border-t border-[rgba(74,173,116,0.2)]/80 space-y-2">
+                  <div className="mt-6 pt-6 border-t border-white/10/80 space-y-2">
                     {st.previewChecklist.map((item, i) => (
                       <div key={i} className="flex items-start gap-2.5 text-xs text-[#C4B9AC]">
                         <CheckCircle2 className="w-3.5 h-3.5 text-[#4AAD74] shrink-0 mt-0.5" />
@@ -209,8 +209,8 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
           </div>
 
           {/* Step Detail Spotlight Console */}
-          <div className="mt-12 rounded-[36px] bg-[#0F1E14] border border-[rgba(74,173,116,0.2)] p-6 sm:p-10 shadow-2xl">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[rgba(74,173,116,0.2)]">
+          <div className="mt-12 rounded-[36px] bg-[#0F1E14] border border-white/10 p-6 sm:p-10 shadow-2xl">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-2xl bg-[#2A8A56]/15 text-[#4AAD74] flex items-center justify-center font-bold">
                   {steps[activeStep].stepNumber}
@@ -241,7 +241,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
             {/* Metrics Triad for Active Step */}
             <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
               {steps[activeStep].previewMetrics.map((met, i) => (
-                <div key={i} className="rounded-2xl bg-[#172B1E] border border-[rgba(74,173,116,0.2)] p-4 space-y-1">
+                <div key={i} className="rounded-2xl frosted-card border border-white/10 p-4 space-y-1">
                   <div className="text-xs font-mono-tech text-[#9E8E7A] uppercase">{met.label}</div>
                   <div className="text-xl font-mono-tech font-bold text-white">{met.value}</div>
                 </div>
@@ -256,22 +256,22 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
       ===================================================================== */}
       <section
         id="features"
-        className="relative py-24 lg:py-32 bg-[#FAF6F1] text-[#1A1208] bg-grain overflow-hidden"
+        className="relative py-24 lg:py-32 text-[#F2EBE1] relative overflow-hidden"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-12 border-b border-[rgba(26,18,8,0.1)]">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-12 border-b border-white/10">
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E8661F]/10 border border-orange-500/20 text-[#A83415] text-xs font-mono-tech uppercase tracking-widest mb-4 font-semibold">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>04 • KEY CAPABILITIES: ENGINEERED FOR SPEED & DIGNITY</span>
               </div>
-              <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.06] text-[#1A1208]">
+              <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.06] text-white">
                 Four pillars powering the{' '}
                 <span className="italic font-normal text-[#206B42]">Zero-Waste Mesh.</span>
               </h2>
             </div>
-            <p className="text-base text-[#4A3B2A] max-w-md leading-relaxed">
+            <p className="text-base text-slate-300 max-w-md leading-relaxed">
               From camera-based AI portion recognition to cold-chain EV fleet coordination and community-driven neighborhood fridges.
             </p>
           </div>
@@ -279,7 +279,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
           {/* Bento Grid Layout */}
           <div className="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-6">
             {/* Feature 1 (7 Cols): Interactive AI Food Tray Scanner with Real Food Photo */}
-            <div className="lg:col-span-7 rounded-[36px] bg-[#FFFFFF] border border-[rgba(26,18,8,0.1)] p-6 sm:p-8 shadow-xl flex flex-col justify-between space-y-6">
+            <div className="lg:col-span-7 rounded-[36px] frosted-card border border-white/10 p-6 sm:p-8 shadow-xl flex flex-col justify-between space-y-6">
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FEF0E6] text-orange-800 font-mono-tech text-xs uppercase font-semibold">
@@ -291,10 +291,10 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                   </span>
                 </div>
 
-                <h3 className="font-serif-display text-2xl sm:text-3xl font-bold text-[#1A1208]">
+                <h3 className="font-serif-display text-2xl sm:text-3xl font-bold text-white">
                   Snap a photo. AI estimates weight, portions & safe shelf-life in seconds.
                 </h3>
-                <p className="text-sm text-[#4A3B2A] leading-relaxed">
+                <p className="text-sm text-slate-300 leading-relaxed">
                   Trained on 40,000+ catering tray images, our vision model recognizes dish types,
                   estimates mass via volumetric depth, and tags allergens.
                 </p>
@@ -312,8 +312,8 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                     }}
                     className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer border ${
                       selectedPreset.id === pr.id
-                        ? 'bg-[#172B1E] text-white border-slate-900 shadow-md scale-102'
-                        : 'bg-[#F2EBE1] text-[#4A3B2A] border-[rgba(26,18,8,0.1)] hover:bg-slate-200'
+                        ? 'frosted-card text-white border-slate-900 shadow-md scale-102'
+                        : 'frosted-subcard text-slate-300 border-white/10 hover:bg-slate-200'
                     }`}
                   >
                     {pr.title.split(' ')[0]} {pr.title.split(' ')[1]}
@@ -322,7 +322,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
               </div>
 
               {/* Realistic Scanner Viewport with Real Image & Bounding Boxes */}
-              <div className="relative h-64 sm:h-72 rounded-2xl overflow-hidden border border-[rgba(26,18,8,0.1)] shadow-inner group">
+              <div className="relative h-64 sm:h-72 rounded-2xl overflow-hidden border border-white/10 shadow-inner group">
                 <img
                   src={selectedPreset.imageUrl}
                   alt={selectedPreset.title}
@@ -336,12 +336,12 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                     <span className="bg-[#1A5C38] text-white text-[10px] font-mono-tech font-bold px-2 py-0.5 rounded-md">
                       AI DETECTED • {selectedPreset.tempChain}
                     </span>
-                    <span className="bg-[#172B1E]/80 backdrop-blur-md text-[#7DC99A] text-[10px] font-mono-tech px-2 py-0.5 rounded-md">
+                    <span className="frosted-card/80 backdrop-blur-md text-[#7DC99A] text-[10px] font-mono-tech px-2 py-0.5 rounded-md">
                       VOLUMETRIC: {selectedPreset.weightKg} KG
                     </span>
                   </div>
                   <div className="flex items-center justify-between text-white text-xs font-mono-tech">
-                    <span className="bg-[#172B1E]/80 backdrop-blur-md px-2 py-1 rounded-md">
+                    <span className="frosted-card/80 backdrop-blur-md px-2 py-1 rounded-md">
                       {selectedPreset.source}
                     </span>
                     <span className="bg-[#D4521A] text-white font-bold px-2.5 py-1 rounded-md">
@@ -354,8 +354,8 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
               {/* Detected Items breakdown */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs">
                 {selectedPreset.itemsDetected.map((it, i) => (
-                  <div key={i} className="p-3 rounded-xl bg-[#FAF6F1] border border-[rgba(26,18,8,0.1)]/80 space-y-0.5">
-                    <div className="font-semibold text-[#1A1208] truncate">{it.name}</div>
+                  <div key={i} className="p-3 rounded-xl bg-[#FAF6F1] border border-white/10/80 space-y-0.5">
+                    <div className="font-semibold text-white truncate">{it.name}</div>
                     <div className="font-mono-tech text-[#7A6855] text-[11px]">{it.weight} • {it.allergen}</div>
                   </div>
                 ))}
@@ -367,7 +367,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                   sound.click();
                   onOpenDonateModal();
                 }}
-                className="w-full py-3.5 rounded-full bg-[#172B1E] hover:bg-[#1E3828] text-white font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 cursor-pointer shadow-md transition-all"
+                className="w-full py-3.5 rounded-full frosted-card hover:bg-[#1E3828] text-white font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 cursor-pointer shadow-md transition-all"
               >
                 <span>Dispatch This {selectedPreset.weightKg} kg Preset</span>
                 <Navigation className="w-4 h-4 text-[#4AAD74]" />
@@ -375,16 +375,16 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
             </div>
 
             {/* Feature 2 (5 Cols): NGO Partnerships & Direct Capacity Sync */}
-            <div className="lg:col-span-5 rounded-[36px] bg-[#FFFFFF] border border-[rgba(26,18,8,0.1)] p-6 sm:p-8 shadow-xl flex flex-col justify-between space-y-6">
+            <div className="lg:col-span-5 rounded-[36px] frosted-card border border-white/10 p-6 sm:p-8 shadow-xl flex flex-col justify-between space-y-6">
               <div className="space-y-3">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E6F7EC] text-emerald-800 font-mono-tech text-xs uppercase font-semibold">
                   <ShieldCheck className="w-3.5 h-3.5 text-[#206B42]" />
                   <span>FEATURE 02 • VERIFIED NGO PARTNERSHIPS</span>
                 </div>
-                <h3 className="font-serif-display text-2xl sm:text-3xl font-bold text-[#1A1208]">
+                <h3 className="font-serif-display text-2xl sm:text-3xl font-bold text-white">
                   Pre-verified shelters with real-time dining capacity sync.
                 </h3>
-                <p className="text-sm text-[#4A3B2A] leading-relaxed">
+                <p className="text-sm text-slate-300 leading-relaxed">
                   Every partner NGO undergoes physical kitchen hygiene audits and 80G tax registration verification.
                 </p>
               </div>
@@ -417,7 +417,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                 </div>
               </div>
 
-              <div className="space-y-2 text-xs text-[#4A3B2A]">
+              <div className="space-y-2 text-xs text-slate-300">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-[#206B42] shrink-0" />
                   <span>100% Free delivery to all shelter partners</span>
@@ -441,37 +441,37 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
             </div>
 
             {/* Feature 3 (5 Cols): Sub-38m Pickup & EV Fleet Coordination */}
-            <div className="lg:col-span-5 rounded-[36px] bg-[#FFFFFF] border border-[rgba(26,18,8,0.1)] p-6 sm:p-8 shadow-xl flex flex-col justify-between space-y-6">
+            <div className="lg:col-span-5 rounded-[36px] frosted-card border border-white/10 p-6 sm:p-8 shadow-xl flex flex-col justify-between space-y-6">
               <div className="space-y-3">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-100 text-sky-800 font-mono-tech text-xs uppercase font-semibold">
                   <Bike className="w-3.5 h-3.5 text-sky-600" />
                   <span>FEATURE 03 • GREEN EV FLEET & PICKUP</span>
                 </div>
-                <h3 className="font-serif-display text-2xl sm:text-3xl font-bold text-[#1A1208]">
+                <h3 className="font-serif-display text-2xl sm:text-3xl font-bold text-white">
                   Zero-emission EV vans and cyclists with dual thermal crates.
                 </h3>
-                <p className="text-sm text-[#4A3B2A] leading-relaxed">
+                <p className="text-sm text-slate-300 leading-relaxed">
                   Our dispatch algorithm batches nearby pickups into optimized urban corridors,
                   keeping hot food above 63°C and salads crisp below 5°C.
                 </p>
               </div>
 
               {/* Fleet status card */}
-              <div className="rounded-2xl bg-[#FAF6F1] border border-[rgba(26,18,8,0.1)] p-4 space-y-2.5">
+              <div className="rounded-2xl bg-[#FAF6F1] border border-white/10 p-4 space-y-2.5">
                 <div className="flex items-center justify-between text-xs font-mono-tech">
                   <span className="text-[#7A6855] uppercase">ACTIVE GREEN FLEET</span>
                   <span className="text-[#206B42] font-bold">14 RIDERS EN ROUTE</span>
                 </div>
                 <div className="grid grid-cols-3 gap-2 text-center">
-                  <div className="p-2 rounded-xl bg-[#FFFFFF] border border-[rgba(26,18,8,0.1)]">
-                    <div className="font-mono-tech font-bold text-[#1A1208]">38m</div>
+                  <div className="p-2 rounded-xl frosted-card border border-white/10">
+                    <div className="font-mono-tech font-bold text-white">38m</div>
                     <div className="text-[10px] text-[#7A6855]">Avg Speed</div>
                   </div>
-                  <div className="p-2 rounded-xl bg-[#FFFFFF] border border-[rgba(26,18,8,0.1)]">
+                  <div className="p-2 rounded-xl frosted-card border border-white/10">
                     <div className="font-mono-tech font-bold text-[#206B42]">0.0g</div>
                     <div className="text-[10px] text-[#7A6855]">Fleet CO₂</div>
                   </div>
-                  <div className="p-2 rounded-xl bg-[#FFFFFF] border border-[rgba(26,18,8,0.1)]">
+                  <div className="p-2 rounded-xl frosted-card border border-white/10">
                     <div className="font-mono-tech font-bold text-[#D4521A]">99.4%</div>
                     <div className="text-[10px] text-[#7A6855]">Thermal Pass</div>
                   </div>
@@ -479,7 +479,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
               </div>
 
               <div className="flex items-center justify-between pt-2">
-                <span className="text-xs text-[#4A3B2A] font-medium">
+                <span className="text-xs text-slate-300 font-medium">
                   {pledgedHeroCount.toLocaleString()} Civic Heroes Pledged
                 </span>
                 <button
@@ -488,7 +488,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                   className={`px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer ${
                     hasPledgedQuick
                       ? 'bg-[#E6F7EC] text-[#1A5C38]'
-                      : 'bg-[#172B1E] text-white hover:bg-[#1E3828]'
+                      : 'frosted-card text-white hover:bg-[#1E3828]'
                   }`}
                 >
                   {hasPledgedQuick ? '✓ Pledged Hero!' : '+ Pledge as Volunteer'}
@@ -497,7 +497,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
             </div>
 
             {/* Feature 4 (7 Cols): Community Participation & 24/7 Smart Fridges */}
-            <div className="lg:col-span-7 rounded-[36px] bg-[#FFFFFF] border border-[rgba(26,18,8,0.1)] p-6 sm:p-8 shadow-xl flex flex-col justify-between space-y-6">
+            <div className="lg:col-span-7 rounded-[36px] frosted-card border border-white/10 p-6 sm:p-8 shadow-xl flex flex-col justify-between space-y-6">
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E6F7EC] text-emerald-800 font-mono-tech text-xs uppercase font-semibold">
@@ -516,8 +516,8 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                         }}
                         className={`px-2.5 py-1 rounded-lg text-[11px] font-mono-tech transition-all cursor-pointer ${
                           selectedZone === z
-                            ? 'bg-[#172B1E] text-white font-bold'
-                            : 'bg-[#F2EBE1] text-[#4A3B2A] hover:bg-slate-200'
+                            ? 'frosted-card text-white font-bold'
+                            : 'frosted-subcard text-slate-300 hover:bg-slate-200'
                         }`}
                       >
                         {z}
@@ -526,17 +526,17 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                   </div>
                 </div>
 
-                <h3 className="font-serif-display text-2xl sm:text-3xl font-bold text-[#1A1208]">
+                <h3 className="font-serif-display text-2xl sm:text-3xl font-bold text-white">
                   24/7 Smart Neighborhood Community Fridges for household surplus.
                 </h3>
-                <p className="text-sm text-[#4A3B2A] leading-relaxed">
+                <p className="text-sm text-slate-300 leading-relaxed">
                   Apartments and households can donate surplus packaged meals to community fridges monitored by local volunteer ward captains.
                 </p>
               </div>
 
               {/* Dynamic Zone Telemetry Grid */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                <div className="p-3.5 rounded-2xl bg-[#FAF6F1] border border-[rgba(26,18,8,0.1)] text-center">
+                <div className="p-3.5 rounded-2xl bg-[#FAF6F1] border border-white/10 text-center">
                   <div className="font-mono-tech text-xl font-bold text-[#206B42]">
                     {zoneData[selectedZone].activeFridges}
                   </div>
@@ -545,8 +545,8 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                   </div>
                 </div>
 
-                <div className="p-3.5 rounded-2xl bg-[#FAF6F1] border border-[rgba(26,18,8,0.1)] text-center">
-                  <div className="font-mono-tech text-xl font-bold text-[#1A1208]">
+                <div className="p-3.5 rounded-2xl bg-[#FAF6F1] border border-white/10 text-center">
+                  <div className="font-mono-tech text-xl font-bold text-white">
                     {zoneData[selectedZone].dailyMeals}
                   </div>
                   <div className="text-[10px] font-mono-tech text-[#7A6855] uppercase mt-0.5">
@@ -554,7 +554,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                   </div>
                 </div>
 
-                <div className="p-3.5 rounded-2xl bg-[#FAF6F1] border border-[rgba(26,18,8,0.1)] text-center">
+                <div className="p-3.5 rounded-2xl bg-[#FAF6F1] border border-white/10 text-center">
                   <div className="font-mono-tech text-xl font-bold text-[#D4521A]">
                     {zoneData[selectedZone].verifiedShelters}
                   </div>
@@ -563,7 +563,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                   </div>
                 </div>
 
-                <div className="p-3.5 rounded-2xl bg-[#FAF6F1] border border-[rgba(26,18,8,0.1)] text-center">
+                <div className="p-3.5 rounded-2xl bg-[#FAF6F1] border border-white/10 text-center">
                   <div className="font-mono-tech text-xl font-bold text-sky-600">
                     {zoneData[selectedZone].openVolunteers}
                   </div>
@@ -574,7 +574,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
               </div>
 
               <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
-                <span className="text-xs text-[#4A3B2A]">
+                <span className="text-xs text-slate-300">
                   Want to sponsor or adopt a Community Fridge in {selectedZone}?
                 </span>
                 {onOpenPledgeModal && (
@@ -584,7 +584,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                       sound.click();
                       onOpenPledgeModal();
                     }}
-                    className="px-5 py-2.5 rounded-full bg-[#172B1E] hover:bg-[#1E3828] text-white text-xs font-semibold transition-all cursor-pointer shadow-sm"
+                    className="px-5 py-2.5 rounded-full frosted-card hover:bg-[#1E3828] text-white text-xs font-semibold transition-all cursor-pointer shadow-sm"
                   >
                     Adopt a Fridge Ward
                   </button>

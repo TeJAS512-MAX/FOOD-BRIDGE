@@ -42,7 +42,7 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
   return (
     <section
       id="impact"
-      className="relative py-24 lg:py-32 bg-[#0F1E14] text-[#F2EBE1] bg-grain-dark overflow-hidden"
+      className="relative py-24 lg:py-32 text-[#F2EBE1] relative overflow-hidden"
     >
       {/* Decorative Glows */}
       <div className="pointer-events-none absolute -top-24 right-1/4 w-96 h-96 rounded-full bg-[#2A8A56]/15 blur-3xl" />
@@ -50,7 +50,7 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-12 border-b border-[rgba(74,173,116,0.2)]">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-12 border-b border-white/10">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#2A8A56]/15 border border-emerald-500/30 text-[#4AAD74] text-xs font-mono-tech uppercase tracking-widest mb-4">
               <BarChart3 className="w-3.5 h-3.5" />
@@ -103,7 +103,7 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
           ].map((stat, idx) => (
             <div
               key={idx}
-              className={`rounded-3xl bg-[#172B1E]/80 border ${stat.border} p-6 space-y-2 shadow-xl hover:scale-102 transition-transform`}
+              className={`rounded-3xl frosted-card border ${stat.border} p-6 space-y-2 shadow-xl hover:scale-102 transition-transform`}
             >
               <div className="text-xs font-mono-tech text-[#9E8E7A] uppercase tracking-wider">
                 {stat.label}
@@ -120,7 +120,7 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
         </div>
 
         {/* Dynamic Interactive Impact Calculator Studio */}
-        <div className="mt-12 rounded-[36px] bg-[#172B1E] border border-[rgba(74,173,116,0.2)] p-6 sm:p-12 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div className="mt-12 rounded-[36px] frosted-card border border-white/10 p-6 sm:p-12 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           {/* Left 6 Columns: Interactive Controls */}
           <div className="lg:col-span-6 space-y-7">
             <div className="space-y-2">
@@ -226,8 +226,8 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
 
           {/* Right 6 Columns: Realistic Computed Impact Ledger */}
           <div className="lg:col-span-6 space-y-6">
-            <div className="rounded-3xl bg-[#0F1E14] border border-[rgba(74,173,116,0.2)] p-6 sm:p-8 space-y-6 shadow-xl">
-              <div className="flex items-center justify-between border-b border-[rgba(74,173,116,0.2)] pb-4">
+            <div className="rounded-3xl frosted-subcard border border-white/10 p-6 sm:p-8 space-y-6 shadow-xl">
+              <div className="flex items-center justify-between border-b border-white/10 pb-4">
                 <div>
                   <div className="text-xs font-mono-tech text-[#4AAD74] uppercase font-semibold">
                     ESTIMATED LIFETIME IMPACT
@@ -236,14 +236,14 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
                     {totalKg.toLocaleString()} kg Total Rescued
                   </div>
                 </div>
-                <div className="px-3 py-1 rounded-full bg-[#172B1E] border border-[rgba(74,173,116,0.2)] text-xs font-mono-tech text-[#9E8E7A]">
+                <div className="px-3 py-1 rounded-full frosted-card border border-white/10 text-xs font-mono-tech text-[#9E8E7A]">
                   {frequency.toUpperCase()} CADENCE
                 </div>
               </div>
 
               {/* 4 Computed Result Cards */}
               <div className="grid grid-cols-2 gap-3.5">
-                <div className="rounded-2xl bg-[#172B1E] border border-[rgba(74,173,116,0.2)] p-4 space-y-1">
+                <div className="rounded-2xl frosted-card border border-white/10 p-4 space-y-1">
                   <div className="flex items-center gap-1.5 text-xs font-mono-tech text-[#4AAD74] uppercase">
                     <Utensils className="w-3.5 h-3.5" />
                     Hot Meals Fed
@@ -254,7 +254,7 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
                   <div className="text-[10px] text-[#7A6855]">400g nutritious servings</div>
                 </div>
 
-                <div className="rounded-2xl bg-[#172B1E] border border-[rgba(74,173,116,0.2)] p-4 space-y-1">
+                <div className="rounded-2xl frosted-card border border-white/10 p-4 space-y-1">
                   <div className="flex items-center gap-1.5 text-xs font-mono-tech text-[#F28240] uppercase">
                     <Flame className="w-3.5 h-3.5" />
                     CO₂e Methane Saved
@@ -265,7 +265,7 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
                   <div className="text-[10px] text-[#7A6855]">Landfill diversion</div>
                 </div>
 
-                <div className="rounded-2xl bg-[#172B1E] border border-[rgba(74,173,116,0.2)] p-4 space-y-1">
+                <div className="rounded-2xl frosted-card border border-white/10 p-4 space-y-1">
                   <div className="flex items-center gap-1.5 text-xs font-mono-tech text-sky-400 uppercase">
                     <Droplets className="w-3.5 h-3.5" />
                     Water Saved
@@ -276,7 +276,7 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
                   <div className="text-[10px] text-[#7A6855]">Agricultural footprint</div>
                 </div>
 
-                <div className="rounded-2xl bg-[#172B1E] border border-[rgba(74,173,116,0.2)] p-4 space-y-1">
+                <div className="rounded-2xl frosted-card border border-white/10 p-4 space-y-1">
                   <div className="flex items-center gap-1.5 text-xs font-mono-tech text-[#4AAD74] uppercase">
                     <Leaf className="w-3.5 h-3.5" />
                     Trees Equivalent

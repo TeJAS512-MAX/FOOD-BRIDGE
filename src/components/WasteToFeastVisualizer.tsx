@@ -22,9 +22,9 @@ export const WasteToFeastVisualizer: React.FC = () => {
   };
 
   return (
-    <div className="rounded-[32px] bg-[#172B1E] border border-[rgba(74,173,116,0.2)] text-[#F2EBE1] p-6 sm:p-8 shadow-2xl overflow-hidden relative">
+    <div className="frosted-card text-[#F2EBE1] p-6 sm:p-8 relative">
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[rgba(74,173,116,0.2)]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E8661F]/20 border border-orange-500/30 text-[#F28240] text-xs font-mono-tech uppercase tracking-wider mb-2">
             <ArrowLeftRight className="w-3.5 h-3.5" />

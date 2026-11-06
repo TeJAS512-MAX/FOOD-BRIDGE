@@ -78,17 +78,17 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
       ===================================================================== */}
       <section
         id="stories"
-        className="relative py-24 lg:py-32 bg-[#FAF6F1] text-[#1A1208] bg-grain overflow-hidden"
+        className="relative py-24 lg:py-32 text-[#F2EBE1] relative overflow-hidden"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-12 border-b border-[rgba(26,18,8,0.1)]">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-12 border-b border-white/10">
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E6F7EC] border border-[rgba(26,92,56,0.2)] text-emerald-800 text-xs font-mono-tech uppercase tracking-widest mb-4 font-semibold">
                 <Quote className="w-3.5 h-3.5 text-[#206B42]" />
                 <span>06 • COMMUNITY VOICES: HUMAN DIGNITY AT EVERY TABLE</span>
               </div>
-              <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.06] text-[#1A1208]">
+              <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.06] text-white">
                 Stories from the chefs, shelters, and riders{' '}
                 <span className="italic font-normal text-[#206B42]">bridging the gap.</span>
               </h2>
@@ -107,8 +107,8 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                   }}
                   className={`px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer border ${
                     selectedStory.id === story.id
-                      ? 'bg-[#172B1E] text-white border-slate-900 shadow-md scale-102 ring-2 ring-emerald-500/20'
-                      : 'bg-[#FFFFFF] text-[#4A3B2A] border-[rgba(26,18,8,0.1)] hover:bg-[#F2EBE1] hover:text-[#1A1208]'
+                      ? 'frosted-card text-white border-slate-900 shadow-md scale-102 ring-2 ring-emerald-500/20'
+                      : 'frosted-card text-slate-300 border-white/10 hover:frosted-subcard hover:text-white'
                   }`}
                 >
                   {story.role}
@@ -118,10 +118,10 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
           </div>
 
           {/* Active Story Spotlight Card with Real Persona Image */}
-          <div className="mt-12 rounded-[36px] bg-[#FFFFFF] border border-[rgba(26,18,8,0.1)]/90 p-8 sm:p-12 shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div className="mt-12 rounded-[36px] frosted-card border border-white/10/90 p-8 sm:p-12 shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             {/* Left 5 Cols: Persona Visual & Audio Card */}
             <div className="lg:col-span-5 space-y-4">
-              <div className="rounded-3xl overflow-hidden border border-[rgba(26,18,8,0.1)] shadow-lg relative group">
+              <div className="rounded-3xl overflow-hidden border border-white/10 shadow-lg relative group">
                 <img
                   src={selectedStory.imageUrl}
                   alt={selectedStory.name}
@@ -141,17 +141,17 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
               </div>
 
               {/* Simulated Audio Note Player */}
-              <div className="rounded-2xl bg-[#FAF6F1] border border-[rgba(26,18,8,0.1)] p-4 flex items-center justify-between">
+              <div className="rounded-2xl bg-[#FAF6F1] border border-white/10 p-4 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <button
                     type="button"
                     onClick={toggleAudioSim}
-                    className="w-10 h-10 rounded-full bg-[#172B1E] hover:bg-[#1A5C38] text-white flex items-center justify-center cursor-pointer transition-all shadow-md"
+                    className="w-10 h-10 rounded-full frosted-card hover:bg-[#1A5C38] text-white flex items-center justify-center cursor-pointer transition-all shadow-md"
                   >
                     <Play className="w-4 h-4 fill-current ml-0.5" />
                   </button>
                   <div>
-                    <div className="text-xs font-semibold text-[#1A1208] flex items-center gap-1.5">
+                    <div className="text-xs font-semibold text-white flex items-center gap-1.5">
                       <Volume2 className="w-3.5 h-3.5 text-[#206B42]" />
                       <span>{selectedStory.name.split(' ')[0]}’s Audio Memo</span>
                     </div>
@@ -181,26 +181,26 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
             <div className="lg:col-span-7 space-y-6">
               <Quote className="w-10 h-10 text-[#206B42]/40" />
 
-              <blockquote className="font-serif-display text-xl sm:text-2xl text-[#1A1208] italic leading-relaxed">
+              <blockquote className="font-serif-display text-xl sm:text-2xl text-white italic leading-relaxed">
                 “{selectedStory.quote}”
               </blockquote>
 
-              <p className="text-sm sm:text-base text-[#4A3B2A] leading-relaxed">
+              <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
                 {selectedStory.storyDetail}
               </p>
 
               {/* Story Metrics Banner */}
               <div className="grid grid-cols-2 gap-4 pt-2">
-                <div className="p-4 rounded-2xl bg-[#FAF6F1] border border-[rgba(26,18,8,0.1)] space-y-1">
+                <div className="p-4 rounded-2xl bg-[#FAF6F1] border border-white/10 space-y-1">
                   <div className="font-mono-tech text-xs text-[#7A6855] uppercase">
                     {selectedStory.metricLabel}
                   </div>
-                  <div className="font-serif-display text-2xl sm:text-3xl font-bold text-[#1A1208]">
+                  <div className="font-serif-display text-2xl sm:text-3xl font-bold text-white">
                     {selectedStory.metricValue}
                   </div>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-[#FAF6F1] border border-[rgba(26,18,8,0.1)] space-y-1">
+                <div className="p-4 rounded-2xl bg-[#FAF6F1] border border-white/10 space-y-1">
                   <div className="font-mono-tech text-xs text-[#7A6855] uppercase">
                     ECOLOGICAL DIVERT
                   </div>
@@ -215,7 +215,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                 {selectedStory.tags.map((tg, i) => (
                   <span
                     key={i}
-                    className="px-3 py-1 rounded-full bg-[#F2EBE1] text-xs font-mono-tech text-[#4A3B2A]"
+                    className="px-3 py-1 rounded-full frosted-subcard text-xs font-mono-tech text-slate-300"
                   >
                     #{tg}
                   </span>
@@ -234,7 +234,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
       ===================================================================== */}
       <section
         id="cta"
-        className="relative py-24 lg:py-32 bg-[#0F1E14] text-[#F2EBE1] bg-grain-dark overflow-hidden"
+        className="relative py-24 lg:py-32 text-[#F2EBE1] relative overflow-hidden"
       >
         {/* Glows */}
         <div className="pointer-events-none absolute top-10 left-10 w-96 h-96 rounded-full bg-[#2A8A56]/15 blur-3xl" />
@@ -318,9 +318,9 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
 
             {/* Right 6 Columns: Interactive 1-Minute Action Console */}
             <div className="lg:col-span-6">
-              <div className="rounded-[36px] bg-[#172B1E] border border-[rgba(74,173,116,0.2)] p-6 sm:p-8 shadow-2xl space-y-6">
+              <div className="rounded-[36px] frosted-card border border-white/10 p-6 sm:p-8 shadow-2xl space-y-6">
                 {/* 3 Role Selection Tabs */}
-                <div className="flex rounded-2xl bg-[#0F1E14] p-1.5 border border-[rgba(74,173,116,0.2)]">
+                <div className="flex rounded-2xl frosted-subcard p-1.5 border border-white/10">
                   {[
                     { id: 'donate', label: 'Food Donor', icon: Building2 },
                     { id: 'ngo', label: 'NGO Shelter', icon: HeartHandshake },
@@ -372,7 +372,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                         }
                         value={orgName}
                         onChange={(e) => setOrgName(e.target.value)}
-                        className="w-full px-4 py-3 rounded-xl bg-[#0F1E14] border border-[rgba(74,173,116,0.2)] text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                        className="w-full px-4 py-3 rounded-xl frosted-subcard border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                       />
                     </div>
 
@@ -385,7 +385,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                         required
                         value={locationInput}
                         onChange={(e) => setLocationInput(e.target.value)}
-                        className="w-full px-4 py-3 rounded-xl bg-[#0F1E14] border border-[rgba(74,173,116,0.2)] text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                        className="w-full px-4 py-3 rounded-xl frosted-subcard border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                       />
                     </div>
 
@@ -402,7 +402,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                         required
                         value={quantityOrCapacity}
                         onChange={(e) => setQuantityOrCapacity(e.target.value)}
-                        className="w-full px-4 py-3 rounded-xl bg-[#0F1E14] border border-[rgba(74,173,116,0.2)] text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                        className="w-full px-4 py-3 rounded-xl frosted-subcard border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                       />
                     </div>
 
@@ -421,7 +421,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                     </button>
                   </form>
                 ) : (
-                  <div className="rounded-2xl bg-[#0F1E14] border border-emerald-500/40 p-5 space-y-4 text-center">
+                  <div className="rounded-2xl frosted-subcard border border-emerald-500/40 p-5 space-y-4 text-center">
                     <div className="w-12 h-12 rounded-full bg-[#2A8A56]/20 text-[#4AAD74] flex items-center justify-center mx-auto">
                       <CheckCircle2 className="w-6 h-6" />
                     </div>
@@ -437,7 +437,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                       </p>
                     </div>
 
-                    <div className="p-3 rounded-xl bg-[#172B1E] border border-[rgba(74,173,116,0.2)] text-xs font-mono-tech text-[#C4B9AC]">
+                    <div className="p-3 rounded-xl frosted-card border border-white/10 text-xs font-mono-tech text-[#C4B9AC]">
                       Dispatched to FoodBridge Central Dispatch Desk. SMS & WhatsApp confirmation sent.
                     </div>
 

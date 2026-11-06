@@ -46,10 +46,10 @@ export const LiveRouteTrackerModal: React.FC<LiveRouteTrackerModalProps> = ({ is
   const formattedTime = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0F1E14]/80 backdrop-blur-md animate-fadeIn">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-xl animate-fadeIn">
       <div className="relative w-full max-w-3xl rounded-[32px] bg-[#172B1E] text-[#F2EBE1] border border-[rgba(74,173,116,0.18)]/60 shadow-2xl overflow-hidden max-h-[92vh] flex flex-col">
         {/* Top Header */}
-        <div className="bg-[#0F1E14] px-6 sm:px-8 py-5 border-b border-[rgba(74,173,116,0.2)] flex items-center justify-between">
+        <div className="bg-[#0F1E14] px-6 sm:px-8 py-5 border-b border-white/10 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <span className="relative flex h-3 w-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4AAD74] opacity-75" />
@@ -79,7 +79,7 @@ export const LiveRouteTrackerModal: React.FC<LiveRouteTrackerModalProps> = ({ is
         {/* Modal Body */}
         <div className="p-6 sm:p-8 overflow-y-auto space-y-6">
           {/* Simulated Radar Map Viewport */}
-          <div className="relative h-64 sm:h-72 rounded-2xl bg-[#0F1E14] border border-[rgba(74,173,116,0.2)] overflow-hidden flex items-center justify-center">
+          <div className="relative h-64 sm:h-72 rounded-2xl bg-[#0F1E14] border border-white/10 overflow-hidden flex items-center justify-center">
             {/* Grid background lines */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:32px_32px] opacity-35" />
 
@@ -108,7 +108,7 @@ export const LiveRouteTrackerModal: React.FC<LiveRouteTrackerModalProps> = ({ is
                 style={{ width: `${progressPct}%` }}
               >
                 {/* Vehicle Pulse Icon */}
-                <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-8 h-8 rounded-full bg-[#2A8A56] text-[#1A1208] flex items-center justify-center shadow-[0_0_20px_#10B981] ring-4 ring-emerald-500/30">
+                <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-8 h-8 rounded-full bg-[#2A8A56] text-white flex items-center justify-center shadow-[0_0_20px_#10B981] ring-4 ring-emerald-500/30">
                   <Navigation2 className="w-4 h-4 fill-current rotate-90" />
                 </div>
               </div>
