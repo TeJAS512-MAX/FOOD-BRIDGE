@@ -22,6 +22,8 @@ import {
   X,
 } from 'lucide-react';
 import { TICKER_EVENTS } from './data/foodBridgeData';
+import { HeroGlassmorphism } from './components/HeroGlassmorphism';
+import { CodeShowcaseSection } from './components/CodeShowcaseSection';
 import { ProblemSolutionSection } from './components/ProblemSolutionSection';
 import { WorkflowAndFeaturesSection } from './components/WorkflowAndFeaturesSection';
 import { ImpactCalculatorSection } from './components/ImpactCalculatorSection';
@@ -218,213 +220,16 @@ export function App() {
       <main className="flex-1">
 
         {/* ================================================================
-            SECTION 1 · HERO
-            Compelling headline + supporting message + strong CTAs
+            SECTION 1 · HERO (LIQUID FROSTED GLASS & 3D SCULPTURAL DEPTH)
+            Inspired by Vertix Liquid Glassmorphism & Sculptural Typography
         ================================================================ */}
-        <section id="hero" className="relative pt-12 pb-24 lg:pt-16 lg:pb-32 bg-grain bg-hero-radial overflow-hidden">
-          {/* Decorative orbs */}
-          <div className="pointer-events-none absolute -top-20 -left-20 w-[500px] h-[500px] rounded-full opacity-30"
-            style={{ background: 'radial-gradient(circle, rgba(26,92,56,0.18) 0%, transparent 70%)' }} />
-          <div className="pointer-events-none absolute -bottom-20 -right-20 w-[400px] h-[400px] rounded-full opacity-25"
-            style={{ background: 'radial-gradient(circle, rgba(212,82,26,0.15) 0%, transparent 70%)' }} />
-
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-
-              {/* Left — Editorial copy */}
-              <div className="lg:col-span-6 space-y-6">
-                {/* Category badge */}
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full font-mono-tech text-xs font-bold uppercase tracking-widest"
-                  style={{ background: '#0F1E14', color: '#7DC99A', border: '1px solid rgba(74,173,116,0.25)' }}>
-                  <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" style={{ backgroundColor: '#4AAD74' }} />
-                  <span>Live Platform · Civic Food Rescue</span>
-                </div>
-
-                {/* Headline */}
-                <h1 className="font-serif-display text-5xl sm:text-6xl lg:text-[66px] font-semibold tracking-tight leading-[1.03]"
-                  style={{ color: '#1A1208' }}>
-                  Bridge the Gap Between{' '}
-                  <span className="italic font-normal" style={{ color: '#D4521A' }}>Surplus</span>
-                  {' '}and{' '}
-                  <span style={{ color: '#1A5C38', textDecoration: 'underline', textDecorationColor: 'rgba(26,92,56,0.35)', textUnderlineOffset: '8px' }}>
-                    Sustenance.
-                  </span>
-                </h1>
-
-                {/* Supporting message */}
-                <p className="text-base sm:text-lg leading-relaxed max-w-xl" style={{ color: '#4A3B2A' }}>
-                  Every day, restaurants, hotels, wedding banquets, and households generate
-                  wholesome surplus food while millions struggle for a regular meal.{' '}
-                  <strong style={{ color: '#1A1208' }}>FoodBridge</strong> uses AI routing and
-                  thermal-fleet coordination to rescue surplus and deliver it to verified NGOs in
-                  under <strong style={{ color: '#1A5C38' }}>38 minutes</strong>.
-                </p>
-
-                {/* Donor source pills */}
-                <div className="flex flex-wrap items-center gap-2 pt-1">
-                  {['🏨 Hotels & Banquets', '🍲 Restaurants', '🎉 Events & Weddings', '🏡 Households'].map((pill, i) => (
-                    <span key={i} className="px-3 py-1 rounded-full text-xs font-semibold"
-                      style={{ background: '#FFFFFF', border: '1px solid rgba(26,18,8,0.12)', color: '#4A3B2A', boxShadow: '0 1px 4px rgba(26,18,8,0.07)' }}>
-                      {pill}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Primary CTAs */}
-                <div className="pt-2 flex flex-wrap items-center gap-3.5">
-                  <button type="button" onClick={() => handleOpenDonateWithWeight(48)}
-                    className="px-7 py-4 rounded-full text-white font-bold text-sm sm:text-base flex items-center gap-2.5 cursor-pointer transition-all hover:opacity-90 hover:-translate-y-0.5"
-                    style={{ background: 'linear-gradient(135deg, #D4521A 0%, #A83415 100%)', boxShadow: '0 14px 36px rgba(212,82,26,0.42)' }}>
-                    <UtensilsCrossed className="w-4 h-4" />
-                    <span>Donate Surplus Food</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
-
-                  <button type="button" onClick={() => { sound.radar(); setLiveTrackerOpen(true); }}
-                    className="px-6 py-4 rounded-full font-semibold text-sm sm:text-base flex items-center gap-2 cursor-pointer transition-all hover:-translate-y-0.5"
-                    style={{ background: '#0F1E14', color: '#FFFFFF', boxShadow: '0 8px 24px rgba(15,30,20,0.3)' }}>
-                    <Radio className="w-4 h-4" style={{ color: '#4AAD74' }} />
-                    <span>Track Live GPS</span>
-                  </button>
-
-                  <button type="button" onClick={() => { sound.click(); setPledgeModalOpen(true); }}
-                    className="px-5 py-4 rounded-full font-semibold text-sm sm:text-base flex items-center gap-2 cursor-pointer transition-all hover:-translate-y-0.5"
-                    style={{ background: '#E6F7EC', color: '#1A5C38', border: '1.5px solid rgba(26,92,56,0.3)' }}>
-                    <Heart className="w-4 h-4 fill-current" />
-                    <span>Pledge 1 Meal</span>
-                  </button>
-                </div>
-
-                {/* Key metrics */}
-                <div className="pt-5 grid grid-cols-3 gap-4" style={{ borderTop: '1px solid rgba(26,18,8,0.1)' }}>
-                  <div>
-                    <div className="font-serif-display text-2xl sm:text-3xl font-bold" style={{ color: '#1A1208' }}>
-                      {totalMealsBridged.toLocaleString()}+
-                    </div>
-                    <div className="text-xs font-mono-tech uppercase mt-0.5" style={{ color: '#7A6855' }}>Hot Meals Served</div>
-                  </div>
-                  <div>
-                    <div className="font-serif-display text-2xl sm:text-3xl font-bold" style={{ color: '#1A5C38' }}>38 Min</div>
-                    <div className="text-xs font-mono-tech uppercase mt-0.5" style={{ color: '#7A6855' }}>Avg Pickup-to-Plate</div>
-                  </div>
-                  <div>
-                    <div className="font-serif-display text-2xl sm:text-3xl font-bold" style={{ color: '#D4521A' }}>86 T</div>
-                    <div className="text-xs font-mono-tech uppercase mt-0.5" style={{ color: '#7A6855' }}>CO₂e Saved</div>
-                  </div>
-                </div>
-
-                {/* Trust seals */}
-                <div className="pt-2 flex flex-wrap items-center gap-4 text-xs font-mono-tech">
-                  <div className="flex items-center gap-1.5" style={{ color: '#1A5C38' }}>
-                    <ShieldCheck className="w-4 h-4" />
-                    <span>FSSAI Food Recovery Audited</span>
-                  </div>
-                  <div className="flex items-center gap-1.5" style={{ color: '#C8973A' }}>
-                    <Award className="w-4 h-4" />
-                    <span>UN SDG 2 & 12.3 Aligned</span>
-                  </div>
-                  <div className="flex items-center gap-1.5" style={{ color: '#7A6855' }}>
-                    <CheckCircle2 className="w-4 h-4" />
-                    <span>Good Samaritan Protected</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right — Realistic photo hero */}
-              <div className="lg:col-span-6 relative">
-                <div className="relative h-[520px] lg:h-[580px]" style={{ perspective: '1200px' }}>
-
-                  {/* Background card — banquet hall */}
-                  <div className="absolute top-6 right-0 w-[86%] h-[70%] rounded-3xl overflow-hidden"
-                    style={{
-                      transform: 'rotateY(-6deg) rotateX(2deg) translateZ(-40px)',
-                      boxShadow: '0 30px 80px rgba(26,18,8,0.25)',
-                      border: '2px solid rgba(255,255,255,0.4)'
-                    }}>
-                    <img
-                      src="https://images.unsplash.com/photo-1555244162-803834f70033?w=900&q=85&auto=format&fit=crop"
-                      alt="Buffet spread at a hotel banquet"
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(15,30,20,0.8) 0%, rgba(15,30,20,0.1) 50%, transparent 100%)' }} />
-                    <div className="absolute bottom-4 left-5">
-                      <div className="text-xs font-mono-tech font-bold uppercase tracking-widest mb-1" style={{ color: '#4AAD74' }}>Donor · Source</div>
-                      <div className="text-sm font-semibold text-white">Grand Horizon Convention Hall · 48 kg ready</div>
-                    </div>
-                  </div>
-
-                  {/* Foreground card — NGO distribution */}
-                  <div className="absolute bottom-0 left-0 w-[74%] h-[62%] rounded-3xl overflow-hidden"
-                    style={{
-                      transform: 'rotateY(4deg) rotateX(-1deg) translateZ(0px)',
-                      boxShadow: '0 40px 100px rgba(26,18,8,0.35)',
-                      border: '2.5px solid rgba(255,255,255,0.7)'
-                    }}>
-                    <img
-                      src="https://images.unsplash.com/photo-1593113630400-ea4288922497?w=800&q=85&auto=format&fit=crop"
-                      alt="NGO volunteers distributing hot meals"
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(15,30,20,0.85) 0%, rgba(15,30,20,0.2) 60%, transparent 100%)' }} />
-                    <div className="absolute bottom-4 left-5">
-                      <div className="text-xs font-mono-tech font-bold uppercase tracking-widest mb-1" style={{ color: '#F28240' }}>Destination · NGO</div>
-                      <div className="text-sm font-semibold text-white">Asha Shelter NGO · 142 meals served today</div>
-                    </div>
-                  </div>
-
-                  {/* Live dispatch card */}
-                  <div className="absolute top-4 left-4 z-20 rounded-2xl px-4 py-3 min-w-[192px]"
-                    style={{ background: 'rgba(15,30,20,0.92)', backdropFilter: 'blur(16px)', border: '1px solid rgba(74,173,116,0.3)', boxShadow: '0 12px 40px rgba(15,30,20,0.4)' }}>
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: '#4AAD74' }} />
-                      <span className="font-mono-tech text-[10px] uppercase tracking-widest font-bold" style={{ color: '#4AAD74' }}>Live Dispatch</span>
-                    </div>
-                    <div className="text-white text-sm font-semibold">Van #9942 · En Route</div>
-                    <div className="text-xs mt-0.5" style={{ color: '#7DC99A' }}>ETA 12 min · Temp 4.2°C ✓</div>
-                    <div className="mt-2.5 w-full rounded-full h-1.5" style={{ background: 'rgba(255,255,255,0.15)' }}>
-                      <div className="h-1.5 rounded-full" style={{ width: '68%', background: 'linear-gradient(90deg, #4AAD74, #2A8A56)' }} />
-                    </div>
-                    <div className="font-mono-tech text-[10px] mt-1" style={{ color: '#7A6855' }}>Route 68% complete</div>
-                  </div>
-
-                  {/* FSSAI verified badge */}
-                  <div className="absolute top-4 right-4 z-20 rounded-2xl px-3 py-2 flex items-center gap-2.5"
-                    style={{ background: 'rgba(255,252,248,0.95)', backdropFilter: 'blur(16px)', border: '1px solid rgba(26,18,8,0.12)', boxShadow: '0 8px 24px rgba(26,18,8,0.1)' }}>
-                    <div className="w-7 h-7 rounded-full flex items-center justify-center" style={{ background: '#E6F7EC' }}>
-                      <ShieldCheck className="w-4 h-4" style={{ color: '#1A5C38' }} />
-                    </div>
-                    <div>
-                      <div className="text-[10px] font-mono-tech uppercase tracking-wider" style={{ color: '#7A6855' }}>AI Verified</div>
-                      <div className="text-xs font-bold" style={{ color: '#1A1208' }}>FSSAI Safe</div>
-                    </div>
-                  </div>
-
-                  {/* Bridge truck icon */}
-                  <div className="absolute top-[46%] left-[36%] z-10 w-11 h-11 rounded-full flex items-center justify-center"
-                    style={{ background: 'linear-gradient(135deg, #D4521A, #A83415)', boxShadow: '0 0 32px rgba(212,82,26,0.5)' }}>
-                    <Truck className="w-5 h-5 text-white" />
-                  </div>
-                </div>
-
-                {/* Below-image stats */}
-                <div className="mt-5 grid grid-cols-3 gap-3">
-                  {[
-                    { label: 'Active Vans', value: '24', unit: 'now live', color: '#1A5C38' },
-                    { label: 'Avg Delivery', value: '38', unit: 'minutes', color: '#D4521A' },
-                    { label: 'NGO Partners', value: '340+', unit: 'verified', color: '#C8973A' },
-                  ].map((s) => (
-                    <div key={s.label} className="rounded-2xl p-3 text-center"
-                      style={{ background: '#FFFFFF', border: '1px solid rgba(26,18,8,0.1)', boxShadow: '0 2px 12px rgba(26,18,8,0.07)' }}>
-                      <div className="font-serif-display text-xl font-bold" style={{ color: s.color }}>{s.value}</div>
-                      <div className="text-[10px] font-mono-tech uppercase mt-0.5" style={{ color: '#7A6855' }}>{s.unit}</div>
-                      <div className="text-xs mt-0.5" style={{ color: '#4A3B2A' }}>{s.label}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <div id="hero">
+          <HeroGlassmorphism
+            onOpenDonateModal={() => handleOpenDonateWithWeight(48)}
+            onOpenLiveTracker={() => setLiveTrackerOpen(true)}
+            onOpenPledgeModal={() => setPledgeModalOpen(true)}
+          />
+        </div>
 
         {/* SECTIONS 2 & 3: THE PROBLEM & OUR SOLUTION */}
         <ProblemSolutionSection
@@ -441,6 +246,9 @@ export function App() {
           }}
           onOpenPledgeModal={() => setPledgeModalOpen(true)}
         />
+
+        {/* CODE & UI COMPONENT SHOWCASE (MACOS CODE WINDOW + LIVE INTERACTIVE CARD) */}
+        <CodeShowcaseSection />
 
         {/* SECTION 6: IMPACT METRICS */}
         <ImpactCalculatorSection

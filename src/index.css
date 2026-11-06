@@ -169,3 +169,115 @@ input[type="range"].scrubber::-webkit-slider-thumb {
 ::-webkit-scrollbar-track { background: #F2EBE1; }
 ::-webkit-scrollbar-thumb { background: #2A8A56; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #1A5C38; }
+
+/* ============================================================
+   LIQUID GLASS & 3D SCULPTURAL STYLING (Vertix Inspiration)
+   ============================================================ */
+
+/* Liquid frosted glass sheet */
+.liquid-glass-sheet {
+  background: rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(48px) saturate(200%);
+  -webkit-backdrop-filter: blur(48px) saturate(200%);
+  border: 1.5px solid rgba(255, 255, 255, 0.65);
+  box-shadow:
+    0 40px 100px -20px rgba(26, 18, 8, 0.28),
+    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -2px 4px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 36px;
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-glass-sheet.dark-mode {
+  background: rgba(15, 30, 20, 0.58);
+  backdrop-filter: blur(52px) saturate(190%);
+  -webkit-backdrop-filter: blur(52px) saturate(190%);
+  border: 1.5px solid rgba(74, 173, 116, 0.35);
+  box-shadow:
+    0 40px 120px -20px rgba(0, 0, 0, 0.7),
+    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -2px 4px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* Glass specular top highlight (simulates thick curved liquid rim) */
+.liquid-glass-sheet::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.85) 25%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(255, 255, 255, 0.85) 75%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  border-radius: 36px 36px 0 0;
+  pointer-events: none;
+}
+
+/* Inset glass navigation card */
+.glass-inset-card {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow:
+    0 12px 32px rgba(26, 18, 8, 0.08),
+    inset 0 1px 1px rgba(255, 255, 255, 0.8);
+  border-radius: 24px;
+}
+
+.liquid-glass-sheet.dark-mode .glass-inset-card {
+  background: rgba(20, 38, 26, 0.55);
+  border: 1px solid rgba(74, 173, 116, 0.3);
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15);
+}
+
+/* 3D Giant Sculptural Chrome / Metallic Letters */
+.letter-3d-metallic {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  background: linear-gradient(
+    135deg,
+    #E8DFD3 0%,
+    #C4B5A0 20%,
+    #FFFFFF 40%,
+    #8C7862 60%,
+    #D6C8B4 80%,
+    #5E4A35 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 20px 25px rgba(26, 18, 8, 0.45))
+          drop-shadow(0 4px 6px rgba(26, 18, 8, 0.25));
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+  position: relative;
+  display: inline-block;
+  transform: perspective(800px) rotateX(12deg);
+}
+
+.letter-3d-sphere {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #FFFFFF 0%, #D8C7B0 35%, #8C7355 70%, #4A3A28 100%);
+  box-shadow: 0 10px 20px rgba(26, 18, 8, 0.4), inset -2px -2px 6px rgba(0, 0, 0, 0.4);
+  display: inline-block;
+}
+
+/* Code Editor Card (macOS style) */
+.code-window {
+  background: #0D1117;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  box-shadow: 0 30px 80px -15px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
