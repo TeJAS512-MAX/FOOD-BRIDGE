@@ -23,7 +23,6 @@ import {
 } from 'lucide-react';
 import { TICKER_EVENTS } from './data/foodBridgeData';
 import { HeroGlassmorphism } from './components/HeroGlassmorphism';
-import { CodeShowcaseSection } from './components/CodeShowcaseSection';
 import { ProblemSolutionSection } from './components/ProblemSolutionSection';
 import { WorkflowAndFeaturesSection } from './components/WorkflowAndFeaturesSection';
 import { ImpactCalculatorSection } from './components/ImpactCalculatorSection';
@@ -277,9 +276,6 @@ export function App() {
           }}
           onOpenPledgeModal={() => setPledgeModalOpen(true)}
         />
-
-        {/* CODE & UI COMPONENT SHOWCASE (MACOS CODE WINDOW + LIVE INTERACTIVE CARD) */}
-        <CodeShowcaseSection />
 
         {/* SECTION 6: IMPACT METRICS */}
         <ImpactCalculatorSection
