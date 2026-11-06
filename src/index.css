@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+/* ============================================================
+   FOODBRIDGE — GLOBAL DESIGN TOKENS
+   Palette: Warm Linen + Forest Green + Harvest Orange + Gold
+   ============================================================ */
+
+@layer base {
+  :root {
+    --bg-primary:       #FAF6F1;
+    --bg-secondary:     #F2EBE1;
+    --bg-card:          #FFFFFF;
+    --bg-card-subtle:   #FFF8F2;
+    --bg-dark:          #0F1E14;
+    --bg-dark-surface:  #172B1E;
+    --bg-dark-card:     #1E3828;
+    --text-primary:    #1A1208;
+    --text-secondary:  #4A3B2A;
+    --text-muted:      #7A6855;
+    --green-700:  #1A5C38;
+    --green-600:  #206B42;
+    --green-500:  #2A8A56;
+    --green-400:  #4AAD74;
+    --green-200:  #BDEACB;
+    --green-100:  #E6F7EC;
+    --orange-700: #A83415;
+    --orange-600: #D4521A;
+    --orange-100: #FEF0E6;
+    --gold-500:   #C8973A;
+    --gold-100:   #FDF4DC;
+    --border-light: rgba(26, 18, 8, 0.08);
+    --border-card:  rgba(26, 18, 8, 0.12);
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, .font-serif-display {
+    font-family: 'Fraunces', Georgia, serif;
+  }
+
+  .font-mono-tech {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+
+  ::selection { background: #1A5C38; color: #fff; }
+}
+
+/* ============================================================
+   BACKGROUND TEXTURES
+   ============================================================ */
+
+.bg-grain {
+  background-image: radial-gradient(rgba(26, 18, 8, 0.045) 1px, transparent 0);
+  background-size: 22px 22px;
+}
+
+.bg-grain-dark {
+  background-image: radial-gradient(rgba(255, 248, 242, 0.06) 1px, transparent 0);
+  background-size: 22px 22px;
+}
+
+.bg-hero-radial {
+  background:
+    radial-gradient(ellipse 60% 50% at 15% 60%, rgba(26, 92, 56, 0.09) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 55% at 85% 25%, rgba(212, 82, 26, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 55% 95%, rgba(200, 151, 58, 0.05) 0%, transparent 55%);
+}
+
+.bg-dark-glow {
+  background:
+    radial-gradient(ellipse 55% 65% at 20% 50%, rgba(42, 138, 86, 0.2) 0%, transparent 60%),
+    radial-gradient(ellipse 45% 55% at 80% 55%, rgba(212, 82, 26, 0.13) 0%, transparent 55%);
+}
+
+/* ============================================================
+   GLASSMORPHISM
+   ============================================================ */
+
+.glass-warm {
+  background: rgba(255, 252, 248, 0.84);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(26, 92, 56, 0.14);
+}
+
+.glass-dark {
+  background: rgba(15, 30, 20, 0.82);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(74, 173, 116, 0.18);
+}
+
+/* ============================================================
+   TICKER / MARQUEE
+   ============================================================ */
+
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-ticker {
+  animation: ticker 44s linear infinite;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ============================================================
+   FLOAT ANIMATIONS
+   ============================================================ */
+
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50%       { transform: translateY(-8px) rotate(0.5deg); }
+}
+
+.animate-float { animation: float-gentle 5s ease-in-out infinite; }
+
+@keyframes float-delayed {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-6px); }
+}
+
+.animate-float-delayed { animation: float-delayed 6s ease-in-out 1.5s infinite; }
+
+/* ============================================================
+   SCRUBBER
+   ============================================================ */
+
+input[type="range"].scrubber {
+  -webkit-appearance: none;
+  height: 4px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 2px;
+  outline: none;
+}
+
+input[type="range"].scrubber::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: #D4521A;
+  box-shadow: 0 2px 12px rgba(212,82,26,0.5);
+  cursor: ew-resize;
+  border: 3px solid white;
+}
+
+/* ============================================================
+   PERSPECTIVE
+   ============================================================ */
+
+.perspective-1000 { perspective: 1000px; }
+.perspective-1600 { perspective: 1600px; }
+.preserve-3d      { transform-style: preserve-3d; }
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+
+::-webkit-scrollbar       { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #F2EBE1; }
+::-webkit-scrollbar-thumb { background: #2A8A56; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #1A5C38; }
