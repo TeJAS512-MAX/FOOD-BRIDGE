@@ -164,7 +164,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                   }}
                   className={`rounded-3xl p-6 sm:p-8 cursor-pointer transition-all border ${
                     isActive
-                      ? 'bg-emerald-500/150/20 backdrop-blur-xl border-emerald-400 shadow-lg scale-102 ring-2 ring-emerald-500/20'
+                      ? 'bg-emerald-500/20 backdrop-blur-xl border-emerald-400 shadow-lg scale-102 ring-2 ring-emerald-500/20'
                       : 'bg-white/[0.07] backdrop-blur-xl border-white/[0.14]/90 hover:border-emerald-500/40 hover:shadow-md'
                   }`}
                 >
@@ -172,7 +172,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                     <span className="font-mono-tech text-3xl font-bold text-white">
                       {st.stepNumber}
                     </span>
-                    <span className="px-3 py-1 rounded-full bg-white text-emerald-400 font-mono-tech text-xs uppercase font-bold border border-emerald-500/30 shadow-sm">
+                    <span className="px-3 py-1 rounded-full bg-white text-emerald-800 font-mono-tech text-xs uppercase font-bold border border-emerald-500/30 shadow-sm">
                       {st.duration}
                     </span>
                   </div>
@@ -308,7 +308,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                     className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer border ${
                       selectedPreset.id === pr.id
                         ? 'bg-black/60 text-white border-slate-900 shadow-sm'
-                        : 'bg-white text-white/80 border-white/[0.14] hover:bg-white/[0.08]'
+                        : 'bg-white/[0.07] text-white/80 border-white/[0.14] hover:bg-white/[0.12]'
                     }`}
                   >
                     {pr.title.split(' ')[0]} {pr.title.split(' ')[1]}
@@ -328,15 +328,15 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                 {/* AI HUD Bounding Box Overlay */}
                 <div className="absolute inset-6 border-2 border-dashed border-emerald-400 rounded-xl pointer-events-none flex flex-col justify-between p-3">
                   <div className="flex items-center justify-between">
-                    <span className="bg-black/60/90 text-emerald-400 text-[10px] font-mono-tech font-bold px-2 py-0.5 rounded-md border border-emerald-500/30">
+                    <span className="bg-black/90 text-emerald-400 text-[10px] font-mono-tech font-bold px-2 py-0.5 rounded-md border border-emerald-500/30">
                       AI DETECTED • {selectedPreset.tempChain}
                     </span>
-                    <span className="bg-black/60/90 text-white text-[10px] font-mono-tech px-2 py-0.5 rounded-md border border-slate-700">
+                    <span className="bg-black/90 text-white text-[10px] font-mono-tech px-2 py-0.5 rounded-md border border-slate-700">
                       VOLUMETRIC: {selectedPreset.weightKg} KG
                     </span>
                   </div>
                   <div className="flex items-center justify-between text-white text-xs font-mono-tech">
-                    <span className="bg-black/60/90 px-2 py-1 rounded-md border border-slate-700">
+                    <span className="bg-black/90 px-2 py-1 rounded-md border border-slate-700">
                       {selectedPreset.source}
                     </span>
                     <span className="bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold px-2.5 py-1 rounded-md shadow">
@@ -579,7 +579,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                       sound.click();
                       onOpenPledgeModal();
                     }}
-                    className="px-5 py-2.5 rounded-full bg-white hover:bg-white/[0.05] border border-white/[0.20] text-white/90 text-xs font-semibold transition-all cursor-pointer shadow-sm"
+                    className="px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/[0.16] border border-white/[0.20] text-white/90 text-xs font-semibold transition-all cursor-pointer shadow-sm"
                   >
                     Adopt a Fridge Ward
                   </button>

@@ -101,8 +101,8 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
         className="relative py-20 lg:py-28 text-white overflow-hidden"
       >
         {/* Soft Ambient Radiance */}
-        <div className="pointer-events-none absolute top-12 left-1/4 w-96 h-96 rounded-full bg-emerald-500/20/50 blur-3xl" />
-        <div className="pointer-events-none absolute bottom-8 right-10 w-96 h-96 rounded-full bg-orange-500/20/50 blur-3xl" />
+        <div className="pointer-events-none absolute top-12 left-1/4 w-96 h-96 rounded-full bg-emerald-500/10 blur-3xl" />
+        <div className="pointer-events-none absolute bottom-8 right-10 w-96 h-96 rounded-full bg-orange-500/10 blur-3xl" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
@@ -242,7 +242,7 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
 
             {/* Dynamic Results Grid */}
             <div className="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-4">
-              <div className="rounded-2xl bg-emerald-500/15/80 border border-emerald-500/30/80 p-4 space-y-1">
+              <div className="rounded-2xl bg-emerald-500/15 border border-emerald-500/30 p-4 space-y-1">
                 <div className="text-xs font-mono-tech text-emerald-300 uppercase font-semibold">Daily Meals Bridged</div>
                 <div className="text-xl sm:text-2xl font-mono-tech font-bold text-emerald-400">
                   {dailyMealsCreated.toLocaleString()}
@@ -258,7 +258,7 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
                 <div className="text-[11px] text-white/60">Out of 120T metro surplus</div>
               </div>
 
-              <div className="rounded-2xl bg-orange-500/15/80 border border-orange-500/30/80 p-4 space-y-1">
+              <div className="rounded-2xl bg-orange-500/15 border border-orange-500/30 p-4 space-y-1">
                 <div className="text-xs font-mono-tech text-orange-300 uppercase font-semibold">CO₂e Methane Saved</div>
                 <div className="text-xl sm:text-2xl font-mono-tech font-bold text-orange-400">
                   {dailyCo2PreventedTonnes} Tonnes
@@ -266,7 +266,7 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
                 <div className="text-[11px] text-orange-400 font-medium">Diverted from city landfills</div>
               </div>
 
-              <div className="rounded-2xl bg-cyan-500/15/80 border border-cyan-500/30/80 p-4 space-y-1">
+              <div className="rounded-2xl bg-cyan-500/15 border border-cyan-500/30 p-4 space-y-1">
                 <div className="text-xs font-mono-tech text-cyan-300 uppercase font-semibold">Shelters Fed Daily</div>
                 <div className="text-xl sm:text-2xl font-mono-tech font-bold text-cyan-400">
                   {Math.round(dailyMealsCreated / 250)} Shelters
@@ -323,7 +323,7 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
                   className={`flex items-center gap-2.5 px-6 py-3.5 rounded-full text-xs sm:text-sm font-semibold transition-all cursor-pointer border ${
                     isActive
                       ? 'bg-black/60 text-white border-slate-900 shadow-md'
-                      : 'bg-white/[0.07] text-white/80 border-white/[0.14] hover:bg-white hover:text-white'
+                      : 'bg-white/[0.07] text-white/80 border-white/[0.14] hover:bg-white/[0.12] hover:text-white'
                   }`}
                 >
                   <Icon className={`w-4 h-4 ${isActive ? 'text-emerald-400' : 'text-white/60'}`} />
@@ -396,7 +396,7 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
                       sound.radar();
                       onOpenLiveTracker();
                     }}
-                    className="px-6 py-3.5 rounded-full bg-white hover:bg-white/[0.05] text-white/90 border border-white/[0.20] font-semibold text-xs sm:text-sm flex items-center gap-2 shadow-sm cursor-pointer transition-all"
+                    className="px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/[0.16] text-white/90 border border-white/[0.20] font-semibold text-xs sm:text-sm flex items-center gap-2 shadow-sm cursor-pointer transition-all"
                   >
                     <Truck className="w-4 h-4 text-emerald-400" />
                     <span>View Live Dispatch Radar</span>

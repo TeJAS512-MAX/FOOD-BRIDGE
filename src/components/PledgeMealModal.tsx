@@ -38,8 +38,8 @@ export const PledgeMealModal: React.FC<PledgeMealModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60/60 backdrop-blur-md animate-fadeIn">
-      <div className="relative w-full max-w-lg bg-white text-white border border-white/[0.14] rounded-3xl shadow-2xl overflow-hidden max-h-[92vh] overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md animate-fadeIn">
+      <div className="relative w-full max-w-lg bg-[#0b1514] text-white border border-white/[0.14] rounded-3xl shadow-2xl overflow-hidden max-h-[92vh] overflow-y-auto">
         {/* Top Header */}
         <div className="bg-gradient-to-r from-emerald-600 to-teal-700 text-white px-6 sm:px-8 py-5 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
@@ -111,7 +111,7 @@ export const PledgeMealModal: React.FC<PledgeMealModalProps> = ({
                     placeholder="e.g. Priya Sharma"
                     value={supporterName}
                     onChange={(e) => setSupporterName(e.target.value)}
-                    className="w-full px-4 py-2.5 rounded-xl border border-white/[0.20] bg-white/[0.05] text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white"
+                    className="w-full px-4 py-2.5 rounded-xl border border-white/[0.20] bg-white/[0.05] text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-[#12221e]"
                   />
                 </div>
 
@@ -125,7 +125,7 @@ export const PledgeMealModal: React.FC<PledgeMealModalProps> = ({
                     placeholder="e.g. Indiranagar, Bengaluru"
                     value={supporterCity}
                     onChange={(e) => setSupporterCity(e.target.value)}
-                    className="w-full px-4 py-2.5 rounded-xl border border-white/[0.20] bg-white/[0.05] text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white"
+                    className="w-full px-4 py-2.5 rounded-xl border border-white/[0.20] bg-white/[0.05] text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-[#12221e]"
                   />
                 </div>
               </div>

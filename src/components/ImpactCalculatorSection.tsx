@@ -41,8 +41,8 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
       className="relative py-20 lg:py-28 text-white overflow-hidden"
     >
       {/* Decorative Glows */}
-      <div className="pointer-events-none absolute -top-24 right-1/4 w-96 h-96 rounded-full bg-emerald-500/20/50 blur-3xl" />
-      <div className="pointer-events-none absolute bottom-0 left-10 w-96 h-96 rounded-full bg-orange-500/20/50 blur-3xl" />
+      <div className="pointer-events-none absolute -top-24 right-1/4 w-96 h-96 rounded-full bg-emerald-500/10 blur-3xl" />
+      <div className="pointer-events-none absolute bottom-0 left-10 w-96 h-96 rounded-full bg-orange-500/10 blur-3xl" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
@@ -73,7 +73,7 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
               value: '142,850+',
               sub: '+18.4% vs last month',
               accent: 'text-emerald-400',
-              bg: 'bg-emerald-500/150/15 backdrop-blur-xl',
+              bg: 'bg-emerald-500/15 backdrop-blur-xl',
               border: 'border-emerald-500/30',
             },
             {
@@ -81,7 +81,7 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
               value: '45,200 kg',
               sub: 'Zero landfill diversion',
               accent: 'text-orange-400',
-              bg: 'bg-orange-500/150/15 backdrop-blur-xl',
+              bg: 'bg-orange-500/15 backdrop-blur-xl',
               border: 'border-orange-500/30',
             },
             {
@@ -311,7 +311,7 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
                       sound.click();
                       onOpenEsgCertificate(surplusKg);
                     }}
-                    className="py-3.5 px-5 rounded-full bg-white hover:bg-white/[0.08] text-white/90 border border-white/[0.20] font-semibold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm"
+                    className="py-3.5 px-5 rounded-full bg-white/10 hover:bg-white/[0.16] text-white/90 border border-white/[0.20] font-semibold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm"
                   >
                     <Award className="w-4 h-4 text-emerald-400" />
                     <span>View ESG Certificate</span>

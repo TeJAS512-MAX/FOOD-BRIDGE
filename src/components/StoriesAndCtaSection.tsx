@@ -1,17 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   ArrowRight,
+  ChevronLeft,
+  ChevronRight,
   Bike,
   Building2,
   CheckCircle2,
   HeartHandshake,
+  Pause,
   Play,
   Quote,
   Sparkles,
   UtensilsCrossed,
   Volume2,
 } from 'lucide-react';
-import { COMMUNITY_STORIES, CommunityStory } from '../data/foodBridgeData';
+import { COMMUNITY_STORIES } from '../data/foodBridgeData';
 import { sound } from '../utils/soundEffects';
 
 interface StoriesAndCtaSectionProps {
@@ -23,9 +26,40 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
   onOpenDonateModal,
   onOpenPledgeModal,
 }) => {
-  const [selectedStory, setSelectedStory] = useState<CommunityStory>(COMMUNITY_STORIES[0]);
+  const [selectedStoryIndex, setSelectedStoryIndex] = useState(0);
+  const [isStoryPaused, setIsStoryPaused] = useState(false);
+  const selectedStory = COMMUNITY_STORIES[selectedStoryIndex];
   const [activeCtaTab, setActiveCtaTab] = useState<'donate' | 'ngo' | 'volunteer'>('donate');
   const [isPlayingAudio, setIsPlayingAudio] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (
+      isStoryPaused ||
+      COMMUNITY_STORIES.length < 2 ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) return;
+    const interval = window.setInterval(() => {
+      setSelectedStoryIndex((index) => (index + 1) % COMMUNITY_STORIES.length);
+      setIsPlayingAudio(false);
+    }, 6500);
+    return () => window.clearInterval(interval);
+  }, [isStoryPaused]);
+
+  const moveStory = (direction: -1 | 1) => {
+    sound.click();
+    setSelectedStoryIndex((index) =>
+      (index + direction + COMMUNITY_STORIES.length) % COMMUNITY_STORIES.length
+    );
+    setIsPlayingAudio(false);
+  };
+
+  const storyPosition = (index: number) => {
+    const relativeIndex = (index - selectedStoryIndex + COMMUNITY_STORIES.length) % COMMUNITY_STORIES.length;
+    if (relativeIndex === 0) return 'center';
+    if (relativeIndex === 1) return 'right';
+    if (relativeIndex === COMMUNITY_STORIES.length - 1) return 'left';
+    return 'hidden';
+  };
 
   // Interactive quick-submission state inside CTA Studio
   const [orgName, setOrgName] = useState<string>('');
@@ -98,13 +132,13 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                   type="button"
                   onClick={() => {
                     sound.click();
-                    setSelectedStory(story);
+                    setSelectedStoryIndex(COMMUNITY_STORIES.findIndex((item) => item.id === story.id));
                     setIsPlayingAudio(false);
                   }}
                   className={`px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer border ${
                     selectedStory.id === story.id
                       ? 'bg-black/60 text-white border-slate-900 shadow-sm'
-                      : 'bg-white text-white/80 border-white/[0.14] hover:bg-white/[0.08]'
+                      : 'bg-white/[0.07] text-white/80 border-white/[0.14] hover:bg-white/[0.12]'
                   }`}
                 >
                   {story.role}
@@ -113,8 +147,91 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
             </div>
           </div>
 
+          {/* Story carousel: the next voice moves in from the right, takes the
+              foreground, and the current voice glides left into the exit. */}
+          <div
+            className="story-carousel-stage relative mx-auto mt-10 max-w-5xl"
+            role="region"
+            aria-label="Community story carousel"
+            aria-roledescription="carousel"
+            onMouseEnter={() => setIsStoryPaused(true)}
+            onMouseLeave={() => setIsStoryPaused(false)}
+            onFocus={() => setIsStoryPaused(true)}
+            onBlur={(event) => {
+              if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+                setIsStoryPaused(false);
+              }
+            }}
+          >
+            {COMMUNITY_STORIES.map((story, index) => {
+              const position = storyPosition(index);
+              if (position === 'hidden') return null;
+
+              return (
+                <button
+                  key={story.id}
+                  type="button"
+                  onClick={() => {
+                    if (position !== 'center') {
+                      sound.click();
+                      setSelectedStoryIndex(index);
+                      setIsPlayingAudio(false);
+                    }
+                  }}
+                  aria-label={`${position === 'center' ? 'Current story' : `Show ${story.role} story`}: ${story.name}`}
+                  aria-current={position === 'center' ? 'true' : undefined}
+                  tabIndex={position === 'center' ? 0 : 0}
+                  className={`story-carousel-card story-carousel-card-${position} group overflow-hidden rounded-2xl border border-white/20 text-left shadow-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300`}
+                >
+                  <img
+                    src={story.imageUrl}
+                    alt=""
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <span className="absolute inset-0 bg-gradient-to-t from-[#07110f]/95 via-[#07110f]/30 to-transparent" />
+                  <span className="absolute inset-x-4 bottom-4 text-white">
+                    <span className="block text-[10px] font-bold uppercase tracking-[0.16em] text-emerald-200">
+                      {story.role} · {story.location}
+                    </span>
+                    <span className="mt-1 block truncate font-serif-display text-lg font-bold">
+                      {story.name}
+                    </span>
+                  </span>
+                </button>
+              );
+            })}
+
+            <button
+              type="button"
+              onClick={() => moveStory(-1)}
+              aria-label="Previous community story"
+              className="absolute left-2 top-1/2 z-40 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-[#0b1514]/90 text-white shadow-lg transition hover:bg-emerald-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 sm:left-6"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <button
+              type="button"
+              onClick={() => moveStory(1)}
+              aria-label="Next community story"
+              className="absolute right-2 top-1/2 z-40 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-[#0b1514]/90 text-white shadow-lg transition hover:bg-emerald-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 sm:right-6"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          </div>
+          <div className="mx-auto mt-2 flex max-w-5xl justify-end">
+            <button
+              type="button"
+              onClick={() => setIsStoryPaused((paused) => !paused)}
+              aria-pressed={isStoryPaused}
+              className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold text-white/65 transition hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"
+            >
+              <Pause className="h-3.5 w-3.5" />
+              {isStoryPaused ? 'Resume stories' : 'Pause stories'}
+            </button>
+          </div>
+
           {/* Active Story Spotlight Card with Real Persona Image */}
-          <div className="mt-12 glass-card p-8 sm:p-12 shadow-lg grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div key={selectedStory.id} className="story-spotlight-enter mt-8 glass-card p-8 sm:p-12 shadow-lg grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             {/* Left 5 Cols: Persona Visual & Audio Card */}
             <div className="lg:col-span-5 space-y-4">
               <div className="rounded-3xl overflow-hidden border border-white/[0.14] shadow-md relative group">
@@ -132,7 +249,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                   <h4 className="font-serif-display text-2xl font-bold text-white mt-1">
                     {selectedStory.name}
                   </h4>
-                  <p className="text-xs text-white/30">{selectedStory.title}, {selectedStory.organization}</p>
+                  <p className="text-xs text-white/75">{selectedStory.title}, {selectedStory.organization}</p>
                 </div>
               </div>
 
@@ -196,7 +313,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                   </div>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-emerald-500/15/80 border border-emerald-500/30/80 space-y-1">
+                <div className="p-4 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 space-y-1">
                   <div className="font-mono-tech text-xs text-emerald-300 uppercase font-semibold">
                     ECOLOGICAL DIVERT
                   </div>
@@ -299,7 +416,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                       sound.click();
                       onOpenPledgeModal();
                     }}
-                    className="px-6 py-4 rounded-full bg-white hover:bg-white/[0.05] border border-white/[0.20] text-white/90 font-semibold text-sm sm:text-base flex items-center gap-2 cursor-pointer transition-all shadow-sm"
+                    className="px-6 py-4 rounded-full bg-white/10 hover:bg-white/[0.16] border border-white/[0.20] text-white/90 font-semibold text-sm sm:text-base flex items-center gap-2 cursor-pointer transition-all shadow-sm"
                   >
                     <Sparkles className="w-4 h-4 text-emerald-400" />
                     <span>Pledge 1 Meal (₹35)</span>
@@ -364,7 +481,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                         }
                         value={orgName}
                         onChange={(e) => setOrgName(e.target.value)}
-                        className="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/[0.20] text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white"
+                        className="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/[0.20] text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-[#12221e]"
                       />
                     </div>
 
@@ -377,7 +494,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                         required
                         value={locationInput}
                         onChange={(e) => setLocationInput(e.target.value)}
-                        className="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/[0.20] text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white"
+                        className="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/[0.20] text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-[#12221e]"
                       />
                     </div>
 
@@ -394,7 +511,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                         required
                         value={quantityOrCapacity}
                         onChange={(e) => setQuantityOrCapacity(e.target.value)}
-                        className="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/[0.20] text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white"
+                        className="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/[0.20] text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-[#12221e]"
                       />
                     </div>
 
@@ -413,7 +530,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                     </button>
                   </form>
                 ) : (
-                  <div className="rounded-2xl bg-emerald-500/15/80 border border-emerald-500/40 p-5 space-y-4 text-center">
+                  <div className="rounded-2xl bg-emerald-500/15 border border-emerald-500/40 p-5 space-y-4 text-center">
                     <div className="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto">
                       <CheckCircle2 className="w-6 h-6" />
                     </div>

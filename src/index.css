@@ -21,7 +21,7 @@
   }
 
   body {
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Source Sans 3', 'Segoe UI', sans-serif;
     background-color: #07090D;
     color: rgba(255, 255, 255, 0.92);
     overflow-x: hidden;
@@ -30,9 +30,9 @@
   }
 
   h1, h2, h3, h4, h5, h6, .font-serif-display {
-    font-family: 'Fraunces', Georgia, serif;
+    font-family: 'Lora', Georgia, serif;
     color: #FFFFFF;
-    letter-spacing: -0.028em;
+    letter-spacing: -0.018em;
   }
 
   p {
@@ -44,8 +44,9 @@
   }
 
   .font-mono-tech {
-    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-family: 'Source Sans 3', 'Segoe UI', sans-serif;
     font-variant-numeric: tabular-nums;
+    letter-spacing: 0.035em;
   }
 
   ::selection {
@@ -109,7 +110,7 @@
   background:
     radial-gradient(ellipse at 25% 30%, rgba(16, 185, 129, 0.22) 0%, transparent 60%),
     radial-gradient(ellipse at 80% 40%, rgba(6, 182, 212, 0.16) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(7, 9, 13, 0.30) 0%, rgba(7, 9, 13, 0.15) 50%, rgba(7, 9, 13, 0.55) 100%);
+    linear-gradient(180deg, rgba(7, 9, 13, 0.50) 0%, rgba(7, 9, 13, 0.42) 50%, rgba(7, 9, 13, 0.68) 100%);
 }
 
 /* Midnight Mode: Deep cyber-civic night grid, midnight dispatch lines */
@@ -305,7 +306,7 @@
    ============================================================ */
 
 .letter-3d-metallic {
-  font-family: 'Fraunces', Georgia, serif;
+  font-family: 'Lora', Georgia, serif;
   font-weight: 900;
   letter-spacing: -0.04em;
   background: linear-gradient(

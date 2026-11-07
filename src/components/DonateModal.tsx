@@ -14,6 +14,7 @@ import { sound } from '../utils/soundEffects';
 interface DonateModalProps {
   isOpen: boolean;
   initialWeightKg?: number;
+  initialPickupAddress?: string;
   onClose: () => void;
   onSuccessDispatch: (mealsAdded: number) => void;
   onViewCertificate?: (donorName: string, weightKg: number) => void;
@@ -22,6 +23,7 @@ interface DonateModalProps {
 export const DonateModal: React.FC<DonateModalProps> = ({
   isOpen,
   initialWeightKg = 45,
+  initialPickupAddress = '100 Feet Road, Indiranagar, Bengaluru',
   onClose,
   onSuccessDispatch,
   onViewCertificate,
@@ -33,9 +35,7 @@ export const DonateModal: React.FC<DonateModalProps> = ({
   );
   const [weightKg, setWeightKg] = useState<number>(initialWeightKg);
   const [thermalState, setThermalState] = useState<string>('Hot Holding (64°C)');
-  const [pickupAddress, setPickupAddress] = useState<string>(
-    '100 Feet Road, Indiranagar, Bengaluru'
-  );
+  const [pickupAddress, setPickupAddress] = useState<string>(initialPickupAddress);
   const [isScanningAi, setIsScanningAi] = useState<boolean>(false);
   const [dispatchedTicket, setDispatchedTicket] = useState<{
     ticketId: string;
@@ -48,6 +48,10 @@ export const DonateModal: React.FC<DonateModalProps> = ({
   useEffect(() => {
     setWeightKg(initialWeightKg);
   }, [initialWeightKg]);
+
+  useEffect(() => {
+    setPickupAddress(initialPickupAddress);
+  }, [initialPickupAddress]);
 
   if (!isOpen) return null;
 
@@ -79,12 +83,12 @@ export const DonateModal: React.FC<DonateModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60/60 backdrop-blur-md animate-fadeIn">
-      <div className="relative w-full max-w-2xl bg-white text-white border border-white/[0.14] rounded-3xl shadow-2xl overflow-hidden max-h-[92vh] overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md animate-fadeIn">
+      <div className="relative w-full max-w-2xl bg-[#0b1514] text-white border border-white/[0.14] rounded-3xl shadow-2xl overflow-hidden max-h-[92vh] overflow-y-auto">
         {/* Top Modal Header */}
         <div className="bg-white/[0.05] text-white px-6 sm:px-8 py-5 flex items-center justify-between border-b border-white/[0.14]">
           <div className="flex items-center gap-2.5">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-900/200 animate-pulse" />
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
             <span className="font-mono-tech text-xs uppercase tracking-wider text-emerald-400 font-bold">
               FOODBRIDGE LIVE DISPATCH TERMINAL
             </span>
@@ -106,8 +110,8 @@ export const DonateModal: React.FC<DonateModalProps> = ({
           {!dispatchedTicket ? (
             <form onSubmit={handleDispatchSubmit} className="space-y-5">
               {/* AI Auto-Fill helper bar */}
-              <div className="rounded-2xl bg-emerald-900/20 border border-emerald-500/30 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <div className="flex items-center gap-2.5 text-xs text-emerald-900 font-medium">
+                <div className="rounded-2xl bg-emerald-900/20 border border-emerald-500/30 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div className="flex items-center gap-2.5 text-xs text-emerald-100 font-medium">
                   <Sparkles className="w-4 h-4 text-emerald-400 shrink-0" />
                   <span>Have surplus kitchen trays ready? Try instant camera scan:</span>
                 </div>
@@ -131,7 +135,7 @@ export const DonateModal: React.FC<DonateModalProps> = ({
                   <select
                     value={donorCategory}
                     onChange={(e) => setDonorCategory(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-white/[0.20] text-sm bg-white/[0.05] text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white"
+                    className="w-full px-4 py-3 rounded-xl border border-white/[0.20] text-sm bg-white/[0.05] text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-[#12221e]"
                   >
                     <option value="Hotel / Restaurant">Hotel / Restaurant Banquet</option>
                     <option value="Bakery / Cafe">Bakery / Artisan Cafe</option>
@@ -150,7 +154,7 @@ export const DonateModal: React.FC<DonateModalProps> = ({
                     required
                     value={donorName}
                     onChange={(e) => setDonorName(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-white/[0.20] text-sm bg-white/[0.05] text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white"
+                    className="w-full px-4 py-3 rounded-xl border border-white/[0.20] text-sm bg-white/[0.05] text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-[#12221e]"
                   />
                 </div>
               </div>
@@ -165,7 +169,7 @@ export const DonateModal: React.FC<DonateModalProps> = ({
                   required
                   value={foodDescription}
                   onChange={(e) => setFoodDescription(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl border border-white/[0.20] text-sm bg-white/[0.05] text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white"
+                  className="w-full px-4 py-3 rounded-xl border border-white/[0.20] text-sm bg-white/[0.05] text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-[#12221e]"
                 />
               </div>
 
@@ -203,7 +207,7 @@ export const DonateModal: React.FC<DonateModalProps> = ({
                   <select
                     value={thermalState}
                     onChange={(e) => setThermalState(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-white/[0.20] text-sm bg-white/[0.05] text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white"
+                    className="w-full px-4 py-3 rounded-xl border border-white/[0.20] text-sm bg-white/[0.05] text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-[#12221e]"
                   >
                     <option value="Hot Holding (64°C)">Hot Holding (60°C–70°C Safe)</option>
                     <option value="Chilled (4°C)">Chilled Storage (2°C–5°C)</option>
@@ -224,7 +228,7 @@ export const DonateModal: React.FC<DonateModalProps> = ({
                     required
                     value={pickupAddress}
                     onChange={(e) => setPickupAddress(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 rounded-xl border border-white/[0.20] text-sm bg-white/[0.05] text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white"
+                    className="w-full pl-10 pr-4 py-3 rounded-xl border border-white/[0.20] text-sm bg-white/[0.05] text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-[#12221e]"
                   />
                 </div>
               </div>

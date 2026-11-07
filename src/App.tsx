@@ -45,6 +45,9 @@ export function App() {
 
   const [donateModalOpen, setDonateModalOpen] = useState<boolean>(false);
   const [donateModalWeight, setDonateModalWeight] = useState<number>(45);
+  const [donatePickupAddress, setDonatePickupAddress] = useState<string>(
+    '100 Feet Road, Indiranagar, Bengaluru'
+  );
   const [liveTrackerOpen, setLiveTrackerOpen] = useState<boolean>(false);
   const [pledgeModalOpen, setPledgeModalOpen] = useState<boolean>(false);
   const [esgModalOpen, setEsgModalOpen] = useState<boolean>(false);
@@ -53,9 +56,13 @@ export function App() {
   const [esgWeightKg, setEsgWeightKg] = useState<number>(48);
   const [totalMealsBridged, setTotalMealsBridged] = useState<number>(142850);
 
-  const handleOpenDonateWithWeight = (weightKg: number) => {
+  const handleOpenDonateWithWeight = (
+    weightKg: number,
+    pickupAddress = '100 Feet Road, Indiranagar, Bengaluru'
+  ) => {
     sound.click();
     setDonateModalWeight(weightKg);
+    setDonatePickupAddress(pickupAddress);
     setDonateModalOpen(true);
   };
 
@@ -379,7 +386,7 @@ export function App() {
         {/* SECTION 1 · HERO */}
         <div id="hero">
           <HeroGlassmorphism
-            onOpenDonateModal={() => handleOpenDonateWithWeight(48)}
+            onOpenDonateModal={(pickupAddress) => handleOpenDonateWithWeight(48, pickupAddress)}
             onOpenLiveTracker={() => setLiveTrackerOpen(true)}
             onOpenPledgeModal={() => setPledgeModalOpen(true)}
             onOpenAiScanner={() => setAiScannerOpen(true)}
@@ -593,6 +600,7 @@ export function App() {
       <DonateModal
         isOpen={donateModalOpen}
         initialWeightKg={donateModalWeight}
+        initialPickupAddress={donatePickupAddress}
         onClose={() => setDonateModalOpen(false)}
         onSuccessDispatch={handleSuccessDispatch}
         onViewCertificate={(name, weight) => handleOpenEsgCertificate(name, weight)}

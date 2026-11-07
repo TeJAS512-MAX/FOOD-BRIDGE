@@ -15,7 +15,7 @@ import { StatsCardGrid } from './StatsCardGrid';
 import { sound } from '../utils/soundEffects';
 
 interface HeroGlassmorphismProps {
-  onOpenDonateModal: () => void;
+  onOpenDonateModal: (pickupAddress?: string) => void;
   onOpenLiveTracker: () => void;
   onOpenPledgeModal: () => void;
   onOpenAiScanner?: () => void;
@@ -36,7 +36,7 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
   const handleQuickRescue = (e: React.FormEvent) => {
     e.preventDefault();
     sound.click();
-    onOpenDonateModal();
+    onOpenDonateModal(donorInput.trim() || undefined);
   };
 
   return (

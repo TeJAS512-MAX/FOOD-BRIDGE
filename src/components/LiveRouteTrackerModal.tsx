@@ -49,7 +49,7 @@ export const LiveRouteTrackerModal: React.FC<LiveRouteTrackerModalProps> = ({ is
         <div className="bg-white/[0.05] px-6 sm:px-8 py-5 border-b border-white/[0.14] flex items-center justify-between">
           <div className="flex items-center gap-3">
             <span className="relative flex h-3 w-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-900/200 opacity-75" />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-600" />
             </span>
             <div>
@@ -105,7 +105,7 @@ export const LiveRouteTrackerModal: React.FC<LiveRouteTrackerModalProps> = ({ is
                 style={{ width: `${progressPct}%` }}
               >
                 {/* Vehicle Pulse Icon */}
-                <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-8 h-8 rounded-full bg-emerald-900/200 text-white flex items-center justify-center shadow-[0_0_15px_#10B981] ring-4 ring-emerald-500/30">
+                <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-8 h-8 rounded-full bg-emerald-700 text-white flex items-center justify-center shadow-[0_0_15px_#10B981] ring-4 ring-emerald-500/30">
                   <Navigation2 className="w-4 h-4 fill-current rotate-90" />
                 </div>
               </div>
@@ -123,12 +123,12 @@ export const LiveRouteTrackerModal: React.FC<LiveRouteTrackerModalProps> = ({ is
             </div>
 
             {/* Floating Live Telemetry HUD */}
-            <div className="absolute top-3 left-3 bg-black/60/90 backdrop-blur-md border border-slate-700 rounded-xl px-3 py-1.5 text-[11px] font-mono-tech flex items-center gap-2 text-emerald-400 font-semibold">
+            <div className="absolute top-3 left-3 bg-black/90 backdrop-blur-md border border-slate-700 rounded-xl px-3 py-1.5 text-[11px] font-mono-tech flex items-center gap-2 text-emerald-400 font-semibold">
               <Radio className="w-3.5 h-3.5 animate-pulse text-emerald-400" />
               <span>LIVE MESH: SATELLITE LOCK 14/14</span>
             </div>
 
-            <div className="absolute bottom-3 right-3 bg-black/60/90 backdrop-blur-md border border-slate-700 rounded-xl px-3 py-1.5 text-[11px] font-mono-tech text-white/40">
+            <div className="absolute bottom-3 right-3 bg-black/90 backdrop-blur-md border border-slate-700 rounded-xl px-3 py-1.5 text-[11px] font-mono-tech text-white/60">
               <span>SPEED: 26 km/h • ECO EV</span>
             </div>
           </div>

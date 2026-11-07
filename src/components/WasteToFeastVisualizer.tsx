@@ -137,13 +137,13 @@ export const WasteToFeastVisualizer: React.FC = () => {
           <p className="text-xs text-white/70 mt-0.5">Of food wasted globally every year while 800M people go to sleep hungry.</p>
         </div>
 
-        <div className="rounded-2xl bg-emerald-500/15/80 border border-emerald-500/30/80 p-4">
+        <div className="rounded-2xl bg-emerald-500/15 border border-emerald-500/30 p-4">
           <div className="text-xs font-mono-tech text-emerald-300 uppercase font-semibold">THE FOODBRIDGE SOLUTION</div>
           <div className="text-lg font-bold text-emerald-400 mt-1">38-Min Real-Time Match</div>
           <p className="text-xs text-emerald-400 mt-0.5">AI dispatch pairs hot food with verified shelters within 5 km before cooling.</p>
         </div>
 
-        <div className="rounded-2xl bg-orange-500/15/80 border border-orange-500/30/80 p-4">
+        <div className="rounded-2xl bg-orange-500/15 border border-orange-500/30 p-4">
           <div className="text-xs font-mono-tech text-orange-300 uppercase font-semibold">CLIMATE IMPACT</div>
           <div className="text-lg font-bold text-orange-400 mt-1">2.5 kg CO₂e Saved</div>
           <p className="text-xs text-orange-400 mt-0.5">Every 1 kg of food rescued prevents 2.5 kg of greenhouse emissions from rotting landfills.</p>
