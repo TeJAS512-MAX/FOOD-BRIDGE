@@ -450,6 +450,90 @@
 }
 
 /* ============================================================
+   COMMUNITY STORY CAROUSEL
+   Side cards orbit around the active story; every selection advances the
+   right card to the foreground and sends the old one out to the left.
+   ============================================================ */
+
+.story-carousel-stage {
+  height: 33rem;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  overflow: hidden;
+}
+
+.story-carousel-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(40rem, calc(100vw - 2rem));
+  height: 31rem;
+  transform-origin: center;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition:
+    transform 900ms cubic-bezier(0.2, 0.75, 0.25, 1),
+    opacity 520ms ease,
+    filter 520ms ease;
+  will-change: transform, opacity;
+}
+
+.story-carousel-card-center {
+  z-index: 30;
+  opacity: 1;
+  filter: saturate(1);
+  transform: translate(-50%, -50%) rotateY(0deg) translateZ(170px) scale(1.01);
+  cursor: default;
+}
+
+.story-carousel-card-left {
+  z-index: 10;
+  opacity: 0.58;
+  filter: saturate(0.68);
+  transform: translate(-50%, -50%) rotateY(52deg) translateZ(500px) scale(0.82);
+}
+
+.story-carousel-card-right {
+  z-index: 10;
+  opacity: 0.68;
+  filter: saturate(0.78);
+  transform: translate(-50%, -50%) rotateY(-52deg) translateZ(500px) scale(0.82);
+}
+
+.story-carousel-feature {
+  min-height: 0;
+  background: #0b1514;
+}
+
+.story-carousel-copy {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.story-spotlight-enter {
+  animation: storySpotlightEnter 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes storySpotlightEnter {
+  from { opacity: 0.55; transform: translateY(14px) scale(0.99); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (max-width: 640px) {
+  .story-carousel-stage { height: 36rem; }
+  .story-carousel-card { width: min(27rem, calc(100vw - 2rem)); height: 34rem; }
+  .story-carousel-card-center { transform: translate(-50%, -50%) rotateY(0deg) translateZ(90px) scale(1); }
+  .story-carousel-card-left { transform: translate(-50%, -50%) rotateY(52deg) translateZ(190px) scale(0.76); }
+  .story-carousel-card-right { transform: translate(-50%, -50%) rotateY(-52deg) translateZ(190px) scale(0.76); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story-carousel-card { transition: none; }
+  .story-spotlight-enter { animation: none; }
+}
+
+/* ============================================================
    TICKER & ANIMATIONS
    ============================================================ */
 

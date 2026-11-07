@@ -7,6 +7,7 @@ import {
   Building2,
   CheckCircle2,
   HeartHandshake,
+  Home,
   Pause,
   Play,
   Quote,
@@ -22,6 +23,15 @@ interface StoriesAndCtaSectionProps {
   onOpenPledgeModal?: () => void;
 }
 
+type CtaTab = 'donate' | 'household' | 'ngo' | 'volunteer';
+
+const CTA_QUANTITY_DEFAULTS: Record<CtaTab, string> = {
+  donate: '35 kg surplus buffet meals',
+  household: '5 kg sealed groceries or fresh meals',
+  ngo: '120 meals needed each evening',
+  volunteer: 'E-bike · 2 evenings per week',
+};
+
 export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
   onOpenDonateModal,
   onOpenPledgeModal,
@@ -29,7 +39,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
   const [selectedStoryIndex, setSelectedStoryIndex] = useState(0);
   const [isStoryPaused, setIsStoryPaused] = useState(false);
   const selectedStory = COMMUNITY_STORIES[selectedStoryIndex];
-  const [activeCtaTab, setActiveCtaTab] = useState<'donate' | 'ngo' | 'volunteer'>('donate');
+  const [activeCtaTab, setActiveCtaTab] = useState<CtaTab>('donate');
   const [isPlayingAudio, setIsPlayingAudio] = useState<boolean>(false);
 
   useEffect(() => {
@@ -64,7 +74,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
   // Interactive quick-submission state inside CTA Studio
   const [orgName, setOrgName] = useState<string>('');
   const [locationInput, setLocationInput] = useState<string>('Indiranagar, Bengaluru');
-  const [quantityOrCapacity, setQuantityOrCapacity] = useState<string>('35 kg Hot Buffet Meals');
+  const [quantityOrCapacity, setQuantityOrCapacity] = useState<string>(CTA_QUANTITY_DEFAULTS.donate);
   const [submittedReceipt, setSubmittedReceipt] = useState<{
     id: string;
     role: string;
@@ -79,18 +89,22 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
       orgName.trim() ||
       (activeCtaTab === 'donate'
         ? 'Sunrise Bistro & Banquets'
+        : activeCtaTab === 'household'
+        ? 'A neighborhood household'
         : activeCtaTab === 'ngo'
         ? 'Karuna Community Shelter'
         : 'Aarav Sharma (EV Volunteer)');
 
     setSubmittedReceipt({
-      id: `FB-2026-${Math.floor(1000 + Math.random() * 9000)}`,
+      id: `FB-PREVIEW-${Math.floor(1000 + Math.random() * 9000)}`,
       role:
         activeCtaTab === 'donate'
-          ? 'SURPLUS FOOD DISPATCH'
+          ? 'FOOD BUSINESS REQUEST PREVIEW'
+          : activeCtaTab === 'household'
+          ? 'HOUSEHOLD FOOD SHARE PREVIEW'
           : activeCtaTab === 'ngo'
-          ? 'NGO SHELTER ONBOARDING'
-          : 'HUNGER HERO FLEET PASS',
+          ? 'SHELTER PARTNERSHIP PREVIEW'
+          : 'VOLUNTEER INTEREST PREVIEW',
       name: cleanName,
       detail: `${quantityOrCapacity} • ${locationInput}`,
     });
@@ -99,6 +113,14 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
   const toggleAudioSim = () => {
     sound.click();
     setIsPlayingAudio(!isPlayingAudio);
+  };
+
+  const selectCtaTab = (tab: CtaTab) => {
+    sound.click();
+    setActiveCtaTab(tab);
+    setOrgName('');
+    setQuantityOrCapacity(CTA_QUANTITY_DEFAULTS[tab]);
+    setSubmittedReceipt(null);
   };
 
   return (
@@ -116,7 +138,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-mono-tech uppercase tracking-wider mb-4 font-semibold">
                 <Quote className="w-3.5 h-3.5 text-emerald-400" />
-                <span>06 • COMMUNITY VOICES: HUMAN DIGNITY AT EVERY TABLE</span>
+                <span>06 • ILLUSTRATIVE COMMUNITY STORIES</span>
               </div>
               <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-white">
                 Stories from the chefs, shelters, and riders{' '}
@@ -150,7 +172,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
           {/* Story carousel: the next voice moves in from the right, takes the
               foreground, and the current voice glides left into the exit. */}
           <div
-            className="story-carousel-stage relative mx-auto mt-10 max-w-5xl"
+            className="story-carousel-stage relative mx-auto mt-10 max-w-6xl"
             role="region"
             aria-label="Community story carousel"
             aria-roledescription="carousel"
@@ -166,38 +188,111 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
             {COMMUNITY_STORIES.map((story, index) => {
               const position = storyPosition(index);
               if (position === 'hidden') return null;
+              const isActive = position === 'center';
 
               return (
-                <button
+                <article
                   key={story.id}
-                  type="button"
-                  onClick={() => {
-                    if (position !== 'center') {
-                      sound.click();
-                      setSelectedStoryIndex(index);
-                      setIsPlayingAudio(false);
-                    }
-                  }}
-                  aria-label={`${position === 'center' ? 'Current story' : `Show ${story.role} story`}: ${story.name}`}
-                  aria-current={position === 'center' ? 'true' : undefined}
-                  tabIndex={position === 'center' ? 0 : 0}
-                  className={`story-carousel-card story-carousel-card-${position} group overflow-hidden rounded-2xl border border-white/20 text-left shadow-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300`}
+                  role="group"
+                  aria-roledescription="slide"
+                  aria-label={`${index + 1} of ${COMMUNITY_STORIES.length}: ${story.name}`}
+                  aria-current={isActive ? 'true' : undefined}
+                  className={`story-carousel-card story-carousel-card-${position} overflow-hidden rounded-2xl border border-white/20 text-left shadow-2xl`}
                 >
-                  <img
-                    src={story.imageUrl}
-                    alt=""
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <span className="absolute inset-0 bg-gradient-to-t from-[#07110f]/95 via-[#07110f]/30 to-transparent" />
-                  <span className="absolute inset-x-4 bottom-4 text-white">
-                    <span className="block text-[10px] font-bold uppercase tracking-[0.16em] text-emerald-200">
-                      {story.role} · {story.location}
-                    </span>
-                    <span className="mt-1 block truncate font-serif-display text-lg font-bold">
-                      {story.name}
-                    </span>
-                  </span>
-                </button>
+                  {isActive ? (
+                    <div className="story-carousel-feature story-spotlight-enter flex h-full flex-col">
+                      <div className="story-carousel-photo relative h-36 shrink-0 overflow-hidden sm:h-40">
+                        <img src={story.imageUrl} alt={story.name} className="h-full w-full object-cover" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#07110f]/95 via-[#07110f]/15 to-transparent" />
+                        <div className="absolute inset-x-4 bottom-3 z-10">
+                          <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-emerald-200">
+                            {story.role} · {story.location}
+                          </div>
+                          <h3 className="mt-0.5 font-serif-display text-2xl font-bold text-white">{story.name}</h3>
+                          <p className="text-xs text-white/75">{story.title}, {story.organization}</p>
+                        </div>
+                      </div>
+
+                      <div className="story-carousel-copy flex min-h-0 flex-1 flex-col items-stretch gap-2.5 p-4 sm:p-5">
+                        <div className="w-full space-y-1.5">
+                          <blockquote className="border-l-2 border-emerald-400/70 pl-3 font-serif-display text-base italic leading-snug text-white sm:text-lg">
+                            “{story.quote}”
+                          </blockquote>
+                          <p className="pl-3 text-xs leading-relaxed text-white/70 sm:text-sm">{story.storyDetail}</p>
+                        </div>
+
+                        <div className="grid w-full grid-cols-2 items-stretch gap-2.5">
+                          <div className="flex min-h-[4.25rem] min-w-0 flex-col justify-center rounded-xl border border-white/10 bg-white/[0.05] px-3 py-2.5">
+                            <div className="text-[10px] font-semibold uppercase tracking-wide text-white/55">{story.metricLabel}</div>
+                            <div className="mt-0.5 truncate font-serif-display text-lg font-bold text-white">{story.metricValue}</div>
+                          </div>
+                          <div className="flex min-h-[4.25rem] min-w-0 flex-col justify-center rounded-xl border border-emerald-400/20 bg-emerald-500/10 px-3 py-2.5">
+                            <div className="text-[10px] font-semibold uppercase tracking-wide text-emerald-200">Impact</div>
+                            <div className="mt-0.5 truncate font-serif-display text-sm font-bold text-emerald-300">{story.secondaryMetric}</div>
+                          </div>
+                        </div>
+
+                        <div className="flex w-full flex-wrap items-center gap-1.5">
+                          {story.tags.map((tag) => (
+                            <span key={tag} className="rounded-full border border-white/10 bg-white/[0.05] px-2.5 py-1 text-[10px] text-white/70">
+                              {tag}
+                            </span>
+                          ))}
+                          <span className="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-2.5 py-1 text-[10px] font-semibold text-emerald-300">
+                            Sample batch · {story.verifiedBatchId}
+                          </span>
+                        </div>
+
+                        <div className="flex w-full shrink-0 items-center gap-3 rounded-xl border border-white/10 bg-white/[0.05] p-3">
+                          <button
+                            type="button"
+                            onClick={toggleAudioSim}
+                            aria-label={`${isPlayingAudio ? 'Pause' : 'Play'} ${story.name} audio memo`}
+                            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-600 text-white transition hover:bg-emerald-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"
+                          >
+                            {isPlayingAudio ? <Pause className="h-4 w-4" /> : <Play className="ml-0.5 h-4 w-4 fill-current" />}
+                          </button>
+                          <div className="min-w-0 flex-1">
+                            <div className="flex items-center gap-1.5 text-xs font-semibold text-white">
+                              <Volume2 className="h-3.5 w-3.5 shrink-0 text-emerald-400" />
+                              <span className="truncate">{story.name.split(' ')[0]}’s audio memo</span>
+                            </div>
+                            <div className="text-xs text-white/55">
+                              {isPlayingAudio ? 'Playing sample' : 'Audio preview'} · {story.audioDuration || '0:45'}
+                            </div>
+                          </div>
+                          <div className="flex h-7 items-center gap-1" aria-hidden="true">
+                            {[12, 24, 16, 28, 14, 20].map((height, barIndex) => (
+                              <span
+                                key={barIndex}
+                                className={`w-1 rounded-full bg-emerald-400 ${isPlayingAudio ? 'animate-pulse' : 'opacity-40'}`}
+                                style={{ height: `${height}px` }}
+                              />
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        sound.click();
+                        setSelectedStoryIndex(index);
+                        setIsPlayingAudio(false);
+                      }}
+                      aria-label={`Show ${story.role} story: ${story.name}`}
+                      className="group absolute inset-0 overflow-hidden text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-emerald-300"
+                    >
+                      <img src={story.imageUrl} alt="" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                      <span className="absolute inset-0 bg-gradient-to-t from-[#07110f]/95 via-[#07110f]/30 to-transparent" />
+                      <span className="absolute inset-x-4 bottom-4 text-white">
+                        <span className="block text-[10px] font-bold uppercase tracking-[0.16em] text-emerald-200">{story.role} · {story.location}</span>
+                        <span className="mt-1 block truncate font-serif-display text-lg font-bold">{story.name}</span>
+                      </span>
+                    </button>
+                  )}
+                </article>
               );
             })}
 
@@ -218,127 +313,41 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
               <ChevronRight className="h-5 w-5" />
             </button>
           </div>
-          <div className="mx-auto mt-2 flex max-w-5xl justify-end">
-            <button
-              type="button"
-              onClick={() => setIsStoryPaused((paused) => !paused)}
-              aria-pressed={isStoryPaused}
-              className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold text-white/65 transition hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"
-            >
-              <Pause className="h-3.5 w-3.5" />
-              {isStoryPaused ? 'Resume stories' : 'Pause stories'}
-            </button>
-          </div>
-
-          {/* Active Story Spotlight Card with Real Persona Image */}
-          <div key={selectedStory.id} className="story-spotlight-enter mt-8 glass-card p-8 sm:p-12 shadow-lg grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            {/* Left 5 Cols: Persona Visual & Audio Card */}
-            <div className="lg:col-span-5 space-y-4">
-              <div className="rounded-3xl overflow-hidden border border-white/[0.14] shadow-md relative group">
-                <img
-                  src={selectedStory.imageUrl}
-                  alt={selectedStory.name}
-                  className="w-full h-80 sm:h-96 object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent" />
-
-                <div className="absolute bottom-5 inset-x-5 text-white">
-                  <div className="text-xs font-mono-tech text-emerald-300 font-semibold uppercase">
-                    {selectedStory.role} • {selectedStory.location}
-                  </div>
-                  <h4 className="font-serif-display text-2xl font-bold text-white mt-1">
-                    {selectedStory.name}
-                  </h4>
-                  <p className="text-xs text-white/75">{selectedStory.title}, {selectedStory.organization}</p>
-                </div>
-              </div>
-
-              {/* Simulated Audio Note Player */}
-              <div className="rounded-2xl bg-white/[0.05] border border-white/[0.14] p-4 flex items-center justify-between">
-                <div className="flex items-center gap-3">
+          <div className="mx-auto mt-2 flex max-w-6xl flex-col items-center justify-between gap-3 sm:flex-row">
+            <p className="text-xs text-white/60" aria-live="polite">
+              Illustrative story {selectedStoryIndex + 1} of {COMMUNITY_STORIES.length} · {selectedStory.role}
+            </p>
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-1.5" aria-label="Choose a community story">
+                {COMMUNITY_STORIES.map((story, index) => (
                   <button
+                    key={story.id}
                     type="button"
-                    onClick={toggleAudioSim}
-                    className="w-10 h-10 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white flex items-center justify-center cursor-pointer transition-all shadow-sm"
-                  >
-                    <Play className="w-4 h-4 fill-current ml-0.5" />
-                  </button>
-                  <div>
-                    <div className="text-xs font-semibold text-white flex items-center gap-1.5">
-                      <Volume2 className="w-3.5 h-3.5 text-emerald-400" />
-                      <span>{selectedStory.name.split(' ')[0]}’s Audio Memo</span>
-                    </div>
-                    <div className="text-[10px] font-mono-tech text-white/60">
-                      {isPlayingAudio ? 'Playing 0:18 / ' : 'Recorded Audio Note • '}
-                      {selectedStory.audioDuration || '0:45'}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Animated sound wave bars */}
-                <div className="flex items-center gap-1">
-                  {[12, 24, 16, 28, 14, 20].map((h, i) => (
-                    <span
-                      key={i}
-                      className={`w-1 rounded-full bg-emerald-600 ${
-                        isPlayingAudio ? 'animate-pulse' : 'opacity-40'
-                      }`}
-                      style={{ height: `${h}px` }}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Right 7 Cols: Narrative & Impact Metrics */}
-            <div className="lg:col-span-7 space-y-6">
-              <Quote className="w-10 h-10 text-emerald-400/30" />
-
-              <blockquote className="font-serif-display text-xl sm:text-2xl text-white italic leading-relaxed">
-                “{selectedStory.quote}”
-              </blockquote>
-
-              <p className="text-sm sm:text-base text-white/70 leading-relaxed">
-                {selectedStory.storyDetail}
-              </p>
-
-              {/* Story Metrics Banner */}
-              <div className="grid grid-cols-2 gap-4 pt-2">
-                <div className="p-4 rounded-2xl bg-white/[0.05] border border-white/[0.14] space-y-1">
-                  <div className="font-mono-tech text-xs text-white/60 uppercase font-semibold">
-                    {selectedStory.metricLabel}
-                  </div>
-                  <div className="font-serif-display text-2xl sm:text-3xl font-bold text-white">
-                    {selectedStory.metricValue}
-                  </div>
-                </div>
-
-                <div className="p-4 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 space-y-1">
-                  <div className="font-mono-tech text-xs text-emerald-300 uppercase font-semibold">
-                    ECOLOGICAL DIVERT
-                  </div>
-                  <div className="font-serif-display text-2xl sm:text-3xl font-bold text-emerald-400">
-                    {selectedStory.secondaryMetric}
-                  </div>
-                </div>
-              </div>
-
-              {/* Tag Pills */}
-              <div className="flex flex-wrap items-center gap-2 pt-2">
-                {selectedStory.tags.map((tg, i) => (
-                  <span
-                    key={i}
-                    className="px-3 py-1 rounded-full bg-white/[0.08] text-white/80 text-xs font-mono-tech border border-white/[0.14] font-medium"
-                  >
-                    #{tg}
-                  </span>
+                    onClick={() => {
+                      sound.click();
+                      setSelectedStoryIndex(index);
+                      setIsPlayingAudio(false);
+                    }}
+                    aria-label={`Show story ${index + 1}: ${story.name}`}
+                    aria-current={selectedStoryIndex === index ? 'true' : undefined}
+                    className={`h-2.5 rounded-full transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 ${
+                      selectedStoryIndex === index ? 'w-7 bg-emerald-300' : 'w-2.5 bg-white/30 hover:bg-white/60'
+                    }`}
+                  />
                 ))}
-                <span className="px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-300 font-mono-tech text-xs border border-emerald-500/30 font-semibold">
-                  ID: {selectedStory.verifiedBatchId}
-                </span>
               </div>
+              <button
+                type="button"
+                onClick={() => setIsStoryPaused((paused) => !paused)}
+                aria-pressed={isStoryPaused}
+                className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold text-white/65 transition hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"
+              >
+                {isStoryPaused ? <Play className="h-3.5 w-3.5" /> : <Pause className="h-3.5 w-3.5" />}
+                {isStoryPaused ? 'Resume' : 'Pause'}
+              </button>
             </div>
           </div>
+
         </div>
       </section>
 
@@ -364,23 +373,23 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
               </h2>
 
               <p className="text-base text-white/70 leading-relaxed max-w-xl">
-                Whether you run a 5-star hotel banquet, direct a community shelter, or ride an electric scooter in your free time — there is a role for you on the FoodBridge grid.
+                Whether you manage a restaurant, share food from home, run a community shelter, or volunteer for local pickups, there is a practical way to help.
               </p>
 
               {/* Three Value Pillars */}
               <div className="space-y-3 pt-2">
                 {[
                   {
-                    title: '100% Good Samaritan Shield',
-                    desc: 'Legally protected food donation under Indian law with automatic FSSAI compliance verification.',
+                    title: 'A food-safe handoff',
+                    desc: 'Record preparation time, storage condition, and pickup details before a meal batch is shared.',
                   },
                   {
-                    title: 'Instant 80G Tax Exemption Receipts',
-                    desc: 'Automated CSR and tax exemption receipts generated directly to your accounting dashboard.',
+                    title: 'Clear partner coordination',
+                    desc: 'Keep the donor, shelter, quantity, and pickup details together in one request.',
                   },
                   {
-                    title: 'Sub-38 Minute Doorstep Dispatch',
-                    desc: 'Thermal crates keep dinner piping hot from your kitchen door to shelter plates.',
+                    title: 'Local pickup planning',
+                    desc: 'Coordinate timing with participating shelters and volunteers based on availability.',
                   },
                 ].map((pil, idx) => (
                   <div key={idx} className="flex items-start gap-3 text-sm text-white/70">
@@ -428,12 +437,13 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
             {/* Right 6 Columns: Interactive 1-Minute Action Console */}
             <div className="lg:col-span-6">
               <div className="glass-card p-6 sm:p-8 shadow-lg space-y-6">
-                {/* 3 Role Selection Tabs */}
+                {/* Choose a participation path */}
                 <div className="flex rounded-2xl bg-white/[0.08] p-1.5 border border-white/[0.14]">
                   {[
-                    { id: 'donate', label: 'Food Donor', icon: Building2 },
-                    { id: 'ngo', label: 'NGO Shelter', icon: HeartHandshake },
-                    { id: 'volunteer', label: 'Volunteer Rider', icon: Bike },
+                    { id: 'donate', label: 'Food business', icon: Building2 },
+                    { id: 'household', label: 'Household', icon: Home },
+                    { id: 'ngo', label: 'NGO shelter', icon: HeartHandshake },
+                    { id: 'volunteer', label: 'Volunteer', icon: Bike },
                   ].map((tab) => {
                     const Icon = tab.icon;
                     const isActive = activeCtaTab === tab.id;
@@ -441,19 +451,16 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                       <button
                         key={tab.id}
                         type="button"
-                        onClick={() => {
-                          sound.click();
-                          setActiveCtaTab(tab.id as 'donate' | 'ngo' | 'volunteer');
-                          setSubmittedReceipt(null);
-                        }}
-                        className={`flex-1 py-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+                        onClick={() => selectCtaTab(tab.id as CtaTab)}
+                        aria-pressed={isActive}
+                        className={`min-w-0 flex-1 py-2.5 rounded-xl text-[10px] sm:text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
                           isActive
                             ? 'bg-black/60 text-white shadow-sm'
                             : 'text-white/70 hover:text-white'
                         }`}
                       >
                         <Icon className="w-3.5 h-3.5" />
-                        <span className="hidden sm:inline">{tab.label}</span>
+                        <span className="truncate">{tab.label}</span>
                       </button>
                     );
                   })}
@@ -464,10 +471,12 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                     <div className="space-y-1">
                       <label className="text-xs font-mono-tech uppercase text-white/70 font-semibold block">
                         {activeCtaTab === 'donate'
-                          ? 'Restaurant / Hotel / Host Name'
+                          ? 'Restaurant / Hotel / Event Name'
+                          : activeCtaTab === 'household'
+                          ? 'Your Name'
                           : activeCtaTab === 'ngo'
                           ? 'NGO / Shelter Registered Name'
-                          : 'Your Full Name (Hunger Hero)'}
+                          : 'Your Name'}
                       </label>
                       <input
                         type="text"
@@ -475,6 +484,8 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                         placeholder={
                           activeCtaTab === 'donate'
                             ? 'e.g. Grand Horizon Hotel & Banquets'
+                            : activeCtaTab === 'household'
+                            ? 'e.g. Priya Sharma'
                             : activeCtaTab === 'ngo'
                             ? 'e.g. Annapurna Seva Foundation'
                             : 'e.g. Vikram Sharma'
@@ -502,15 +513,18 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                       <label className="text-xs font-mono-tech uppercase text-white/70 font-semibold block">
                         {activeCtaTab === 'donate'
                           ? 'Estimated Surplus Food Quantity'
+                          : activeCtaTab === 'household'
+                          ? 'Food You Can Share'
                           : activeCtaTab === 'ngo'
-                          ? 'Nightly Shelter Meal Capacity'
-                          : 'Vehicle Type & Available Hours'}
+                          ? 'Meals Needed Each Evening'
+                          : 'Vehicle & Available Hours'}
                       </label>
                       <input
                         type="text"
                         required
                         value={quantityOrCapacity}
                         onChange={(e) => setQuantityOrCapacity(e.target.value)}
+                        placeholder={CTA_QUANTITY_DEFAULTS[activeCtaTab]}
                         className="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/[0.20] text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-[#12221e]"
                       />
                     </div>
@@ -521,10 +535,12 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                     >
                       <span>
                         {activeCtaTab === 'donate'
-                          ? 'Generate Instant Dispatch Pass'
+                          ? 'Preview food donation request'
+                          : activeCtaTab === 'household'
+                          ? 'Preview household food share'
                           : activeCtaTab === 'ngo'
-                          ? 'Onboard Shelter for Nightly Surplus'
-                          : 'Join Hunger Heroes EV Squad'}
+                          ? 'Preview shelter partnership'
+                          : 'Preview volunteer interest'}
                       </span>
                       <ArrowRight className="w-4 h-4" />
                     </button>
@@ -536,7 +552,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                     </div>
                     <div>
                       <div className="font-mono-tech text-xs text-emerald-300 uppercase font-bold">
-                        REGISTRATION CONFIRMED • {submittedReceipt.id}
+                        PREVIEW READY • {submittedReceipt.id}
                       </div>
                       <h4 className="font-serif-display text-xl font-bold text-white mt-1">
                         {submittedReceipt.name}
@@ -546,8 +562,8 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                       </p>
                     </div>
 
-                    <div className="p-3 rounded-xl bg-white/[0.07] border border-emerald-500/30 text-xs font-mono-tech text-white/80">
-                      Dispatched to FoodBridge Central Dispatch Desk. SMS & WhatsApp confirmation sent.
+                    <div className="p-3 rounded-xl bg-white/[0.07] border border-emerald-500/30 text-xs text-white/80">
+                      This demo preview is on this page only. It does not schedule a pickup or contact anyone.
                     </div>
 
                     <button
@@ -555,7 +571,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                       onClick={() => setSubmittedReceipt(null)}
                       className="text-xs text-emerald-400 hover:underline cursor-pointer font-semibold"
                     >
-                      Submit Another Registration
+                      Start another preview
                     </button>
                   </div>
                 )}
