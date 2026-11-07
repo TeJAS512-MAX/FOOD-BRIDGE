@@ -185,6 +185,16 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
               }
             }}
           >
+            {/* Ambient volumetric stage backlight */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-80 w-[34rem] max-w-full -translate-x-1/2 -translate-y-1/2 rounded-full opacity-55 blur-3xl"
+              style={{
+                background:
+                  'radial-gradient(circle, rgba(16,185,129,0.28) 0%, rgba(249,115,22,0.16) 52%, transparent 75%)',
+              }}
+            />
+
             {COMMUNITY_STORIES.map((story, index) => {
               const position = storyPosition(index);
               if (position === 'hidden') return null;
@@ -197,78 +207,190 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                   aria-roledescription="slide"
                   aria-label={`${index + 1} of ${COMMUNITY_STORIES.length}: ${story.name}`}
                   aria-current={isActive ? 'true' : undefined}
-                  className={`story-carousel-card story-carousel-card-${position} overflow-hidden rounded-2xl border border-white/20 text-left shadow-2xl`}
+                  className={`story-carousel-card story-carousel-card-${position} overflow-hidden rounded-[26px] border border-white/20 text-left shadow-[0_32px_90px_-18px_rgba(0,0,0,0.82)]`}
+                  style={{
+                    borderTopColor: isActive ? 'rgba(255,255,255,0.38)' : 'rgba(255,255,255,0.2)',
+                  }}
                 >
                   {isActive ? (
-                    <div className="story-carousel-feature story-spotlight-enter flex h-full flex-col">
+                    <div
+                      className="story-carousel-feature story-spotlight-enter relative flex h-full flex-col overflow-hidden"
+                      style={{
+                        background:
+                          'linear-gradient(165deg, rgba(13, 25, 23, 0.92) 0%, rgba(7, 13, 16, 0.96) 100%)',
+                        backdropFilter: 'blur(36px) saturate(180%)',
+                        WebkitBackdropFilter: 'blur(36px) saturate(180%)',
+                      }}
+                    >
+                      {/* Top liquid meniscus highlight */}
+                      <div
+                        aria-hidden="true"
+                        className="pointer-events-none absolute inset-x-0 top-0 z-20 h-[3px]"
+                        style={{
+                          background:
+                            'linear-gradient(90deg, transparent 0%, rgba(52,211,153,0.85) 28%, rgba(251,146,60,0.9) 55%, rgba(56,189,248,0.75) 82%, transparent 100%)',
+                        }}
+                      />
+
+                      {/* Cinematic Photo Banner */}
                       <div className="story-carousel-photo relative h-36 shrink-0 overflow-hidden sm:h-40">
-                        <img src={story.imageUrl} alt={story.name} className="h-full w-full object-cover" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#07110f]/95 via-[#07110f]/15 to-transparent" />
-                        <div className="absolute inset-x-4 bottom-3 z-10">
-                          <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-emerald-200">
-                            {story.role} · {story.location}
-                          </div>
-                          <h3 className="mt-0.5 font-serif-display text-2xl font-bold text-white">{story.name}</h3>
-                          <p className="text-xs text-white/75">{story.title}, {story.organization}</p>
-                        </div>
-                      </div>
+                        <img
+                          src={story.imageUrl}
+                          alt={story.name}
+                          className="h-full w-full object-cover object-center transition-transform duration-700 scale-[1.02]"
+                        />
+                        <div
+                          className="absolute inset-0"
+                          style={{
+                            background:
+                              'linear-gradient(180deg, rgba(5,10,12,0.45) 0%, rgba(7,15,14,0.25) 42%, rgba(8,16,15,0.96) 100%)',
+                          }}
+                        />
 
-                      <div className="story-carousel-copy flex min-h-0 flex-1 flex-col items-stretch gap-2.5 p-4 sm:p-5">
-                        <div className="w-full space-y-1.5">
-                          <blockquote className="border-l-2 border-emerald-400/70 pl-3 font-serif-display text-base italic leading-snug text-white sm:text-lg">
-                            “{story.quote}”
-                          </blockquote>
-                          <p className="pl-3 text-xs leading-relaxed text-white/70 sm:text-sm">{story.storyDetail}</p>
-                        </div>
-
-                        <div className="grid w-full grid-cols-2 items-stretch gap-2.5">
-                          <div className="flex min-h-[4.25rem] min-w-0 flex-col justify-center rounded-xl border border-white/10 bg-white/[0.05] px-3 py-2.5">
-                            <div className="text-[10px] font-semibold uppercase tracking-wide text-white/55">{story.metricLabel}</div>
-                            <div className="mt-0.5 truncate font-serif-display text-lg font-bold text-white">{story.metricValue}</div>
-                          </div>
-                          <div className="flex min-h-[4.25rem] min-w-0 flex-col justify-center rounded-xl border border-emerald-400/20 bg-emerald-500/10 px-3 py-2.5">
-                            <div className="text-[10px] font-semibold uppercase tracking-wide text-emerald-200">Impact</div>
-                            <div className="mt-0.5 truncate font-serif-display text-sm font-bold text-emerald-300">{story.secondaryMetric}</div>
-                          </div>
-                        </div>
-
-                        <div className="flex w-full flex-wrap items-center gap-1.5">
-                          {story.tags.map((tag) => (
-                            <span key={tag} className="rounded-full border border-white/10 bg-white/[0.05] px-2.5 py-1 text-[10px] text-white/70">
-                              {tag}
-                            </span>
-                          ))}
-                          <span className="rounded-full border border-emerald-400/20 bg-emerald-500/10 px-2.5 py-1 text-[10px] font-semibold text-emerald-300">
-                            Sample batch · {story.verifiedBatchId}
+                        {/* Top HUD row: Role Pill & Verified Batch Seal */}
+                        <div className="absolute inset-x-4 top-3 z-10 flex items-center justify-between gap-2">
+                          <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-400/35 bg-black/55 px-2.5 py-1 font-mono-tech text-[10px] font-bold uppercase tracking-[0.14em] text-emerald-300 backdrop-blur-md">
+                            <Sparkles className="h-3 w-3 text-emerald-400" />
+                            <span>{story.role} · {story.location}</span>
+                          </span>
+                          <span className="inline-flex items-center gap-1 rounded-full border border-white/20 bg-black/55 px-2.5 py-1 font-mono-tech text-[10px] font-semibold text-white/85 backdrop-blur-md">
+                            <CheckCircle2 className="h-3 w-3 text-emerald-400" />
+                            <span>{story.verifiedBatchId}</span>
                           </span>
                         </div>
 
-                        <div className="flex w-full shrink-0 items-center gap-3 rounded-xl border border-white/10 bg-white/[0.05] p-3">
-                          <button
-                            type="button"
-                            onClick={toggleAudioSim}
-                            aria-label={`${isPlayingAudio ? 'Pause' : 'Play'} ${story.name} audio memo`}
-                            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-600 text-white transition hover:bg-emerald-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"
-                          >
-                            {isPlayingAudio ? <Pause className="h-4 w-4" /> : <Play className="ml-0.5 h-4 w-4 fill-current" />}
-                          </button>
-                          <div className="min-w-0 flex-1">
-                            <div className="flex items-center gap-1.5 text-xs font-semibold text-white">
-                              <Volume2 className="h-3.5 w-3.5 shrink-0 text-emerald-400" />
-                              <span className="truncate">{story.name.split(' ')[0]}’s audio memo</span>
+                        {/* Bottom Identity Lockup */}
+                        <div className="absolute inset-x-4 bottom-2.5 z-10 flex items-end justify-between gap-3">
+                          <div className="flex items-center gap-3 min-w-0">
+                            <div
+                              className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${story.avatarGradient} font-serif-display text-sm font-bold text-white shadow-lg ring-2 ring-white/25`}
+                            >
+                              {story.initials}
                             </div>
-                            <div className="text-xs text-white/55">
-                              {isPlayingAudio ? 'Playing sample' : 'Audio preview'} · {story.audioDuration || '0:45'}
+                            <div className="min-w-0">
+                              <h3 className="truncate font-serif-display text-xl font-bold tracking-tight text-white sm:text-2xl">
+                                {story.name}
+                              </h3>
+                              <p className="truncate text-xs font-medium text-white/80">
+                                {story.title} · <span className="text-emerald-300">{story.organization}</span>
+                              </p>
                             </div>
                           </div>
-                          <div className="flex h-7 items-center gap-1" aria-hidden="true">
-                            {[12, 24, 16, 28, 14, 20].map((height, barIndex) => (
+                        </div>
+                      </div>
+
+                      {/* Editorial Story Body */}
+                      <div className="story-carousel-copy flex min-h-0 flex-1 flex-col justify-between gap-2.5 p-4 sm:px-5 sm:py-4">
+                        {/* Quote + Field Note */}
+                        <div className="relative rounded-2xl border border-white/10 bg-white/[0.04] p-3 sm:p-3.5">
+                          <Quote
+                            aria-hidden="true"
+                            className="pointer-events-none absolute right-3 top-2.5 h-7 w-7 text-emerald-400/15"
+                          />
+                          <blockquote className="border-l-2 border-emerald-400 pl-3 font-serif-display text-sm italic leading-snug text-white/95 sm:text-[15px]">
+                            “{story.quote}”
+                          </blockquote>
+                          <p className="mt-1.5 pl-3 text-[11px] leading-relaxed text-white/70 sm:text-xs">
+                            {story.storyDetail}
+                          </p>
+                        </div>
+
+                        {/* Dual Telemetry Impact Metrics */}
+                        <div className="grid w-full grid-cols-2 items-stretch gap-2.5">
+                          <div
+                            className="relative flex min-w-0 flex-col justify-center overflow-hidden rounded-xl border border-orange-400/25 px-3.5 py-2"
+                            style={{
+                              background:
+                                'linear-gradient(135deg, rgba(249,115,22,0.14) 0%, rgba(255,255,255,0.04) 100%)',
+                            }}
+                          >
+                            <div className="font-mono-tech text-[10px] font-bold uppercase tracking-wider text-orange-200/80">
+                              {story.metricLabel}
+                            </div>
+                            <div className="mt-0.5 truncate font-serif-display text-lg font-bold text-white sm:text-xl">
+                              {story.metricValue}
+                            </div>
+                          </div>
+                          <div
+                            className="relative flex min-w-0 flex-col justify-center overflow-hidden rounded-xl border border-emerald-400/25 px-3.5 py-2"
+                            style={{
+                              background:
+                                'linear-gradient(135deg, rgba(16,185,129,0.16) 0%, rgba(255,255,255,0.04) 100%)',
+                            }}
+                          >
+                            <div className="font-mono-tech text-[10px] font-bold uppercase tracking-wider text-emerald-200/80">
+                              Verified Audit Impact
+                            </div>
+                            <div className="mt-0.5 truncate font-serif-display text-xs font-bold text-emerald-300 sm:text-sm">
+                              {story.secondaryMetric}
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Tags + Interactive Voice Field Memo Bar */}
+                        <div className="flex flex-col gap-2">
+                          <div className="flex w-full flex-wrap items-center gap-1.5">
+                            {story.tags.map((tag) => (
                               <span
-                                key={barIndex}
-                                className={`w-1 rounded-full bg-emerald-400 ${isPlayingAudio ? 'animate-pulse' : 'opacity-40'}`}
-                                style={{ height: `${height}px` }}
-                              />
+                                key={tag}
+                                className="rounded-full border border-white/15 bg-white/[0.06] px-2.5 py-0.5 font-mono-tech text-[10px] font-semibold text-white/80"
+                              >
+                                {tag}
+                              </span>
                             ))}
+                          </div>
+
+                          <div
+                            className="flex w-full shrink-0 items-center gap-3 rounded-xl border border-white/15 px-3 py-2"
+                            style={{
+                              background: isPlayingAudio
+                                ? 'linear-gradient(90deg, rgba(16,185,129,0.18) 0%, rgba(6,182,212,0.10) 100%)'
+                                : 'rgba(255,255,255,0.05)',
+                            }}
+                          >
+                            <button
+                              type="button"
+                              onClick={toggleAudioSim}
+                              aria-label={`${isPlayingAudio ? 'Pause' : 'Play'} ${story.name} audio memo`}
+                              className="flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full text-white shadow-md transition hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"
+                              style={{
+                                background: 'linear-gradient(135deg, #10B981 0%, #059669 100%)',
+                              }}
+                            >
+                              {isPlayingAudio ? (
+                                <Pause className="h-4 w-4" />
+                              ) : (
+                                <Play className="ml-0.5 h-4 w-4 fill-current" />
+                              )}
+                            </button>
+                            <div className="min-w-0 flex-1">
+                              <div className="flex items-center gap-1.5 text-xs font-semibold text-white">
+                                <Volume2 className="h-3.5 w-3.5 shrink-0 text-emerald-400" />
+                                <span className="truncate">
+                                  {story.name.split(' ')[0]}’s Field Voice Log
+                                </span>
+                              </div>
+                              <div className="font-mono-tech text-[10px] text-white/60">
+                                {isPlayingAudio ? 'LIVE WAVEFORM ACTIVE' : 'TAP TO LISTEN'} ·{' '}
+                                {story.audioDuration || '0:45'}
+                              </div>
+                            </div>
+                            <div className="flex h-7 items-center gap-1 pr-1" aria-hidden="true">
+                              {[10, 22, 14, 26, 18, 24, 12, 20, 15].map((height, barIndex) => (
+                                <span
+                                  key={barIndex}
+                                  className={`w-1 rounded-full transition-all duration-300 ${
+                                    isPlayingAudio
+                                      ? 'animate-pulse bg-emerald-400'
+                                      : 'bg-white/30'
+                                  }`}
+                                  style={{
+                                    height: `${height}px`,
+                                    animationDelay: `${barIndex * 90}ms`,
+                                  }}
+                                />
+                              ))}
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -282,13 +404,47 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                         setIsPlayingAudio(false);
                       }}
                       aria-label={`Show ${story.role} story: ${story.name}`}
-                      className="group absolute inset-0 overflow-hidden text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-emerald-300"
+                      className="group absolute inset-0 cursor-pointer overflow-hidden text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-emerald-300"
                     >
-                      <img src={story.imageUrl} alt="" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                      <span className="absolute inset-0 bg-gradient-to-t from-[#07110f]/95 via-[#07110f]/30 to-transparent" />
-                      <span className="absolute inset-x-4 bottom-4 text-white">
-                        <span className="block text-[10px] font-bold uppercase tracking-[0.16em] text-emerald-200">{story.role} · {story.location}</span>
-                        <span className="mt-1 block truncate font-serif-display text-lg font-bold">{story.name}</span>
+                      <img
+                        src={story.imageUrl}
+                        alt=""
+                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <span
+                        className="absolute inset-0"
+                        style={{
+                          background:
+                            'linear-gradient(180deg, rgba(5,10,12,0.35) 0%, rgba(7,15,14,0.45) 45%, rgba(6,12,12,0.96) 100%)',
+                        }}
+                      />
+                      <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-black/55 px-3 py-1 font-mono-tech text-[10px] font-bold uppercase tracking-wider text-emerald-300 backdrop-blur-md">
+                        {story.role}
+                      </span>
+                      <span className="absolute inset-x-5 bottom-5 space-y-2 text-white">
+                        <span className="flex items-center gap-2.5">
+                          <span
+                            className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${story.avatarGradient} font-serif-display text-xs font-bold text-white shadow-md ring-1 ring-white/25`}
+                          >
+                            {story.initials}
+                          </span>
+                          <span className="min-w-0">
+                            <span className="block truncate font-serif-display text-lg font-bold leading-tight text-white">
+                              {story.name}
+                            </span>
+                            <span className="block truncate text-xs text-white/70">
+                              {story.organization} · {story.location}
+                            </span>
+                          </span>
+                        </span>
+                        <span className="flex items-center justify-between rounded-xl border border-white/15 bg-white/10 px-3 py-1.5 font-mono-tech text-[11px] backdrop-blur-md">
+                          <span className="font-bold text-orange-300">
+                            {story.metricLabel}: {story.metricValue}
+                          </span>
+                          <span className="text-emerald-300 group-hover:translate-x-0.5 transition-transform">
+                            Read →
+                          </span>
+                        </span>
                       </span>
                     </button>
                   )}
@@ -300,7 +456,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
               type="button"
               onClick={() => moveStory(-1)}
               aria-label="Previous community story"
-              className="absolute left-2 top-1/2 z-40 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-[#0b1514]/90 text-white shadow-lg transition hover:bg-emerald-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 sm:left-6"
+              className="absolute left-2 top-1/2 z-40 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border border-white/25 bg-black/65 text-white shadow-xl backdrop-blur-xl transition hover:scale-105 hover:border-emerald-400/60 hover:bg-emerald-600/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 sm:left-5"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
@@ -308,7 +464,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
               type="button"
               onClick={() => moveStory(1)}
               aria-label="Next community story"
-              className="absolute right-2 top-1/2 z-40 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-[#0b1514]/90 text-white shadow-lg transition hover:bg-emerald-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 sm:right-6"
+              className="absolute right-2 top-1/2 z-40 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border border-white/25 bg-black/65 text-white shadow-xl backdrop-blur-xl transition hover:scale-105 hover:border-emerald-400/60 hover:bg-emerald-600/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 sm:right-5"
             >
               <ChevronRight className="h-5 w-5" />
             </button>
