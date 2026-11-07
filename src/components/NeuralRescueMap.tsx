@@ -10,10 +10,10 @@ interface RescueRoute {
 }
 
 const ROUTES: RescueRoute[] = [
-  { id: 'r1', donorX: 110, donorY: 90,  ngoX: 440, ngoY: 60,  donorLabel: 'Grand Horizon Hotel', ngoLabel: 'Annapurna Seva', meals: 168, eta: 12, temp: 65.2 },
-  { id: 'r2', donorX: 620, donorY: 160, ngoX: 280, ngoY: 220, donorLabel: 'The Royal Feast', ngoLabel: 'Karuna Shelter', meals: 95,  eta: 24, temp: 63.8 },
-  { id: 'r3', donorX: 180, donorY: 260, ngoX: 560, ngoY: 220, donorLabel: 'TechPark Cafe', ngoLabel: 'Asha Orphanage', meals: 240, eta: 8,  temp: 66.1 },
-  { id: 'r4', donorX: 480, donorY: 300, ngoX: 140, ngoY: 320, donorLabel: 'Marriott Banquet', ngoLabel: 'Bal Ashram', meals: 312, eta: 18, temp: 64.5 },
+  { id: 'r1', donorX: 115, donorY: 85,  ngoX: 430, ngoY: 65,  donorLabel: 'Grand Horizon Hotel', ngoLabel: 'Annapurna Seva', meals: 168, eta: 12, temp: 65.2 },
+  { id: 'r2', donorX: 615, donorY: 115, ngoX: 330, ngoY: 168, donorLabel: 'The Royal Feast', ngoLabel: 'Karuna Shelter', meals: 95,  eta: 24, temp: 63.8 },
+  { id: 'r3', donorX: 150, donorY: 235, ngoX: 580, ngoY: 230, donorLabel: 'TechPark Cafe', ngoLabel: 'Asha Orphanage', meals: 240, eta: 8,  temp: 66.1 },
+  { id: 'r4', donorX: 495, donorY: 318, ngoX: 155, ngoY: 328, donorLabel: 'Marriott Banquet', ngoLabel: 'Bal Ashram', meals: 312, eta: 18, temp: 64.5 },
 ];
 
 const W = 740, H = 380;
@@ -22,7 +22,6 @@ const W = 740, H = 380;
 
 export const NeuralRescueMap: React.FC = () => {
   const [progresses, setProgresses] = useState<number[]>(ROUTES.map((_, i) => i * 0.22));
-  const [radarAngle, setRadarAngle] = useState<number>(0);
   const [hovered, setHovered] = useState<string | null>(null);
   const rafRef = useRef<number>(0);
   const lastRef = useRef<number>(0);
@@ -33,7 +32,6 @@ export const NeuralRescueMap: React.FC = () => {
       const dt = (ts - lastRef.current) / 1000;
       lastRef.current = ts;
       setProgresses(prev => prev.map((p, i) => (p + dt * (0.08 + i * 0.015)) % 1));
-      setRadarAngle(prev => (prev + dt * 38) % 360);
       rafRef.current = requestAnimationFrame(animate);
     };
     rafRef.current = requestAnimationFrame(animate);
@@ -78,20 +76,22 @@ export const NeuralRescueMap: React.FC = () => {
       </div>
 
       {/* SVG Map */}
-      <div className="rounded-2xl overflow-hidden relative" style={{ background: 'rgba(0,0,0,0.30)', border: '1px solid rgba(255,255,255,0.08)' }}>
+      <div
+        className="rounded-2xl overflow-hidden relative shadow-inner"
+        style={{
+          background:
+            'radial-gradient(ellipse at 50% 45%, rgba(16, 42, 38, 0.96) 0%, rgba(6, 13, 18, 0.98) 100%)',
+          border: '1px solid rgba(52, 211, 153, 0.22)',
+        }}
+      >
         <svg viewBox={`0 0 ${W} ${H}`} className="w-full" style={{ height: 'clamp(220px, 42vw, 380px)' }}>
-          {/* Concentric Radar Rings & Rotating Sweep Beam */}
+          {/* Subtle Geospatial Range Rings & Sector Corridors */}
           <g transform={`translate(${W / 2}, ${H / 2})`} pointerEvents="none">
-            <circle r={85} fill="none" stroke="rgba(16,185,129,0.08)" strokeDasharray="3 5" />
-            <circle r={165} fill="none" stroke="rgba(16,185,129,0.07)" strokeDasharray="4 6" />
-            <circle r={255} fill="none" stroke="rgba(16,185,129,0.05)" />
-            <g transform={`rotate(${radarAngle})`}>
-              <path
-                d="M 0 0 L 290 -32 A 292 292 0 0 1 290 32 Z"
-                fill="url(#radarSweepGrad)"
-              />
-              <line x1={0} y1={0} x2={290} y2={0} stroke="rgba(52,211,153,0.32)" strokeWidth={1} />
-            </g>
+            <circle r={85} fill="none" stroke="rgba(52,211,153,0.10)" strokeDasharray="3 6" />
+            <circle r={165} fill="none" stroke="rgba(52,211,153,0.08)" strokeDasharray="4 8" />
+            <circle r={255} fill="none" stroke="rgba(52,211,153,0.06)" />
+            <line x1={-W / 2} y1={0} x2={W / 2} y2={0} stroke="rgba(255,255,255,0.04)" strokeDasharray="4 6" />
+            <line x1={0} y1={-H / 2} x2={0} y2={H / 2} stroke="rgba(255,255,255,0.04)" strokeDasharray="4 6" />
           </g>
 
           {/* City grid dots */}
