@@ -68,43 +68,7 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
   return (
     <section className="relative flex flex-col justify-center px-4 sm:px-6 lg:px-8 py-5 sm:py-7 overflow-hidden">
       {/* ==============================================================
-          LAYER 1: 3D POLISHED GOLD-CHROME SCULPTURAL LETTERS ("FOODBRIDGE")
-          Positioned directly behind the lower portion of the liquid glass
-          sheet with high-gloss metallic reflections & perspective, exactly
-          like Vertix's sculptural 3D typography
-      ============================================================== */}
-      <div className="absolute inset-x-0 bottom-8 sm:bottom-12 lg:bottom-14 flex items-baseline justify-center select-none pointer-events-none z-0 px-2 overflow-hidden">
-        <div
-          className="flex items-baseline gap-1.5 sm:gap-3 md:gap-5 lg:gap-7 opacity-85 sm:opacity-95 transition-transform duration-300 ease-out"
-          style={{
-            transform: `translate3d(${tilt.px}px, ${tilt.py}px, 0)`,
-          }}
-        >
-          {['F', 'O', 'O', 'D'].map((char, i) => (
-            <span
-              key={`f-${i}`}
-              className="letter-3d-metallic text-5xl sm:text-7xl md:text-9xl lg:text-[144px] leading-none"
-            >
-              {char}
-            </span>
-          ))}
-
-          {/* Glowing Emerald Biomolecular / Civic Sphere */}
-          <span className="letter-3d-sphere mx-1 sm:mx-2 self-center mb-4 sm:mb-8" />
-
-          {['B', 'R', 'I', 'D', 'G', 'E'].map((char, i) => (
-            <span
-              key={`b-${i}`}
-              className="letter-3d-metallic text-5xl sm:text-7xl md:text-9xl lg:text-[144px] leading-none"
-            >
-              {char}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* ==============================================================
-          LAYER 2: THE LIQUID FROSTED GLASS CONSOLE
+          LAYER 1: THE LIQUID FROSTED GLASS CONSOLE
           100% transparent glassmorphism floating over the warm scene photo
       ============================================================== */}
       <div className="relative z-10 w-full max-w-6xl mx-auto my-auto space-y-4">
@@ -467,10 +431,45 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
         </div>
 
         {/* ==============================================================
+            LAYER 2: 3D POLISHED GOLD-CHROME SCULPTURAL WORDMARK ("FOOD · BRIDGE")
+            Dedicated display band between the Hero Console and the Stats Cards
+            so it never collides with or obscures the 4 KPI cards below
+        ============================================================== */}
+        <div className="relative flex items-baseline justify-center select-none pointer-events-none py-1 sm:py-2 overflow-hidden">
+          <div
+            className="flex items-baseline gap-1.5 sm:gap-3 md:gap-4 lg:gap-6 opacity-90 transition-transform duration-300 ease-out"
+            style={{
+              transform: `translate3d(${tilt.px}px, ${tilt.py}px, 0)`,
+            }}
+          >
+            {['F', 'O', 'O', 'D'].map((char, i) => (
+              <span
+                key={`f-${i}`}
+                className="letter-3d-metallic text-4xl sm:text-6xl md:text-7xl lg:text-[96px] leading-none"
+              >
+                {char}
+              </span>
+            ))}
+
+            {/* Glowing Emerald Biomolecular / Civic Sphere */}
+            <span className="letter-3d-sphere mx-1 sm:mx-2 self-center mb-2 sm:mb-4" />
+
+            {['B', 'R', 'I', 'D', 'G', 'E'].map((char, i) => (
+              <span
+                key={`b-${i}`}
+                className="letter-3d-metallic text-4xl sm:text-6xl md:text-7xl lg:text-[96px] leading-none"
+              >
+                {char}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* ==============================================================
             LAYER 3: THE COMPOSE STATSCARD GLASS ROW
             Direct implementation of the user's reference StatsCard component
         ============================================================== */}
-        <div className="pt-2">
+        <div className="relative z-20">
           <StatsCardGrid
             onOpenDonateModal={() => onOpenDonateModal()}
             onOpenLiveTracker={onOpenLiveTracker}
