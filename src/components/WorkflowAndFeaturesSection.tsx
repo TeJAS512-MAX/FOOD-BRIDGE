@@ -3,12 +3,8 @@ import {
   Bike,
   Camera,
   CheckCircle2,
-  ChevronLeft,
-  ChevronRight,
   Clock,
   Navigation,
-  Pause,
-  Play,
   ShieldCheck,
   Sparkles,
   Users,
@@ -254,96 +250,6 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
             </p>
           </div>
 
-          {/* Live Loop Controller Bar */}
-          <div className="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-white/15 bg-white/[0.06] px-4 py-2.5 backdrop-blur-xl">
-            <div className="flex items-center gap-3 min-w-0">
-              <span className="relative flex h-3 w-3 shrink-0">
-                <span
-                  className={`absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 ${
-                    isLoopPaused ? '' : 'animate-ping'
-                  }`}
-                />
-                <span className="relative inline-flex h-3 w-3 rounded-full bg-emerald-400" />
-              </span>
-              <div className="min-w-0">
-                <div className="flex items-center gap-2 font-mono-tech text-xs font-bold uppercase tracking-wider text-emerald-300">
-                  <span>
-                    STEP {steps[activeStep].stepNumber} OF 0{steps.length} • {steps[activeStep].title}
-                  </span>
-                  <span className="hidden sm:inline text-white/40">•</span>
-                  <span className="hidden sm:inline text-orange-300">
-                    {steps[activeStep].duration}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <div className="hidden md:flex items-center gap-1.5 mr-2">
-                {steps.map((st, idx) => (
-                  <button
-                    key={st.stepNumber}
-                    type="button"
-                    onClick={() => {
-                      sound.click();
-                      setActiveStep(idx);
-                    }}
-                    aria-label={`Jump to step ${st.stepNumber}`}
-                    className={`h-2 rounded-full transition-all cursor-pointer ${
-                      activeStep === idx
-                        ? 'w-7 bg-emerald-400 shadow-[0_0_10px_#10B981]'
-                        : idx < activeStep
-                        ? 'w-2 bg-emerald-400/50'
-                        : 'w-2 bg-white/25 hover:bg-white/50'
-                    }`}
-                  />
-                ))}
-              </div>
-              <button
-                type="button"
-                onClick={() => {
-                  sound.click();
-                  setActiveStep((prev) => (prev - 1 + steps.length) % steps.length);
-                }}
-                aria-label="Previous step"
-                className="flex h-8 w-8 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white hover:bg-white/20 cursor-pointer transition"
-              >
-                <ChevronLeft className="h-4 w-4" />
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  sound.click();
-                  setIsLoopPaused((p) => !p);
-                }}
-                className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 font-mono-tech text-xs font-semibold text-white hover:bg-white/20 cursor-pointer transition"
-              >
-                {isLoopPaused ? (
-                  <>
-                    <Play className="h-3.5 w-3.5 text-emerald-400 fill-current" />
-                    <span>Resume Loop</span>
-                  </>
-                ) : (
-                  <>
-                    <Pause className="h-3.5 w-3.5 text-orange-300" />
-                    <span>Pause Loop</span>
-                  </>
-                )}
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  sound.click();
-                  setActiveStep((prev) => (prev + 1) % steps.length);
-                }}
-                aria-label="Next step"
-                className="flex h-8 w-8 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white hover:bg-white/20 cursor-pointer transition"
-              >
-                <ChevronRight className="h-4 w-4" />
-              </button>
-            </div>
-          </div>
-
           {/* Straight Horizontal Right-to-Left Rolling Conveyor of 6 Step Cards */}
           <div
             className="mt-4 workflow-rolling-viewport"
@@ -447,6 +353,40 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                 );
               })}
             </div>
+          </div>
+
+          {/* Step Point Labels Directly Under Cards */}
+          <div className="mt-3 flex flex-wrap items-center justify-center gap-2 sm:gap-2.5">
+            {steps.map((st, idx) => {
+              const isActive = activeStep === idx;
+              return (
+                <button
+                  key={st.stepNumber}
+                  type="button"
+                  onClick={() => {
+                    sound.click();
+                    setActiveStep(idx);
+                  }}
+                  className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-mono-tech transition-all cursor-pointer border ${
+                    isActive
+                      ? 'bg-emerald-500/25 text-white border-emerald-400 font-bold shadow-[0_0_16px_rgba(16,185,129,0.35)] scale-105'
+                      : 'bg-white/[0.06] text-white/75 border-white/15 hover:bg-white/12 hover:text-white'
+                  }`}
+                >
+                  <span
+                    className={`h-2 w-2 rounded-full transition-all ${
+                      isActive
+                        ? 'bg-emerald-400 shadow-[0_0_8px_#10B981]'
+                        : idx < activeStep
+                        ? 'bg-emerald-400/60'
+                        : 'bg-white/35'
+                    }`}
+                  />
+                  <span className="text-emerald-300 font-bold">{st.stepNumber}</span>
+                  <span className="truncate max-w-[140px]">{st.title}</span>
+                </button>
+              );
+            })}
           </div>
 
           {/* Step Detail Spotlight Console — Compact Side-by-Side Metrics + Video Reel */}

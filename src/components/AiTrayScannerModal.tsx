@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
+  Camera,
   CheckCircle2,
   Scan,
   ShieldCheck,
+  Upload,
   X,
 } from 'lucide-react';
 import { sound } from '../utils/soundEffects';
@@ -24,6 +26,9 @@ export const AiTrayScannerModal: React.FC<AiTrayScannerModalProps> = ({
   const [scanProgress, setScanProgress] = useState<number>(0);
   const [selectedPresetIndex, setSelectedPresetIndex] = useState<number>(0);
   const [analyzed, setAnalyzed] = useState<boolean>(false);
+  const [customPhotoUrl, setCustomPhotoUrl] = useState<string | null>(null);
+  const [customPhotoName, setCustomPhotoName] = useState<string>('');
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const presets = [
     {
@@ -91,9 +96,50 @@ export const AiTrayScannerModal: React.FC<AiTrayScannerModalProps> = ({
     },
   ];
 
-  const currentPreset = presets[selectedPresetIndex];
+  const customPreset = {
+    title: customPhotoName || 'Custom Kitchen Tray Upload',
+    source: 'Live Camera / Uploaded Kitchen Tray • Instant Audit',
+    image: customPhotoUrl || presets[0].image,
+    videoUrl: '',
+    items: [
+      {
+        name: 'Detected Primary Entree Tray',
+        category: 'Cooked Batch • GN 1/1 Pan',
+        weightKg: 16.5,
+        portions: 66,
+        temp: 65.2,
+        confidence: 99.2,
+        box: { top: 18, left: 14, width: 38, height: 44 },
+      },
+      {
+        name: 'Accompaniment & Grain Portions',
+        category: 'Steamed / Sealed Container',
+        weightKg: 14.0,
+        portions: 56,
+        temp: 64.8,
+        confidence: 98.8,
+        box: { top: 26, left: 55, width: 33, height: 42 },
+      },
+    ],
+  };
+
+  const currentPreset = customPhotoUrl ? customPreset : presets[selectedPresetIndex];
   const totalWeight = currentPreset.items.reduce((acc, it) => acc + it.weightKg, 0);
   const totalPortions = currentPreset.items.reduce((acc, it) => acc + it.portions, 0);
+
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (typeof reader.result === 'string') {
+        sound.click();
+        setCustomPhotoName(file.name.replace(/\.[^/.]+$/, ''));
+        setCustomPhotoUrl(reader.result);
+      }
+    };
+    reader.readAsDataURL(file);
+  };
 
   useEffect(() => {
     if (!isOpen) {
@@ -122,7 +168,7 @@ export const AiTrayScannerModal: React.FC<AiTrayScannerModalProps> = ({
     }, 180);
 
     return () => clearInterval(interval);
-  }, [isOpen, selectedPresetIndex]);
+  }, [isOpen, selectedPresetIndex, customPhotoUrl]);
 
   if (!isOpen) return null;
 
@@ -164,19 +210,21 @@ export const AiTrayScannerModal: React.FC<AiTrayScannerModalProps> = ({
           </button>
         </div>
 
-        {/* Preset Selector */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-1">
-          <span className="text-xs font-mono-tech text-white/50 shrink-0">Sample Feed:</span>
+        {/* Preset Selector + Real Photo Upload */}
+        <div className="flex flex-wrap items-center justify-between gap-2 pb-1">
+          <div className="flex items-center gap-2 overflow-x-auto">
+            <span className="text-xs font-mono-tech text-white/50 shrink-0">Camera Feed:</span>
           {presets.map((preset, idx) => (
             <button
               key={idx}
               type="button"
               onClick={() => {
                 sound.click();
+                setCustomPhotoUrl(null);
                 setSelectedPresetIndex(idx);
               }}
               className={`px-3 py-1.5 rounded-full text-xs font-mono-tech transition-all cursor-pointer ${
-                selectedPresetIndex === idx
+                !customPhotoUrl && selectedPresetIndex === idx
                   ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 shadow-sm'
                   : 'bg-white/5 text-white/70 hover:bg-white/10 border border-white/10'
               }`}
@@ -184,20 +232,47 @@ export const AiTrayScannerModal: React.FC<AiTrayScannerModalProps> = ({
               {preset.title}
             </button>
           ))}
+          </div>
+
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept="image/*"
+            capture="environment"
+            onChange={handleFileUpload}
+            className="hidden"
+          />
+          <button
+            type="button"
+            onClick={() => fileInputRef.current?.click()}
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono-tech font-bold bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-sm hover:opacity-95 cursor-pointer transition"
+          >
+            <Upload className="w-3.5 h-3.5" />
+            <Camera className="w-3.5 h-3.5" />
+            <span>{customPhotoUrl ? 'Scan Another Photo' : 'Upload / Snap Your Food Photo'}</span>
+          </button>
         </div>
 
         {/* Scanner Viewport */}
         <div className="relative rounded-2xl overflow-hidden border border-white/20 aspect-video sm:aspect-[21/9] bg-black/60 shadow-2xl">
-          <video
-            key={currentPreset.videoUrl}
-            src={currentPreset.videoUrl}
-            poster={currentPreset.image}
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="w-full h-full object-cover filter brightness-[0.75] contrast-[1.1]"
-          />
+          {customPhotoUrl ? (
+            <img
+              src={customPhotoUrl}
+              alt={currentPreset.title}
+              className="w-full h-full object-cover filter brightness-[0.82] contrast-[1.08]"
+            />
+          ) : (
+            <video
+              key={currentPreset.videoUrl}
+              src={currentPreset.videoUrl}
+              poster={currentPreset.image}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover filter brightness-[0.75] contrast-[1.1]"
+            />
+          )}
 
           {/* Scanning Laser Beam */}
           {scanning && (
