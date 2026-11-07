@@ -480,6 +480,7 @@ export function App() {
         <StoriesAndCtaSection
           onOpenDonateModal={() => handleOpenDonateWithWeight(50)}
           onOpenPledgeModal={() => setPledgeModalOpen(true)}
+          onOpenEsgCertificate={handleOpenEsgCertificate}
         />
       </main>
 

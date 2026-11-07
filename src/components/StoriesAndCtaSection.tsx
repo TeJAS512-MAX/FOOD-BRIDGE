@@ -21,6 +21,7 @@ import { sound } from '../utils/soundEffects';
 interface StoriesAndCtaSectionProps {
   onOpenDonateModal: () => void;
   onOpenPledgeModal?: () => void;
+  onOpenEsgCertificate?: (donorName: string, weightKg: number) => void;
 }
 
 type CtaTab = 'donate' | 'household' | 'ngo' | 'volunteer';
@@ -35,6 +36,7 @@ const CTA_QUANTITY_DEFAULTS: Record<CtaTab, string> = {
 export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
   onOpenDonateModal,
   onOpenPledgeModal,
+  onOpenEsgCertificate,
 }) => {
   const [selectedStoryIndex, setSelectedStoryIndex] = useState(0);
   const [isStoryPaused, setIsStoryPaused] = useState(false);
@@ -267,21 +269,34 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                             <Sparkles className="h-3 w-3 text-emerald-400" />
                             <span>LIVE REEL · {story.role} · {story.location}</span>
                           </span>
-                          <span className="inline-flex items-center gap-1 rounded-full border border-white/20 bg-black/55 px-2.5 py-1 font-mono-tech text-[10px] font-semibold text-white/85 backdrop-blur-md">
+                          <button
+                            type="button"
+                            onClick={() =>
+                              onOpenEsgCertificate?.(story.organization, story.certificateWeightKg)
+                            }
+                            className="inline-flex items-center gap-1 rounded-full border border-emerald-400/40 bg-black/65 hover:bg-emerald-900/70 px-2.5 py-1 font-mono-tech text-[10px] font-semibold text-emerald-200 backdrop-blur-md cursor-pointer transition"
+                          >
                             <CheckCircle2 className="h-3 w-3 text-emerald-400" />
                             <span>
                               Story {index + 1}/{COMMUNITY_STORIES.length} · {story.verifiedBatchId}
                             </span>
-                          </span>
+                          </button>
                         </div>
 
                         {/* Bottom Identity Lockup */}
                         <div className="absolute inset-x-4 bottom-2.5 z-10 flex items-end justify-between gap-3">
                           <div className="flex items-center gap-3 min-w-0">
-                            <div
-                              className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${story.avatarGradient} font-serif-display text-sm font-bold text-white shadow-lg ring-2 ring-white/25`}
-                            >
-                              {story.initials}
+                            <div className="relative shrink-0">
+                              <img
+                                src={story.avatarUrl}
+                                alt={story.name}
+                                className="h-12 w-12 rounded-2xl object-cover shadow-lg ring-2 ring-emerald-400/70"
+                              />
+                              <span
+                                className={`absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-lg bg-gradient-to-br ${story.avatarGradient} font-serif-display text-[10px] font-bold text-white ring-1 ring-white/40`}
+                              >
+                                {story.initials}
+                              </span>
                             </div>
                             <div className="min-w-0">
                               <h3 className="truncate font-serif-display text-xl font-bold tracking-tight text-white sm:text-2xl">
@@ -289,6 +304,9 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                               </h3>
                               <p className="truncate text-xs font-medium text-white/80">
                                 {story.title} · <span className="text-emerald-300">{story.organization}</span>
+                              </p>
+                              <p className="truncate font-mono-tech text-[10px] text-white/60">
+                                {story.fssaiLicense} · {story.csrRegistrationId}
                               </p>
                             </div>
                           </div>
@@ -354,9 +372,15 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                                 {tag}
                               </span>
                             ))}
-                            <span className="rounded-full border border-emerald-400/25 bg-emerald-500/10 px-2.5 py-0.5 font-mono-tech text-[10px] font-semibold text-emerald-300">
-                              Batch · {story.verifiedBatchId}
-                            </span>
+                            <button
+                              type="button"
+                              onClick={() =>
+                                onOpenEsgCertificate?.(story.organization, story.certificateWeightKg)
+                              }
+                              className="rounded-full border border-emerald-400/35 bg-emerald-500/15 hover:bg-emerald-500/25 px-2.5 py-0.5 font-mono-tech text-[10px] font-semibold text-emerald-300 cursor-pointer transition"
+                            >
+                              Certificate · {story.verifiedBatchId} ↗
+                            </button>
                           </div>
 
                           <div
@@ -447,10 +471,17 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                       </span>
                       <span className="absolute inset-x-5 bottom-4 space-y-2.5 text-white">
                         <span className="flex items-center gap-2.5">
-                          <span
-                            className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${story.avatarGradient} font-serif-display text-xs font-bold text-white shadow-md ring-1 ring-white/25`}
-                          >
-                            {story.initials}
+                          <span className="relative shrink-0">
+                            <img
+                              src={story.avatarUrl}
+                              alt={story.name}
+                              className="h-10 w-10 rounded-xl object-cover shadow-md ring-1 ring-emerald-400/60"
+                            />
+                            <span
+                              className={`absolute -bottom-1 -right-1 flex h-4 w-4 items-center justify-center rounded-md bg-gradient-to-br ${story.avatarGradient} font-serif-display text-[9px] font-bold text-white`}
+                            >
+                              {story.initials}
+                            </span>
                           </span>
                           <span className="min-w-0">
                             <span className="block truncate font-serif-display text-lg font-bold leading-tight text-white">

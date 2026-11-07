@@ -31,7 +31,11 @@ export interface CommunityStory {
   secondaryMetric: string;
   avatarGradient: string;
   initials: string;
+  avatarUrl: string;
   verifiedBatchId: string;
+  fssaiLicense: string;
+  csrRegistrationId: string;
+  certificateWeightKg: number;
   tags: string[];
   imageUrl: string;
   videoUrl?: string;
@@ -243,7 +247,11 @@ export const COMMUNITY_STORIES: CommunityStory[] = [
     secondaryMetric: '46.0 Tonnes CO₂e Prevented',
     avatarGradient: 'from-emerald-600 to-teal-700',
     initials: 'AM',
+    avatarUrl: 'https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=320&q=80',
     verifiedBatchId: 'FB-CERT-2026-8841',
+    fssaiLicense: 'FSSAI-KA-1122433400981',
+    csrRegistrationId: 'CSR00041892 • Sec 80G Verified',
+    certificateWeightKg: 68,
     tags: ['Zero-Waste Kitchen', '45-Min Pickup', 'FSSAI Shield'],
     imageUrl: 'https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=600&q=80',
     videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-chef-preparing-food-in-a-restaurant-kitchen-42442-large.mp4',
@@ -265,7 +273,11 @@ export const COMMUNITY_STORIES: CommunityStory[] = [
     secondaryMetric: '99.8% On-Time Thermal Delivery',
     avatarGradient: 'from-emerald-700 to-emerald-900',
     initials: 'MK',
+    avatarUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=320&q=80',
     verifiedBatchId: 'FB-NGO-2026-1094',
+    fssaiLicense: 'FSSAI-TN-2241900812341',
+    csrRegistrationId: 'NGO-DARPAN-KA/2021/0284910',
+    certificateWeightKg: 350,
     tags: ['Verified Shelter', 'Live Capacity Sync', 'Cold-Chain'],
     imageUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80',
     videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-people-eating-together-at-a-table-42450-large.mp4',
@@ -287,9 +299,13 @@ export const COMMUNITY_STORIES: CommunityStory[] = [
     secondaryMetric: '100% EV & Pedal Fleet',
     avatarGradient: 'from-orange-500 to-amber-600',
     initials: 'RD',
+    avatarUrl: 'https://images.unsplash.com/photo-1589386417686-0d34b5903d23?auto=format&fit=crop&w=320&q=80',
     verifiedBatchId: 'FB-HERO-2026-4412',
+    fssaiLicense: 'FSSAI-MH-COLDCHAIN-7741',
+    csrRegistrationId: 'CIVIC-FELLOW-2026-MH42',
+    certificateWeightKg: 112,
     tags: ['Green EV Fleet', 'Community Hero', 'Night Patrol'],
-    imageUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1589386417686-0d34b5903d23?auto=format&fit=crop&w=600&q=80',
     videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-city-traffic-at-night-11-large.mp4',
     audioDuration: '0:55',
   },
@@ -309,7 +325,11 @@ export const COMMUNITY_STORIES: CommunityStory[] = [
     secondaryMetric: '238 kg CO₂e Neutralized',
     avatarGradient: 'from-rose-500 to-orange-500',
     initials: 'KS',
+    avatarUrl: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=320&q=80',
     verifiedBatchId: 'FB-EVENT-2026-9201',
+    fssaiLicense: 'FSSAI-TS-EVENT-883920',
+    csrRegistrationId: 'GREEN-WEDDING-80G-9201',
+    certificateWeightKg: 95,
     tags: ['Green Weddings', 'Instant Pledge', 'Live Guest Certificate'],
     imageUrl: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80',
     videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-waiter-serving-food-at-a-banquet-42446-large.mp4',
