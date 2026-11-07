@@ -569,6 +569,32 @@
 }
 .animate-pulse-glow { animation: pulseGlow 2.5s ease-in-out infinite; }
 
+@keyframes workflowPopUp {
+  0% {
+    transform: perspective(1000px) translateY(8px) scale(0.96) rotateX(6deg);
+  }
+  55% {
+    transform: perspective(1000px) translateY(-12px) scale(1.035) rotateX(0deg);
+  }
+  100% {
+    transform: perspective(1000px) translateY(-8px) scale(1.025) rotateX(0deg);
+  }
+}
+
+.workflow-card-popup {
+  animation: workflowPopUp 560ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  z-index: 20;
+}
+
+@keyframes workflowProgressFill {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+.workflow-step-progress {
+  animation: workflowProgressFill 3400ms linear forwards;
+}
+
 /* Custom Dark Glass Scrollbar */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: rgba(0,0,0,0.40); }

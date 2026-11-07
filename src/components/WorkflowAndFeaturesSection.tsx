@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Bike,
   Camera,
   CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
   Clock,
   Navigation,
+  Pause,
+  Play,
   ShieldCheck,
   Sparkles,
   Users,
@@ -24,6 +28,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
   onOpenPledgeModal,
 }) => {
   const [activeStep, setActiveStep] = useState<number>(0);
+  const [isLoopPaused, setIsLoopPaused] = useState<boolean>(false);
   const [selectedPreset, setSelectedPreset] = useState<AIScanPreset>(AI_SCAN_PRESETS[0]);
   const [selectedZone, setSelectedZone] = useState<'Indiranagar' | 'Koramangala' | 'Jayanagar'>(
     'Indiranagar'
@@ -58,6 +63,30 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
     },
     {
       stepNumber: '02',
+      title: 'FSSAI Thermal & Hygiene Gate',
+      duration: '00:12s check',
+      summary:
+        'IoT core probes and vision checks verify the batch meets strict FSSAI hot-holding (>63°C) or chilled (<5°C) safety thresholds before dispatch.',
+      badge: 'SAFETY GATEWAY',
+      color: '#10B981',
+      previewTitle: 'Automated FSSAI Hygiene & Core Temp Audit',
+      videoUrl:
+        'https://assets.mixkit.co/videos/preview/mixkit-waiter-serving-food-at-a-banquet-42446-large.mp4',
+      posterUrl:
+        'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=80',
+      previewMetrics: [
+        { label: 'Core Temp Probe', value: '65.4°C Verified' },
+        { label: 'Safety Confidence', value: '99.4% FSSAI' },
+        { label: 'Tamper QR Seal', value: '#FB-SEAL-904' },
+      ],
+      previewChecklist: [
+        'Pathogen-safe thermal window locked for 4.5 hours',
+        'Allergen & dietary manifest generated (Gluten/Dairy tagged)',
+        'Tamper-evident QR custody seal affixed to each tray',
+      ],
+    },
+    {
+      stepNumber: '03',
       title: 'Smart NGO & Fleet Match',
       duration: '14s AI match',
       summary:
@@ -81,18 +110,66 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
       ],
     },
     {
-      stepNumber: '03',
-      title: 'Rapid Pickup & Verified Impact',
-      duration: '38m door-to-plate',
+      stepNumber: '04',
+      title: 'Zero-Emission Thermal Transit',
+      duration: '18m avg ride',
       summary:
-        'Contactless QR handoff at your loading bay. Track the batch live until hot meals are served, and receive an instant ESG & Carbon certificate.',
-      badge: 'VERIFIED SUSTENANCE',
-      color: '#0284C7',
-      previewTitle: 'Chain-of-Custody & ESG Impact Ledger',
+        'Electric vans and Hunger Hero e-bikes carry insulated Gastronorm pods along traffic-optimized corridors with live GPS and thermal telemetry.',
+      badge: 'HOT-CHAIN FLEET',
+      color: '#F59E0B',
+      previewTitle: 'Live EV Telemetry & Route Corridor',
+      videoUrl:
+        'https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-city-traffic-at-night-11-large.mp4',
+      posterUrl:
+        'https://images.unsplash.com/photo-1543339308-43e59d6b73a6?auto=format&fit=crop&w=900&q=80',
+      previewMetrics: [
+        { label: 'Pod Internal Temp', value: '64.8°C Stable' },
+        { label: 'Live ETA Countdown', value: '08m 44s Left' },
+        { label: 'Fleet Emissions', value: '0.0g Tailpipe' },
+      ],
+      previewChecklist: [
+        'Live 10-second IoT temperature pings streamed to NGO dashboard',
+        'Green-corridor routing avoids congestion bottlenecks',
+        'Automated SMS & WhatsApp arrival alert sent to shelter team',
+      ],
+    },
+    {
+      stepNumber: '05',
+      title: 'Contactless Shelter Handoff',
+      duration: '02m dock scan',
+      summary:
+        'At the shelter receiving bay, the NGO supervisor scans the tray QR code, logs arrival core temperature, and begins dignified hot meal service.',
+      badge: 'NGO VERIFICATION',
+      color: '#06B6D4',
+      previewTitle: 'Shelter Receiving Dock & Dignity Service',
       videoUrl:
         'https://assets.mixkit.co/videos/preview/mixkit-people-eating-together-at-a-table-42450-large.mp4',
       posterUrl:
         'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=900&q=80',
+      previewMetrics: [
+        { label: 'Arrival Temp', value: '63.9°C Pass ✓' },
+        { label: 'Dignified Portions', value: '168 Hot Plates' },
+        { label: 'Handoff Time', value: '01m 50s Dock' },
+      ],
+      previewChecklist: [
+        'Dual-signature QR custody transfer completed by Meera K.',
+        'Zero-plastic stainless Gastronorm trays swapped cleanly',
+        '168 fresh restaurant-grade dinners served within 38 minutes',
+      ],
+    },
+    {
+      stepNumber: '06',
+      title: 'Instant 80G & ESG Impact Ledger',
+      duration: '38m door-to-plate',
+      summary:
+        'The moment handoff is verified, FoodBridge mints an immutable CSR tax receipt, methane CO₂e offset credit, and water footprint report.',
+      badge: 'ESG & TAX LEDGER',
+      color: '#0284C7',
+      previewTitle: 'Chain-of-Custody & ESG Impact Ledger',
+      videoUrl:
+        'https://assets.mixkit.co/videos/preview/mixkit-fresh-vegetables-on-a-wooden-table-42458-large.mp4',
+      posterUrl:
+        'https://images.unsplash.com/photo-1610348725531-843dff563e2c?auto=format&fit=crop&w=900&q=80',
       previewMetrics: [
         { label: 'Meals Served', value: '168 Verified' },
         { label: 'CO₂e Prevented', value: '105.0 kg CO₂e' },
@@ -105,6 +182,20 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
       ],
     },
   ];
+
+  // Continuous loop: pop up each workflow card one by one
+  useEffect(() => {
+    if (
+      isLoopPaused ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) {
+      return;
+    }
+    const timer = window.setInterval(() => {
+      setActiveStep((prev) => (prev + 1) % steps.length);
+    }, 3400);
+    return () => window.clearInterval(timer);
+  }, [isLoopPaused, steps.length]);
 
   const zoneData = {
     Indiranagar: {
@@ -163,10 +254,108 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
             </p>
           </div>
 
-          {/* 3 Step Interactive Workflow Cards */}
-          <div className="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* Live Loop Controller Bar */}
+          <div className="mt-10 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-white/15 bg-white/[0.06] px-4 py-3 backdrop-blur-xl">
+            <div className="flex items-center gap-3 min-w-0">
+              <span className="relative flex h-3 w-3 shrink-0">
+                <span
+                  className={`absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 ${
+                    isLoopPaused ? '' : 'animate-ping'
+                  }`}
+                />
+                <span className="relative inline-flex h-3 w-3 rounded-full bg-emerald-400" />
+              </span>
+              <div className="min-w-0">
+                <div className="flex items-center gap-2 font-mono-tech text-xs font-bold uppercase tracking-wider text-emerald-300">
+                  <span>
+                    LIVE PIPELINE LOOP • STEP {steps[activeStep].stepNumber} OF 0{steps.length}
+                  </span>
+                  <span className="hidden sm:inline text-white/40">•</span>
+                  <span className="hidden sm:inline text-orange-300">
+                    {steps[activeStep].badge}
+                  </span>
+                </div>
+                <p className="truncate text-xs text-white/80 font-medium">
+                  Now popping: <strong className="text-white">{steps[activeStep].title}</strong> ({steps[activeStep].duration})
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <div className="hidden md:flex items-center gap-1.5 mr-2">
+                {steps.map((st, idx) => (
+                  <button
+                    key={st.stepNumber}
+                    type="button"
+                    onClick={() => {
+                      sound.click();
+                      setActiveStep(idx);
+                    }}
+                    aria-label={`Jump to step ${st.stepNumber}`}
+                    className={`h-2 rounded-full transition-all cursor-pointer ${
+                      activeStep === idx
+                        ? 'w-7 bg-emerald-400 shadow-[0_0_10px_#10B981]'
+                        : idx < activeStep
+                        ? 'w-2 bg-emerald-400/50'
+                        : 'w-2 bg-white/25 hover:bg-white/50'
+                    }`}
+                  />
+                ))}
+              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  sound.click();
+                  setActiveStep((prev) => (prev - 1 + steps.length) % steps.length);
+                }}
+                aria-label="Previous step"
+                className="flex h-8 w-8 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white hover:bg-white/20 cursor-pointer transition"
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  sound.click();
+                  setIsLoopPaused((p) => !p);
+                }}
+                className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 font-mono-tech text-xs font-semibold text-white hover:bg-white/20 cursor-pointer transition"
+              >
+                {isLoopPaused ? (
+                  <>
+                    <Play className="h-3.5 w-3.5 text-emerald-400 fill-current" />
+                    <span>Resume Loop</span>
+                  </>
+                ) : (
+                  <>
+                    <Pause className="h-3.5 w-3.5 text-orange-300" />
+                    <span>Pause Loop</span>
+                  </>
+                )}
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  sound.click();
+                  setActiveStep((prev) => (prev + 1) % steps.length);
+                }}
+                aria-label="Next step"
+                className="flex h-8 w-8 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white hover:bg-white/20 cursor-pointer transition"
+              >
+                <ChevronRight className="h-4 w-4" />
+              </button>
+            </div>
+          </div>
+
+          {/* 6 Step Sequential Pop-Up Loop Cards */}
+          <div
+            className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            onMouseEnter={() => setIsLoopPaused(true)}
+            onMouseLeave={() => setIsLoopPaused(false)}
+          >
             {steps.map((st, idx) => {
               const isActive = activeStep === idx;
+              const isPassed = idx < activeStep;
               return (
                 <div
                   key={st.stepNumber}
@@ -174,17 +363,58 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                     sound.click();
                     setActiveStep(idx);
                   }}
-                  className={`rounded-3xl p-6 sm:p-8 cursor-pointer transition-all border ${
+                  className={`relative overflow-hidden rounded-3xl p-6 sm:p-7 cursor-pointer transition-all duration-500 border ${
                     isActive
-                      ? 'bg-emerald-500/20 backdrop-blur-xl border-emerald-400 shadow-lg scale-102 ring-2 ring-emerald-500/20'
-                      : 'bg-white/[0.07] backdrop-blur-xl border-white/[0.14]/90 hover:border-emerald-500/40 hover:shadow-md'
+                      ? 'workflow-card-popup bg-gradient-to-br from-emerald-500/25 via-slate-900/85 to-orange-500/15 backdrop-blur-2xl border-emerald-400 shadow-[0_28px_70px_-12px_rgba(16,185,129,0.45)] ring-2 ring-emerald-400/35'
+                      : isPassed
+                      ? 'bg-white/[0.08] backdrop-blur-xl border-emerald-500/30 opacity-90 hover:opacity-100'
+                      : 'bg-white/[0.05] backdrop-blur-xl border-white/[0.12] opacity-70 hover:opacity-95 hover:border-white/25'
                   }`}
                 >
+                  {/* Animated Top Progress Bar on the Active Pop-Up Card */}
+                  {isActive && (
+                    <div className="absolute inset-x-0 top-0 h-1 bg-white/10 overflow-hidden">
+                      <div
+                        key={`${activeStep}-${isLoopPaused ? 'paused' : 'run'}`}
+                        className={`h-full bg-gradient-to-r from-emerald-400 via-orange-400 to-cyan-400 ${
+                          isLoopPaused ? 'w-full' : 'workflow-step-progress'
+                        }`}
+                      />
+                    </div>
+                  )}
+
+                  {/* Floating "POPPING NOW" status pill */}
                   <div className="flex items-center justify-between pb-6 border-b border-white/[0.14]">
-                    <span className="font-mono-tech text-3xl font-bold text-white">
-                      {st.stepNumber}
-                    </span>
-                    <span className="px-3 py-1 rounded-full bg-white text-emerald-800 font-mono-tech text-xs uppercase font-bold border border-emerald-500/30 shadow-sm">
+                    <div className="flex items-center gap-2.5">
+                      <span
+                        className={`font-mono-tech text-3xl font-bold transition-colors ${
+                          isActive ? 'text-emerald-300' : 'text-white'
+                        }`}
+                      >
+                        {st.stepNumber}
+                      </span>
+                      {isActive ? (
+                        <span className="inline-flex items-center gap-1 rounded-full border border-emerald-400/50 bg-emerald-500/25 px-2.5 py-0.5 font-mono-tech text-[10px] font-bold uppercase tracking-wider text-emerald-200 shadow-sm">
+                          <span className="h-1.5 w-1.5 rounded-full bg-emerald-300 animate-ping" />
+                          <span>ACTIVE POP-UP</span>
+                        </span>
+                      ) : isPassed ? (
+                        <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 font-mono-tech text-[10px] font-semibold text-emerald-300">
+                          ✓ Done
+                        </span>
+                      ) : (
+                        <span className="font-mono-tech text-[10px] uppercase text-white/40">
+                          Queued
+                        </span>
+                      )}
+                    </div>
+                    <span
+                      className={`px-3 py-1 rounded-full font-mono-tech text-xs uppercase font-bold border shadow-sm transition-colors ${
+                        isActive
+                          ? 'bg-white text-emerald-900 border-emerald-300'
+                          : 'bg-white/10 text-white/85 border-white/15'
+                      }`}
+                    >
                       {st.duration}
                     </span>
                   </div>
@@ -227,7 +457,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                     {steps[activeStep].previewTitle}
                   </h4>
                   <p className="text-xs text-white/60">
-                    Step {activeStep + 1} of 3 in the FoodBridge Real-Time Pipeline
+                    Step {activeStep + 1} of {steps.length} in the FoodBridge Real-Time Pipeline
                   </p>
                 </div>
               </div>
