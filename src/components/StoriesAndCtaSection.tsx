@@ -142,9 +142,9 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                 <Quote className="w-3.5 h-3.5 text-emerald-400" />
                 <span>06 • ILLUSTRATIVE COMMUNITY STORIES</span>
               </div>
-              <h2 className="section-heading font-serif-display text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.12] text-white">
+              <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-white">
                 Stories from the chefs, shelters, and riders{' '}
-                <span className="heading-highlight-emerald">bridging the gap.</span>
+                <span className="italic font-normal text-emerald-400">bridging the gap.</span>
               </h2>
             </div>
 
@@ -591,9 +591,9 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                 <span>07 • TAKE ACTION TODAY • BE THE BRIDGE</span>
               </div>
 
-              <h2 className="section-heading section-heading-orange font-serif-display text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.12] text-white">
+              <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-white">
                 Every minute counts when{' '}
-                <span className="heading-highlight-orange">fresh food</span> is on the line.
+                <span className="italic font-normal text-emerald-400">fresh food</span> is on the line.
               </h2>
 
               <p className="text-base text-white/70 leading-relaxed max-w-xl">

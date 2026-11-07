@@ -58,8 +58,8 @@ export const NeuralRescueMap: React.FC = () => {
               LIVE RESCUE MESH
             </span>
           </div>
-          <h2 className="section-heading text-2xl md:text-3xl font-serif-display font-extrabold text-white">
-            Neural <span className="heading-highlight-emerald">Rescue Network</span>
+          <h2 className="text-2xl md:text-3xl font-serif-display font-bold text-white">
+            Neural Rescue Network
           </h2>
           <p className="text-white/60 text-sm mt-1">Real-time food rescue dispatch routing · updated every 8s</p>
         </div>

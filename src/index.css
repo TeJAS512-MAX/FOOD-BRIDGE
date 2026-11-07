@@ -30,11 +30,9 @@
   }
 
   h1, h2, h3, h4, h5, h6, .font-serif-display {
-    font-family: 'Outfit', 'Syne', sans-serif;
-    font-weight: 800;
+    font-family: 'Lora', Georgia, serif;
     color: #FFFFFF;
-    letter-spacing: -0.028em;
-    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+    letter-spacing: -0.018em;
   }
 
   p {
@@ -308,7 +306,7 @@
    ============================================================ */
 
 .letter-3d-metallic {
-  font-family: 'Syne', 'Outfit', sans-serif;
+  font-family: 'Lora', Georgia, serif;
   font-weight: 900;
   letter-spacing: -0.04em;
   background: linear-gradient(
@@ -394,63 +392,6 @@
   background-clip: text;
 }
 
-/* ============================================================
-   SECTION HEADINGS — DISTINCT DISPLAY FONT, EXTRA-BOLD & HIGHLIGHTED
-   ============================================================ */
-
-.section-heading {
-  font-family: 'Syne', 'Outfit', sans-serif;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: #FFFFFF;
-  position: relative;
-  padding-left: 1rem;
-  border-left: 4px solid #10B981;
-  text-shadow:
-    0 6px 28px rgba(0, 0, 0, 0.60),
-    0 0 32px rgba(16, 185, 129, 0.16);
-}
-
-.section-heading-orange {
-  border-left-color: #F97316;
-  text-shadow:
-    0 6px 28px rgba(0, 0, 0, 0.60),
-    0 0 32px rgba(249, 115, 22, 0.18);
-}
-
-.heading-highlight-emerald {
-  font-family: 'Syne', 'Outfit', sans-serif;
-  font-weight: 800;
-  font-style: normal;
-  display: inline-block;
-  padding: 0.04em 0.36em 0.08em;
-  margin: 0 0.06em;
-  border-radius: 0.38em;
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.28) 0%, rgba(6, 182, 212, 0.20) 100%);
-  border: 1px solid rgba(52, 211, 153, 0.48);
-  box-shadow:
-    0 8px 28px -6px rgba(16, 185, 129, 0.42),
-    inset 0 1px 0 rgba(255, 255, 255, 0.28);
-  color: #6EE7B7;
-  text-shadow: 0 0 22px rgba(16, 185, 129, 0.55);
-}
-
-.heading-highlight-orange {
-  font-family: 'Syne', 'Outfit', sans-serif;
-  font-weight: 800;
-  font-style: normal;
-  display: inline-block;
-  padding: 0.04em 0.36em 0.08em;
-  margin: 0 0.06em;
-  border-radius: 0.38em;
-  background: linear-gradient(135deg, rgba(249, 115, 22, 0.30) 0%, rgba(245, 158, 11, 0.20) 100%);
-  border: 1px solid rgba(251, 146, 60, 0.52);
-  box-shadow:
-    0 8px 28px -6px rgba(249, 115, 22, 0.45),
-    inset 0 1px 0 rgba(255, 255, 255, 0.28);
-  color: #FDBA74;
-  text-shadow: 0 0 22px rgba(249, 115, 22, 0.55);
-}
 /* ============================================================
    BUTTONS
    ============================================================ */

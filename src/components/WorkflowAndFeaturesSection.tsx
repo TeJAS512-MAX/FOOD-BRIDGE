@@ -243,9 +243,9 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                 <Clock className="w-3.5 h-3.5 text-emerald-400" />
                 <span>03 • HOW IT WORKS: ZERO TO DELIVERED IN 38 MINUTES</span>
               </div>
-              <h2 className="section-heading font-serif-display text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.12] text-white">
+              <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-white">
                 How FoodBridge transforms kitchen surplus into{' '}
-                <span className="heading-highlight-emerald">community meals.</span>
+                <span className="italic font-normal text-emerald-400">community meals.</span>
               </h2>
             </div>
             <p className="text-base text-white/70 max-w-md leading-relaxed">
@@ -553,9 +553,9 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                 <Sparkles className="w-3.5 h-3.5 text-orange-400" />
                 <span>04 • KEY CAPABILITIES: ENGINEERED FOR SPEED & DIGNITY</span>
               </div>
-              <h2 className="section-heading section-heading-orange font-serif-display text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.12] text-white">
+              <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-white">
                 Four pillars powering the{' '}
-                <span className="heading-highlight-emerald">Zero-Waste Mesh.</span>
+                <span className="italic font-normal text-emerald-400">Zero-Waste Mesh.</span>
               </h2>
             </div>
             <p className="text-base text-white/70 max-w-md leading-relaxed">
