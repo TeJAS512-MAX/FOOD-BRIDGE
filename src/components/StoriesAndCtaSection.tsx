@@ -509,65 +509,35 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                       <img
                         src={story.imageUrl}
                         alt=""
-                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                       />
                       <span
                         className="absolute inset-0"
                         style={{
                           background:
-                            'linear-gradient(180deg, rgba(5,10,12,0.45) 0%, rgba(7,15,14,0.62) 42%, rgba(6,12,12,0.97) 100%)',
+                            'linear-gradient(180deg, rgba(5,10,12,0.18) 0%, rgba(7,15,14,0.35) 50%, rgba(6,12,12,0.94) 100%)',
                         }}
                       />
-                      <span className="absolute inset-x-4 top-4 flex items-center justify-between gap-2">
-                        <span className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-black/60 px-2.5 py-1 font-mono-tech text-[10px] font-bold uppercase tracking-wider text-emerald-300 backdrop-blur-md">
-                          {story.role} · {story.location}
-                        </span>
-                        <span className="rounded-full border border-white/15 bg-black/60 px-2.5 py-1 font-mono-tech text-[10px] font-semibold text-white/80 backdrop-blur-md">
-                          {story.verifiedBatchId}
+                      <span className="absolute inset-x-3.5 top-3.5 flex items-center justify-between">
+                        <span className="inline-flex items-center rounded-full border border-white/20 bg-black/60 px-2.5 py-1 font-mono-tech text-[9px] font-bold uppercase tracking-wider text-emerald-300 backdrop-blur-md">
+                          {story.role}
                         </span>
                       </span>
-                      <span className="absolute inset-x-5 bottom-4 space-y-2.5 text-white">
-                        <span className="flex items-center gap-2.5">
-                          <span className="relative shrink-0">
-                            <img
-                              src={story.avatarUrl}
-                              alt={story.name}
-                              className="h-10 w-10 rounded-xl object-cover shadow-md ring-1 ring-emerald-400/60"
-                            />
-                            <span
-                              className={`absolute -bottom-1 -right-1 flex h-4 w-4 items-center justify-center rounded-md bg-gradient-to-br ${story.avatarGradient} font-serif-display text-[9px] font-bold text-white`}
-                            >
-                              {story.initials}
-                            </span>
+                      <span className="absolute inset-x-3.5 bottom-3.5 space-y-2 text-white">
+                        <span className="block">
+                          <span className="block truncate font-serif-display text-base font-bold leading-snug text-white">
+                            {story.name}
                           </span>
-                          <span className="min-w-0">
-                            <span className="block truncate font-serif-display text-lg font-bold leading-tight text-white">
-                              {story.name}
-                            </span>
-                            <span className="block truncate text-xs text-white/70">
-                              {story.title} · {story.organization}
-                            </span>
+                          <span className="block truncate text-[11px] text-white/75">
+                            {story.location}
                           </span>
                         </span>
-                        <span className="block line-clamp-2 border-l-2 border-emerald-400/60 pl-2.5 font-serif-display text-xs italic leading-relaxed text-white/85">
-                          “{story.quote}”
-                        </span>
-                        <span className="flex flex-wrap gap-1">
-                          {story.tags.map((tag) => (
-                            <span
-                              key={tag}
-                              className="rounded-full border border-white/15 bg-white/10 px-2 py-0.5 font-mono-tech text-[9px] text-white/75"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </span>
-                        <span className="flex items-center justify-between rounded-xl border border-white/15 bg-white/10 px-3 py-1.5 font-mono-tech text-[11px] backdrop-blur-md">
-                          <span className="font-bold text-orange-300">
-                            {story.metricLabel}: {story.metricValue}
+                        <span className="flex items-center justify-between rounded-xl border border-white/15 bg-black/55 px-2.5 py-1.5 font-mono-tech text-[10px] backdrop-blur-md">
+                          <span className="font-bold text-orange-300 truncate">
+                            {story.metricValue}
                           </span>
-                          <span className="text-emerald-300 group-hover:translate-x-0.5 transition-transform">
-                            {story.secondaryMetric} →
+                          <span className="text-emerald-300 font-semibold shrink-0 group-hover:translate-x-0.5 transition-transform">
+                            View →
                           </span>
                         </span>
                       </span>
