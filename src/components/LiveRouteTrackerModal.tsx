@@ -3,15 +3,12 @@ import {
   BatteryCharging,
   CheckCircle2,
   Clock,
-  Compass,
   MapPin,
   Navigation2,
   Radio,
   ShieldCheck,
   Thermometer,
-  Truck,
   X,
-  Zap,
 } from 'lucide-react';
 import { LIVE_TELEMETRY, LiveDispatchTelemetry } from '../data/foodBridgeData';
 import { sound } from '../utils/soundEffects';
@@ -22,7 +19,7 @@ interface LiveRouteTrackerModalProps {
 }
 
 export const LiveRouteTrackerModal: React.FC<LiveRouteTrackerModalProps> = ({ isOpen, onClose }) => {
-  const [telemetry, setTelemetry] = useState<LiveDispatchTelemetry>(LIVE_TELEMETRY);
+  const [telemetry] = useState<LiveDispatchTelemetry>(LIVE_TELEMETRY);
   const [secondsRemaining, setSecondsRemaining] = useState<number>(524);
   const [currentTemp, setCurrentTemp] = useState<number>(65.4);
   const [progressPct, setProgressPct] = useState<number>(62);
@@ -46,8 +43,8 @@ export const LiveRouteTrackerModal: React.FC<LiveRouteTrackerModalProps> = ({ is
   const formattedTime = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60/60 backdrop-blur-md animate-fadeIn">
-      <div className="relative w-full max-w-3xl rounded-3xl bg-white text-white border border-white/[0.14] shadow-2xl overflow-hidden max-h-[92vh] flex flex-col">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
+      <div className="relative w-full max-w-3xl rounded-3xl frosted-modal text-white border border-white/20 shadow-2xl overflow-hidden max-h-[92vh] flex flex-col">
         {/* Top Header */}
         <div className="bg-white/[0.05] px-6 sm:px-8 py-5 border-b border-white/[0.14] flex items-center justify-between">
           <div className="flex items-center gap-3">

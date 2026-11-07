@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
 import {
   ArrowRight,
-  Award,
   Bike,
   Building2,
   CheckCircle2,
   HeartHandshake,
-  MapPin,
-  Mic,
   Play,
   Quote,
-  ShieldCheck,
   Sparkles,
   UtensilsCrossed,
   Volume2,

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { CheckCircle2, ChevronRight, Navigation, Sparkles, Truck, X } from 'lucide-react';
+import { ChevronRight, Truck, X } from 'lucide-react';
 import { LIVE_ACTIVITY_STREAM } from '../data/foodBridgeData';
 import { sound } from '../utils/soundEffects';
 

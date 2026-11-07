@@ -8,7 +8,6 @@ import {
   Layers,
   MapPin,
   Navigation,
-  Radio,
   Zap,
 } from 'lucide-react';
 import { RESCUE_NODES, RescueNode } from '../data/foodBridgeData';

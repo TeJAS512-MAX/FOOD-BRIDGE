@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {
   AlertTriangle,
-  ArrowRight,
   Building2,
   CheckCircle2,
   Clock,
@@ -11,9 +10,7 @@ import {
   Scale,
   ShieldCheck,
   Sparkles,
-  ThermometerSnowflake,
   Truck,
-  Users,
   UtensilsCrossed,
 } from 'lucide-react';
 import { WasteToFeastVisualizer } from './WasteToFeastVisualizer';

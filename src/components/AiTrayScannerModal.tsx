@@ -1,17 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Camera,
   CheckCircle2,
-  Cpu,
-  Flame,
-  Layers,
-  RefreshCw,
   Scan,
   ShieldCheck,
-  Sparkles,
-  Thermometer,
-  Upload,
-  Utensils,
   X,
 } from 'lucide-react';
 import { sound } from '../utils/soundEffects';
@@ -22,15 +13,7 @@ interface AiTrayScannerModalProps {
   onDispatchCreated: (meals: number) => void;
 }
 
-interface DetectedItem {
-  name: string;
-  category: string;
-  weightKg: number;
-  portions: number;
-  temp: number;
-  confidence: number;
-  box: { top: number; left: number; width: number; height: number };
-}
+
 
 export const AiTrayScannerModal: React.FC<AiTrayScannerModalProps> = ({
   isOpen,

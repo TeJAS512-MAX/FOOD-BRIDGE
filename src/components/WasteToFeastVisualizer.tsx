@@ -3,12 +3,8 @@ import {
   AlertTriangle,
   ArrowLeftRight,
   CheckCircle2,
-  Clock,
   Flame,
-  Heart,
-  Scale,
   Sparkles,
-  Utensils,
 } from 'lucide-react';
 import { sound } from '../utils/soundEffects';
 

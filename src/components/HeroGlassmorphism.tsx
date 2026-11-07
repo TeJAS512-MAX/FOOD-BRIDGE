@@ -6,13 +6,10 @@ import {
   ShieldCheck,
   UtensilsCrossed,
   Clock,
-  Globe,
   Camera,
   Sun,
   Moon,
   Sunset,
-  Sparkles,
-  ArrowRight,
 } from 'lucide-react';
 import { StatsCardGrid } from './StatsCardGrid';
 import { sound } from '../utils/soundEffects';

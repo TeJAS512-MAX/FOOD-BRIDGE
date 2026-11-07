@@ -5,15 +5,7 @@ interface Props {
   totalMeals: number;
 }
 
-interface StatItem {
-  icon: React.ReactNode;
-  label: string;
-  value: number;
-  suffix: string;
-  color: string;
-  glowColor: string;
-  increment: () => number;
-}
+
 
 export const LiveImpactTicker: React.FC<Props> = ({ totalMeals }) => {
   const [meals, setMeals] = useState(totalMeals);

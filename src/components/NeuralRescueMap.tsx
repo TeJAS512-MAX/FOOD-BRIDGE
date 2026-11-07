@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Activity, Zap, AlertCircle } from 'lucide-react';
+
 
 interface RescueRoute {
   id: string;
@@ -18,7 +18,7 @@ const ROUTES: RescueRoute[] = [
 
 const W = 740, H = 380;
 
-function lerp(a: number, b: number, t: number) { return a + (b - a) * t; }
+
 
 export const NeuralRescueMap: React.FC = () => {
   const [progresses, setProgresses] = useState<number[]>(ROUTES.map((_, i) => i * 0.22));

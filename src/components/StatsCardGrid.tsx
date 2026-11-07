@@ -1,13 +1,10 @@
 import React from 'react';
 import {
   ArrowUpRight,
-  TrendingUp,
   UtensilsCrossed,
   Clock,
   Thermometer,
-  ShieldCheck,
   Building2,
-  Leaf,
 } from 'lucide-react';
 import { sound } from '../utils/soundEffects';
 

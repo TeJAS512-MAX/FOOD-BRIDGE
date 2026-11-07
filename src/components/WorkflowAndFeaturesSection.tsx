@@ -1,17 +1,12 @@
 import React, { useState } from 'react';
 import {
   Bike,
-  Building,
   Camera,
   CheckCircle2,
   Clock,
-  Cpu,
-  Heart,
   Navigation,
-  QrCode,
   ShieldCheck,
   Sparkles,
-  Thermometer,
   Users,
 } from 'lucide-react';
 import { AI_SCAN_PRESETS, AIScanPreset } from '../data/foodBridgeData';

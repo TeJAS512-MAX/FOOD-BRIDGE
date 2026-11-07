@@ -2,14 +2,11 @@ import React, { useEffect, useState } from 'react';
 import {
   Camera,
   CheckCircle2,
-  Clock,
-  Flame,
   MapPin,
   QrCode,
   ShieldCheck,
   Sparkles,
   Truck,
-  Utensils,
   X,
 } from 'lucide-react';
 import { sound } from '../utils/soundEffects';

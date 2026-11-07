@@ -1,14 +1,9 @@
 import { useState } from 'react';
 import {
-  ArrowRight,
-  Award,
   Camera,
-  CheckCircle2,
-  Cpu,
   Globe,
   Heart,
   HeartHandshake,
-  Layers,
   Mail,
   MapPin,
   Menu,
@@ -19,7 +14,6 @@ import {
   Sparkles,
   Sun,
   Sunset,
-  Truck,
   UtensilsCrossed,
   Volume2,
   VolumeX,

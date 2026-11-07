@@ -1,15 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
-  AlertTriangle,
-  CheckCircle2,
-  Cpu,
-  Flame,
-  Radio,
-  RefreshCw,
-  ShieldAlert,
   ShieldCheck,
   Thermometer,
-  Zap,
 } from 'lucide-react';
 import { sound } from '../utils/soundEffects';
 

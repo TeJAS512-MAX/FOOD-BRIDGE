@@ -3,10 +3,8 @@ import {
   Award,
   CheckCircle2,
   Heart,
-  QrCode,
   Share2,
   Sparkles,
-  UtensilsCrossed,
   X,
 } from 'lucide-react';
 import { sound } from '../utils/soundEffects';

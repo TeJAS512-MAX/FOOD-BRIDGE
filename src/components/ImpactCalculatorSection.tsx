@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import {
   Award,
   BarChart3,
-  Box,
   Calculator,
   Droplets,
   Flame,

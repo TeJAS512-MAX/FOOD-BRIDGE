@@ -1,13 +1,9 @@
 import React from 'react';
 import {
   Award,
-  CheckCircle2,
   Download,
-  FileText,
   Printer,
-  QrCode,
   ShieldCheck,
-  Sparkles,
   X,
 } from 'lucide-react';
 import { sound } from '../utils/soundEffects';
