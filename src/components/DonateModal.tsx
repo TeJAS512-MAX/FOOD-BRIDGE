@@ -111,7 +111,7 @@ export const DonateModal: React.FC<DonateModalProps> = ({
               {/* AI Auto-Fill helper bar */}
               <div className="rounded-2xl bg-emerald-900/20 border border-emerald-500/30 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div className="flex items-center gap-2.5 text-xs text-emerald-900 font-medium">
-                  <Sparkles className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <Sparkles className="w-4 h-4 text-emerald-400 shrink-0" />
                   <span>Have surplus kitchen trays ready? Try instant camera scan:</span>
                 </div>
                 <button
@@ -234,7 +234,7 @@ export const DonateModal: React.FC<DonateModalProps> = ({
 
               {/* Safety & Legal Note */}
               <div className="flex items-center gap-2 text-xs text-white/70 bg-white/[0.05] p-3 rounded-xl border border-white/[0.14]">
-                <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+                <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
                 <span>
                   Protected under the Indian Food Safety and Standards (Recovery & Distribution of Surplus Food) Regulations, 2019.
                 </span>

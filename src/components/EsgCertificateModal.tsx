@@ -74,7 +74,7 @@ export const EsgCertificateModal: React.FC<EsgCertificateModalProps> = ({
             </div>
 
             <div className="flex items-center justify-center gap-2 text-xs font-mono-tech uppercase tracking-wider text-emerald-300 font-bold">
-              <ShieldCheck className="w-4 h-4 text-emerald-600" />
+              <ShieldCheck className="w-4 h-4 text-emerald-400" />
               <span>CIVIC ZERO FOOD WASTE INITIATIVE • ACCREDITED AUDIT</span>
             </div>
 
@@ -107,7 +107,7 @@ export const EsgCertificateModal: React.FC<EsgCertificateModalProps> = ({
                 </div>
               </div>
               <div className="p-2 border-x border-white/[0.14]">
-                <div className="font-mono-tech text-xl sm:text-2xl font-bold text-orange-600">
+                <div className="font-mono-tech text-xl sm:text-2xl font-bold text-orange-400">
                   {co2Saved} kg
                 </div>
                 <div className="text-[10px] sm:text-xs text-white/60 uppercase font-mono-tech font-semibold">
@@ -115,7 +115,7 @@ export const EsgCertificateModal: React.FC<EsgCertificateModalProps> = ({
                 </div>
               </div>
               <div className="p-2">
-                <div className="font-mono-tech text-xl sm:text-2xl font-bold text-sky-700">
+                <div className="font-mono-tech text-xl sm:text-2xl font-bold text-cyan-400">
                   {waterSaved.toLocaleString()} L
                 </div>
                 <div className="text-[10px] sm:text-xs text-white/60 uppercase font-mono-tech font-semibold">

@@ -151,21 +151,21 @@ export const LiveRouteTrackerModal: React.FC<LiveRouteTrackerModalProps> = ({ is
 
             <div className="rounded-2xl bg-white/[0.05] border border-white/[0.14] p-4 space-y-1">
               <div className="text-[11px] font-mono-tech text-white/60 uppercase flex items-center gap-1.5 font-semibold">
-                <Thermometer className="w-3.5 h-3.5 text-emerald-600" />
+                <Thermometer className="w-3.5 h-3.5 text-emerald-400" />
                 Thermal Sensor
               </div>
               <div className="text-xl sm:text-2xl font-mono-tech font-bold text-emerald-400">
                 {currentTemp}°C
               </div>
-              <div className="text-[10px] text-emerald-600 font-medium">Hot Holding (63°C+ Safe)</div>
+              <div className="text-[10px] text-emerald-400 font-medium">Hot Holding (63°C+ Safe)</div>
             </div>
 
             <div className="rounded-2xl bg-white/[0.05] border border-white/[0.14] p-4 space-y-1">
               <div className="text-[11px] font-mono-tech text-white/60 uppercase flex items-center gap-1.5 font-semibold">
-                <BatteryCharging className="w-3.5 h-3.5 text-sky-600" />
+                <BatteryCharging className="w-3.5 h-3.5 text-cyan-400" />
                 EV Battery
               </div>
-              <div className="text-xl sm:text-2xl font-mono-tech font-bold text-sky-700">
+              <div className="text-xl sm:text-2xl font-mono-tech font-bold text-cyan-400">
                 {telemetry.batteryPct}%
               </div>
               <div className="text-[10px] text-white/60">Zero-Emission Trip</div>
@@ -173,7 +173,7 @@ export const LiveRouteTrackerModal: React.FC<LiveRouteTrackerModalProps> = ({ is
 
             <div className="rounded-2xl bg-white/[0.05] border border-white/[0.14] p-4 space-y-1">
               <div className="text-[11px] font-mono-tech text-white/60 uppercase flex items-center gap-1.5 font-semibold">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
                 Food Safety
               </div>
               <div className="text-xl sm:text-2xl font-mono-tech font-bold text-white">

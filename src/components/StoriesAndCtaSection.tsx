@@ -84,13 +84,13 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
           {/* Header */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-10 border-b border-white/[0.14]">
             <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-mono-tech uppercase tracking-wider mb-4 font-semibold">
-                <Quote className="w-3.5 h-3.5 text-emerald-600" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-mono-tech uppercase tracking-wider mb-4 font-semibold">
+                <Quote className="w-3.5 h-3.5 text-emerald-400" />
                 <span>06 • COMMUNITY VOICES: HUMAN DIGNITY AT EVERY TABLE</span>
               </div>
               <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-white">
                 Stories from the chefs, shelters, and riders{' '}
-                <span className="italic font-normal text-emerald-600">bridging the gap.</span>
+                <span className="italic font-normal text-emerald-400">bridging the gap.</span>
               </h2>
             </div>
 
@@ -118,7 +118,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
           </div>
 
           {/* Active Story Spotlight Card with Real Persona Image */}
-          <div className="mt-12 rounded-3xl bg-white/[0.08] backdrop-blur-xl border border-white/[0.14]/90 p-8 sm:p-12 shadow-lg grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div className="mt-12 glass-card p-8 sm:p-12 shadow-lg grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             {/* Left 5 Cols: Persona Visual & Audio Card */}
             <div className="lg:col-span-5 space-y-4">
               <div className="rounded-3xl overflow-hidden border border-white/[0.14] shadow-md relative group">
@@ -152,7 +152,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                   </button>
                   <div>
                     <div className="text-xs font-semibold text-white flex items-center gap-1.5">
-                      <Volume2 className="w-3.5 h-3.5 text-emerald-600" />
+                      <Volume2 className="w-3.5 h-3.5 text-emerald-400" />
                       <span>{selectedStory.name.split(' ')[0]}’s Audio Memo</span>
                     </div>
                     <div className="text-[10px] font-mono-tech text-white/60">
@@ -179,7 +179,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
 
             {/* Right 7 Cols: Narrative & Impact Metrics */}
             <div className="lg:col-span-7 space-y-6">
-              <Quote className="w-10 h-10 text-emerald-600/30" />
+              <Quote className="w-10 h-10 text-emerald-400/30" />
 
               <blockquote className="font-serif-display text-xl sm:text-2xl text-white italic leading-relaxed">
                 “{selectedStory.quote}”
@@ -200,11 +200,11 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                   </div>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-emerald-50/80 border border-emerald-200/80 space-y-1">
-                  <div className="font-mono-tech text-xs text-emerald-800 uppercase font-semibold">
+                <div className="p-4 rounded-2xl bg-emerald-500/15/80 border border-emerald-500/30/80 space-y-1">
+                  <div className="font-mono-tech text-xs text-emerald-300 uppercase font-semibold">
                     ECOLOGICAL DIVERT
                   </div>
-                  <div className="font-serif-display text-2xl sm:text-3xl font-bold text-emerald-700">
+                  <div className="font-serif-display text-2xl sm:text-3xl font-bold text-emerald-400">
                     {selectedStory.secondaryMetric}
                   </div>
                 </div>
@@ -220,7 +220,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                     #{tg}
                   </span>
                 ))}
-                <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 font-mono-tech text-xs border border-emerald-200 font-semibold">
+                <span className="px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-300 font-mono-tech text-xs border border-emerald-500/30 font-semibold">
                   ID: {selectedStory.verifiedBatchId}
                 </span>
               </div>
@@ -240,14 +240,14 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             {/* Left 6 Columns */}
             <div className="lg:col-span-6 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200 text-orange-800 text-xs font-mono-tech uppercase tracking-wider font-semibold">
-                <Sparkles className="w-3.5 h-3.5 text-orange-600" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-500/15 border border-orange-500/30 text-orange-300 text-xs font-mono-tech uppercase tracking-wider font-semibold">
+                <Sparkles className="w-3.5 h-3.5 text-orange-400" />
                 <span>07 • TAKE ACTION TODAY • BE THE BRIDGE</span>
               </div>
 
               <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-white">
                 Every minute counts when{' '}
-                <span className="italic font-normal text-emerald-600">fresh food</span> is on the line.
+                <span className="italic font-normal text-emerald-400">fresh food</span> is on the line.
               </h2>
 
               <p className="text-base text-white/70 leading-relaxed max-w-xl">
@@ -271,7 +271,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                   },
                 ].map((pil, idx) => (
                   <div key={idx} className="flex items-start gap-3 text-sm text-white/70">
-                    <div className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
+                    <div className="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
                       <CheckCircle2 className="w-3.5 h-3.5" />
                     </div>
                     <div>
@@ -305,7 +305,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                     }}
                     className="px-6 py-4 rounded-full bg-white hover:bg-white/[0.05] border border-white/[0.20] text-white/90 font-semibold text-sm sm:text-base flex items-center gap-2 cursor-pointer transition-all shadow-sm"
                   >
-                    <Sparkles className="w-4 h-4 text-emerald-600" />
+                    <Sparkles className="w-4 h-4 text-emerald-400" />
                     <span>Pledge 1 Meal (₹35)</span>
                   </button>
                 )}
@@ -314,7 +314,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
 
             {/* Right 6 Columns: Interactive 1-Minute Action Console */}
             <div className="lg:col-span-6">
-              <div className="rounded-3xl bg-white/[0.08] backdrop-blur-xl border border-white/[0.14]/90 p-6 sm:p-8 shadow-lg space-y-6">
+              <div className="glass-card p-6 sm:p-8 shadow-lg space-y-6">
                 {/* 3 Role Selection Tabs */}
                 <div className="flex rounded-2xl bg-white/[0.08] p-1.5 border border-white/[0.14]">
                   {[
@@ -417,12 +417,12 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                     </button>
                   </form>
                 ) : (
-                  <div className="rounded-2xl bg-emerald-50/80 border border-emerald-300 p-5 space-y-4 text-center">
-                    <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto">
+                  <div className="rounded-2xl bg-emerald-500/15/80 border border-emerald-500/40 p-5 space-y-4 text-center">
+                    <div className="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto">
                       <CheckCircle2 className="w-6 h-6" />
                     </div>
                     <div>
-                      <div className="font-mono-tech text-xs text-emerald-800 uppercase font-bold">
+                      <div className="font-mono-tech text-xs text-emerald-300 uppercase font-bold">
                         REGISTRATION CONFIRMED • {submittedReceipt.id}
                       </div>
                       <h4 className="font-serif-display text-xl font-bold text-white mt-1">
@@ -433,14 +433,14 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                       </p>
                     </div>
 
-                    <div className="p-3 rounded-xl bg-white/[0.07] border border-emerald-200 text-xs font-mono-tech text-white/80">
+                    <div className="p-3 rounded-xl bg-white/[0.07] border border-emerald-500/30 text-xs font-mono-tech text-white/80">
                       Dispatched to FoodBridge Central Dispatch Desk. SMS & WhatsApp confirmation sent.
                     </div>
 
                     <button
                       type="button"
                       onClick={() => setSubmittedReceipt(null)}
-                      className="text-xs text-emerald-700 hover:underline cursor-pointer font-semibold"
+                      className="text-xs text-emerald-400 hover:underline cursor-pointer font-semibold"
                     >
                       Submit Another Registration
                     </button>

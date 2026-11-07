@@ -141,13 +141,13 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
           {/* Header */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-10 border-b border-white/[0.14]">
             <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-mono-tech uppercase tracking-wider mb-4 font-semibold">
-                <Clock className="w-3.5 h-3.5 text-emerald-600" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-mono-tech uppercase tracking-wider mb-4 font-semibold">
+                <Clock className="w-3.5 h-3.5 text-emerald-400" />
                 <span>03 • HOW IT WORKS: ZERO TO DELIVERED IN 38 MINUTES</span>
               </div>
               <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-white">
                 How FoodBridge transforms kitchen surplus into{' '}
-                <span className="italic font-normal text-emerald-600">community meals.</span>
+                <span className="italic font-normal text-emerald-400">community meals.</span>
               </h2>
             </div>
             <p className="text-base text-white/70 max-w-md leading-relaxed">
@@ -169,21 +169,21 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                   }}
                   className={`rounded-3xl p-6 sm:p-8 cursor-pointer transition-all border ${
                     isActive
-                      ? 'bg-emerald-50/90 border-emerald-400 shadow-lg scale-102 ring-2 ring-emerald-500/20'
-                      : 'bg-white/[0.07] backdrop-blur-xl border-white/[0.14]/90 hover:border-emerald-300 hover:shadow-md'
+                      ? 'bg-emerald-500/150/20 backdrop-blur-xl border-emerald-400 shadow-lg scale-102 ring-2 ring-emerald-500/20'
+                      : 'bg-white/[0.07] backdrop-blur-xl border-white/[0.14]/90 hover:border-emerald-500/40 hover:shadow-md'
                   }`}
                 >
                   <div className="flex items-center justify-between pb-6 border-b border-white/[0.14]">
                     <span className="font-mono-tech text-3xl font-bold text-white">
                       {st.stepNumber}
                     </span>
-                    <span className="px-3 py-1 rounded-full bg-white text-emerald-700 font-mono-tech text-xs uppercase font-bold border border-emerald-200 shadow-sm">
+                    <span className="px-3 py-1 rounded-full bg-white text-emerald-400 font-mono-tech text-xs uppercase font-bold border border-emerald-500/30 shadow-sm">
                       {st.duration}
                     </span>
                   </div>
 
                   <div className="mt-6 space-y-3">
-                    <div className="text-xs font-mono-tech uppercase text-orange-600 font-bold">
+                    <div className="text-xs font-mono-tech uppercase text-orange-400 font-bold">
                       {st.badge}
                     </div>
                     <h3 className="font-serif-display text-2xl font-bold text-white">
@@ -198,7 +198,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                   <div className="mt-6 pt-6 border-t border-white/[0.14] space-y-2">
                     {st.previewChecklist.map((item, i) => (
                       <div key={i} className="flex items-start gap-2.5 text-xs text-white/80">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
                         <span>{item}</span>
                       </div>
                     ))}
@@ -209,10 +209,10 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
           </div>
 
           {/* Step Detail Spotlight Console */}
-          <div className="mt-10 rounded-3xl bg-white/[0.08] backdrop-blur-xl border border-white/[0.14]/90 p-6 sm:p-10 shadow-lg">
+          <div className="mt-10 glass-card p-6 sm:p-10 shadow-lg">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/[0.14]">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold font-mono-tech text-base">
+                <div className="w-10 h-10 rounded-2xl bg-emerald-500/20 text-emerald-300 flex items-center justify-center font-bold font-mono-tech text-base">
                   {steps[activeStep].stepNumber}
                 </div>
                 <div>
@@ -262,13 +262,13 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
           {/* Header */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-10 border-b border-white/[0.14]">
             <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200 text-orange-800 text-xs font-mono-tech uppercase tracking-wider mb-4 font-semibold">
-                <Sparkles className="w-3.5 h-3.5 text-orange-600" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-500/15 border border-orange-500/30 text-orange-300 text-xs font-mono-tech uppercase tracking-wider mb-4 font-semibold">
+                <Sparkles className="w-3.5 h-3.5 text-orange-400" />
                 <span>04 • KEY CAPABILITIES: ENGINEERED FOR SPEED & DIGNITY</span>
               </div>
               <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-white">
                 Four pillars powering the{' '}
-                <span className="italic font-normal text-emerald-600">Zero-Waste Mesh.</span>
+                <span className="italic font-normal text-emerald-400">Zero-Waste Mesh.</span>
               </h2>
             </div>
             <p className="text-base text-white/70 max-w-md leading-relaxed">
@@ -279,14 +279,14 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
           {/* Bento Grid Layout */}
           <div className="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-6">
             {/* Feature 1 (7 Cols): Interactive AI Food Tray Scanner with Real Food Photo */}
-            <div className="lg:col-span-7 rounded-3xl bg-white/[0.08] backdrop-blur-xl border border-white/[0.14]/90 p-6 sm:p-8 shadow-lg flex flex-col justify-between space-y-6">
+            <div className="lg:col-span-7 glass-card p-6 sm:p-8 shadow-lg flex flex-col justify-between space-y-6">
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 border border-orange-200 text-orange-800 font-mono-tech text-xs uppercase font-semibold">
-                    <Camera className="w-3.5 h-3.5 text-orange-600" />
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/15 border border-orange-500/30 text-orange-300 font-mono-tech text-xs uppercase font-semibold">
+                    <Camera className="w-3.5 h-3.5 text-orange-400" />
                     <span>FEATURE 01 • AI VISION FOOD SCANNER</span>
                   </div>
-                  <span className="text-xs font-mono-tech text-emerald-700 font-bold bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                  <span className="text-xs font-mono-tech text-emerald-400 font-bold bg-emerald-500/15 px-2.5 py-0.5 rounded-full border border-emerald-500/30">
                     {selectedPreset.safetyConfidence}% AUDIT CONFIDENCE
                   </span>
                 </div>
@@ -375,10 +375,10 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
             </div>
 
             {/* Feature 2 (5 Cols): NGO Partnerships & Direct Capacity Sync */}
-            <div className="lg:col-span-5 rounded-3xl bg-white/[0.08] backdrop-blur-xl border border-white/[0.14]/90 p-6 sm:p-8 shadow-lg flex flex-col justify-between space-y-6">
+            <div className="lg:col-span-5 glass-card p-6 sm:p-8 shadow-lg flex flex-col justify-between space-y-6">
               <div className="space-y-3">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 font-mono-tech text-xs uppercase font-semibold">
-                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 font-mono-tech text-xs uppercase font-semibold">
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
                   <span>FEATURE 02 • VERIFIED NGO PARTNERSHIPS</span>
                 </div>
                 <h3 className="font-serif-display text-2xl sm:text-3xl font-bold text-white">
@@ -419,11 +419,11 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
 
               <div className="space-y-2 text-xs text-white/70 font-medium">
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
                   <span>100% Free delivery to all shelter partners</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
                   <span>Digital QR manifest verified at delivery</span>
                 </div>
               </div>
@@ -441,10 +441,10 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
             </div>
 
             {/* Feature 3 (5 Cols): Sub-38m Pickup & EV Fleet Coordination */}
-            <div className="lg:col-span-5 rounded-3xl bg-white/[0.08] backdrop-blur-xl border border-white/[0.14]/90 p-6 sm:p-8 shadow-lg flex flex-col justify-between space-y-6">
+            <div className="lg:col-span-5 glass-card p-6 sm:p-8 shadow-lg flex flex-col justify-between space-y-6">
               <div className="space-y-3">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-50 border border-sky-200 text-sky-800 font-mono-tech text-xs uppercase font-semibold">
-                  <Bike className="w-3.5 h-3.5 text-sky-600" />
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 font-mono-tech text-xs uppercase font-semibold">
+                  <Bike className="w-3.5 h-3.5 text-cyan-400" />
                   <span>FEATURE 03 • GREEN EV FLEET & PICKUP</span>
                 </div>
                 <h3 className="font-serif-display text-2xl sm:text-3xl font-bold text-white">
@@ -460,7 +460,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
               <div className="rounded-2xl bg-white/[0.05] border border-white/[0.14] p-4 space-y-2.5">
                 <div className="flex items-center justify-between text-xs font-mono-tech">
                   <span className="text-white/60 uppercase font-semibold">ACTIVE GREEN FLEET</span>
-                  <span className="text-emerald-700 font-bold">14 RIDERS EN ROUTE</span>
+                  <span className="text-emerald-400 font-bold">14 RIDERS EN ROUTE</span>
                 </div>
                 <div className="grid grid-cols-3 gap-2 text-center">
                   <div className="p-2 rounded-xl bg-white/[0.07] border border-white/[0.14]">
@@ -468,11 +468,11 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                     <div className="text-[10px] text-white/60">Avg Speed</div>
                   </div>
                   <div className="p-2 rounded-xl bg-white/[0.07] border border-white/[0.14]">
-                    <div className="font-mono-tech font-bold text-emerald-700">0.0g</div>
+                    <div className="font-mono-tech font-bold text-emerald-400">0.0g</div>
                     <div className="text-[10px] text-white/60">Fleet CO₂</div>
                   </div>
                   <div className="p-2 rounded-xl bg-white/[0.07] border border-white/[0.14]">
-                    <div className="font-mono-tech font-bold text-orange-600">99.4%</div>
+                    <div className="font-mono-tech font-bold text-orange-400">99.4%</div>
                     <div className="text-[10px] text-white/60">Thermal Pass</div>
                   </div>
                 </div>
@@ -487,7 +487,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                   onClick={handleHeroPledge}
                   className={`px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer ${
                     hasPledgedQuick
-                      ? 'bg-emerald-100 text-emerald-800'
+                      ? 'bg-emerald-500/20 text-emerald-300'
                       : 'bg-black/60 text-white hover:bg-slate-800'
                   }`}
                 >
@@ -497,11 +497,11 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
             </div>
 
             {/* Feature 4 (7 Cols): Community Participation & 24/7 Smart Fridges */}
-            <div className="lg:col-span-7 rounded-3xl bg-white/[0.08] backdrop-blur-xl border border-white/[0.14]/90 p-6 sm:p-8 shadow-lg flex flex-col justify-between space-y-6">
+            <div className="lg:col-span-7 glass-card p-6 sm:p-8 shadow-lg flex flex-col justify-between space-y-6">
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 font-mono-tech text-xs uppercase font-semibold">
-                    <Users className="w-3.5 h-3.5 text-emerald-600" />
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 font-mono-tech text-xs uppercase font-semibold">
+                    <Users className="w-3.5 h-3.5 text-emerald-400" />
                     <span>FEATURE 04 • COMMUNITY PARTICIPATION & FRIDGES</span>
                   </div>
                   {/* Zone switcher */}
@@ -537,7 +537,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
               {/* Dynamic Zone Telemetry Grid */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                 <div className="p-3.5 rounded-2xl bg-white/[0.05] border border-white/[0.14] text-center">
-                  <div className="font-mono-tech text-xl font-bold text-emerald-700">
+                  <div className="font-mono-tech text-xl font-bold text-emerald-400">
                     {zoneData[selectedZone].activeFridges}
                   </div>
                   <div className="text-[10px] font-mono-tech text-white/60 uppercase mt-0.5">
@@ -555,7 +555,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                 </div>
 
                 <div className="p-3.5 rounded-2xl bg-white/[0.05] border border-white/[0.14] text-center">
-                  <div className="font-mono-tech text-xl font-bold text-orange-600">
+                  <div className="font-mono-tech text-xl font-bold text-orange-400">
                     {zoneData[selectedZone].verifiedShelters}
                   </div>
                   <div className="text-[10px] font-mono-tech text-white/60 uppercase mt-0.5">
@@ -564,7 +564,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                 </div>
 
                 <div className="p-3.5 rounded-2xl bg-white/[0.05] border border-white/[0.14] text-center">
-                  <div className="font-mono-tech text-xl font-bold text-sky-700">
+                  <div className="font-mono-tech text-xl font-bold text-cyan-400">
                     {zoneData[selectedZone].openVolunteers}
                   </div>
                   <div className="text-[10px] font-mono-tech text-white/60 uppercase mt-0.5">

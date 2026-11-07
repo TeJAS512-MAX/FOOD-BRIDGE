@@ -104,20 +104,20 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
         className="relative py-20 lg:py-28 text-white overflow-hidden"
       >
         {/* Soft Ambient Radiance */}
-        <div className="pointer-events-none absolute top-12 left-1/4 w-96 h-96 rounded-full bg-emerald-100/50 blur-3xl" />
-        <div className="pointer-events-none absolute bottom-8 right-10 w-96 h-96 rounded-full bg-orange-100/50 blur-3xl" />
+        <div className="pointer-events-none absolute top-12 left-1/4 w-96 h-96 rounded-full bg-emerald-500/20/50 blur-3xl" />
+        <div className="pointer-events-none absolute bottom-8 right-10 w-96 h-96 rounded-full bg-orange-500/20/50 blur-3xl" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-10 border-b border-white/[0.14]">
             <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-rose-50 border border-rose-200 text-rose-700 text-xs font-mono-tech uppercase tracking-wider mb-4 font-semibold">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-rose-500/15 border border-rose-500/30 text-rose-400 text-xs font-mono-tech uppercase tracking-wider mb-4 font-semibold">
                 <AlertTriangle className="w-3.5 h-3.5" />
                 <span>01 • THE PROBLEM: THE SCANDAL OF FOOD INSECURITY</span>
               </div>
               <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-white">
                 Food waste isn’t a scarcity problem.{' '}
-                <span className="italic font-normal text-orange-600">
+                <span className="italic font-normal text-orange-400">
                   It’s a broken distribution problem.
                 </span>
               </h2>
@@ -135,15 +135,15 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
 
           {/* 3 Hard Truth Reality Cards */}
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="rounded-3xl bg-white/[0.07] backdrop-blur-xl border border-white/[0.14]/90 p-6 sm:p-8 space-y-4 shadow-sm hover:shadow-md hover:border-emerald-300 transition-all">
-              <div className="w-12 h-12 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center">
+            <div className="glass-card p-6 sm:p-8 space-y-4 shadow-sm hover:shadow-md hover:border-emerald-500/40 transition-all">
+              <div className="w-12 h-12 rounded-2xl bg-rose-500/15 text-rose-400 flex items-center justify-center">
                 <Flame className="w-6 h-6" />
               </div>
               <div className="space-y-1">
                 <div className="font-serif-display text-4xl sm:text-5xl font-bold text-white tracking-tight">
                   68.7 M
                 </div>
-                <div className="font-mono-tech text-xs uppercase tracking-wider text-rose-600 font-semibold">
+                <div className="font-mono-tech text-xs uppercase tracking-wider text-rose-400 font-semibold">
                   Tonnes Wasted in India Yearly
                 </div>
               </div>
@@ -156,15 +156,15 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
               </div>
             </div>
 
-            <div className="rounded-3xl bg-white/[0.07] backdrop-blur-xl border border-white/[0.14]/90 p-6 sm:p-8 space-y-4 shadow-sm hover:shadow-md hover:border-orange-300 transition-all">
-              <div className="w-12 h-12 rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center">
+            <div className="glass-card p-6 sm:p-8 space-y-4 shadow-sm hover:shadow-md hover:border-orange-500/40 transition-all">
+              <div className="w-12 h-12 rounded-2xl bg-orange-500/15 text-orange-400 flex items-center justify-center">
                 <Clock className="w-6 h-6" />
               </div>
               <div className="space-y-1">
                 <div className="font-serif-display text-4xl sm:text-5xl font-bold text-white tracking-tight">
                   45 Mins
                 </div>
-                <div className="font-mono-tech text-xs uppercase tracking-wider text-orange-600 font-semibold">
+                <div className="font-mono-tech text-xs uppercase tracking-wider text-orange-400 font-semibold">
                   The Critical Thermal Window
                 </div>
               </div>
@@ -177,15 +177,15 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
               </div>
             </div>
 
-            <div className="rounded-3xl bg-white/[0.07] backdrop-blur-xl border border-white/[0.14]/90 p-6 sm:p-8 space-y-4 shadow-sm hover:shadow-md hover:border-emerald-300 transition-all">
-              <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+            <div className="glass-card p-6 sm:p-8 space-y-4 shadow-sm hover:shadow-md hover:border-emerald-500/40 transition-all">
+              <div className="w-12 h-12 rounded-2xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center">
                 <Scale className="w-6 h-6" />
               </div>
               <div className="space-y-1">
                 <div className="font-serif-display text-4xl sm:text-5xl font-bold text-white tracking-tight">
                   800 M+
                 </div>
-                <div className="font-mono-tech text-xs uppercase tracking-wider text-emerald-600 font-semibold">
+                <div className="font-mono-tech text-xs uppercase tracking-wider text-emerald-400 font-semibold">
                   People Face Food Insecurity
                 </div>
               </div>
@@ -200,10 +200,10 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
           </div>
 
           {/* Interactive Simulation Console */}
-          <div className="mt-12 rounded-3xl bg-white/[0.08] backdrop-blur-xl border border-white/[0.14]/90 p-6 sm:p-10 shadow-lg relative overflow-hidden">
+          <div className="mt-12 glass-card p-6 sm:p-10 shadow-lg relative overflow-hidden">
             <div className="max-w-2xl space-y-3">
-              <div className="inline-flex items-center gap-2 text-xs font-mono-tech uppercase tracking-wider text-emerald-700 font-bold">
-                <Sparkles className="w-4 h-4 text-emerald-600" />
+              <div className="inline-flex items-center gap-2 text-xs font-mono-tech uppercase tracking-wider text-emerald-400 font-bold">
+                <Sparkles className="w-4 h-4 text-emerald-400" />
                 <span>INTERACTIVE METRO SIMULATOR: SURPLUS REDIRECTION LEVER</span>
               </div>
               <h3 className="font-serif-display text-2xl sm:text-3xl font-bold text-white">
@@ -218,7 +218,7 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
             <div className="mt-8 space-y-3">
               <div className="flex items-center justify-between text-xs font-mono-tech">
                 <span className="text-white/70 font-semibold">SURPLUS REDIRECTION TARGET</span>
-                <span className="text-emerald-700 font-bold text-base px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200">
+                <span className="text-emerald-400 font-bold text-base px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30">
                   {redirectionRate}% DIVERTED
                 </span>
               </div>
@@ -245,12 +245,12 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
 
             {/* Dynamic Results Grid */}
             <div className="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-4">
-              <div className="rounded-2xl bg-emerald-50/80 border border-emerald-200/80 p-4 space-y-1">
-                <div className="text-xs font-mono-tech text-emerald-800 uppercase font-semibold">Daily Meals Bridged</div>
-                <div className="text-xl sm:text-2xl font-mono-tech font-bold text-emerald-700">
+              <div className="rounded-2xl bg-emerald-500/15/80 border border-emerald-500/30/80 p-4 space-y-1">
+                <div className="text-xs font-mono-tech text-emerald-300 uppercase font-semibold">Daily Meals Bridged</div>
+                <div className="text-xl sm:text-2xl font-mono-tech font-bold text-emerald-400">
                   {dailyMealsCreated.toLocaleString()}
                 </div>
-                <div className="text-[11px] text-emerald-600 font-medium">Hot nutritious servings</div>
+                <div className="text-[11px] text-emerald-400 font-medium">Hot nutritious servings</div>
               </div>
 
               <div className="rounded-2xl bg-white/[0.05] border border-white/[0.14] p-4 space-y-1">
@@ -261,20 +261,20 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
                 <div className="text-[11px] text-white/60">Out of 120T metro surplus</div>
               </div>
 
-              <div className="rounded-2xl bg-orange-50/80 border border-orange-200/80 p-4 space-y-1">
-                <div className="text-xs font-mono-tech text-orange-800 uppercase font-semibold">CO₂e Methane Saved</div>
-                <div className="text-xl sm:text-2xl font-mono-tech font-bold text-orange-600">
+              <div className="rounded-2xl bg-orange-500/15/80 border border-orange-500/30/80 p-4 space-y-1">
+                <div className="text-xs font-mono-tech text-orange-300 uppercase font-semibold">CO₂e Methane Saved</div>
+                <div className="text-xl sm:text-2xl font-mono-tech font-bold text-orange-400">
                   {dailyCo2PreventedTonnes} Tonnes
                 </div>
-                <div className="text-[11px] text-orange-600 font-medium">Diverted from city landfills</div>
+                <div className="text-[11px] text-orange-400 font-medium">Diverted from city landfills</div>
               </div>
 
-              <div className="rounded-2xl bg-sky-50/80 border border-sky-200/80 p-4 space-y-1">
-                <div className="text-xs font-mono-tech text-sky-800 uppercase font-semibold">Shelters Fed Daily</div>
-                <div className="text-xl sm:text-2xl font-mono-tech font-bold text-sky-700">
+              <div className="rounded-2xl bg-cyan-500/15/80 border border-cyan-500/30/80 p-4 space-y-1">
+                <div className="text-xs font-mono-tech text-cyan-300 uppercase font-semibold">Shelters Fed Daily</div>
+                <div className="text-xl sm:text-2xl font-mono-tech font-bold text-cyan-400">
                   {Math.round(dailyMealsCreated / 250)} Shelters
                 </div>
-                <div className="text-[11px] text-sky-600 font-medium">At 250 plates capacity each</div>
+                <div className="text-[11px] text-cyan-400 font-medium">At 250 plates capacity each</div>
               </div>
             </div>
           </div>
@@ -292,13 +292,13 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
           {/* Header */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-10 border-b border-white/[0.14]">
             <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-mono-tech uppercase tracking-wider mb-4 font-semibold">
-                <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-mono-tech uppercase tracking-wider mb-4 font-semibold">
+                <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
                 <span>02 • OUR SOLUTION: REAL-TIME CIVIC LOGISTICS MESH</span>
               </div>
               <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-white">
                 Bridging surplus to sustenance in{' '}
-                <span className="italic font-normal text-emerald-600">3 simple connected layers.</span>
+                <span className="italic font-normal text-emerald-400">3 simple connected layers.</span>
               </h2>
             </div>
             <p className="text-base text-white/70 max-w-md leading-relaxed">
@@ -337,7 +337,7 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
           </div>
 
           {/* Solution Layer Active Card */}
-          <div className="mt-8 rounded-3xl bg-white/[0.08] backdrop-blur-xl border border-white/[0.14]/90 p-8 sm:p-12 shadow-lg grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="mt-8 glass-card p-8 sm:p-12 shadow-lg grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             {/* Left 7 Columns */}
             <div className="lg:col-span-7 space-y-6">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.08] border border-white/[0.14] text-white/80 font-mono-tech text-xs uppercase font-semibold">
@@ -370,7 +370,7 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
               <div className="space-y-3 pt-2">
                 {activeLayerData.features.map((feat, i) => (
                   <div key={i} className="flex items-start gap-3 text-sm text-white/80">
-                    <div className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
+                    <div className="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
                       <CheckCircle2 className="w-3.5 h-3.5" />
                     </div>
                     <span className="leading-snug">{feat}</span>
@@ -401,7 +401,7 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
                     }}
                     className="px-6 py-3.5 rounded-full bg-white hover:bg-white/[0.05] text-white/90 border border-white/[0.20] font-semibold text-xs sm:text-sm flex items-center gap-2 shadow-sm cursor-pointer transition-all"
                   >
-                    <Truck className="w-4 h-4 text-emerald-600" />
+                    <Truck className="w-4 h-4 text-emerald-400" />
                     <span>View Live Dispatch Radar</span>
                   </button>
                 )}
