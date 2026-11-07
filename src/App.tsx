@@ -94,28 +94,24 @@ export function App() {
     { label: 'Stories', href: '#stories' },
   ];
 
-  // Dynamic Scene Wallpaper based on Atmosphere Mode
-  const bgImageMap = {
-    evening:
-      'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=2070&q=80',
-    day:
-      'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=2070&q=80',
-    night:
-      'https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=2070&q=80',
-  };
+  // One shared scene wallpaper for every atmosphere mode; modes only change the color grade.
+  // Photo by Stefan Vladimirov on Unsplash.
+  const sceneBackgroundImage =
+    'https://images.unsplash.com/photo-1547573854-74d2a71d0826?auto=format&fit=crop&w=2070&q=80';
 
   return (
     <div className="min-h-screen flex flex-col text-white relative">
       {/* ── FIXED ATMOSPHERE BACKGROUND SCENE ── */}
-      <div className="scene-bg">
-        <img
-          key={atmosphereMode}
-          src={bgImageMap[atmosphereMode]}
-          alt=""
-          loading="eager"
-          className="animate-fadeinup"
-        />
-        <div className={`scene-overlay scene-overlay-${atmosphereMode}`} />
+      <div className="scene-bg" aria-hidden="true">
+        <img src={sceneBackgroundImage} alt="" loading="eager" />
+        <div className="scene-overlay scene-shade" />
+        {(['evening', 'day', 'night'] as const).map((mode) => (
+          <div
+            key={mode}
+            className={`scene-overlay scene-overlay-${mode}`}
+            style={{ opacity: atmosphereMode === mode ? 1 : 0 }}
+          />
+        ))}
       </div>
 
       {/* ── LIVE TELEMETRY TICKER (GLASS DARK BAR) ── */}
