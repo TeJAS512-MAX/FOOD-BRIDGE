@@ -181,9 +181,9 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 py-8 lg:py-10 items-center">
             {/* Left Column (7 cols): Editorial Headline & Integrated Pill Input */}
             <div className="lg:col-span-7 space-y-6">
-              <h1 className="font-serif-display text-4xl sm:text-5xl lg:text-[56px] font-bold tracking-tight leading-[1.08] text-white">
+              <h1 className="section-heading font-serif-display text-4xl sm:text-5xl lg:text-[56px] font-extrabold tracking-tight leading-[1.12] text-white">
                 One good meal rescued,{' '}
-                <span className="text-grad-orange font-normal italic">every second.</span>
+                <span className="heading-highlight-orange">every second.</span>
               </h1>
 
               <p className="text-base sm:text-lg leading-relaxed max-w-xl text-white/80 font-normal">

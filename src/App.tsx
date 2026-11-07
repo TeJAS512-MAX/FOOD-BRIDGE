@@ -412,8 +412,9 @@ export function App() {
                 <span className="font-mono-tech text-xs uppercase tracking-widest text-emerald-400 font-bold">
                   SPATIAL DISPATCH TELEMETRY
                 </span>
-                <h3 className="font-serif-display text-2xl sm:text-3xl font-bold text-white mt-0.5">
-                  Live Civic Rescue Digital Twin
+                <h3 className="section-heading font-serif-display text-2xl sm:text-4xl font-extrabold text-white mt-1.5">
+                  Live Civic Rescue{' '}
+                  <span className="heading-highlight-emerald">Digital Twin</span>
                 </h3>
               </div>
               <div className="inline-flex items-center gap-1.5 p-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-xl text-xs font-mono-tech">

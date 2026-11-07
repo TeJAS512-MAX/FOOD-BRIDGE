@@ -112,9 +112,9 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
                 <AlertTriangle className="w-3.5 h-3.5" />
                 <span>01 • THE PROBLEM: THE SCANDAL OF FOOD INSECURITY</span>
               </div>
-              <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-white">
+              <h2 className="section-heading section-heading-orange font-serif-display text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.12] text-white">
                 Food waste isn’t a scarcity problem.{' '}
-                <span className="italic font-normal text-orange-400">
+                <span className="heading-highlight-orange">
                   It’s a broken distribution problem.
                 </span>
               </h2>
@@ -293,9 +293,9 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
                 <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
                 <span>02 • OUR SOLUTION: REAL-TIME CIVIC LOGISTICS MESH</span>
               </div>
-              <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-white">
+              <h2 className="section-heading font-serif-display text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.12] text-white">
                 Bridging surplus to sustenance in{' '}
-                <span className="italic font-normal text-emerald-400">3 simple connected layers.</span>
+                <span className="heading-highlight-emerald">3 simple connected layers.</span>
               </h2>
             </div>
             <p className="text-base text-white/70 max-w-md leading-relaxed">

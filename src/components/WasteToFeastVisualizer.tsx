@@ -26,8 +26,9 @@ export const WasteToFeastVisualizer: React.FC = () => {
             <ArrowLeftRight className="w-3.5 h-3.5" />
             <span>INTERACTIVE REALITY SCRUBBER</span>
           </div>
-          <h3 className="font-serif-display text-2xl sm:text-3xl font-bold text-white">
-            The 45-Minute Window: <span className="text-emerald-400">Landfill vs. Dignified Banquet</span>
+          <h3 className="section-heading font-serif-display text-2xl sm:text-3xl font-extrabold text-white">
+            The 45-Minute Window:{' '}
+            <span className="heading-highlight-emerald">Landfill vs. Dignified Banquet</span>
           </h3>
         </div>
         <div className="text-xs text-white/70 max-w-xs sm:text-right font-medium">

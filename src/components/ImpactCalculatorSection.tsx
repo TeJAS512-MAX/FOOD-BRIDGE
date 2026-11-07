@@ -52,9 +52,9 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
               <BarChart3 className="w-3.5 h-3.5 text-emerald-400" />
               <span>05 • VERIFIED IMPACT & CARBON LEDGER</span>
             </div>
-            <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-white">
+            <h2 className="section-heading font-serif-display text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.12] text-white">
               Every rescued kilogram heals both{' '}
-              <span className="italic font-normal text-emerald-400">
+              <span className="heading-highlight-emerald">
                 communities and the climate.
               </span>
             </h2>
