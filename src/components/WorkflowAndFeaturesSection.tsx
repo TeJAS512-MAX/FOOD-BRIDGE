@@ -347,102 +347,109 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
             </div>
           </div>
 
-          {/* 6 Step Sequential Pop-Up Loop Cards */}
+          {/* Straight Horizontal Right-to-Left Rolling Conveyor of 6 Step Cards */}
           <div
-            className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="mt-6 workflow-rolling-viewport"
             onMouseEnter={() => setIsLoopPaused(true)}
             onMouseLeave={() => setIsLoopPaused(false)}
           >
-            {steps.map((st, idx) => {
-              const isActive = activeStep === idx;
-              const isPassed = idx < activeStep;
-              return (
-                <div
-                  key={st.stepNumber}
-                  onClick={() => {
-                    sound.click();
-                    setActiveStep(idx);
-                  }}
-                  className={`relative overflow-hidden rounded-3xl p-6 sm:p-7 cursor-pointer transition-all duration-500 border ${
-                    isActive
-                      ? 'workflow-card-popup bg-gradient-to-br from-emerald-500/25 via-slate-900/85 to-orange-500/15 backdrop-blur-2xl border-emerald-400 shadow-[0_28px_70px_-12px_rgba(16,185,129,0.45)] ring-2 ring-emerald-400/35'
-                      : isPassed
-                      ? 'bg-white/[0.08] backdrop-blur-xl border-emerald-500/30 opacity-90 hover:opacity-100'
-                      : 'bg-white/[0.05] backdrop-blur-xl border-white/[0.12] opacity-70 hover:opacity-95 hover:border-white/25'
-                  }`}
-                >
-                  {/* Animated Top Progress Bar on the Active Pop-Up Card */}
-                  {isActive && (
-                    <div className="absolute inset-x-0 top-0 h-1 bg-white/10 overflow-hidden">
-                      <div
-                        key={`${activeStep}-${isLoopPaused ? 'paused' : 'run'}`}
-                        className={`h-full bg-gradient-to-r from-emerald-400 via-orange-400 to-cyan-400 ${
-                          isLoopPaused ? 'w-full' : 'workflow-step-progress'
-                        }`}
-                      />
-                    </div>
-                  )}
+            <div
+              className={`workflow-rolling-track ${
+                isLoopPaused ? 'workflow-rolling-track-paused' : ''
+              }`}
+            >
+              {[...steps, ...steps].map((st, loopIdx) => {
+                const idx = loopIdx % steps.length;
+                const isActive = activeStep === idx;
+                const isPassed = idx < activeStep;
+                return (
+                  <div
+                    key={`${st.stepNumber}-${loopIdx}`}
+                    onClick={() => {
+                      sound.click();
+                      setActiveStep(idx);
+                    }}
+                    className={`w-[320px] sm:w-[360px] shrink-0 relative overflow-hidden rounded-3xl p-6 sm:p-7 cursor-pointer transition-all duration-500 border ${
+                      isActive
+                        ? 'workflow-card-popup bg-gradient-to-br from-emerald-500/25 via-slate-900/90 to-orange-500/15 backdrop-blur-2xl border-emerald-400 shadow-[0_28px_70px_-12px_rgba(16,185,129,0.50)] ring-2 ring-emerald-400/35'
+                        : isPassed
+                        ? 'bg-white/[0.08] backdrop-blur-xl border-emerald-500/30 opacity-90 hover:opacity-100'
+                        : 'bg-white/[0.05] backdrop-blur-xl border-white/[0.12] opacity-75 hover:opacity-100 hover:border-white/25'
+                    }`}
+                  >
+                    {/* Animated Top Progress Bar on the Active Pop-Up Card */}
+                    {isActive && (
+                      <div className="absolute inset-x-0 top-0 h-1 bg-white/10 overflow-hidden">
+                        <div
+                          key={`${activeStep}-${isLoopPaused ? 'paused' : 'run'}-${loopIdx}`}
+                          className={`h-full bg-gradient-to-r from-emerald-400 via-orange-400 to-cyan-400 ${
+                            isLoopPaused ? 'w-full' : 'workflow-step-progress'
+                          }`}
+                        />
+                      </div>
+                    )}
 
-                  {/* Floating "POPPING NOW" status pill */}
-                  <div className="flex items-center justify-between pb-6 border-b border-white/[0.14]">
-                    <div className="flex items-center gap-2.5">
+                    {/* Floating "POPPING NOW" status pill */}
+                    <div className="flex items-center justify-between pb-5 border-b border-white/[0.14]">
+                      <div className="flex items-center gap-2.5">
+                        <span
+                          className={`font-mono-tech text-3xl font-bold transition-colors ${
+                            isActive ? 'text-emerald-300' : 'text-white'
+                          }`}
+                        >
+                          {st.stepNumber}
+                        </span>
+                        {isActive ? (
+                          <span className="inline-flex items-center gap-1 rounded-full border border-emerald-400/50 bg-emerald-500/25 px-2.5 py-0.5 font-mono-tech text-[10px] font-bold uppercase tracking-wider text-emerald-200 shadow-sm">
+                            <span className="h-1.5 w-1.5 rounded-full bg-emerald-300 animate-ping" />
+                            <span>ACTIVE POP-UP</span>
+                          </span>
+                        ) : isPassed ? (
+                          <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 font-mono-tech text-[10px] font-semibold text-emerald-300">
+                            ✓ Done
+                          </span>
+                        ) : (
+                          <span className="font-mono-tech text-[10px] uppercase text-white/40">
+                            Queued
+                          </span>
+                        )}
+                      </div>
                       <span
-                        className={`font-mono-tech text-3xl font-bold transition-colors ${
-                          isActive ? 'text-emerald-300' : 'text-white'
+                        className={`px-3 py-1 rounded-full font-mono-tech text-xs uppercase font-bold border shadow-sm transition-colors ${
+                          isActive
+                            ? 'bg-white text-emerald-900 border-emerald-300'
+                            : 'bg-white/10 text-white/85 border-white/15'
                         }`}
                       >
-                        {st.stepNumber}
+                        {st.duration}
                       </span>
-                      {isActive ? (
-                        <span className="inline-flex items-center gap-1 rounded-full border border-emerald-400/50 bg-emerald-500/25 px-2.5 py-0.5 font-mono-tech text-[10px] font-bold uppercase tracking-wider text-emerald-200 shadow-sm">
-                          <span className="h-1.5 w-1.5 rounded-full bg-emerald-300 animate-ping" />
-                          <span>ACTIVE POP-UP</span>
-                        </span>
-                      ) : isPassed ? (
-                        <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 font-mono-tech text-[10px] font-semibold text-emerald-300">
-                          ✓ Done
-                        </span>
-                      ) : (
-                        <span className="font-mono-tech text-[10px] uppercase text-white/40">
-                          Queued
-                        </span>
-                      )}
                     </div>
-                    <span
-                      className={`px-3 py-1 rounded-full font-mono-tech text-xs uppercase font-bold border shadow-sm transition-colors ${
-                        isActive
-                          ? 'bg-white text-emerald-900 border-emerald-300'
-                          : 'bg-white/10 text-white/85 border-white/15'
-                      }`}
-                    >
-                      {st.duration}
-                    </span>
-                  </div>
 
-                  <div className="mt-6 space-y-3">
-                    <div className="text-xs font-mono-tech uppercase text-orange-400 font-bold">
-                      {st.badge}
-                    </div>
-                    <h3 className="font-serif-display text-2xl font-bold text-white">
-                      {st.title}
-                    </h3>
-                    <p className="text-sm text-white/70 leading-relaxed">
-                      {st.summary}
-                    </p>
-                  </div>
-
-                  {/* Checklist */}
-                  <div className="mt-6 pt-6 border-t border-white/[0.14] space-y-2">
-                    {st.previewChecklist.map((item, i) => (
-                      <div key={i} className="flex items-start gap-2.5 text-xs text-white/80">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
-                        <span>{item}</span>
+                    <div className="mt-5 space-y-2.5">
+                      <div className="text-xs font-mono-tech uppercase text-orange-400 font-bold">
+                        {st.badge}
                       </div>
-                    ))}
+                      <h3 className="font-serif-display text-xl sm:text-2xl font-bold text-white leading-snug">
+                        {st.title}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-white/70 leading-relaxed">
+                        {st.summary}
+                      </p>
+                    </div>
+
+                    {/* Checklist */}
+                    <div className="mt-5 pt-5 border-t border-white/[0.14] space-y-2">
+                      {st.previewChecklist.map((item, i) => (
+                        <div key={i} className="flex items-start gap-2 text-xs text-white/80">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                          <span>{item}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
 
           {/* Step Detail Spotlight Console */}

@@ -595,6 +595,40 @@
   animation: workflowProgressFill 3400ms linear forwards;
 }
 
+@keyframes workflowRollRightToLeft {
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+.workflow-rolling-viewport {
+  overflow-x: hidden;
+  overflow-y: visible;
+  padding-top: 1.25rem;
+  padding-bottom: 1.5rem;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 5%, #000 95%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 5%, #000 95%, transparent 100%);
+}
+
+.workflow-rolling-track {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  gap: 1.5rem;
+  width: max-content;
+  animation: workflowRollRightToLeft 36s linear infinite;
+  will-change: transform;
+}
+
+.workflow-rolling-track-paused {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .workflow-rolling-track {
+    animation: none;
+  }
+}
+
 /* Custom Dark Glass Scrollbar */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: rgba(0,0,0,0.40); }
