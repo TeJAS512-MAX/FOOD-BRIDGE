@@ -517,9 +517,7 @@
    ============================================================ */
 
 .story-carousel-stage {
-  height: 29rem;
-  perspective: 1000px;
-  transform-style: preserve-3d;
+  height: 31rem;
   overflow: hidden;
 }
 
@@ -527,13 +525,12 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: min(40rem, calc(100vw - 2rem));
-  height: 27.5rem;
+  width: min(41rem, calc(100vw - 2rem));
+  height: 29.75rem;
   transform-origin: center;
-  transform-style: preserve-3d;
   backface-visibility: hidden;
   transition:
-    transform 900ms cubic-bezier(0.2, 0.75, 0.25, 1),
+    transform 750ms cubic-bezier(0.22, 1, 0.36, 1),
     opacity 520ms ease,
     filter 520ms ease;
   will-change: transform, opacity;
@@ -543,33 +540,31 @@
   z-index: 30;
   opacity: 1;
   filter: saturate(1);
-  transform: translate(-50%, -50%) rotateY(0deg) translateZ(170px) scale(1.01);
+  transform: perspective(1200px) translate3d(-50%, -50%, 0) rotateY(0deg) scale(1);
   cursor: default;
 }
 
 .story-carousel-card-left {
   z-index: 10;
-  opacity: 0.58;
-  filter: saturate(0.68);
-  transform: translate(-50%, -50%) rotateY(52deg) translateZ(500px) scale(0.82);
+  opacity: 0.52;
+  filter: saturate(0.75) brightness(0.75);
+  transform: perspective(1200px) translate3d(-105%, -50%, 0) rotateY(22deg) scale(0.84);
 }
 
 .story-carousel-card-right {
   z-index: 10;
-  opacity: 0.68;
-  filter: saturate(0.78);
-  transform: translate(-50%, -50%) rotateY(-52deg) translateZ(500px) scale(0.82);
+  opacity: 0.58;
+  filter: saturate(0.8) brightness(0.78);
+  transform: perspective(1200px) translate3d(5%, -50%, 0) rotateY(-22deg) scale(0.84);
 }
 
 .story-carousel-feature {
   min-height: 0;
-  background: #0b1514;
+  background: #081312;
 }
 
 .story-carousel-copy {
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  overflow: hidden;
 }
 
 .story-spotlight-enter {
@@ -582,11 +577,11 @@
 }
 
 @media (max-width: 640px) {
-  .story-carousel-stage { height: 31rem; }
-  .story-carousel-card { width: min(27rem, calc(100vw - 2rem)); height: 29.5rem; }
-  .story-carousel-card-center { transform: translate(-50%, -50%) rotateY(0deg) translateZ(90px) scale(1); }
-  .story-carousel-card-left { transform: translate(-50%, -50%) rotateY(52deg) translateZ(190px) scale(0.76); }
-  .story-carousel-card-right { transform: translate(-50%, -50%) rotateY(-52deg) translateZ(190px) scale(0.76); }
+  .story-carousel-stage { height: 32.5rem; }
+  .story-carousel-card { width: min(27rem, calc(100vw - 2rem)); height: 31rem; }
+  .story-carousel-card-center { transform: perspective(1000px) translate3d(-50%, -50%, 0) rotateY(0deg) scale(1); }
+  .story-carousel-card-left { transform: perspective(1000px) translate3d(-92%, -50%, 0) rotateY(18deg) scale(0.78); }
+  .story-carousel-card-right { transform: perspective(1000px) translate3d(-8%, -50%, 0) rotateY(-18deg) scale(0.78); }
 }
 
 @media (prefers-reduced-motion: reduce) {

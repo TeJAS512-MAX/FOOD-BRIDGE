@@ -235,7 +235,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                       />
 
                       {/* Cinematic Photo Banner */}
-                      <div className="story-carousel-photo relative h-36 shrink-0 overflow-hidden sm:h-40">
+                      <div className="story-carousel-photo relative h-32 shrink-0 overflow-hidden sm:h-36">
                         {story.videoUrl ? (
                           <video
                             key={story.id}
@@ -314,17 +314,17 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                       </div>
 
                       {/* Editorial Story Body */}
-                      <div className="story-carousel-copy flex min-h-0 flex-1 flex-col justify-between gap-2.5 p-4 sm:px-5 sm:py-4">
+                      <div className="story-carousel-copy flex min-h-0 flex-1 flex-col justify-between gap-2 p-3.5 sm:px-5 sm:py-3.5">
                         {/* Quote + Field Note */}
-                        <div className="relative rounded-2xl border border-white/10 bg-white/[0.04] p-3 sm:p-3.5">
+                        <div className="relative rounded-2xl border border-white/10 bg-white/[0.04] px-3 py-2.5">
                           <Quote
                             aria-hidden="true"
                             className="pointer-events-none absolute right-3 top-2.5 h-7 w-7 text-emerald-400/15"
                           />
-                          <blockquote className="border-l-2 border-emerald-400 pl-3 font-serif-display text-sm italic leading-snug text-white/95 sm:text-[15px]">
+                          <blockquote className="border-l-2 border-emerald-400 pl-3 font-serif-display text-xs sm:text-sm italic leading-snug text-white/95 line-clamp-3">
                             “{story.quote}”
                           </blockquote>
-                          <p className="mt-1.5 pl-3 text-[11px] leading-relaxed text-white/70 sm:text-xs">
+                          <p className="mt-1 pl-3 text-[11px] leading-snug text-white/75 line-clamp-2">
                             {story.storyDetail}
                           </p>
                         </div>
