@@ -106,7 +106,10 @@ export function App() {
     'https://images.unsplash.com/photo-1547573854-74d2a71d0826?auto=format&fit=crop&w=2070&q=80';
 
   return (
-    <div className="min-h-screen flex flex-col text-white relative">
+    <div
+      data-atmosphere={atmosphereMode}
+      className={`min-h-screen flex flex-col text-white relative atmosphere-${atmosphereMode}`}
+    >
       {/* ── FIXED ATMOSPHERE BACKGROUND SCENE ── */}
       <div className="scene-bg" aria-hidden="true">
         <img src={sceneBackgroundImage} alt="" loading="eager" />

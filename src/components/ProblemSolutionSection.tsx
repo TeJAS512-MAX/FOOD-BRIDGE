@@ -305,7 +305,7 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
                   }}
                   className={`flex items-center gap-2.5 px-6 py-3.5 rounded-full text-xs sm:text-sm font-semibold transition-all cursor-pointer border ${
                     isActive
-                      ? 'bg-black/60 text-white border-slate-900 shadow-md'
+                      ? 'bg-emerald-500/25 text-white border-emerald-400 shadow-md'
                       : 'bg-white/[0.07] text-white/80 border-white/[0.14] hover:bg-white/[0.12] hover:text-white'
                   }`}
                 >

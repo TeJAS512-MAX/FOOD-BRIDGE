@@ -161,7 +161,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                   }}
                   className={`px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer border ${
                     selectedStory.id === story.id
-                      ? 'bg-black/60 text-white border-slate-900 shadow-sm'
+                      ? 'bg-emerald-500/25 text-white border-emerald-400 shadow-sm'
                       : 'bg-white/[0.07] text-white/80 border-white/[0.14] hover:bg-white/[0.12]'
                   }`}
                 >
@@ -679,7 +679,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                         aria-pressed={isActive}
                         className={`min-w-0 flex-1 py-2.5 rounded-xl text-[10px] sm:text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
                           isActive
-                            ? 'bg-black/60 text-white shadow-sm'
+                            ? 'bg-emerald-500/25 text-emerald-200 border border-emerald-400/50 shadow-sm'
                             : 'text-white/70 hover:text-white'
                         }`}
                       >

@@ -601,7 +601,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                     }}
                     className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer border ${
                       selectedPreset.id === pr.id
-                        ? 'bg-black/60 text-white border-slate-900 shadow-sm'
+                        ? 'bg-emerald-500/25 text-white border-emerald-400 shadow-sm'
                         : 'bg-white/[0.07] text-white/80 border-white/[0.14] hover:bg-white/[0.12]'
                     }`}
                   >
@@ -669,7 +669,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                   sound.click();
                   onOpenDonateModal();
                 }}
-                className="w-full py-3.5 rounded-full bg-black/60 hover:bg-slate-800 text-white font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 cursor-pointer shadow-md transition-all"
+                className="w-full py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 cursor-pointer shadow-md transition-all"
               >
                 <span>Dispatch This {selectedPreset.weightKg} kg Preset</span>
                 <Navigation className="w-4 h-4 text-emerald-400" />
@@ -790,7 +790,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                   className={`px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer ${
                     hasPledgedQuick
                       ? 'bg-emerald-500/20 text-emerald-300'
-                      : 'bg-black/60 text-white hover:bg-slate-800'
+                      : 'bg-emerald-600 text-white hover:bg-emerald-500'
                   }`}
                 >
                   {hasPledgedQuick ? '✓ Pledged Hero!' : '+ Pledge as Volunteer'}
@@ -818,7 +818,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                         }}
                         className={`px-2.5 py-1 rounded-lg text-[11px] font-mono-tech transition-all cursor-pointer ${
                           selectedZone === z
-                            ? 'bg-black/60 text-white font-bold'
+                            ? 'bg-emerald-500/25 text-emerald-200 border border-emerald-400/50 font-bold'
                             : 'bg-white/[0.08] text-white/80 hover:bg-white/[0.12]'
                         }`}
                       >

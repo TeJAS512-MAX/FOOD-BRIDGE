@@ -185,7 +185,7 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
                     }}
                     className={`py-2.5 rounded-xl border text-xs font-semibold transition-all cursor-pointer ${
                       frequency === fr.id
-                        ? 'bg-black/60 text-white border-slate-900 shadow-sm'
+                        ? 'bg-emerald-500/25 text-white border-emerald-400 shadow-sm'
                         : 'bg-white/[0.05] text-white/80 border-white/[0.14] hover:bg-white/[0.08]'
                     }`}
                   >
@@ -215,7 +215,7 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
                     }}
                     className={`py-2.5 rounded-xl border text-xs font-semibold transition-all cursor-pointer ${
                       foodCategory === cat.id
-                        ? 'bg-orange-500/150 text-white border-orange-500 shadow-sm'
+                        ? 'bg-orange-500/25 text-white border-orange-400 shadow-sm'
                         : 'bg-white/[0.05] text-white/80 border-white/[0.14] hover:bg-white/[0.08]'
                     }`}
                   >
