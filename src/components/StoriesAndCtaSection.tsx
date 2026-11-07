@@ -132,17 +132,17 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
       ===================================================================== */}
       <section
         id="stories"
-        className="relative py-20 lg:py-28 text-white overflow-hidden"
+        className="relative py-8 lg:py-11 text-white overflow-hidden"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-10 border-b border-white/[0.14]">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 pb-5 border-b border-white/[0.14]">
             <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-mono-tech uppercase tracking-wider mb-4 font-semibold">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-mono-tech uppercase tracking-wider mb-2.5 font-semibold">
                 <Quote className="w-3.5 h-3.5 text-emerald-400" />
                 <span>06 • ILLUSTRATIVE COMMUNITY STORIES</span>
               </div>
-              <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-white">
+              <h2 className="font-serif-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.08] text-white">
                 Stories from the chefs, shelters, and riders{' '}
                 <span className="italic font-normal text-emerald-400">bridging the gap.</span>
               </h2>
@@ -174,7 +174,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
           {/* Story carousel: the next voice moves in from the right, takes the
               foreground, and the current voice glides left into the exit. */}
           <div
-            className="story-carousel-stage relative mx-auto mt-10 max-w-6xl"
+            className="story-carousel-stage relative mx-auto mt-5 max-w-6xl"
             role="region"
             aria-label="Community story carousel"
             aria-roledescription="carousel"
@@ -580,10 +580,10 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
       ===================================================================== */}
       <section
         id="cta"
-        className="relative py-20 lg:py-28 text-white overflow-hidden"
+        className="relative py-8 lg:py-11 text-white overflow-hidden"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
             {/* Left 6 Columns */}
             <div className="lg:col-span-6 space-y-6">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-500/15 border border-orange-500/30 text-orange-300 text-xs font-mono-tech uppercase tracking-wider font-semibold">

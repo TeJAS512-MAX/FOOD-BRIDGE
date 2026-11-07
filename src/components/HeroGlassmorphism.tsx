@@ -66,14 +66,14 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
   };
 
   return (
-    <section className="relative min-h-[92vh] flex flex-col justify-center px-4 sm:px-6 lg:px-8 py-10 overflow-hidden">
+    <section className="relative flex flex-col justify-center px-4 sm:px-6 lg:px-8 py-5 sm:py-7 overflow-hidden">
       {/* ==============================================================
           LAYER 1: 3D POLISHED GOLD-CHROME SCULPTURAL LETTERS ("FOODBRIDGE")
           Positioned directly behind the lower portion of the liquid glass
           sheet with high-gloss metallic reflections & perspective, exactly
           like Vertix's sculptural 3D typography
       ============================================================== */}
-      <div className="absolute inset-x-0 bottom-12 sm:bottom-16 lg:bottom-20 flex items-baseline justify-center select-none pointer-events-none z-0 px-2 overflow-hidden">
+      <div className="absolute inset-x-0 bottom-8 sm:bottom-12 lg:bottom-14 flex items-baseline justify-center select-none pointer-events-none z-0 px-2 overflow-hidden">
         <div
           className="flex items-baseline gap-1.5 sm:gap-3 md:gap-5 lg:gap-7 opacity-85 sm:opacity-95 transition-transform duration-300 ease-out"
           style={{
@@ -107,12 +107,12 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
           LAYER 2: THE LIQUID FROSTED GLASS CONSOLE
           100% transparent glassmorphism floating over the warm scene photo
       ============================================================== */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto my-auto space-y-8">
+      <div className="relative z-10 w-full max-w-6xl mx-auto my-auto space-y-4">
         <div
           ref={sheetRef}
           onPointerMove={handleSheetPointerMove}
           onPointerLeave={handleSheetPointerLeave}
-          className="liquid-glass-sheet p-6 sm:p-10 lg:p-12 text-white shadow-2xl transition-transform duration-300 ease-out"
+          className="liquid-glass-sheet p-5 sm:p-7 lg:p-8 text-white shadow-2xl transition-transform duration-300 ease-out"
           style={{
             transform: `perspective(1400px) rotateX(${tilt.rx}deg) rotateY(${tilt.ry}deg)`,
           }}
@@ -128,7 +128,7 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
           />
 
           {/* Top Row: Brand & Quick Telemetry Tags */}
-          <div className="flex flex-wrap items-center justify-between gap-4 pb-8 border-b border-white/15">
+          <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-white/15">
             <div className="flex items-center gap-3">
               <div
                 className="w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-105"
@@ -178,15 +178,15 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
           </div>
 
           {/* Main Content Grid: Headline on Left, Inset Directory on Right */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 py-8 lg:py-10 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 py-5 lg:py-6 items-center">
             {/* Left Column (7 cols): Editorial Headline & Integrated Pill Input */}
-            <div className="lg:col-span-7 space-y-6">
-              <h1 className="font-serif-display text-4xl sm:text-5xl lg:text-[56px] font-bold tracking-tight leading-[1.08] text-white">
+            <div className="lg:col-span-7 space-y-4">
+              <h1 className="font-serif-display text-3xl sm:text-5xl lg:text-[50px] font-bold tracking-tight leading-[1.08] text-white">
                 One good meal rescued,{' '}
                 <span className="text-grad-orange font-normal italic">every second.</span>
               </h1>
 
-              <p className="text-base sm:text-lg leading-relaxed max-w-xl text-white/80 font-normal">
+              <p className="text-sm sm:text-base leading-relaxed max-w-xl text-white/80 font-normal">
                 Every evening, commercial kitchens produce wholesome surplus while millions struggle
                 for regular food. FoodBridge coordinates hotel banquets, restaurants, and caterers
                 directly to verified shelters with temperature-monitored fleet routing in{' '}
@@ -240,7 +240,7 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
 
             {/* Right Column (5 cols): Inset Navigation Card */}
             <div className="lg:col-span-5">
-              <div className="glass-inset-card p-6 sm:p-7 space-y-6">
+              <div className="glass-inset-card p-5 space-y-4">
                 <div className="flex items-center justify-between pb-3 border-b border-white/15">
                   <span className="font-mono-tech text-xs uppercase font-bold tracking-wider text-emerald-400">
                     Network Directory
@@ -383,7 +383,7 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
           </div>
 
           {/* Bottom Bar: System Status on Left, Socials & Atmosphere Toggle on Right (Exact Vertix Layout) */}
-          <div className="pt-6 border-t border-white/15 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/70">
+          <div className="pt-4 border-t border-white/15 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/70">
             <div className="flex items-center gap-3">
               <span className="font-medium text-white/90">© 2026 FoodBridge</span>
               <span className="opacity-40">•</span>

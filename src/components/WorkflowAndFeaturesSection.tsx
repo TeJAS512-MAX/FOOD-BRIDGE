@@ -233,29 +233,29 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
       ===================================================================== */}
       <section
         id="how-it-works"
-        className="relative py-20 lg:py-28 text-white overflow-hidden"
+        className="relative py-8 lg:py-11 text-white overflow-hidden"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-10 border-b border-white/[0.14]">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 pb-5 border-b border-white/[0.14]">
             <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-mono-tech uppercase tracking-wider mb-4 font-semibold">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-mono-tech uppercase tracking-wider mb-2.5 font-semibold">
                 <Clock className="w-3.5 h-3.5 text-emerald-400" />
                 <span>03 • HOW IT WORKS: ZERO TO DELIVERED IN 38 MINUTES</span>
               </div>
-              <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-white">
+              <h2 className="font-serif-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.08] text-white">
                 How FoodBridge transforms kitchen surplus into{' '}
                 <span className="italic font-normal text-emerald-400">community meals.</span>
               </h2>
             </div>
-            <p className="text-base text-white/70 max-w-md leading-relaxed">
+            <p className="text-sm text-white/70 max-w-md leading-relaxed">
               Designed for busy head chefs, banquet managers, and volunteer drivers.
               Zero paperwork, instant AI validation, and complete real-time tracking.
             </p>
           </div>
 
           {/* Live Loop Controller Bar */}
-          <div className="mt-10 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-white/15 bg-white/[0.06] px-4 py-3 backdrop-blur-xl">
+          <div className="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-white/15 bg-white/[0.06] px-4 py-2.5 backdrop-blur-xl">
             <div className="flex items-center gap-3 min-w-0">
               <span className="relative flex h-3 w-3 shrink-0">
                 <span
@@ -349,7 +349,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
 
           {/* Straight Horizontal Right-to-Left Rolling Conveyor of 6 Step Cards */}
           <div
-            className="mt-6 workflow-rolling-viewport"
+            className="mt-4 workflow-rolling-viewport"
             onMouseEnter={() => setIsLoopPaused(true)}
             onMouseLeave={() => setIsLoopPaused(false)}
           >
@@ -369,7 +369,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                       sound.click();
                       setActiveStep(idx);
                     }}
-                    className={`w-[320px] sm:w-[360px] shrink-0 relative overflow-hidden rounded-3xl p-6 sm:p-7 cursor-pointer transition-all duration-500 border ${
+                    className={`w-[300px] sm:w-[335px] shrink-0 relative overflow-hidden rounded-3xl p-5 cursor-pointer transition-all duration-500 border ${
                       isActive
                         ? 'workflow-card-popup bg-gradient-to-br from-emerald-500/25 via-slate-900/90 to-orange-500/15 backdrop-blur-2xl border-emerald-400 shadow-[0_28px_70px_-12px_rgba(16,185,129,0.50)] ring-2 ring-emerald-400/35'
                         : isPassed
@@ -390,7 +390,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                     )}
 
                     {/* Floating "POPPING NOW" status pill */}
-                    <div className="flex items-center justify-between pb-5 border-b border-white/[0.14]">
+                    <div className="flex items-center justify-between pb-3.5 border-b border-white/[0.14]">
                       <div className="flex items-center gap-2.5">
                         <span
                           className={`font-mono-tech text-3xl font-bold transition-colors ${
@@ -425,24 +425,24 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                       </span>
                     </div>
 
-                    <div className="mt-5 space-y-2.5">
+                    <div className="mt-3.5 space-y-1.5">
                       <div className="text-xs font-mono-tech uppercase text-orange-400 font-bold">
                         {st.badge}
                       </div>
-                      <h3 className="font-serif-display text-xl sm:text-2xl font-bold text-white leading-snug">
+                      <h3 className="font-serif-display text-lg sm:text-xl font-bold text-white leading-snug">
                         {st.title}
                       </h3>
-                      <p className="text-xs sm:text-sm text-white/70 leading-relaxed">
+                      <p className="text-xs text-white/70 leading-relaxed line-clamp-2">
                         {st.summary}
                       </p>
                     </div>
 
                     {/* Checklist */}
-                    <div className="mt-5 pt-5 border-t border-white/[0.14] space-y-2">
+                    <div className="mt-3.5 pt-3.5 border-t border-white/[0.14] space-y-1.5">
                       {st.previewChecklist.map((item, i) => (
-                        <div key={i} className="flex items-start gap-2 text-xs text-white/80">
+                        <div key={i} className="flex items-start gap-2 text-[11px] text-white/80">
                           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
-                          <span>{item}</span>
+                          <span className="line-clamp-1">{item}</span>
                         </div>
                       ))}
                     </div>
@@ -452,9 +452,9 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
             </div>
           </div>
 
-          {/* Step Detail Spotlight Console */}
-          <div className="mt-10 glass-card p-6 sm:p-10 shadow-lg">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/[0.14]">
+          {/* Step Detail Spotlight Console — Compact Side-by-Side Metrics + Video Reel */}
+          <div className="mt-5 glass-card p-5 sm:p-6 shadow-lg">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-white/[0.14]">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-2xl bg-emerald-500/20 text-emerald-300 flex items-center justify-center font-bold font-mono-tech text-base">
                   {steps[activeStep].stepNumber}
@@ -482,56 +482,58 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
               </button>
             </div>
 
-            {/* Metrics Triad for Active Step */}
-            <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {steps[activeStep].previewMetrics.map((met, i) => (
-                <div key={i} className="rounded-2xl bg-white/[0.05] border border-white/[0.14] p-4 space-y-1">
-                  <div className="text-xs font-mono-tech text-white/60 uppercase font-semibold">{met.label}</div>
-                  <div className="text-xl font-mono-tech font-bold text-white">{met.value}</div>
-                </div>
-              ))}
-            </div>
-
-            {/* Step-Linked Live Video Field Reel */}
-            <div className="mt-6 relative rounded-2xl overflow-hidden border border-white/15 h-52 sm:h-64 bg-black/50">
-              <video
-                key={steps[activeStep].videoUrl}
-                src={steps[activeStep].videoUrl}
-                poster={steps[activeStep].posterUrl}
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="w-full h-full object-cover opacity-85"
-              />
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background:
-                    'linear-gradient(180deg, rgba(5,9,13,0.45) 0%, rgba(5,9,13,0.15) 45%, rgba(5,9,13,0.88) 100%)',
-                }}
-              />
-              <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2 text-xs font-mono-tech">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/70 border border-emerald-400/40 text-emerald-300 backdrop-blur-md font-bold">
-                  <span className="w-2 h-2 rounded-full bg-red-400 animate-pulse" />
-                  <span>STEP {steps[activeStep].stepNumber} LIVE FIELD REEL</span>
-                </span>
-                <span className="px-3 py-1 rounded-full bg-black/70 border border-white/15 text-white/80 backdrop-blur-md">
-                  {steps[activeStep].duration}
-                </span>
+            <div className="mt-4 grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
+              {/* Metrics Triad on Left (5 cols) */}
+              <div className="lg:col-span-5 grid grid-cols-3 lg:grid-cols-1 gap-2.5">
+                {steps[activeStep].previewMetrics.map((met, i) => (
+                  <div key={i} className="rounded-2xl bg-white/[0.05] border border-white/[0.14] px-4 py-2.5 flex items-center justify-between">
+                    <div className="text-[11px] font-mono-tech text-white/60 uppercase font-semibold">{met.label}</div>
+                    <div className="text-base sm:text-lg font-mono-tech font-bold text-emerald-300">{met.value}</div>
+                  </div>
+                ))}
               </div>
-              <div className="absolute bottom-3 left-4 right-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                <div>
-                  <div className="font-serif-display text-base sm:text-lg font-bold text-white">
-                    {steps[activeStep].title}
-                  </div>
-                  <div className="text-xs text-white/75 line-clamp-1">
-                    {steps[activeStep].previewChecklist[0]}
-                  </div>
+
+              {/* Step-Linked Live Video Field Reel on Right (7 cols) */}
+              <div className="lg:col-span-7 relative rounded-2xl overflow-hidden border border-white/15 h-44 sm:h-48 bg-black/50">
+                <video
+                  key={steps[activeStep].videoUrl}
+                  src={steps[activeStep].videoUrl}
+                  poster={steps[activeStep].posterUrl}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="w-full h-full object-cover opacity-85"
+                />
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background:
+                      'linear-gradient(180deg, rgba(5,9,13,0.45) 0%, rgba(5,9,13,0.15) 45%, rgba(5,9,13,0.88) 100%)',
+                  }}
+                />
+                <div className="absolute top-2.5 left-3 right-3 flex items-center justify-between gap-2 text-xs font-mono-tech">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-black/70 border border-emerald-400/40 text-emerald-300 backdrop-blur-md font-bold text-[10px]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse" />
+                    <span>STEP {steps[activeStep].stepNumber} LIVE FIELD REEL</span>
+                  </span>
+                  <span className="px-2.5 py-0.5 rounded-full bg-black/70 border border-white/15 text-white/80 backdrop-blur-md text-[10px]">
+                    {steps[activeStep].duration}
+                  </span>
                 </div>
-                <span className="text-[11px] font-mono-tech text-emerald-300 font-semibold">
-                  {steps[activeStep].badge} ✓
-                </span>
+                <div className="absolute bottom-2.5 left-3.5 right-3.5 flex items-center justify-between gap-2">
+                  <div className="min-w-0">
+                    <div className="font-serif-display text-sm sm:text-base font-bold text-white truncate">
+                      {steps[activeStep].title}
+                    </div>
+                    <div className="text-[11px] text-white/75 truncate">
+                      {steps[activeStep].previewChecklist[0]}
+                    </div>
+                  </div>
+                  <span className="text-[10px] font-mono-tech text-emerald-300 font-semibold shrink-0">
+                    {steps[activeStep].badge} ✓
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -543,30 +545,30 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
       ===================================================================== */}
       <section
         id="features"
-        className="relative py-20 lg:py-28 text-white overflow-hidden"
+        className="relative py-8 lg:py-11 text-white overflow-hidden"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-10 border-b border-white/[0.14]">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 pb-5 border-b border-white/[0.14]">
             <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-500/15 border border-orange-500/30 text-orange-300 text-xs font-mono-tech uppercase tracking-wider mb-4 font-semibold">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-orange-500/15 border border-orange-500/30 text-orange-300 text-xs font-mono-tech uppercase tracking-wider mb-2.5 font-semibold">
                 <Sparkles className="w-3.5 h-3.5 text-orange-400" />
                 <span>04 • KEY CAPABILITIES: ENGINEERED FOR SPEED & DIGNITY</span>
               </div>
-              <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-white">
+              <h2 className="font-serif-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.08] text-white">
                 Four pillars powering the{' '}
                 <span className="italic font-normal text-emerald-400">Zero-Waste Mesh.</span>
               </h2>
             </div>
-            <p className="text-base text-white/70 max-w-md leading-relaxed">
+            <p className="text-sm text-white/70 max-w-md leading-relaxed">
               From camera-based AI portion recognition to cold-chain EV fleet coordination and community-driven neighborhood fridges.
             </p>
           </div>
 
           {/* Bento Grid Layout */}
-          <div className="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div className="mt-6 grid grid-cols-1 lg:grid-cols-12 gap-5">
             {/* Feature 1 (7 Cols): Interactive AI Food Tray Scanner with Real Food Photo */}
-            <div className="lg:col-span-7 glass-card p-6 sm:p-8 shadow-lg flex flex-col justify-between space-y-6">
+            <div className="lg:col-span-7 glass-card p-5 sm:p-6 shadow-lg flex flex-col justify-between space-y-4">
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/15 border border-orange-500/30 text-orange-300 font-mono-tech text-xs uppercase font-semibold">
@@ -609,7 +611,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
               </div>
 
               {/* Realistic Scanner Viewport with Live Video Loop & Bounding Boxes */}
-              <div className="relative h-64 sm:h-72 rounded-2xl overflow-hidden border border-white/[0.14] shadow-inner group">
+              <div className="relative h-48 sm:h-52 rounded-2xl overflow-hidden border border-white/[0.14] shadow-inner group">
                 {selectedPreset.videoUrl ? (
                   <video
                     key={selectedPreset.id}
@@ -675,7 +677,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
             </div>
 
             {/* Feature 2 (5 Cols): NGO Partnerships & Direct Capacity Sync */}
-            <div className="lg:col-span-5 glass-card p-6 sm:p-8 shadow-lg flex flex-col justify-between space-y-6">
+            <div className="lg:col-span-5 glass-card p-5 sm:p-6 shadow-lg flex flex-col justify-between space-y-4">
               <div className="space-y-3">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 font-mono-tech text-xs uppercase font-semibold">
                   <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
@@ -741,7 +743,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
             </div>
 
             {/* Feature 3 (5 Cols): Sub-38m Pickup & EV Fleet Coordination */}
-            <div className="lg:col-span-5 glass-card p-6 sm:p-8 shadow-lg flex flex-col justify-between space-y-6">
+            <div className="lg:col-span-5 glass-card p-5 sm:p-6 shadow-lg flex flex-col justify-between space-y-4">
               <div className="space-y-3">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 font-mono-tech text-xs uppercase font-semibold">
                   <Bike className="w-3.5 h-3.5 text-cyan-400" />
@@ -797,7 +799,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
             </div>
 
             {/* Feature 4 (7 Cols): Community Participation & 24/7 Smart Fridges */}
-            <div className="lg:col-span-7 glass-card p-6 sm:p-8 shadow-lg flex flex-col justify-between space-y-6">
+            <div className="lg:col-span-7 glass-card p-5 sm:p-6 shadow-lg flex flex-col justify-between space-y-4">
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 font-mono-tech text-xs uppercase font-semibold">

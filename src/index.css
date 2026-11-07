@@ -456,7 +456,7 @@
    ============================================================ */
 
 .story-carousel-stage {
-  height: 33rem;
+  height: 29rem;
   perspective: 1000px;
   transform-style: preserve-3d;
   overflow: hidden;
@@ -467,7 +467,7 @@
   top: 50%;
   left: 50%;
   width: min(40rem, calc(100vw - 2rem));
-  height: 31rem;
+  height: 27.5rem;
   transform-origin: center;
   transform-style: preserve-3d;
   backface-visibility: hidden;
@@ -521,8 +521,8 @@
 }
 
 @media (max-width: 640px) {
-  .story-carousel-stage { height: 36rem; }
-  .story-carousel-card { width: min(27rem, calc(100vw - 2rem)); height: 34rem; }
+  .story-carousel-stage { height: 31rem; }
+  .story-carousel-card { width: min(27rem, calc(100vw - 2rem)); height: 29.5rem; }
   .story-carousel-card-center { transform: translate(-50%, -50%) rotateY(0deg) translateZ(90px) scale(1); }
   .story-carousel-card-left { transform: translate(-50%, -50%) rotateY(52deg) translateZ(190px) scale(0.76); }
   .story-carousel-card-right { transform: translate(-50%, -50%) rotateY(-52deg) translateZ(190px) scale(0.76); }
@@ -603,8 +603,8 @@
 .workflow-rolling-viewport {
   overflow-x: hidden;
   overflow-y: visible;
-  padding-top: 1.25rem;
-  padding-bottom: 1.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.9rem;
   mask-image: linear-gradient(90deg, transparent 0%, #000 5%, #000 95%, transparent 100%);
   -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 5%, #000 95%, transparent 100%);
 }

@@ -18,15 +18,15 @@ export const WasteToFeastVisualizer: React.FC = () => {
   };
 
   return (
-    <div className="glass-card text-white p-6 sm:p-8 relative shadow-lg">
+    <div className="glass-card text-white p-4 sm:p-6 relative shadow-lg">
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/[0.14]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-white/[0.14]">
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/15 border border-orange-500/30 text-orange-400 text-xs font-mono-tech uppercase tracking-wider mb-2 font-semibold">
             <ArrowLeftRight className="w-3.5 h-3.5" />
             <span>INTERACTIVE REALITY SCRUBBER</span>
           </div>
-          <h3 className="font-serif-display text-2xl sm:text-3xl font-bold text-white">
+          <h3 className="font-serif-display text-xl sm:text-2xl font-bold text-white">
             The 45-Minute Window: <span className="text-emerald-400">Landfill vs. Dignified Banquet</span>
           </h3>
         </div>
@@ -36,7 +36,7 @@ export const WasteToFeastVisualizer: React.FC = () => {
       </div>
 
       {/* Before / After Interactive Visual Container */}
-      <div className="relative mt-6 h-80 sm:h-96 rounded-2xl overflow-hidden border border-white/[0.20] select-none shadow-md">
+      <div className="relative mt-4 h-56 sm:h-64 rounded-2xl overflow-hidden border border-white/[0.20] select-none shadow-md">
         {/* Right (After / FoodBridge Reality) Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center"
@@ -130,22 +130,22 @@ export const WasteToFeastVisualizer: React.FC = () => {
       </div>
 
       {/* Bottom Comparison Summary Row */}
-      <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 text-left">
-        <div className="rounded-2xl bg-white/[0.05] border border-white/[0.14] p-4">
+      <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3 text-left">
+        <div className="rounded-2xl bg-white/[0.05] border border-white/[0.14] p-3">
           <div className="text-xs font-mono-tech text-white/60 uppercase font-semibold">THE PARADOX</div>
-          <div className="text-lg font-bold text-white mt-1">1.3 Billion Tonnes</div>
+          <div className="text-base font-bold text-white mt-0.5">1.3 Billion Tonnes</div>
           <p className="text-xs text-white/70 mt-0.5">Of food wasted globally every year while 800M people go to sleep hungry.</p>
         </div>
 
-        <div className="rounded-2xl bg-emerald-500/15 border border-emerald-500/30 p-4">
+        <div className="rounded-2xl bg-emerald-500/15 border border-emerald-500/30 p-3">
           <div className="text-xs font-mono-tech text-emerald-300 uppercase font-semibold">THE FOODBRIDGE SOLUTION</div>
-          <div className="text-lg font-bold text-emerald-400 mt-1">38-Min Real-Time Match</div>
+          <div className="text-base font-bold text-emerald-400 mt-0.5">38-Min Real-Time Match</div>
           <p className="text-xs text-emerald-400 mt-0.5">AI dispatch pairs hot food with verified shelters within 5 km before cooling.</p>
         </div>
 
-        <div className="rounded-2xl bg-orange-500/15 border border-orange-500/30 p-4">
+        <div className="rounded-2xl bg-orange-500/15 border border-orange-500/30 p-3">
           <div className="text-xs font-mono-tech text-orange-300 uppercase font-semibold">CLIMATE IMPACT</div>
-          <div className="text-lg font-bold text-orange-400 mt-1">2.5 kg CO₂e Saved</div>
+          <div className="text-base font-bold text-orange-400 mt-0.5">2.5 kg CO₂e Saved</div>
           <p className="text-xs text-orange-400 mt-0.5">Every 1 kg of food rescued prevents 2.5 kg of greenhouse emissions from rotting landfills.</p>
         </div>
       </div>

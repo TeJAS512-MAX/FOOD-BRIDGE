@@ -38,7 +38,7 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
   return (
     <section
       id="impact"
-      className="relative py-20 lg:py-28 text-white overflow-hidden"
+      className="relative py-8 lg:py-11 text-white overflow-hidden"
     >
       {/* Decorative Glows */}
       <div className="pointer-events-none absolute -top-24 right-1/4 w-96 h-96 rounded-full bg-emerald-500/10 blur-3xl" />
@@ -46,27 +46,27 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-10 border-b border-white/[0.14]">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 pb-5 border-b border-white/[0.14]">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-mono-tech uppercase tracking-wider mb-4 font-semibold">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-mono-tech uppercase tracking-wider mb-2.5 font-semibold">
               <BarChart3 className="w-3.5 h-3.5 text-emerald-400" />
               <span>05 • VERIFIED IMPACT & CARBON LEDGER</span>
             </div>
-            <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-white">
+            <h2 className="font-serif-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.08] text-white">
               Every rescued kilogram heals both{' '}
               <span className="italic font-normal text-emerald-400">
                 communities and the climate.
               </span>
             </h2>
           </div>
-          <p className="text-base text-white/70 max-w-md leading-relaxed">
+          <p className="text-sm text-white/70 max-w-md leading-relaxed">
             Audited quarterly with partner NGOs and environmental certifiers. Every meal bridged is
             timestamped, weighed, and verified via QR chain-of-custody.
           </p>
         </div>
 
         {/* 4 Headline Impact Counters */}
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="mt-6 grid grid-cols-2 lg:grid-cols-4 gap-4">
           {[
             {
               label: 'VERIFIED MEALS BRIDGED',
@@ -103,12 +103,12 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
           ].map((stat, idx) => (
             <div
               key={idx}
-              className={`rounded-3xl ${stat.bg} border ${stat.border} p-6 space-y-2 shadow-sm hover:shadow-md hover:scale-102 transition-all`}
+              className={`rounded-3xl ${stat.bg} border ${stat.border} p-4 sm:p-5 space-y-1.5 shadow-sm hover:shadow-md hover:scale-102 transition-all`}
             >
               <div className="text-xs font-mono-tech text-white/70 uppercase tracking-wider font-semibold">
                 {stat.label}
               </div>
-              <div className={`font-serif-display text-3xl sm:text-4xl font-bold ${stat.accent}`}>
+              <div className={`font-serif-display text-2xl sm:text-3xl font-bold ${stat.accent}`}>
                 {stat.value}
               </div>
               <div className="text-xs text-white/70 flex items-center gap-1.5 pt-1 font-medium">
@@ -120,9 +120,9 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
         </div>
 
         {/* Dynamic Interactive Impact Calculator Studio */}
-        <div className="mt-12 glass-card p-6 sm:p-12 shadow-lg grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div className="mt-6 glass-card p-5 sm:p-7 shadow-lg grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
           {/* Left 6 Columns: Interactive Controls */}
-          <div className="lg:col-span-6 space-y-7">
+          <div className="lg:col-span-6 space-y-4">
             <div className="space-y-2">
               <div className="inline-flex items-center gap-2 text-xs font-mono-tech uppercase tracking-wider text-emerald-400 font-bold">
                 <Calculator className="w-4 h-4 text-emerald-400" />

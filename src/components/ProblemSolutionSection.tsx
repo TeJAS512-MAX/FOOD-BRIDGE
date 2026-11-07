@@ -98,7 +98,7 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
       ===================================================================== */}
       <section
         id="problem"
-        className="relative py-20 lg:py-28 text-white overflow-hidden"
+        className="relative py-8 lg:py-11 text-white overflow-hidden"
       >
         {/* Soft Ambient Radiance */}
         <div className="pointer-events-none absolute top-12 left-1/4 w-96 h-96 rounded-full bg-emerald-500/10 blur-3xl" />
@@ -106,172 +106,155 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-10 border-b border-white/[0.14]">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 pb-5 border-b border-white/[0.14]">
             <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-rose-500/15 border border-rose-500/30 text-rose-400 text-xs font-mono-tech uppercase tracking-wider mb-4 font-semibold">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-rose-500/15 border border-rose-500/30 text-rose-400 text-xs font-mono-tech uppercase tracking-wider mb-2.5 font-semibold">
                 <AlertTriangle className="w-3.5 h-3.5" />
                 <span>01 • THE PROBLEM: THE SCANDAL OF FOOD INSECURITY</span>
               </div>
-              <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-white">
+              <h2 className="font-serif-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.08] text-white">
                 Food waste isn’t a scarcity problem.{' '}
                 <span className="italic font-normal text-orange-400">
                   It’s a broken distribution problem.
                 </span>
               </h2>
             </div>
-            <p className="text-base text-white/70 max-w-md leading-relaxed">
+            <p className="text-sm text-white/70 max-w-md leading-relaxed">
               Every evening, while wedding banquets and commercial kitchens throw away pristine,
               delicious feasts, thousands of children and families go to sleep on empty stomachs just 3 kilometers away.
             </p>
           </div>
 
           {/* Interactive Before & After Visual Scrubber */}
-          <div className="mt-12">
+          <div className="mt-6">
             <WasteToFeastVisualizer />
           </div>
 
           {/* 3 Hard Truth Reality Cards */}
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="glass-card p-6 sm:p-8 space-y-4 shadow-sm hover:shadow-md hover:border-emerald-500/40 transition-all">
-              <div className="w-12 h-12 rounded-2xl bg-rose-500/15 text-rose-400 flex items-center justify-center">
-                <Flame className="w-6 h-6" />
-              </div>
-              <div className="space-y-1">
-                <div className="font-serif-display text-4xl sm:text-5xl font-bold text-white tracking-tight">
+          <div className="mt-5 grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="glass-card p-5 space-y-2.5 shadow-sm hover:shadow-md hover:border-emerald-500/40 transition-all">
+              <div className="flex items-center justify-between">
+                <div className="font-serif-display text-3xl sm:text-4xl font-bold text-white tracking-tight">
                   68.7 M
                 </div>
-                <div className="font-mono-tech text-xs uppercase tracking-wider text-rose-400 font-semibold">
-                  Tonnes Wasted in India Yearly
+                <div className="w-10 h-10 rounded-xl bg-rose-500/15 text-rose-400 flex items-center justify-center">
+                  <Flame className="w-5 h-5" />
                 </div>
               </div>
-              <p className="text-sm text-white/70 leading-relaxed">
+              <div className="font-mono-tech text-xs uppercase tracking-wider text-rose-400 font-semibold">
+                Tonnes Wasted in India Yearly
+              </div>
+              <p className="text-xs text-white/70 leading-relaxed">
                 Enough food to feed the entire hungry population of several nations, ending up in
                 anaerobic city landfills emitting potent methane gas.
               </p>
-              <div className="pt-3 border-t border-white/[0.08] text-xs font-mono-tech text-white/60">
-                UNEP Food Waste Index 2024 Audit
-              </div>
             </div>
 
-            <div className="glass-card p-6 sm:p-8 space-y-4 shadow-sm hover:shadow-md hover:border-orange-500/40 transition-all">
-              <div className="w-12 h-12 rounded-2xl bg-orange-500/15 text-orange-400 flex items-center justify-center">
-                <Clock className="w-6 h-6" />
-              </div>
-              <div className="space-y-1">
-                <div className="font-serif-display text-4xl sm:text-5xl font-bold text-white tracking-tight">
+            <div className="glass-card p-5 space-y-2.5 shadow-sm hover:shadow-md hover:border-orange-500/40 transition-all">
+              <div className="flex items-center justify-between">
+                <div className="font-serif-display text-3xl sm:text-4xl font-bold text-white tracking-tight">
                   45 Mins
                 </div>
-                <div className="font-mono-tech text-xs uppercase tracking-wider text-orange-400 font-semibold">
-                  The Critical Thermal Window
+                <div className="w-10 h-10 rounded-xl bg-orange-500/15 text-orange-400 flex items-center justify-center">
+                  <Clock className="w-5 h-5" />
                 </div>
               </div>
-              <p className="text-sm text-white/70 leading-relaxed">
+              <div className="font-mono-tech text-xs uppercase tracking-wider text-orange-400 font-semibold">
+                The Critical Thermal Window
+              </div>
+              <p className="text-xs text-white/70 leading-relaxed">
                 Hot prepared banquet food must be collected and dispatched within 45 minutes to maintain
                 FSSAI food hygiene compliance before bacteria multiply.
               </p>
-              <div className="pt-3 border-t border-white/[0.08] text-xs font-mono-tech text-white/60">
-                FSSAI Safe Food Hygiene Protocol
-              </div>
             </div>
 
-            <div className="glass-card p-6 sm:p-8 space-y-4 shadow-sm hover:shadow-md hover:border-emerald-500/40 transition-all">
-              <div className="w-12 h-12 rounded-2xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center">
-                <Scale className="w-6 h-6" />
-              </div>
-              <div className="space-y-1">
-                <div className="font-serif-display text-4xl sm:text-5xl font-bold text-white tracking-tight">
+            <div className="glass-card p-5 space-y-2.5 shadow-sm hover:shadow-md hover:border-emerald-500/40 transition-all">
+              <div className="flex items-center justify-between">
+                <div className="font-serif-display text-3xl sm:text-4xl font-bold text-white tracking-tight">
                   800 M+
                 </div>
-                <div className="font-mono-tech text-xs uppercase tracking-wider text-emerald-400 font-semibold">
-                  People Face Food Insecurity
+                <div className="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center">
+                  <Scale className="w-5 h-5" />
                 </div>
               </div>
-              <p className="text-sm text-white/70 leading-relaxed">
+              <div className="font-mono-tech text-xs uppercase tracking-wider text-emerald-400 font-semibold">
+                People Face Food Insecurity
+              </div>
+              <p className="text-xs text-white/70 leading-relaxed">
                 A problem of civic logistics. When food surplus is mapped to real-time NGO demand,
                 hunger can be solved city by city, neighborhood by neighborhood.
               </p>
-              <div className="pt-3 border-t border-white/[0.08] text-xs font-mono-tech text-white/60">
-                UN SDG Goal 2 (Zero Hunger) Indicator
-              </div>
             </div>
           </div>
 
           {/* Interactive Simulation Console */}
-          <div className="mt-12 glass-card p-6 sm:p-10 shadow-lg relative overflow-hidden">
-            <div className="max-w-2xl space-y-3">
-              <div className="inline-flex items-center gap-2 text-xs font-mono-tech uppercase tracking-wider text-emerald-400 font-bold">
-                <Sparkles className="w-4 h-4 text-emerald-400" />
-                <span>INTERACTIVE METRO SIMULATOR: SURPLUS REDIRECTION LEVER</span>
-              </div>
-              <h3 className="font-serif-display text-2xl sm:text-3xl font-bold text-white">
-                What happens when a city stops discarding hospitality surplus?
-              </h3>
-              <p className="text-sm text-white/70">
-                Use the slider to simulate diverting Bengaluru/Mumbai metro’s daily 120 tonnes of hospitality surplus:
-              </p>
-            </div>
-
-            {/* Slider Control */}
-            <div className="mt-8 space-y-3">
-              <div className="flex items-center justify-between text-xs font-mono-tech">
-                <span className="text-white/70 font-semibold">SURPLUS REDIRECTION TARGET</span>
-                <span className="text-emerald-400 font-bold text-base px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30">
-                  {redirectionRate}% DIVERTED
-                </span>
-              </div>
-              <input
-                type="range"
-                min="10"
-                max="95"
-                step="5"
-                value={redirectionRate}
-                onChange={(e) => {
-                  const val = Number(e.target.value);
-                  setRedirectionRate(val);
-                  sound.sliderTick(val);
-                }}
-                className="w-full h-2.5 bg-white/[0.12] rounded-lg appearance-none cursor-pointer accent-emerald-600"
-                aria-label="Redirection percentage slider"
-              />
-              <div className="flex justify-between text-[11px] font-mono-tech text-white/60">
-                <span>10% (Status Quo)</span>
-                <span>50% (Civic Goal)</span>
-                <span>95% (Zero Waste Horizon)</span>
-              </div>
-            </div>
-
-            {/* Dynamic Results Grid */}
-            <div className="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-4">
-              <div className="rounded-2xl bg-emerald-500/15 border border-emerald-500/30 p-4 space-y-1">
-                <div className="text-xs font-mono-tech text-emerald-300 uppercase font-semibold">Daily Meals Bridged</div>
-                <div className="text-xl sm:text-2xl font-mono-tech font-bold text-emerald-400">
-                  {dailyMealsCreated.toLocaleString()}
+          <div className="mt-5 glass-card p-5 sm:p-7 shadow-lg relative overflow-hidden">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+              <div className="lg:col-span-5 space-y-2.5">
+                <div className="inline-flex items-center gap-2 text-xs font-mono-tech uppercase tracking-wider text-emerald-400 font-bold">
+                  <Sparkles className="w-4 h-4 text-emerald-400" />
+                  <span>METRO SURPLUS REDIRECTION SIMULATOR</span>
                 </div>
-                <div className="text-[11px] text-emerald-400 font-medium">Hot nutritious servings</div>
+                <h3 className="font-serif-display text-xl sm:text-2xl font-bold text-white">
+                  What happens when a city stops discarding hospitality surplus?
+                </h3>
+                <div className="space-y-2 pt-1">
+                  <div className="flex items-center justify-between text-xs font-mono-tech">
+                    <span className="text-white/70 font-semibold">REDIRECTION TARGET</span>
+                    <span className="text-emerald-400 font-bold text-sm px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30">
+                      {redirectionRate}% DIVERTED
+                    </span>
+                  </div>
+                  <input
+                    type="range"
+                    min="10"
+                    max="95"
+                    step="5"
+                    value={redirectionRate}
+                    onChange={(e) => {
+                      const val = Number(e.target.value);
+                      setRedirectionRate(val);
+                      sound.sliderTick(val);
+                    }}
+                    className="w-full h-2 bg-white/[0.12] rounded-lg appearance-none cursor-pointer accent-emerald-600"
+                    aria-label="Redirection percentage slider"
+                  />
+                </div>
               </div>
 
-              <div className="rounded-2xl bg-white/[0.05] border border-white/[0.14] p-4 space-y-1">
-                <div className="text-xs font-mono-tech text-white/70 uppercase font-semibold">Food Rescued / Day</div>
-                <div className="text-xl sm:text-2xl font-mono-tech font-bold text-white">
-                  {rescuedTonnes} Tonnes
+              {/* Dynamic Results Grid */}
+              <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <div className="rounded-2xl bg-emerald-500/15 border border-emerald-500/30 p-3.5 space-y-0.5">
+                  <div className="text-[10px] font-mono-tech text-emerald-300 uppercase font-semibold">Meals / Day</div>
+                  <div className="text-lg sm:text-xl font-mono-tech font-bold text-emerald-400">
+                    {dailyMealsCreated.toLocaleString()}
+                  </div>
+                  <div className="text-[10px] text-emerald-400/80">Hot servings</div>
                 </div>
-                <div className="text-[11px] text-white/60">Out of 120T metro surplus</div>
-              </div>
 
-              <div className="rounded-2xl bg-orange-500/15 border border-orange-500/30 p-4 space-y-1">
-                <div className="text-xs font-mono-tech text-orange-300 uppercase font-semibold">CO₂e Methane Saved</div>
-                <div className="text-xl sm:text-2xl font-mono-tech font-bold text-orange-400">
-                  {dailyCo2PreventedTonnes} Tonnes
+                <div className="rounded-2xl bg-white/[0.05] border border-white/[0.14] p-3.5 space-y-0.5">
+                  <div className="text-[10px] font-mono-tech text-white/70 uppercase font-semibold">Food Rescued</div>
+                  <div className="text-lg sm:text-xl font-mono-tech font-bold text-white">
+                    {rescuedTonnes} Tonnes
+                  </div>
+                  <div className="text-[10px] text-white/60">Of 120T daily</div>
                 </div>
-                <div className="text-[11px] text-orange-400 font-medium">Diverted from city landfills</div>
-              </div>
 
-              <div className="rounded-2xl bg-cyan-500/15 border border-cyan-500/30 p-4 space-y-1">
-                <div className="text-xs font-mono-tech text-cyan-300 uppercase font-semibold">Shelters Fed Daily</div>
-                <div className="text-xl sm:text-2xl font-mono-tech font-bold text-cyan-400">
-                  {Math.round(dailyMealsCreated / 250)} Shelters
+                <div className="rounded-2xl bg-orange-500/15 border border-orange-500/30 p-3.5 space-y-0.5">
+                  <div className="text-[10px] font-mono-tech text-orange-300 uppercase font-semibold">CO₂e Saved</div>
+                  <div className="text-lg sm:text-xl font-mono-tech font-bold text-orange-400">
+                    {dailyCo2PreventedTonnes} Tonnes
+                  </div>
+                  <div className="text-[10px] text-orange-400/80">Methane avoided</div>
                 </div>
-                <div className="text-[11px] text-cyan-400 font-medium">At 250 plates capacity each</div>
+
+                <div className="rounded-2xl bg-cyan-500/15 border border-cyan-500/30 p-3.5 space-y-0.5">
+                  <div className="text-[10px] font-mono-tech text-cyan-300 uppercase font-semibold">Shelters Fed</div>
+                  <div className="text-lg sm:text-xl font-mono-tech font-bold text-cyan-400">
+                    {Math.round(dailyMealsCreated / 250)} Hubs
+                  </div>
+                  <div className="text-[10px] text-cyan-400/80">250 plates each</div>
+                </div>
               </div>
             </div>
           </div>
@@ -283,28 +266,28 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
       ===================================================================== */}
       <section
         id="solution"
-        className="relative py-20 lg:py-28 text-white overflow-hidden"
+        className="relative py-8 lg:py-11 text-white overflow-hidden"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Header */}
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-10 border-b border-white/[0.14]">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 pb-5 border-b border-white/[0.14]">
             <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-mono-tech uppercase tracking-wider mb-4 font-semibold">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-mono-tech uppercase tracking-wider mb-2.5 font-semibold">
                 <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
                 <span>02 • OUR SOLUTION: REAL-TIME CIVIC LOGISTICS MESH</span>
               </div>
-              <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-white">
+              <h2 className="font-serif-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.08] text-white">
                 Bridging surplus to sustenance in{' '}
                 <span className="italic font-normal text-emerald-400">3 simple connected layers.</span>
               </h2>
             </div>
-            <p className="text-base text-white/70 max-w-md leading-relaxed">
+            <p className="text-sm text-white/70 max-w-md leading-relaxed">
               FoodBridge coordinates every step — from the hotel kitchen tray to thermal van delivery and shelter plate — in under 38 minutes with complete transparency.
             </p>
           </div>
 
           {/* 3 Interactive Solution Layer Tabs */}
-          <div className="mt-10 flex flex-wrap gap-3">
+          <div className="mt-5 flex flex-wrap gap-2.5">
             {[
               { id: 'donors', label: '1. Food Donors & Origin', icon: Building2 },
               { id: 'engine', label: '2. The AI Dispatch Core', icon: Cpu },
@@ -334,7 +317,7 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
           </div>
 
           {/* Solution Layer Active Card */}
-          <div className="mt-8 glass-card p-8 sm:p-12 shadow-lg grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="mt-5 glass-card p-5 sm:p-7 shadow-lg grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
             {/* Left 7 Columns */}
             <div className="lg:col-span-7 space-y-6">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.08] border border-white/[0.14] text-white/80 font-mono-tech text-xs uppercase font-semibold">

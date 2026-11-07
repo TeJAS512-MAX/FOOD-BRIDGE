@@ -404,10 +404,10 @@ export function App() {
         />
 
         {/* RESCUE NETWORK & IOT THERMAL TELEMETRY MESH */}
-        <section id="rescue-network" className="py-16 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto space-y-8">
+        <section id="rescue-network" className="py-8 lg:py-10 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto space-y-5">
             {/* View Switcher: 2D Radar vs Interactive 3D WebGL Digital Twin */}
-            <div className="flex flex-wrap items-center justify-between gap-4">
+            <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
                 <span className="font-mono-tech text-xs uppercase tracking-widest text-emerald-400 font-bold">
                   SPATIAL DISPATCH TELEMETRY
@@ -450,21 +450,28 @@ export function App() {
               </div>
             </div>
 
-            {networkViewMode === '2d' ? (
-              <NeuralRescueMap />
-            ) : (
-              <Hero3DScene
-                selectedNode={selectedRescueNode}
-                onSelectNode={setSelectedRescueNode}
-                onOpenDonateModal={() =>
-                  handleOpenDonateWithWeight(
-                    selectedRescueNode.quantityKg,
-                    `${selectedRescueNode.name}, ${selectedRescueNode.neighborhood}`
-                  )
-                }
-              />
-            )}
-            <ThermalGaugeWidget />
+            {/* Side-by-Side Mission Control Grid: Map/3D Twin on Left (7 cols), IoT Thermal Monitor on Right (5 cols) */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+              <div className="lg:col-span-7">
+                {networkViewMode === '2d' ? (
+                  <NeuralRescueMap />
+                ) : (
+                  <Hero3DScene
+                    selectedNode={selectedRescueNode}
+                    onSelectNode={setSelectedRescueNode}
+                    onOpenDonateModal={() =>
+                      handleOpenDonateWithWeight(
+                        selectedRescueNode.quantityKg,
+                        `${selectedRescueNode.name}, ${selectedRescueNode.neighborhood}`
+                      )
+                    }
+                  />
+                )}
+              </div>
+              <div className="lg:col-span-5 flex flex-col justify-between">
+                <ThermalGaugeWidget />
+              </div>
+            </div>
           </div>
         </section>
 
@@ -486,7 +493,7 @@ export function App() {
 
       {/* ── GLASS FOOTER ── */}
       <footer
-        className="pt-16 pb-12 mt-20 relative overflow-hidden z-10"
+        className="pt-10 pb-8 mt-8 relative overflow-hidden z-10"
         style={{
           background: 'rgba(5,7,11,0.65)',
           backdropFilter: 'blur(36px)',
@@ -496,7 +503,7 @@ export function App() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 pb-8"
             style={{ borderBottom: '1px solid rgba(255,255,255,0.12)' }}
           >
             {/* Brand col */}
