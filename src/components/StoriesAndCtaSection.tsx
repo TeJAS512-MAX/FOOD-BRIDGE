@@ -255,7 +255,9 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                           </span>
                           <span className="inline-flex items-center gap-1 rounded-full border border-white/20 bg-black/55 px-2.5 py-1 font-mono-tech text-[10px] font-semibold text-white/85 backdrop-blur-md">
                             <CheckCircle2 className="h-3 w-3 text-emerald-400" />
-                            <span>{story.verifiedBatchId}</span>
+                            <span>
+                              Story {index + 1}/{COMMUNITY_STORIES.length} · {story.verifiedBatchId}
+                            </span>
                           </span>
                         </div>
 
@@ -338,6 +340,9 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                                 {tag}
                               </span>
                             ))}
+                            <span className="rounded-full border border-emerald-400/25 bg-emerald-500/10 px-2.5 py-0.5 font-mono-tech text-[10px] font-semibold text-emerald-300">
+                              Batch · {story.verifiedBatchId}
+                            </span>
                           </div>
 
                           <div
@@ -415,16 +420,21 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                         className="absolute inset-0"
                         style={{
                           background:
-                            'linear-gradient(180deg, rgba(5,10,12,0.35) 0%, rgba(7,15,14,0.45) 45%, rgba(6,12,12,0.96) 100%)',
+                            'linear-gradient(180deg, rgba(5,10,12,0.45) 0%, rgba(7,15,14,0.62) 42%, rgba(6,12,12,0.97) 100%)',
                         }}
                       />
-                      <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-black/55 px-3 py-1 font-mono-tech text-[10px] font-bold uppercase tracking-wider text-emerald-300 backdrop-blur-md">
-                        {story.role}
+                      <span className="absolute inset-x-4 top-4 flex items-center justify-between gap-2">
+                        <span className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-black/60 px-2.5 py-1 font-mono-tech text-[10px] font-bold uppercase tracking-wider text-emerald-300 backdrop-blur-md">
+                          {story.role} · {story.location}
+                        </span>
+                        <span className="rounded-full border border-white/15 bg-black/60 px-2.5 py-1 font-mono-tech text-[10px] font-semibold text-white/80 backdrop-blur-md">
+                          {story.verifiedBatchId}
+                        </span>
                       </span>
-                      <span className="absolute inset-x-5 bottom-5 space-y-2 text-white">
+                      <span className="absolute inset-x-5 bottom-4 space-y-2.5 text-white">
                         <span className="flex items-center gap-2.5">
                           <span
-                            className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${story.avatarGradient} font-serif-display text-xs font-bold text-white shadow-md ring-1 ring-white/25`}
+                            className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${story.avatarGradient} font-serif-display text-xs font-bold text-white shadow-md ring-1 ring-white/25`}
                           >
                             {story.initials}
                           </span>
@@ -433,16 +443,29 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                               {story.name}
                             </span>
                             <span className="block truncate text-xs text-white/70">
-                              {story.organization} · {story.location}
+                              {story.title} · {story.organization}
                             </span>
                           </span>
+                        </span>
+                        <span className="block line-clamp-2 border-l-2 border-emerald-400/60 pl-2.5 font-serif-display text-xs italic leading-relaxed text-white/85">
+                          “{story.quote}”
+                        </span>
+                        <span className="flex flex-wrap gap-1">
+                          {story.tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="rounded-full border border-white/15 bg-white/10 px-2 py-0.5 font-mono-tech text-[9px] text-white/75"
+                            >
+                              {tag}
+                            </span>
+                          ))}
                         </span>
                         <span className="flex items-center justify-between rounded-xl border border-white/15 bg-white/10 px-3 py-1.5 font-mono-tech text-[11px] backdrop-blur-md">
                           <span className="font-bold text-orange-300">
                             {story.metricLabel}: {story.metricValue}
                           </span>
                           <span className="text-emerald-300 group-hover:translate-x-0.5 transition-transform">
-                            Read →
+                            {story.secondaryMetric} →
                           </span>
                         </span>
                       </span>
