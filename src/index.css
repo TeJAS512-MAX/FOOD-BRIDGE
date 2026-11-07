@@ -105,14 +105,6 @@
 
 /* Mode tints sit on top of the shared photo and cross-fade via opacity */
 
-/* Evening Mode: Warm golden amber candlelight */
-.scene-overlay-evening {
-  background:
-    radial-gradient(ellipse at 15% 40%, rgba(249, 115, 22, 0.20) 0%, transparent 55%),
-    radial-gradient(ellipse at 85% 20%, rgba(16, 185, 129, 0.14) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 90%, rgba(217, 119, 6, 0.20) 0%, transparent 60%);
-}
-
 /* Day Mode: Fresh natural light, emerald kitchen energy */
 .scene-overlay-day {
   background:

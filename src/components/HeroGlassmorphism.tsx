@@ -9,7 +9,6 @@ import {
   Camera,
   Sun,
   Moon,
-  Sunset,
 } from 'lucide-react';
 import { StatsCardGrid } from './StatsCardGrid';
 import { sound } from '../utils/soundEffects';
@@ -19,8 +18,8 @@ interface HeroGlassmorphismProps {
   onOpenLiveTracker: () => void;
   onOpenPledgeModal: () => void;
   onOpenAiScanner?: () => void;
-  atmosphereMode?: 'evening' | 'day' | 'night';
-  onToggleAtmosphere?: (mode: 'evening' | 'day' | 'night') => void;
+  atmosphereMode?: 'day' | 'night';
+  onToggleAtmosphere?: (mode: 'day' | 'night') => void;
 }
 
 export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
@@ -28,7 +27,7 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
   onOpenLiveTracker,
   onOpenPledgeModal,
   onOpenAiScanner,
-  atmosphereMode = 'evening',
+  atmosphereMode = 'day',
   onToggleAtmosphere,
 }) => {
   const [donorInput, setDonorInput] = useState('');
@@ -378,24 +377,9 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
                 </a>
               </div>
 
-              {/* Atmosphere Switcher Pill (Matching Vertix Evening Switch) */}
+              {/* Atmosphere Switcher Pill (Day / Night) */}
               {onToggleAtmosphere && (
                 <div className="flex items-center gap-1 p-1 rounded-full bg-white/10 border border-white/20 text-xs font-mono-tech">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      sound.click();
-                      onToggleAtmosphere('evening');
-                    }}
-                    className={`flex items-center gap-1 px-2.5 py-1 rounded-full transition-all cursor-pointer ${
-                      atmosphereMode === 'evening'
-                        ? 'bg-orange-500/30 text-orange-300 font-bold shadow-xs'
-                        : 'text-white/60 hover:text-white'
-                    }`}
-                  >
-                    <Sunset className="w-3 h-3" />
-                    <span className="hidden sm:inline">Evening</span>
-                  </button>
                   <button
                     type="button"
                     onClick={() => {

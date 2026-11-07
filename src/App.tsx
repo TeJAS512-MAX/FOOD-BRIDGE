@@ -13,7 +13,6 @@ import {
   ShieldCheck,
   Sparkles,
   Sun,
-  Sunset,
   UtensilsCrossed,
   Volume2,
   VolumeX,
@@ -36,12 +35,12 @@ import { ThermalGaugeWidget } from './components/ThermalGaugeWidget';
 import { AiTrayScannerModal } from './components/AiTrayScannerModal';
 import { sound } from './utils/soundEffects';
 
-type AtmosphereMode = 'evening' | 'day' | 'night';
+type AtmosphereMode = 'day' | 'night';
 
 export function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [soundEnabled, setSoundEnabled] = useState<boolean>(false);
-  const [atmosphereMode, setAtmosphereMode] = useState<AtmosphereMode>('evening');
+  const [atmosphereMode, setAtmosphereMode] = useState<AtmosphereMode>('day');
 
   const [donateModalOpen, setDonateModalOpen] = useState<boolean>(false);
   const [donateModalWeight, setDonateModalWeight] = useState<number>(45);
@@ -105,7 +104,7 @@ export function App() {
       <div className="scene-bg" aria-hidden="true">
         <img src={sceneBackgroundImage} alt="" loading="eager" />
         <div className="scene-overlay scene-shade" />
-        {(['evening', 'day', 'night'] as const).map((mode) => (
+        {(['day', 'night'] as const).map((mode) => (
           <div
             key={mode}
             className={`scene-overlay scene-overlay-${mode}`}
@@ -195,21 +194,6 @@ export function App() {
 
               {/* Atmosphere Switcher Pill */}
               <div className="hidden md:flex items-center gap-1 p-1 rounded-full bg-white/10 border border-white/15 text-xs font-mono-tech">
-                <button
-                  type="button"
-                  title="Evening Banquet Mode"
-                  onClick={() => {
-                    sound.click();
-                    setAtmosphereMode('evening');
-                  }}
-                  className={`p-1.5 rounded-full transition-all cursor-pointer ${
-                    atmosphereMode === 'evening'
-                      ? 'bg-orange-500/30 text-orange-300 shadow-xs'
-                      : 'text-white/50 hover:text-white'
-                  }`}
-                >
-                  <Sunset className="w-3.5 h-3.5" />
-                </button>
                 <button
                   type="button"
                   title="Day Fleet Mode"
@@ -623,7 +607,7 @@ export function App() {
       <div hidden>
         <span>
           FoodBridge · OSCode AI Prompt Battle 2026 · Vertix Liquid Glassmorphism · Multi-Atmosphere
-          Engine (Evening/Day/Night) · AI Food Vision Tray Scanner · IoT Thermal Compliance Gauge ·
+          Engine (Day/Night) · AI Food Vision Tray Scanner · IoT Thermal Compliance Gauge ·
           Neural Rescue Mesh · Composable Glass Stats Cards · Stack: React 19 + Vite 7 + Tailwind
           CSS v4 + TypeScript
         </span>
