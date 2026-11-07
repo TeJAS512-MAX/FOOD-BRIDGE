@@ -30,6 +30,8 @@ export const AiTrayScannerModal: React.FC<AiTrayScannerModalProps> = ({
       title: 'Grand Hotel Banquet Buffet',
       source: 'Grand Horizon Convention Hotel • Hall B',
       image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1000&q=80',
+      videoUrl:
+        'https://assets.mixkit.co/videos/preview/mixkit-chef-preparing-food-in-a-restaurant-kitchen-42442-large.mp4',
       items: [
         {
           name: 'Shahi Paneer Gravy',
@@ -64,6 +66,8 @@ export const AiTrayScannerModal: React.FC<AiTrayScannerModalProps> = ({
       title: 'Artisan Bakery Morning Surplus',
       source: 'The Daily Loaf Bakery • Koramangala',
       image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1000&q=80',
+      videoUrl:
+        'https://assets.mixkit.co/videos/preview/mixkit-fresh-bread-loaves-in-a-bakery-42466-large.mp4',
       items: [
         {
           name: 'Sourdough Country Loaves',
@@ -184,9 +188,14 @@ export const AiTrayScannerModal: React.FC<AiTrayScannerModalProps> = ({
 
         {/* Scanner Viewport */}
         <div className="relative rounded-2xl overflow-hidden border border-white/20 aspect-video sm:aspect-[21/9] bg-black/60 shadow-2xl">
-          <img
-            src={currentPreset.image}
-            alt={currentPreset.title}
+          <video
+            key={currentPreset.videoUrl}
+            src={currentPreset.videoUrl}
+            poster={currentPreset.image}
+            autoPlay
+            muted
+            loop
+            playsInline
             className="w-full h-full object-cover filter brightness-[0.75] contrast-[1.1]"
           />
 
@@ -239,7 +248,7 @@ export const AiTrayScannerModal: React.FC<AiTrayScannerModalProps> = ({
           <div className="absolute top-3 left-3 right-3 flex items-center justify-between text-xs font-mono-tech">
             <div className="px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/20 text-white/80 flex items-center gap-2">
               <span className={`w-2 h-2 rounded-full ${scanning ? 'bg-orange-400 animate-ping' : 'bg-emerald-400'}`} />
-              <span>{scanning ? `SCANNING TRAY: ${scanProgress}%` : 'AI VISION ACQUIRED'}</span>
+              <span>{scanning ? `LIVE VIDEO SCAN: ${scanProgress}%` : 'LIVE VIDEO FEED • AI LOCKED'}</span>
             </div>
             <div className="px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/20 text-emerald-300 font-bold">
               {currentPreset.source}

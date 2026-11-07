@@ -34,6 +34,7 @@ export interface CommunityStory {
   verifiedBatchId: string;
   tags: string[];
   imageUrl: string;
+  videoUrl?: string;
   audioDuration?: string;
 }
 
@@ -51,6 +52,7 @@ export interface AIScanPreset {
   co2PreventedKg: number;
   itemsDetected: { name: string; weight: string; calories: string; allergen: string }[];
   imageUrl: string;
+  videoUrl?: string;
 }
 
 export interface LiveDispatchTelemetry {
@@ -175,6 +177,7 @@ export const AI_SCAN_PRESETS: AIScanPreset[] = [
     distanceKm: 2.1,
     co2PreventedKg: 105,
     imageUrl: 'https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=800&q=80',
+    videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-chef-preparing-food-in-a-restaurant-kitchen-42442-large.mp4',
     itemsDetected: [
       { name: 'Aromatic Basmati Pilaf (2 Gastronorm Trays)', weight: '18.5 kg', calories: '24,100 kcal', allergen: 'Gluten-Free' },
       { name: 'Slow-Simmered Yellow Dal Tadka', weight: '12.0 kg', calories: '14,400 kcal', allergen: 'Dairy (Ghee)' },
@@ -194,6 +197,7 @@ export const AI_SCAN_PRESETS: AIScanPreset[] = [
     distanceKm: 1.4,
     co2PreventedKg: 47.5,
     imageUrl: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80',
+    videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-fresh-bread-loaves-in-a-bakery-42466-large.mp4',
     itemsDetected: [
       { name: 'Country Wholewheat Sourdough Boules (24 pcs)', weight: '10.8 kg', calories: '25,900 kcal', allergen: 'Wheat / Gluten' },
       { name: 'Spinach & Corn Baked Savories', weight: '5.2 kg', calories: '11,400 kcal', allergen: 'Wheat, Dairy' },
@@ -213,6 +217,7 @@ export const AI_SCAN_PRESETS: AIScanPreset[] = [
     distanceKm: 3.2,
     co2PreventedKg: 162.5,
     imageUrl: 'https://images.unsplash.com/photo-1610348725531-843dff563e2c?auto=format&fit=crop&w=800&q=80',
+    videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-fresh-vegetables-on-a-wooden-table-42458-large.mp4',
     itemsDetected: [
       { name: 'Crisp Vine Tomatoes & Bell Peppers', weight: '28.0 kg', calories: '6,200 kcal', allergen: 'None (Raw Produce)' },
       { name: 'Baby Spinach & Fenugreek Bundles', weight: '15.0 kg', calories: '3,800 kcal', allergen: 'None (Raw Produce)' },
@@ -241,6 +246,7 @@ export const COMMUNITY_STORIES: CommunityStory[] = [
     verifiedBatchId: 'FB-CERT-2026-8841',
     tags: ['Zero-Waste Kitchen', '45-Min Pickup', 'FSSAI Shield'],
     imageUrl: 'https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=600&q=80',
+    videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-chef-preparing-food-in-a-restaurant-kitchen-42442-large.mp4',
     audioDuration: '0:42',
   },
   {
@@ -262,6 +268,7 @@ export const COMMUNITY_STORIES: CommunityStory[] = [
     verifiedBatchId: 'FB-NGO-2026-1094',
     tags: ['Verified Shelter', 'Live Capacity Sync', 'Cold-Chain'],
     imageUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80',
+    videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-people-eating-together-at-a-table-42450-large.mp4',
     audioDuration: '0:38',
   },
   {
@@ -283,6 +290,7 @@ export const COMMUNITY_STORIES: CommunityStory[] = [
     verifiedBatchId: 'FB-HERO-2026-4412',
     tags: ['Green EV Fleet', 'Community Hero', 'Night Patrol'],
     imageUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80',
+    videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-city-traffic-at-night-11-large.mp4',
     audioDuration: '0:55',
   },
   {
@@ -304,6 +312,7 @@ export const COMMUNITY_STORIES: CommunityStory[] = [
     verifiedBatchId: 'FB-EVENT-2026-9201',
     tags: ['Green Weddings', 'Instant Pledge', 'Live Guest Certificate'],
     imageUrl: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80',
+    videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-waiter-serving-food-at-a-banquet-42446-large.mp4',
     audioDuration: '0:34',
   },
 ];

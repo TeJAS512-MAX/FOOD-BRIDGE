@@ -234,11 +234,24 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
 
                       {/* Cinematic Photo Banner */}
                       <div className="story-carousel-photo relative h-36 shrink-0 overflow-hidden sm:h-40">
-                        <img
-                          src={story.imageUrl}
-                          alt={story.name}
-                          className="h-full w-full object-cover object-center transition-transform duration-700 scale-[1.02]"
-                        />
+                        {story.videoUrl ? (
+                          <video
+                            key={story.id}
+                            src={story.videoUrl}
+                            poster={story.imageUrl}
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            className="h-full w-full object-cover object-center transition-transform duration-700 scale-[1.02]"
+                          />
+                        ) : (
+                          <img
+                            src={story.imageUrl}
+                            alt={story.name}
+                            className="h-full w-full object-cover object-center transition-transform duration-700 scale-[1.02]"
+                          />
+                        )}
                         <div
                           className="absolute inset-0"
                           style={{
@@ -250,8 +263,9 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                         {/* Top HUD row: Role Pill & Verified Batch Seal */}
                         <div className="absolute inset-x-4 top-3 z-10 flex items-center justify-between gap-2">
                           <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-400/35 bg-black/55 px-2.5 py-1 font-mono-tech text-[10px] font-bold uppercase tracking-[0.14em] text-emerald-300 backdrop-blur-md">
+                            <span className="h-1.5 w-1.5 rounded-full bg-red-400 animate-pulse" />
                             <Sparkles className="h-3 w-3 text-emerald-400" />
-                            <span>{story.role} · {story.location}</span>
+                            <span>LIVE REEL · {story.role} · {story.location}</span>
                           </span>
                           <span className="inline-flex items-center gap-1 rounded-full border border-white/20 bg-black/55 px-2.5 py-1 font-mono-tech text-[10px] font-semibold text-white/85 backdrop-blur-md">
                             <CheckCircle2 className="h-3 w-3 text-emerald-400" />

@@ -41,6 +41,10 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
       badge: 'DONOR ACTION',
       color: '#EA580C',
       previewTitle: 'AI Surplus Scanner • Kitchen Terminal',
+      videoUrl:
+        'https://assets.mixkit.co/videos/preview/mixkit-chef-preparing-food-in-a-restaurant-kitchen-42442-large.mp4',
+      posterUrl:
+        'https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=900&q=80',
       previewMetrics: [
         { label: 'Detected Batch', value: '42 kg Hot Buffet' },
         { label: 'Est. Portions', value: '168 Full Meals' },
@@ -61,6 +65,10 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
       badge: 'AI BRIDGE DISPATCH',
       color: '#059669',
       previewTitle: 'Geospatial Mesh • 3.2 km Radius Scan',
+      videoUrl:
+        'https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-city-traffic-at-night-11-large.mp4',
+      posterUrl:
+        'https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=900&q=80',
       previewMetrics: [
         { label: 'Matched NGO', value: 'Annapurna Seva' },
         { label: 'Distance', value: '2.1 km (8 mins)' },
@@ -81,6 +89,10 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
       badge: 'VERIFIED SUSTENANCE',
       color: '#0284C7',
       previewTitle: 'Chain-of-Custody & ESG Impact Ledger',
+      videoUrl:
+        'https://assets.mixkit.co/videos/preview/mixkit-people-eating-together-at-a-table-42450-large.mp4',
+      posterUrl:
+        'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=900&q=80',
       previewMetrics: [
         { label: 'Meals Served', value: '168 Verified' },
         { label: 'CO₂e Prevented', value: '105.0 kg CO₂e' },
@@ -242,6 +254,49 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                 </div>
               ))}
             </div>
+
+            {/* Step-Linked Live Video Field Reel */}
+            <div className="mt-6 relative rounded-2xl overflow-hidden border border-white/15 h-52 sm:h-64 bg-black/50">
+              <video
+                key={steps[activeStep].videoUrl}
+                src={steps[activeStep].videoUrl}
+                poster={steps[activeStep].posterUrl}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full h-full object-cover opacity-85"
+              />
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background:
+                    'linear-gradient(180deg, rgba(5,9,13,0.45) 0%, rgba(5,9,13,0.15) 45%, rgba(5,9,13,0.88) 100%)',
+                }}
+              />
+              <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2 text-xs font-mono-tech">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/70 border border-emerald-400/40 text-emerald-300 backdrop-blur-md font-bold">
+                  <span className="w-2 h-2 rounded-full bg-red-400 animate-pulse" />
+                  <span>STEP {steps[activeStep].stepNumber} LIVE FIELD REEL</span>
+                </span>
+                <span className="px-3 py-1 rounded-full bg-black/70 border border-white/15 text-white/80 backdrop-blur-md">
+                  {steps[activeStep].duration}
+                </span>
+              </div>
+              <div className="absolute bottom-3 left-4 right-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                  <div className="font-serif-display text-base sm:text-lg font-bold text-white">
+                    {steps[activeStep].title}
+                  </div>
+                  <div className="text-xs text-white/75 line-clamp-1">
+                    {steps[activeStep].previewChecklist[0]}
+                  </div>
+                </div>
+                <span className="text-[11px] font-mono-tech text-emerald-300 font-semibold">
+                  {steps[activeStep].badge} ✓
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -316,13 +371,26 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                 ))}
               </div>
 
-              {/* Realistic Scanner Viewport with Real Image & Bounding Boxes */}
+              {/* Realistic Scanner Viewport with Live Video Loop & Bounding Boxes */}
               <div className="relative h-64 sm:h-72 rounded-2xl overflow-hidden border border-white/[0.14] shadow-inner group">
-                <img
-                  src={selectedPreset.imageUrl}
-                  alt={selectedPreset.title}
-                  className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
-                />
+                {selectedPreset.videoUrl ? (
+                  <video
+                    key={selectedPreset.id}
+                    src={selectedPreset.videoUrl}
+                    poster={selectedPreset.imageUrl}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
+                  />
+                ) : (
+                  <img
+                    src={selectedPreset.imageUrl}
+                    alt={selectedPreset.title}
+                    className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
+                  />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent" />
 
                 {/* AI HUD Bounding Box Overlay */}
