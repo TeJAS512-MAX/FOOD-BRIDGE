@@ -653,7 +653,7 @@
 }
 
 .workflow-step-progress {
-  animation: workflowProgressFill 3400ms linear forwards;
+  animation: workflowProgressFill 5500ms linear forwards;
 }
 
 @keyframes workflowRollRightToLeft {

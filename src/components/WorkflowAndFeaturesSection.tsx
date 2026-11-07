@@ -3,6 +3,8 @@ import {
   Bike,
   Camera,
   CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
   Clock,
   Navigation,
   ShieldCheck,
@@ -179,7 +181,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
     },
   ];
 
-  // Continuous loop: pop up each workflow card one by one
+  // Smooth 5.5s cycle: shifts the straight horizontal row so the middle card is highlighted
   useEffect(() => {
     if (
       isLoopPaused ||
@@ -189,7 +191,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
     }
     const timer = window.setInterval(() => {
       setActiveStep((prev) => (prev + 1) % steps.length);
-    }, 3400);
+    }, 5500);
     return () => window.clearInterval(timer);
   }, [isLoopPaused, steps.length]);
 
@@ -250,21 +252,52 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
             </p>
           </div>
 
-          {/* Straight Horizontal Right-to-Left Rolling Conveyor of 6 Step Cards */}
+          {/* Center-Highlighted Straight Horizontal Track with Left & Right Arrows on Both Ends */}
           <div
-            className="mt-4 workflow-rolling-viewport"
+            className="relative mt-5"
             onMouseEnter={() => setIsLoopPaused(true)}
             onMouseLeave={() => setIsLoopPaused(false)}
           >
-            <div
-              className={`workflow-rolling-track ${
-                isLoopPaused ? 'workflow-rolling-track-paused' : ''
-              }`}
+            {/* Left Arrow Button */}
+            <button
+              type="button"
+              onClick={() => {
+                sound.click();
+                setActiveStep((prev) => (prev - 1 + steps.length) % steps.length);
+              }}
+              aria-label="Previous workflow step"
+              className="absolute left-1 sm:left-3 top-1/2 -translate-y-1/2 z-30 flex h-11 w-11 items-center justify-center rounded-full border border-white/25 bg-[#081214]/90 text-white shadow-[0_12px_30px_rgba(0,0,0,0.65)] backdrop-blur-xl cursor-pointer transition hover:scale-110 hover:border-emerald-400 hover:bg-emerald-600/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"
             >
-              {[...steps, ...steps].map((st, loopIdx) => {
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+
+            {/* Right Arrow Button */}
+            <button
+              type="button"
+              onClick={() => {
+                sound.click();
+                setActiveStep((prev) => (prev + 1) % steps.length);
+              }}
+              aria-label="Next workflow step"
+              className="absolute right-1 sm:right-3 top-1/2 -translate-y-1/2 z-30 flex h-11 w-11 items-center justify-center rounded-full border border-white/25 bg-[#081214]/90 text-white shadow-[0_12px_30px_rgba(0,0,0,0.65)] backdrop-blur-xl cursor-pointer transition hover:scale-110 hover:border-emerald-400 hover:bg-emerald-600/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+
+            {/* Horizontal Viewport */}
+            <div className="workflow-rolling-viewport relative overflow-hidden py-4">
+              <div className="relative left-1/2">
+            <div
+                  className="flex flex-nowrap items-stretch gap-6 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform"
+                  style={{
+                    transform: `translate3d(-${(steps.length + activeStep) * 356 + 166}px, 0, 0)`,
+                  }}
+                >
+                  {[...steps, ...steps, ...steps].map((st, loopIdx) => {
                 const idx = loopIdx % steps.length;
-                const isActive = activeStep === idx;
-                const isPassed = idx < activeStep;
+                const centeredLoopIdx = steps.length + activeStep;
+                const isActive = loopIdx === centeredLoopIdx;
+                const isPassed = loopIdx < centeredLoopIdx;
                 return (
                   <div
                     key={`${st.stepNumber}-${loopIdx}`}
@@ -272,12 +305,12 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                       sound.click();
                       setActiveStep(idx);
                     }}
-                    className={`w-[300px] sm:w-[335px] shrink-0 relative overflow-hidden rounded-3xl p-5 cursor-pointer transition-all duration-500 border ${
+                    className={`w-[332px] shrink-0 relative overflow-hidden rounded-3xl p-5 cursor-pointer transition-all duration-500 border ${
                       isActive
-                        ? 'workflow-card-popup bg-gradient-to-br from-emerald-500/25 via-slate-900/90 to-orange-500/15 backdrop-blur-2xl border-emerald-400 shadow-[0_28px_70px_-12px_rgba(16,185,129,0.50)] ring-2 ring-emerald-400/35'
+                        ? 'workflow-card-popup bg-gradient-to-br from-emerald-500/28 via-slate-900/95 to-orange-500/18 backdrop-blur-2xl border-emerald-400 shadow-[0_28px_70px_-12px_rgba(16,185,129,0.55)] ring-2 ring-emerald-400/45 opacity-100'
                         : isPassed
-                        ? 'bg-white/[0.08] backdrop-blur-xl border-emerald-500/30 opacity-90 hover:opacity-100'
-                        : 'bg-white/[0.05] backdrop-blur-xl border-white/[0.12] opacity-75 hover:opacity-100 hover:border-white/25'
+                        ? 'bg-[#091219]/80 backdrop-blur-xl border-emerald-500/25 opacity-60 hover:opacity-90 scale-95'
+                        : 'bg-[#091219]/75 backdrop-blur-xl border-white/15 opacity-60 hover:opacity-90 scale-95'
                     }`}
                   >
                     {/* Animated Top Progress Bar on the Active Pop-Up Card */}
@@ -352,6 +385,8 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                   </div>
                 );
               })}
+                </div>
+              </div>
             </div>
           </div>
 
