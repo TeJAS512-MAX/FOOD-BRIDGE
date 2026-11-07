@@ -27,6 +27,7 @@ import { ProblemSolutionSection } from './components/ProblemSolutionSection';
 import { WorkflowAndFeaturesSection } from './components/WorkflowAndFeaturesSection';
 import { ImpactCalculatorSection } from './components/ImpactCalculatorSection';
 import { StoriesAndCtaSection } from './components/StoriesAndCtaSection';
+import { CivicAuditAndMarketplaceSection } from './components/CivicAuditAndMarketplaceSection';
 import { DonateModal } from './components/DonateModal';
 import { LiveRouteTrackerModal } from './components/LiveRouteTrackerModal';
 import { PledgeMealModal } from './components/PledgeMealModal';
@@ -94,6 +95,7 @@ export function App() {
     { label: 'How It Works', href: '#how-it-works' },
     { label: 'Features', href: '#features' },
     { label: 'Rescue Network', href: '#rescue-network' },
+    { label: 'Audit & Ledger', href: '#governance' },
     { label: 'Impact', href: '#impact' },
     { label: 'Stories', href: '#stories' },
   ];
@@ -481,6 +483,13 @@ export function App() {
           onOpenEsgCertificate={(weight) =>
             handleOpenEsgCertificate('Grand Horizon Convention Hotel', weight)
           }
+        />
+
+        {/* SECTION 6B: CIVIC GOVERNANCE, LIVE SURPLUS MARKETPLACE & JUDGE DOSSIER */}
+        <CivicAuditAndMarketplaceSection
+          onOpenDonateWithWeight={handleOpenDonateWithWeight}
+          onOpenEsgCertificate={handleOpenEsgCertificate}
+          onClaimBatchMeals={(meals) => handleSuccessDispatch(meals)}
         />
 
         {/* SECTIONS 7 & 8: COMMUNITY STORIES & CALL TO ACTION */}
