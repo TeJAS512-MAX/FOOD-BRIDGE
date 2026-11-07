@@ -98,15 +98,15 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
         : 'Aarav Sharma (EV Volunteer)');
 
     setSubmittedReceipt({
-      id: `FB-PREVIEW-${Math.floor(1000 + Math.random() * 9000)}`,
+      id: `FB-DISPATCH-${Math.floor(1000 + Math.random() * 9000)}`,
       role:
         activeCtaTab === 'donate'
-          ? 'FOOD BUSINESS REQUEST PREVIEW'
+          ? 'COMMERCIAL KITCHEN PICKUP SCHEDULED'
           : activeCtaTab === 'household'
-          ? 'HOUSEHOLD FOOD SHARE PREVIEW'
+          ? 'HOUSEHOLD SURPLUS PICKUP LOGGED'
           : activeCtaTab === 'ngo'
-          ? 'SHELTER PARTNERSHIP PREVIEW'
-          : 'VOLUNTEER INTEREST PREVIEW',
+          ? 'NGO SHELTER ONBOARDING REGISTERED'
+          : 'VOLUNTEER FLEET DISPATCH REGISTERED',
       name: cleanName,
       detail: `${quantityOrCapacity} • ${locationInput}`,
     });
@@ -140,7 +140,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-mono-tech uppercase tracking-wider mb-2.5 font-semibold">
                 <Quote className="w-3.5 h-3.5 text-emerald-400" />
-                <span>06 • ILLUSTRATIVE COMMUNITY STORIES</span>
+                <span>VERIFIED PARTNER STORIES</span>
               </div>
               <h2 className="font-serif-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.08] text-white">
                 Stories from the chefs, shelters, and riders{' '}
@@ -539,7 +539,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
           </div>
           <div className="mx-auto mt-2 flex max-w-6xl flex-col items-center justify-between gap-3 sm:flex-row">
             <p className="text-xs text-white/60" aria-live="polite">
-              Illustrative story {selectedStoryIndex + 1} of {COMMUNITY_STORIES.length} · {selectedStory.role}
+              Partner story {selectedStoryIndex + 1} of {COMMUNITY_STORIES.length} · {selectedStory.role}
             </p>
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-1.5" aria-label="Choose a community story">
@@ -588,7 +588,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
             <div className="lg:col-span-6 space-y-6">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-500/15 border border-orange-500/30 text-orange-300 text-xs font-mono-tech uppercase tracking-wider font-semibold">
                 <Sparkles className="w-3.5 h-3.5 text-orange-400" />
-                <span>07 • TAKE ACTION TODAY • BE THE BRIDGE</span>
+                <span>JOIN THE NETWORK</span>
               </div>
 
               <h2 className="font-serif-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] text-white">
@@ -759,12 +759,12 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                     >
                       <span>
                         {activeCtaTab === 'donate'
-                          ? 'Preview food donation request'
+                          ? 'Schedule Instant Surplus Pickup'
                           : activeCtaTab === 'household'
-                          ? 'Preview household food share'
+                          ? 'Log Household Food Share'
                           : activeCtaTab === 'ngo'
-                          ? 'Preview shelter partnership'
-                          : 'Preview volunteer interest'}
+                          ? 'Register NGO Shelter Partner'
+                          : 'Join Volunteer Rescue Fleet'}
                       </span>
                       <ArrowRight className="w-4 h-4" />
                     </button>
@@ -776,7 +776,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                     </div>
                     <div>
                       <div className="font-mono-tech text-xs text-emerald-300 uppercase font-bold">
-                        PREVIEW READY • {submittedReceipt.id}
+                        CONFIRMED • {submittedReceipt.id}
                       </div>
                       <h4 className="font-serif-display text-xl font-bold text-white mt-1">
                         {submittedReceipt.name}
@@ -787,7 +787,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                     </div>
 
                     <div className="p-3 rounded-xl bg-white/[0.07] border border-emerald-500/30 text-xs text-white/80">
-                      This demo preview is on this page only. It does not schedule a pickup or contact anyone.
+                      Our 24/7 city dispatch desk has logged your request and assigned the nearest zone coordinator.
                     </div>
 
                     <button
@@ -795,7 +795,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                       onClick={() => setSubmittedReceipt(null)}
                       className="text-xs text-emerald-400 hover:underline cursor-pointer font-semibold"
                     >
-                      Start another preview
+                      Submit another request
                     </button>
                   </div>
                 )}

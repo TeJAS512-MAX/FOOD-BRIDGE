@@ -50,7 +50,7 @@ export const ImpactCalculatorSection: React.FC<ImpactCalculatorSectionProps> = (
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-mono-tech uppercase tracking-wider mb-2.5 font-semibold">
               <BarChart3 className="w-3.5 h-3.5 text-emerald-400" />
-              <span>05 • VERIFIED IMPACT & CARBON LEDGER</span>
+              <span>VERIFIED IMPACT &amp; CARBON LEDGER</span>
             </div>
             <h2 className="font-serif-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.08] text-white">
               Every rescued kilogram heals both{' '}

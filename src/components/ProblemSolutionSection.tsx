@@ -110,7 +110,7 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-rose-500/15 border border-rose-500/30 text-rose-400 text-xs font-mono-tech uppercase tracking-wider mb-2.5 font-semibold">
                 <AlertTriangle className="w-3.5 h-3.5" />
-                <span>01 • THE PROBLEM: THE SCANDAL OF FOOD INSECURITY</span>
+                <span>THE CHALLENGE</span>
               </div>
               <h2 className="font-serif-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.08] text-white">
                 Food waste isn’t a scarcity problem.{' '}
@@ -274,7 +274,7 @@ export const ProblemSolutionSection: React.FC<ProblemSolutionSectionProps> = ({
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-mono-tech uppercase tracking-wider mb-2.5 font-semibold">
                 <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-                <span>02 • OUR SOLUTION: REAL-TIME CIVIC LOGISTICS MESH</span>
+                <span>OUR SOLUTION</span>
               </div>
               <h2 className="font-serif-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.08] text-white">
                 Bridging surplus to sustenance in{' '}

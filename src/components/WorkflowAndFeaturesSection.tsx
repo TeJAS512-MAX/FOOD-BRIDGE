@@ -241,7 +241,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-mono-tech uppercase tracking-wider mb-2.5 font-semibold">
                 <Clock className="w-3.5 h-3.5 text-emerald-400" />
-                <span>03 • HOW IT WORKS: ZERO TO DELIVERED IN 38 MINUTES</span>
+                <span>38-MINUTE RESCUE PIPELINE</span>
               </div>
               <h2 className="font-serif-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.08] text-white">
                 How FoodBridge transforms kitchen surplus into{' '}
@@ -268,16 +268,13 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
               <div className="min-w-0">
                 <div className="flex items-center gap-2 font-mono-tech text-xs font-bold uppercase tracking-wider text-emerald-300">
                   <span>
-                    LIVE PIPELINE LOOP • STEP {steps[activeStep].stepNumber} OF 0{steps.length}
+                    STEP {steps[activeStep].stepNumber} OF 0{steps.length} • {steps[activeStep].title}
                   </span>
                   <span className="hidden sm:inline text-white/40">•</span>
                   <span className="hidden sm:inline text-orange-300">
-                    {steps[activeStep].badge}
+                    {steps[activeStep].duration}
                   </span>
                 </div>
-                <p className="truncate text-xs text-white/80 font-medium">
-                  Now popping: <strong className="text-white">{steps[activeStep].title}</strong> ({steps[activeStep].duration})
-                </p>
               </div>
             </div>
 
@@ -402,15 +399,15 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
                         {isActive ? (
                           <span className="inline-flex items-center gap-1 rounded-full border border-emerald-400/50 bg-emerald-500/25 px-2.5 py-0.5 font-mono-tech text-[10px] font-bold uppercase tracking-wider text-emerald-200 shadow-sm">
                             <span className="h-1.5 w-1.5 rounded-full bg-emerald-300 animate-ping" />
-                            <span>ACTIVE POP-UP</span>
+                            <span>LIVE STAGE</span>
                           </span>
                         ) : isPassed ? (
                           <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 font-mono-tech text-[10px] font-semibold text-emerald-300">
-                            ✓ Done
+                            ✓ Verified
                           </span>
                         ) : (
                           <span className="font-mono-tech text-[10px] uppercase text-white/40">
-                            Queued
+                            Next
                           </span>
                         )}
                       </div>
@@ -553,7 +550,7 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-orange-500/15 border border-orange-500/30 text-orange-300 text-xs font-mono-tech uppercase tracking-wider mb-2.5 font-semibold">
                 <Sparkles className="w-3.5 h-3.5 text-orange-400" />
-                <span>04 • KEY CAPABILITIES: ENGINEERED FOR SPEED & DIGNITY</span>
+                <span>PLATFORM CAPABILITIES</span>
               </div>
               <h2 className="font-serif-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.08] text-white">
                 Four pillars powering the{' '}
