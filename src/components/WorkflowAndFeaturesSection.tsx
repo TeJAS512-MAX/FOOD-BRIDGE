@@ -390,38 +390,35 @@ export const WorkflowAndFeaturesSection: React.FC<WorkflowAndFeaturesSectionProp
             </div>
           </div>
 
-          {/* Step Point Labels Directly Under Cards */}
-          <div className="mt-3 flex flex-wrap items-center justify-center gap-2 sm:gap-2.5">
-            {steps.map((st, idx) => {
-              const isActive = activeStep === idx;
-              return (
-                <button
-                  key={st.stepNumber}
-                  type="button"
-                  onClick={() => {
-                    sound.click();
-                    setActiveStep(idx);
-                  }}
-                  className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-mono-tech transition-all cursor-pointer border ${
-                    isActive
-                      ? 'bg-emerald-500/25 text-white border-emerald-400 font-bold shadow-[0_0_16px_rgba(16,185,129,0.35)] scale-105'
-                      : 'bg-white/[0.06] text-white/75 border-white/15 hover:bg-white/12 hover:text-white'
-                  }`}
-                >
-                  <span
-                    className={`h-2 w-2 rounded-full transition-all ${
+          {/* Minimal Carousel Point Indicators Under Cards */}
+          <div className="mt-3 flex items-center justify-center">
+            <div
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/45 px-3.5 py-2 backdrop-blur-md"
+              aria-label="Choose a pipeline step"
+            >
+              {steps.map((st, idx) => {
+                const isActive = activeStep === idx;
+                return (
+                  <button
+                    key={st.stepNumber}
+                    type="button"
+                    onClick={() => {
+                      sound.click();
+                      setActiveStep(idx);
+                    }}
+                    aria-label={`Step ${st.stepNumber}: ${st.title}`}
+                    aria-current={isActive ? 'true' : undefined}
+                    className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 ${
                       isActive
-                        ? 'bg-emerald-400 shadow-[0_0_8px_#10B981]'
+                        ? 'w-8 bg-emerald-400 shadow-[0_0_12px_#10B981]'
                         : idx < activeStep
-                        ? 'bg-emerald-400/60'
-                        : 'bg-white/35'
+                        ? 'w-2.5 bg-emerald-400/50 hover:bg-emerald-300'
+                        : 'w-2.5 bg-white/30 hover:bg-white/60'
                     }`}
                   />
-                  <span className="text-emerald-300 font-bold">{st.stepNumber}</span>
-                  <span className="truncate max-w-[140px]">{st.title}</span>
-                </button>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
 
           {/* Step Detail Spotlight Console — Compact Side-by-Side Metrics + Video Reel */}
