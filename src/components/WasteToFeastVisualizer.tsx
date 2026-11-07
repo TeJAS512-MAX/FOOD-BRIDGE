@@ -36,84 +36,99 @@ export const WasteToFeastVisualizer: React.FC = () => {
       </div>
 
       {/* Before / After Interactive Visual Container */}
-      <div className="relative mt-4 h-56 sm:h-64 rounded-2xl overflow-hidden border border-white/[0.20] select-none shadow-md">
+      <div className="relative mt-4 h-64 sm:h-72 rounded-2xl overflow-hidden border border-white/[0.20] select-none shadow-md">
         {/* Right (After / FoodBridge Reality) Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80')`,
+            backgroundImage: `url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1400&q=80')`,
           }}
         >
-          {/* Subtle warm emerald vignette overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/30 to-transparent" />
-
-          {/* Label Badge Top Right */}
-          <div className="absolute top-4 right-4 bg-emerald-600 text-white rounded-full px-4 py-1.5 text-xs font-mono-tech font-bold flex items-center gap-2 shadow-md">
-            <CheckCircle2 className="w-4 h-4 text-emerald-200" />
-            <span>12:15 AM • DIGNIFIED NOURISHMENT</span>
-          </div>
-
-          {/* Impact Stats Overlay Bottom Right */}
-          <div className="absolute bottom-5 right-5 text-right bg-white/[0.08] backdrop-blur-md border border-emerald-500/40 rounded-2xl p-4 max-w-[270px] shadow-xl text-white">
-            <div className="text-emerald-400 font-mono-tech text-xl font-bold">
-              180 Warm Meals
-            </div>
-            <p className="text-xs text-white/70 mt-0.5 leading-snug">
-              Served fresh to children & elders at Annapurna Shelter in under 38 minutes.
-            </p>
-            <div className="mt-2 text-[11px] font-mono-tech text-emerald-400 font-semibold flex items-center justify-end gap-1">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Zero Methane • 100% Dignity</span>
-            </div>
-          </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-emerald-950/25 to-slate-950/40" />
         </div>
 
-        {/* Left (Before / Food Waste Tragedy) Clipped Layer */}
+        {/* Left (Before / Food Waste Tragedy) Full-Width Clipped Image Layer (Never Squishes) */}
         <div
-          className="absolute inset-y-0 left-0 overflow-hidden"
-          style={{ width: `${sliderPos}%` }}
+          className="absolute inset-0"
+          style={{
+            clipPath: `inset(0 ${100 - sliderPos}% 0 0)`,
+            WebkitClipPath: `inset(0 ${100 - sliderPos}% 0 0)`,
+          }}
         >
-          <div className="relative w-full h-full">
-            {/* The Before Image */}
-            <div
-              className="absolute inset-0 bg-cover bg-center w-[1200px]"
-              style={{
-                backgroundImage: `url('https://images.unsplash.com/photo-1605600659873-d808a13e4d2a?auto=format&fit=crop&w=1200&q=80')`,
-                filter: 'grayscale(60%) contrast(115%) brightness(0.85)',
-              }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/40 to-transparent" />
-            </div>
-
-            {/* Label Badge Top Left */}
-            <div className="absolute top-4 left-4 bg-rose-600 text-white rounded-full px-4 py-1.5 text-xs font-mono-tech font-bold flex items-center gap-2 shadow-md">
-              <AlertTriangle className="w-4 h-4 text-rose-200" />
-              <span>11:45 PM • LANDFILL DUMPSTER</span>
-            </div>
-
-            {/* Stats Overlay Bottom Left */}
-            <div className="absolute bottom-5 left-5 bg-white/[0.08] backdrop-blur-md border border-rose-500/40 rounded-2xl p-4 max-w-[270px] shadow-xl text-left text-white">
-              <div className="text-rose-400 font-mono-tech text-xl font-bold">
-                45 kg Wasted
-              </div>
-              <p className="text-xs text-white/70 mt-0.5 leading-snug">
-                Untouched gourmet catering discarded in garbage skips behind the banquet hall.
-              </p>
-              <div className="mt-2 text-[11px] font-mono-tech text-rose-400 font-semibold flex items-center gap-1">
-                <Flame className="w-3.5 h-3.5" />
-                <span>+112.5 kg Methane CO₂e Emitted</span>
-              </div>
-            </div>
-          </div>
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundImage: `url('https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=1400&q=80')`,
+              filter: 'grayscale(85%) contrast(115%) brightness(0.62)',
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-rose-950/30 to-slate-950/50" />
         </div>
 
         {/* Vertical Divider Line with Scrub Handle */}
         <div
-          className="absolute inset-y-0 w-1 bg-white shadow-[0_0_12px_rgba(0,0,0,0.3)] pointer-events-none z-20"
+          className="absolute inset-y-0 w-0.5 bg-white shadow-[0_0_16px_rgba(255,255,255,0.8)] pointer-events-none z-10"
           style={{ left: `${sliderPos}%` }}
         >
-          <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-black/60 text-white flex items-center justify-center shadow-2xl ring-4 ring-white">
+          <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-[#071013]/90 text-white flex items-center justify-center shadow-2xl ring-2 ring-white">
             <ArrowLeftRight className="w-4 h-4 text-emerald-400" />
+          </div>
+        </div>
+
+        {/* Unclipped Top & Bottom HUD Overlay Layer (Never Cut or Squished by Slider) */}
+        <div className="pointer-events-none absolute inset-0 z-20 flex flex-col justify-between p-3.5 sm:p-4">
+          {/* Top Pills Row */}
+          <div className="flex items-center justify-between gap-2">
+            <div
+              className="bg-rose-600/95 backdrop-blur-md text-white rounded-full px-3 sm:px-3.5 py-1 text-[10px] sm:text-xs font-mono-tech font-bold flex items-center gap-1.5 shadow-lg transition-opacity duration-200"
+              style={{ opacity: sliderPos < 14 ? 0.35 : 1 }}
+            >
+              <AlertTriangle className="w-3.5 h-3.5 text-rose-100 shrink-0" />
+              <span>11:45 PM • LANDFILL DUMPSTER</span>
+            </div>
+
+            <div
+              className="bg-emerald-600/95 backdrop-blur-md text-white rounded-full px-3 sm:px-3.5 py-1 text-[10px] sm:text-xs font-mono-tech font-bold flex items-center gap-1.5 shadow-lg transition-opacity duration-200"
+              style={{ opacity: sliderPos > 86 ? 0.35 : 1 }}
+            >
+              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-100 shrink-0" />
+              <span>12:15 AM • DIGNIFIED NOURISHMENT</span>
+            </div>
+          </div>
+
+          {/* Bottom Comparison Cards Row */}
+          <div className="flex items-end justify-between gap-3">
+            <div
+              className="bg-[#090D14]/88 backdrop-blur-xl border border-rose-500/45 rounded-2xl p-3 sm:p-3.5 max-w-[235px] sm:max-w-[255px] shadow-2xl text-left text-white transition-all duration-200"
+              style={{ opacity: sliderPos < 16 ? 0.3 : 1 }}
+            >
+              <div className="text-rose-400 font-mono-tech text-base sm:text-lg font-bold">
+                45 kg Wasted
+              </div>
+              <p className="text-[11px] sm:text-xs text-white/80 mt-0.5 leading-snug">
+                Untouched gourmet catering discarded in skips behind the banquet hall.
+              </p>
+              <div className="mt-1.5 text-[10px] sm:text-[11px] font-mono-tech text-rose-400 font-semibold flex items-center gap-1">
+                <Flame className="w-3 h-3 shrink-0" />
+                <span>+112.5 kg Methane CO₂e Emitted</span>
+              </div>
+            </div>
+
+            <div
+              className="bg-[#071412]/88 backdrop-blur-xl border border-emerald-500/45 rounded-2xl p-3 sm:p-3.5 max-w-[235px] sm:max-w-[255px] shadow-2xl text-right text-white transition-all duration-200"
+              style={{ opacity: sliderPos > 84 ? 0.3 : 1 }}
+            >
+              <div className="text-emerald-400 font-mono-tech text-base sm:text-lg font-bold">
+                180 Warm Meals
+              </div>
+              <p className="text-[11px] sm:text-xs text-white/80 mt-0.5 leading-snug">
+                Served fresh to children &amp; elders at Annapurna Shelter in under 38 minutes.
+              </p>
+              <div className="mt-1.5 text-[10px] sm:text-[11px] font-mono-tech text-emerald-400 font-semibold flex items-center justify-end gap-1">
+                <Sparkles className="w-3 h-3 shrink-0" />
+                <span>Zero Methane • 100% Dignity</span>
+              </div>
+            </div>
           </div>
         </div>
 
