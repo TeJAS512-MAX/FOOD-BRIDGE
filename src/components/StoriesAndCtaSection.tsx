@@ -43,26 +43,83 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
   const selectedStory = COMMUNITY_STORIES[selectedStoryIndex];
   const [activeCtaTab, setActiveCtaTab] = useState<CtaTab>('donate');
   const [isPlayingAudio, setIsPlayingAudio] = useState<boolean>(false);
+  const [audioElapsedSec, setAudioElapsedSec] = useState<number>(0);
 
+  const parseDurationSec = (dur?: string) => {
+    if (!dur) return 38;
+    const parts = dur.split(':').map(Number);
+    if (parts.length === 2 && !Number.isNaN(parts[0]) && !Number.isNaN(parts[1])) {
+      return parts[0] * 60 + parts[1];
+    }
+    return 38;
+  };
+
+  const currentDurationSec = parseDurationSec(selectedStory.audioDuration);
+
+  const stopSpeech = () => {
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+    }
+  };
+
+  // Auto-advance carousel ONLY when not paused AND audio is NOT playing
   useEffect(() => {
     if (
       isStoryPaused ||
+      isPlayingAudio ||
       COMMUNITY_STORIES.length < 2 ||
       window.matchMedia('(prefers-reduced-motion: reduce)').matches
     ) return;
     const interval = window.setInterval(() => {
       setSelectedStoryIndex((index) => (index + 1) % COMMUNITY_STORIES.length);
       setIsPlayingAudio(false);
+      setAudioElapsedSec(0);
     }, 6500);
     return () => window.clearInterval(interval);
-  }, [isStoryPaused]);
+  }, [isStoryPaused, isPlayingAudio]);
+
+  // Audio playback timer: holds carousel on current card until audio finishes, then moves next
+  useEffect(() => {
+    if (!isPlayingAudio) {
+      stopSpeech();
+      return;
+    }
+
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(
+        `${selectedStory.name}, ${selectedStory.title} at ${selectedStory.organization}. ${selectedStory.quote}`
+      );
+      utterance.rate = 1.0;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    const timer = window.setInterval(() => {
+      setAudioElapsedSec((prev) => {
+        if (prev + 1 >= currentDurationSec) {
+          window.clearInterval(timer);
+          stopSpeech();
+          setIsPlayingAudio(false);
+          setSelectedStoryIndex((index) => (index + 1) % COMMUNITY_STORIES.length);
+          return 0;
+        }
+        return prev + 1;
+      });
+    }, 1000);
+
+    return () => {
+      window.clearInterval(timer);
+    };
+  }, [isPlayingAudio, selectedStoryIndex, currentDurationSec, selectedStory]);
 
   const moveStory = (direction: -1 | 1) => {
     sound.click();
+    stopSpeech();
+    setIsPlayingAudio(false);
+    setAudioElapsedSec(0);
     setSelectedStoryIndex((index) =>
       (index + direction + COMMUNITY_STORIES.length) % COMMUNITY_STORIES.length
     );
-    setIsPlayingAudio(false);
   };
 
   const storyPosition = (index: number) => {
@@ -114,7 +171,13 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
 
   const toggleAudioSim = () => {
     sound.click();
-    setIsPlayingAudio(!isPlayingAudio);
+    if (isPlayingAudio) {
+      stopSpeech();
+      setIsPlayingAudio(false);
+    } else {
+      setAudioElapsedSec(0);
+      setIsPlayingAudio(true);
+    }
   };
 
   const selectCtaTab = (tab: CtaTab) => {
@@ -156,8 +219,10 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                   type="button"
                   onClick={() => {
                     sound.click();
+                    stopSpeech();
                     setSelectedStoryIndex(COMMUNITY_STORIES.findIndex((item) => item.id === story.id));
                     setIsPlayingAudio(false);
+                    setAudioElapsedSec(0);
                   }}
                   className={`px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer border ${
                     selectedStory.id === story.id
@@ -215,15 +280,23 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                   }}
                 >
                   {isActive ? (
-                    <div
-                      className="story-carousel-feature story-spotlight-enter relative flex h-full flex-col overflow-hidden"
-                      style={{
-                        background:
-                          'linear-gradient(165deg, rgba(13, 25, 23, 0.92) 0%, rgba(7, 13, 16, 0.96) 100%)',
-                        backdropFilter: 'blur(36px) saturate(180%)',
-                        WebkitBackdropFilter: 'blur(36px) saturate(180%)',
-                      }}
-                    >
+                    <div className="story-carousel-feature story-spotlight-enter relative flex h-full flex-col justify-between overflow-hidden">
+                      {/* Full-Card Visible Partner Background Photo */}
+                      <img
+                        src={story.imageUrl}
+                        alt={story.name}
+                        className="pointer-events-none absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 scale-[1.01]"
+                      />
+                      {/* Calibrated gradient: keeps partner photo clearly visible at top/center while ensuring crisp text contrast below */}
+                      <div
+                        aria-hidden="true"
+                        className="pointer-events-none absolute inset-0"
+                        style={{
+                          background:
+                            'linear-gradient(180deg, rgba(4,10,12,0.22) 0%, rgba(5,12,14,0.32) 32%, rgba(6,15,15,0.82) 56%, rgba(6,13,14,0.95) 100%)',
+                        }}
+                      />
+
                       {/* Top liquid meniscus highlight */}
                       <div
                         aria-hidden="true"
@@ -234,40 +307,13 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                         }}
                       />
 
-                      {/* Cinematic Photo Banner */}
-                      <div className="story-carousel-photo relative h-32 shrink-0 overflow-hidden sm:h-36">
-                        {story.videoUrl ? (
-                          <video
-                            key={story.id}
-                            src={story.videoUrl}
-                            poster={story.imageUrl}
-                            autoPlay
-                            muted
-                            loop
-                            playsInline
-                            className="h-full w-full object-cover object-center transition-transform duration-700 scale-[1.02]"
-                          />
-                        ) : (
-                          <img
-                            src={story.imageUrl}
-                            alt={story.name}
-                            className="h-full w-full object-cover object-center transition-transform duration-700 scale-[1.02]"
-                          />
-                        )}
-                        <div
-                          className="absolute inset-0"
-                          style={{
-                            background:
-                              'linear-gradient(180deg, rgba(5,10,12,0.45) 0%, rgba(7,15,14,0.25) 42%, rgba(8,16,15,0.96) 100%)',
-                          }}
-                        />
-
+                      {/* Upper Photo Showcase Window with Top HUD & Identity Lockup */}
+                      <div className="relative z-10 flex h-44 sm:h-48 shrink-0 flex-col justify-between p-4 sm:px-5">
                         {/* Top HUD row: Role Pill & Verified Batch Seal */}
-                        <div className="absolute inset-x-4 top-3 z-10 flex items-center justify-between gap-2">
+                        <div className="flex items-center justify-between gap-2">
                           <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-400/35 bg-black/55 px-2.5 py-1 font-mono-tech text-[10px] font-bold uppercase tracking-[0.14em] text-emerald-300 backdrop-blur-md">
-                            <span className="h-1.5 w-1.5 rounded-full bg-red-400 animate-pulse" />
                             <Sparkles className="h-3 w-3 text-emerald-400" />
-                            <span>LIVE REEL · {story.role} · {story.location}</span>
+                            <span>{story.role} · {story.location}</span>
                           </span>
                           <button
                             type="button"
@@ -284,7 +330,7 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                         </div>
 
                         {/* Bottom Identity Lockup */}
-                        <div className="absolute inset-x-4 bottom-2.5 z-10 flex items-end justify-between gap-3">
+                        <div className="flex items-end justify-between gap-3">
                           <div className="flex items-center gap-3 min-w-0">
                             <div className="relative shrink-0">
                               <img
@@ -299,13 +345,13 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                               </span>
                             </div>
                             <div className="min-w-0">
-                              <h3 className="truncate font-serif-display text-xl font-bold tracking-tight text-white sm:text-2xl">
+                              <h3 className="truncate font-serif-display text-xl font-bold tracking-tight text-white drop-shadow-md sm:text-2xl">
                                 {story.name}
                               </h3>
-                              <p className="truncate text-xs font-medium text-white/80">
+                              <p className="truncate text-xs font-medium text-white/90 drop-shadow">
                                 {story.title} · <span className="text-emerald-300">{story.organization}</span>
                               </p>
-                              <p className="truncate font-mono-tech text-[10px] text-white/60">
+                              <p className="truncate font-mono-tech text-[10px] text-white/75">
                                 {story.fssaiLicense} · {story.csrRegistrationId}
                               </p>
                             </div>
@@ -314,17 +360,17 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                       </div>
 
                       {/* Editorial Story Body */}
-                      <div className="story-carousel-copy flex min-h-0 flex-1 flex-col justify-between gap-2 p-3.5 sm:px-5 sm:py-3.5">
+                      <div className="story-carousel-copy relative z-10 flex min-h-0 flex-1 flex-col justify-between gap-2 px-4 pb-4 pt-1 sm:px-5">
                         {/* Quote + Field Note */}
-                        <div className="relative rounded-2xl border border-white/10 bg-white/[0.04] px-3 py-2.5">
+                        <div className="relative rounded-2xl border border-white/15 bg-black/45 backdrop-blur-md px-3.5 py-2.5">
                           <Quote
                             aria-hidden="true"
                             className="pointer-events-none absolute right-3 top-2.5 h-7 w-7 text-emerald-400/15"
                           />
-                          <blockquote className="border-l-2 border-emerald-400 pl-3 font-serif-display text-xs sm:text-sm italic leading-snug text-white/95 line-clamp-3">
+                          <blockquote className="border-l-2 border-emerald-400 pl-3 font-serif-display text-xs sm:text-sm italic leading-snug text-white/95 line-clamp-2">
                             “{story.quote}”
                           </blockquote>
-                          <p className="mt-1 pl-3 text-[11px] leading-snug text-white/75 line-clamp-2">
+                          <p className="mt-1 pl-3 text-[11px] leading-snug text-white/80 line-clamp-2">
                             {story.storyDetail}
                           </p>
                         </div>
@@ -384,13 +430,21 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                           </div>
 
                           <div
-                            className="flex w-full shrink-0 items-center gap-3 rounded-xl border border-white/15 px-3 py-2"
+                            className="relative overflow-hidden flex w-full shrink-0 items-center gap-3 rounded-xl border border-white/15 px-3 py-2 backdrop-blur-md"
                             style={{
                               background: isPlayingAudio
-                                ? 'linear-gradient(90deg, rgba(16,185,129,0.18) 0%, rgba(6,182,212,0.10) 100%)'
-                                : 'rgba(255,255,255,0.05)',
+                                ? 'linear-gradient(90deg, rgba(16,185,129,0.24) 0%, rgba(6,182,212,0.14) 100%)'
+                                : 'rgba(0,0,0,0.45)',
                             }}
                           >
+                            {isPlayingAudio && (
+                              <div
+                                className="pointer-events-none absolute inset-x-0 bottom-0 h-0.5 bg-emerald-400 transition-all duration-500"
+                                style={{
+                                  width: `${Math.min(100, (audioElapsedSec / currentDurationSec) * 100)}%`,
+                                }}
+                              />
+                            )}
                             <button
                               type="button"
                               onClick={toggleAudioSim}
@@ -414,8 +468,9 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                                 </span>
                               </div>
                               <div className="font-mono-tech text-[10px] text-white/60">
-                                {isPlayingAudio ? 'LIVE WAVEFORM ACTIVE' : 'TAP TO LISTEN'} ·{' '}
-                                {story.audioDuration || '0:45'}
+                                {isPlayingAudio
+                                  ? `PLAYING (CAROUSEL HELD) · 0:${String(audioElapsedSec).padStart(2, '0')} / ${story.audioDuration || '0:38'}`
+                                  : `TAP TO LISTEN · ${story.audioDuration || '0:38'}`}
                               </div>
                             </div>
                             <div className="flex h-7 items-center gap-1 pr-1" aria-hidden="true">
@@ -443,8 +498,10 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                       type="button"
                       onClick={() => {
                         sound.click();
+                        stopSpeech();
                         setSelectedStoryIndex(index);
                         setIsPlayingAudio(false);
+                        setAudioElapsedSec(0);
                       }}
                       aria-label={`Show ${story.role} story: ${story.name}`}
                       className="group absolute inset-0 cursor-pointer overflow-hidden text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-emerald-300"
@@ -549,8 +606,10 @@ export const StoriesAndCtaSection: React.FC<StoriesAndCtaSectionProps> = ({
                     type="button"
                     onClick={() => {
                       sound.click();
+                      stopSpeech();
                       setSelectedStoryIndex(index);
                       setIsPlayingAudio(false);
+                      setAudioElapsedSec(0);
                     }}
                     aria-label={`Show story ${index + 1}: ${story.name}`}
                     aria-current={selectedStoryIndex === index ? 'true' : undefined}
