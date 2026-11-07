@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import {
   HeartHandshake,
   MapPin,
@@ -20,6 +20,7 @@ interface HeroGlassmorphismProps {
   onOpenAiScanner?: () => void;
   atmosphereMode?: 'day' | 'night';
   onToggleAtmosphere?: (mode: 'day' | 'night') => void;
+  totalMeals?: number;
 }
 
 export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
@@ -29,13 +30,39 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
   onOpenAiScanner,
   atmosphereMode = 'day',
   onToggleAtmosphere,
+  totalMeals,
 }) => {
   const [donorInput, setDonorInput] = useState('');
+  const sheetRef = useRef<HTMLDivElement | null>(null);
+  const [glare, setGlare] = useState({ x: 50, y: 20, opacity: 0 });
+  const [tilt, setTilt] = useState({ rx: 0, ry: 0, px: 0, py: 0 });
 
   const handleQuickRescue = (e: React.FormEvent) => {
     e.preventDefault();
     sound.click();
     onOpenDonateModal(donorInput.trim() || undefined);
+  };
+
+  const handleSheetPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    const el = sheetRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const relX = (e.clientX - rect.left) / rect.width;
+    const relY = (e.clientY - rect.top) / rect.height;
+    const nx = (relX - 0.5) * 2; // -1 .. 1
+    const ny = (relY - 0.5) * 2;
+    setGlare({ x: relX * 100, y: relY * 100, opacity: 1 });
+    setTilt({
+      rx: -ny * 2.2,
+      ry: nx * 2.6,
+      px: -nx * 14,
+      py: -ny * 8,
+    });
+  };
+
+  const handleSheetPointerLeave = () => {
+    setGlare((prev) => ({ ...prev, opacity: 0 }));
+    setTilt({ rx: 0, ry: 0, px: 0, py: 0 });
   };
 
   return (
@@ -47,7 +74,12 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
           like Vertix's sculptural 3D typography
       ============================================================== */}
       <div className="absolute inset-x-0 bottom-12 sm:bottom-16 lg:bottom-20 flex items-baseline justify-center select-none pointer-events-none z-0 px-2 overflow-hidden">
-        <div className="flex items-baseline gap-1.5 sm:gap-3 md:gap-5 lg:gap-7 opacity-85 sm:opacity-95 transition-all duration-700">
+        <div
+          className="flex items-baseline gap-1.5 sm:gap-3 md:gap-5 lg:gap-7 opacity-85 sm:opacity-95 transition-transform duration-300 ease-out"
+          style={{
+            transform: `translate3d(${tilt.px}px, ${tilt.py}px, 0)`,
+          }}
+        >
           {['F', 'O', 'O', 'D'].map((char, i) => (
             <span
               key={`f-${i}`}
@@ -76,7 +108,25 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
           100% transparent glassmorphism floating over the warm scene photo
       ============================================================== */}
       <div className="relative z-10 w-full max-w-6xl mx-auto my-auto space-y-8">
-        <div className="liquid-glass-sheet p-6 sm:p-10 lg:p-12 text-white shadow-2xl">
+        <div
+          ref={sheetRef}
+          onPointerMove={handleSheetPointerMove}
+          onPointerLeave={handleSheetPointerLeave}
+          className="liquid-glass-sheet p-6 sm:p-10 lg:p-12 text-white shadow-2xl transition-transform duration-300 ease-out"
+          style={{
+            transform: `perspective(1400px) rotateX(${tilt.rx}deg) rotateY(${tilt.ry}deg)`,
+          }}
+        >
+          {/* Cursor-Tracked Optical Specular Caustic Glint */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 transition-opacity duration-300 rounded-[36px]"
+            style={{
+              opacity: glare.opacity,
+              background: `radial-gradient(540px circle at ${glare.x}% ${glare.y}%, rgba(255,255,255,0.13) 0%, rgba(16,185,129,0.06) 35%, transparent 70%)`,
+            }}
+          />
+
           {/* Top Row: Brand & Quick Telemetry Tags */}
           <div className="flex flex-wrap items-center justify-between gap-4 pb-8 border-b border-white/15">
             <div className="flex items-center gap-3">
@@ -210,7 +260,7 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
                       <li>
                         <button
                           type="button"
-                          onClick={onOpenDonateModal}
+                          onClick={() => onOpenDonateModal('Grand Horizon Banquet Hall, Indiranagar')}
                           className="hover:text-emerald-400 transition-colors text-left cursor-pointer"
                         >
                           Hotel Banquets
@@ -219,7 +269,7 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
                       <li>
                         <button
                           type="button"
-                          onClick={onOpenDonateModal}
+                          onClick={() => onOpenDonateModal('100 Feet Road, Indiranagar, Bengaluru')}
                           className="hover:text-emerald-400 transition-colors text-left cursor-pointer"
                         >
                           Restaurants &amp; Cafes
@@ -228,7 +278,7 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
                       <li>
                         <button
                           type="button"
-                          onClick={onOpenDonateModal}
+                          onClick={() => onOpenDonateModal('Lotus Pavilion Convention Center, Jayanagar')}
                           className="hover:text-emerald-400 transition-colors text-left cursor-pointer"
                         >
                           Weddings &amp; Events
@@ -237,7 +287,7 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
                       <li>
                         <button
                           type="button"
-                          onClick={onOpenDonateModal}
+                          onClick={() => onOpenDonateModal('Palm Meadows RWA Community Hall, Whitefield')}
                           className="hover:text-emerald-400 transition-colors text-left cursor-pointer"
                         >
                           Society Drives
@@ -422,9 +472,10 @@ export const HeroGlassmorphism: React.FC<HeroGlassmorphismProps> = ({
         ============================================================== */}
         <div className="pt-2">
           <StatsCardGrid
-            onOpenDonateModal={onOpenDonateModal}
+            onOpenDonateModal={() => onOpenDonateModal()}
             onOpenLiveTracker={onOpenLiveTracker}
             onOpenPledgeModal={onOpenPledgeModal}
+            totalMeals={totalMeals}
           />
         </div>
       </div>

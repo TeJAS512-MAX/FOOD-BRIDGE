@@ -22,6 +22,7 @@ const W = 740, H = 380;
 
 export const NeuralRescueMap: React.FC = () => {
   const [progresses, setProgresses] = useState<number[]>(ROUTES.map((_, i) => i * 0.22));
+  const [radarAngle, setRadarAngle] = useState<number>(0);
   const [hovered, setHovered] = useState<string | null>(null);
   const rafRef = useRef<number>(0);
   const lastRef = useRef<number>(0);
@@ -32,6 +33,7 @@ export const NeuralRescueMap: React.FC = () => {
       const dt = (ts - lastRef.current) / 1000;
       lastRef.current = ts;
       setProgresses(prev => prev.map((p, i) => (p + dt * (0.08 + i * 0.015)) % 1));
+      setRadarAngle(prev => (prev + dt * 38) % 360);
       rafRef.current = requestAnimationFrame(animate);
     };
     rafRef.current = requestAnimationFrame(animate);
@@ -78,6 +80,20 @@ export const NeuralRescueMap: React.FC = () => {
       {/* SVG Map */}
       <div className="rounded-2xl overflow-hidden relative" style={{ background: 'rgba(0,0,0,0.30)', border: '1px solid rgba(255,255,255,0.08)' }}>
         <svg viewBox={`0 0 ${W} ${H}`} className="w-full" style={{ height: 'clamp(220px, 42vw, 380px)' }}>
+          {/* Concentric Radar Rings & Rotating Sweep Beam */}
+          <g transform={`translate(${W / 2}, ${H / 2})`} pointerEvents="none">
+            <circle r={85} fill="none" stroke="rgba(16,185,129,0.08)" strokeDasharray="3 5" />
+            <circle r={165} fill="none" stroke="rgba(16,185,129,0.07)" strokeDasharray="4 6" />
+            <circle r={255} fill="none" stroke="rgba(16,185,129,0.05)" />
+            <g transform={`rotate(${radarAngle})`}>
+              <path
+                d="M 0 0 L 290 -32 A 292 292 0 0 1 290 32 Z"
+                fill="url(#radarSweepGrad)"
+              />
+              <line x1={0} y1={0} x2={290} y2={0} stroke="rgba(52,211,153,0.32)" strokeWidth={1} />
+            </g>
+          </g>
+
           {/* City grid dots */}
           {dots.map((d, i) => (
             <circle key={i} cx={d.cx} cy={d.cy} r={1.4} fill="rgba(255,255,255,0.08)" />
@@ -105,44 +121,120 @@ export const NeuralRescueMap: React.FC = () => {
             );
           })}
 
-          {/* Moving food particles */}
+          {/* Moving food particles with tapered thermal comet trails */}
           {ROUTES.map((route, i) => {
             const t = progresses[i];
             const mx = (route.donorX + route.ngoX) / 2;
             const my = Math.min(route.donorY, route.ngoY) - 55;
-            // Quadratic bezier at t
-            const bx = (1-t)*(1-t)*route.donorX + 2*(1-t)*t*mx + t*t*route.ngoX;
-            const by = (1-t)*(1-t)*route.donorY + 2*(1-t)*t*my + t*t*route.ngoY;
+            const pointAt = (u: number) => ({
+              x: (1 - u) * (1 - u) * route.donorX + 2 * (1 - u) * u * mx + u * u * route.ngoX,
+              y: (1 - u) * (1 - u) * route.donorY + 2 * (1 - u) * u * my + u * u * route.ngoY,
+            });
+            const head = pointAt(t);
+            const trailSteps = [0.018, 0.036, 0.056, 0.078, 0.102];
             return (
               <g key={`particle-${route.id}`}>
-                <circle cx={bx} cy={by} r={6} fill="rgba(234,88,12,0.90)" filter="url(#orangeGlow)" />
-                <circle cx={bx} cy={by} r={3} fill="#FED7AA" />
+                {trailSteps.map((step, sIdx) => {
+                  const tu = (t - step + 1) % 1;
+                  if (tu > t) return null;
+                  const tp = pointAt(tu);
+                  const fade = 1 - (sIdx + 1) / (trailSteps.length + 1);
+                  return (
+                    <circle
+                      key={sIdx}
+                      cx={tp.x}
+                      cy={tp.y}
+                      r={5.2 * fade}
+                      fill={`rgba(249, 115, 22, ${0.48 * fade})`}
+                    />
+                  );
+                })}
+                <circle cx={head.x} cy={head.y} r={10} fill="rgba(249,115,22,0.22)" />
+                <circle cx={head.x} cy={head.y} r={6} fill="rgba(234,88,12,0.95)" filter="url(#orangeGlow)" />
+                <circle cx={head.x} cy={head.y} r={3} fill="#FFF7ED" />
               </g>
             );
           })}
 
-          {/* Node labels + circles */}
-          {ROUTES.map((route) => (
-            <g key={`nodes-${route.id}`}>
-              {/* Donor node */}
-              <circle cx={route.donorX} cy={route.donorY} r={9} className="rescue-node-donor"
-                style={{ cursor: 'pointer' }} onMouseEnter={() => setHovered(route.id)} onMouseLeave={() => setHovered(null)} />
-              <circle cx={route.donorX} cy={route.donorY} r={4} fill="white" fillOpacity={0.9} />
-              <text x={route.donorX} y={route.donorY - 15} textAnchor="middle"
-                fill="rgba(253,186,116,0.95)" fontSize="8.5" fontFamily="JetBrains Mono, monospace" fontWeight="700">
-                {route.donorLabel}
-              </text>
+          {/* Node labels + circles with expanding sonar pulse rings */}
+          {ROUTES.map((route, idx) => {
+            const t = progresses[idx];
+            const donorPulse = (t * 2) % 1;
+            const ngoPulse = ((t + 0.5) * 2) % 1;
+            return (
+              <g key={`nodes-${route.id}`}>
+                {/* Donor sonar ring */}
+                <circle
+                  cx={route.donorX}
+                  cy={route.donorY}
+                  r={9 + donorPulse * 16}
+                  fill="none"
+                  stroke={`rgba(249, 115, 22, ${(1 - donorPulse) * 0.55})`}
+                  strokeWidth={1.3}
+                  pointerEvents="none"
+                />
+                {/* Donor node */}
+                <circle
+                  cx={route.donorX}
+                  cy={route.donorY}
+                  r={9}
+                  fill="rgba(249, 115, 22, 0.85)"
+                  stroke="rgba(254, 215, 170, 0.75)"
+                  strokeWidth={1.5}
+                  style={{ cursor: 'pointer' }}
+                  onMouseEnter={() => setHovered(route.id)}
+                  onMouseLeave={() => setHovered(null)}
+                />
+                <circle cx={route.donorX} cy={route.donorY} r={4} fill="white" fillOpacity={0.95} pointerEvents="none" />
+                <text
+                  x={route.donorX}
+                  y={route.donorY - 15}
+                  textAnchor="middle"
+                  fill="rgba(253,186,116,0.95)"
+                  fontSize="8.5"
+                  fontFamily="JetBrains Mono, monospace"
+                  fontWeight="700"
+                >
+                  {route.donorLabel}
+                </text>
 
-              {/* NGO node */}
-              <circle cx={route.ngoX} cy={route.ngoY} r={9} className="rescue-node-ngo"
-                style={{ cursor: 'pointer' }} onMouseEnter={() => setHovered(route.id)} onMouseLeave={() => setHovered(null)} />
-              <circle cx={route.ngoX} cy={route.ngoY} r={4} fill="white" fillOpacity={0.9} />
-              <text x={route.ngoX} y={route.ngoY + 22} textAnchor="middle"
-                fill="rgba(110,231,183,0.95)" fontSize="8.5" fontFamily="JetBrains Mono, monospace" fontWeight="700">
-                {route.ngoLabel}
-              </text>
-            </g>
-          ))}
+                {/* NGO sonar ring */}
+                <circle
+                  cx={route.ngoX}
+                  cy={route.ngoY}
+                  r={9 + ngoPulse * 16}
+                  fill="none"
+                  stroke={`rgba(16, 185, 129, ${(1 - ngoPulse) * 0.55})`}
+                  strokeWidth={1.3}
+                  pointerEvents="none"
+                />
+                {/* NGO node */}
+                <circle
+                  cx={route.ngoX}
+                  cy={route.ngoY}
+                  r={9}
+                  fill="rgba(16, 185, 129, 0.85)"
+                  stroke="rgba(167, 243, 208, 0.75)"
+                  strokeWidth={1.5}
+                  style={{ cursor: 'pointer' }}
+                  onMouseEnter={() => setHovered(route.id)}
+                  onMouseLeave={() => setHovered(null)}
+                />
+                <circle cx={route.ngoX} cy={route.ngoY} r={4} fill="white" fillOpacity={0.95} pointerEvents="none" />
+                <text
+                  x={route.ngoX}
+                  y={route.ngoY + 22}
+                  textAnchor="middle"
+                  fill="rgba(110,231,183,0.95)"
+                  fontSize="8.5"
+                  fontFamily="JetBrains Mono, monospace"
+                  fontWeight="700"
+                >
+                  {route.ngoLabel}
+                </text>
+              </g>
+            );
+          })}
 
           {/* Hover tooltip */}
           {hovered && (() => {
@@ -171,6 +263,11 @@ export const NeuralRescueMap: React.FC = () => {
               <feGaussianBlur stdDeviation="4" result="blur" />
               <feComposite in="SourceGraphic" in2="blur" operator="over" />
             </filter>
+            <linearGradient id="radarSweepGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="rgba(16,185,129,0.22)" />
+              <stop offset="65%" stopColor="rgba(6,182,212,0.08)" />
+              <stop offset="100%" stopColor="rgba(16,185,129,0)" />
+            </linearGradient>
           </defs>
         </svg>
 

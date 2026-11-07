@@ -8,6 +8,7 @@ import {
   MapPin,
   Menu,
   Moon,
+  Box,
   PhoneCall,
   Radio,
   ShieldCheck,
@@ -18,8 +19,10 @@ import {
   VolumeX,
   X,
 } from 'lucide-react';
-import { TICKER_EVENTS } from './data/foodBridgeData';
+import { RESCUE_NODES, RescueNode, TICKER_EVENTS } from './data/foodBridgeData';
 import { HeroGlassmorphism } from './components/HeroGlassmorphism';
+import { Hero3DScene } from './components/Hero3DScene';
+import { AmbientVfxCanvas } from './components/AmbientVfxCanvas';
 import { ProblemSolutionSection } from './components/ProblemSolutionSection';
 import { WorkflowAndFeaturesSection } from './components/WorkflowAndFeaturesSection';
 import { ImpactCalculatorSection } from './components/ImpactCalculatorSection';
@@ -54,6 +57,8 @@ export function App() {
   const [esgDonorName, setEsgDonorName] = useState<string>('Grand Horizon Convention Hotel');
   const [esgWeightKg, setEsgWeightKg] = useState<number>(48);
   const [totalMealsBridged, setTotalMealsBridged] = useState<number>(142850);
+  const [selectedRescueNode, setSelectedRescueNode] = useState<RescueNode>(RESCUE_NODES[0]);
+  const [networkViewMode, setNetworkViewMode] = useState<'2d' | '3d'>('2d');
 
   const handleOpenDonateWithWeight = (
     weightKg: number,
@@ -112,6 +117,9 @@ export function App() {
           />
         ))}
       </div>
+
+      {/* ── REALISTIC VOLUMETRIC & BOKEH VFX CANVAS ── */}
+      <AmbientVfxCanvas mode={atmosphereMode} />
 
       {/* ── LIVE TELEMETRY TICKER (GLASS DARK BAR) ── */}
       <div
@@ -372,6 +380,7 @@ export function App() {
             onOpenAiScanner={() => setAiScannerOpen(true)}
             atmosphereMode={atmosphereMode}
             onToggleAtmosphere={setAtmosphereMode}
+            totalMeals={totalMealsBridged}
           />
         </div>
 
@@ -397,7 +406,64 @@ export function App() {
         {/* RESCUE NETWORK & IOT THERMAL TELEMETRY MESH */}
         <section id="rescue-network" className="py-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto space-y-8">
-            <NeuralRescueMap />
+            {/* View Switcher: 2D Radar vs Interactive 3D WebGL Digital Twin */}
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <div>
+                <span className="font-mono-tech text-xs uppercase tracking-widest text-emerald-400 font-bold">
+                  SPATIAL DISPATCH TELEMETRY
+                </span>
+                <h3 className="font-serif-display text-2xl sm:text-3xl font-bold text-white mt-0.5">
+                  Live Civic Rescue Digital Twin
+                </h3>
+              </div>
+              <div className="inline-flex items-center gap-1.5 p-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-xl text-xs font-mono-tech">
+                <button
+                  type="button"
+                  onClick={() => {
+                    sound.click();
+                    setNetworkViewMode('2d');
+                  }}
+                  className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full font-semibold transition-all cursor-pointer ${
+                    networkViewMode === '2d'
+                      ? 'bg-emerald-500/30 text-emerald-200 border border-emerald-400/40 shadow-xs'
+                      : 'text-white/65 hover:text-white'
+                  }`}
+                >
+                  <Radio className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>2D Radar Sweep</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    sound.click();
+                    setNetworkViewMode('3d');
+                  }}
+                  className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full font-semibold transition-all cursor-pointer ${
+                    networkViewMode === '3d'
+                      ? 'bg-orange-500/30 text-orange-200 border border-orange-400/40 shadow-xs'
+                      : 'text-white/65 hover:text-white'
+                  }`}
+                >
+                  <Box className="w-3.5 h-3.5 text-orange-400" />
+                  <span>3D WebGL Twin (City / Globe / Pod)</span>
+                </button>
+              </div>
+            </div>
+
+            {networkViewMode === '2d' ? (
+              <NeuralRescueMap />
+            ) : (
+              <Hero3DScene
+                selectedNode={selectedRescueNode}
+                onSelectNode={setSelectedRescueNode}
+                onOpenDonateModal={() =>
+                  handleOpenDonateWithWeight(
+                    selectedRescueNode.quantityKg,
+                    `${selectedRescueNode.name}, ${selectedRescueNode.neighborhood}`
+                  )
+                }
+              />
+            )}
             <ThermalGaugeWidget />
           </div>
         </section>

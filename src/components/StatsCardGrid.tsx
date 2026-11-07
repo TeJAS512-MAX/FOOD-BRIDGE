@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import {
   ArrowUpRight,
   UtensilsCrossed,
@@ -29,14 +29,55 @@ export const StatsCard: React.FC<StatsCardProps> = ({
   sublabel,
   onClick,
 }) => {
+  const cardRef = useRef<HTMLDivElement | null>(null);
+  const [glint, setGlint] = useState({ x: 50, y: 50, opacity: 0, rx: 0, ry: 0 });
+
+  const handleMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    const el = cardRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const rx = (e.clientX - rect.left) / rect.width;
+    const ry = (e.clientY - rect.top) / rect.height;
+    setGlint({
+      x: rx * 100,
+      y: ry * 100,
+      opacity: 1,
+      rx: -(ry - 0.5) * 7,
+      ry: (rx - 0.5) * 7,
+    });
+  };
+
+  const handleLeave = () => {
+    setGlint((prev) => ({ ...prev, opacity: 0, rx: 0, ry: 0 }));
+  };
+
   return (
     <div
+      ref={cardRef}
+      onPointerMove={handleMove}
+      onPointerLeave={handleLeave}
       onClick={() => {
         sound.click();
         onClick?.();
       }}
       className="glass-card p-6 rounded-2xl group cursor-pointer hover:-translate-y-1.5 transition-all duration-300"
+      style={{
+        transform:
+          glint.opacity > 0
+            ? `perspective(800px) rotateX(${glint.rx}deg) rotateY(${glint.ry}deg) translateY(-5px)`
+            : undefined,
+      }}
     >
+      {/* Cursor-tracked specular reflection */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 transition-opacity duration-300"
+        style={{
+          opacity: glint.opacity,
+          background: `radial-gradient(220px circle at ${glint.x}% ${glint.y}%, rgba(255,255,255,0.16), transparent 70%)`,
+        }}
+      />
+
       {/* Top ambient color reflection */}
       <div
         className="absolute -top-12 -right-12 w-28 h-28 rounded-full blur-2xl opacity-20 pointer-events-none transition-opacity group-hover:opacity-40"
@@ -86,17 +127,19 @@ interface StatsCardGridProps {
   onOpenLiveTracker?: () => void;
   onOpenDonateModal?: () => void;
   onOpenPledgeModal?: () => void;
+  totalMeals?: number;
 }
 
 export const StatsCardGrid: React.FC<StatsCardGridProps> = ({
   onOpenLiveTracker,
   onOpenDonateModal,
   onOpenPledgeModal,
+  totalMeals = 142850,
 }) => {
   const cards = [
     {
       title: 'Meals Rescued Today',
-      value: '142,850+',
+      value: `${totalMeals.toLocaleString()}+`,
       change: '28.4',
       changeType: 'positive' as const,
       icon: UtensilsCrossed,
