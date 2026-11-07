@@ -684,8 +684,64 @@
   animation-play-state: paused;
 }
 
+@keyframes liveToastPopIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0) scale(0.95);
+    filter: blur(4px);
+  }
+  60% {
+    opacity: 1;
+    transform: translate3d(0, -3px, 0) scale(1.01);
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+.live-toast-enter {
+  animation: liveToastPopIn 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes liveToastShimmer {
+  0%   { transform: translateX(-120%) skewX(-18deg); }
+  100% { transform: translateX(220%) skewX(-18deg); }
+}
+
+.live-toast-shimmer {
+  animation: liveToastShimmer 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes liveVanDrive {
+  0%   { left: 6%; }
+  50%  { left: 82%; }
+  100% { left: 6%; }
+}
+
+.live-van-runner {
+  animation: liveVanDrive 5.5s ease-in-out infinite;
+}
+
+@keyframes toastTimerBar {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+.live-toast-timer {
+  animation: toastTimerBar 6500ms linear forwards;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .workflow-rolling-track {
+    animation: none;
+  }
+  .live-toast-enter,
+  .live-toast-shimmer,
+  .live-van-runner,
+  .live-toast-timer {
     animation: none;
   }
 }
